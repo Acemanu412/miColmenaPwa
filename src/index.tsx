@@ -5,7 +5,6 @@ import * as serviceWorker from "./serviceWorker";
 import { superCool } from "./api";
 import { superCool2 } from "./hooks";
 import { superCool3 } from "./store";
-import { superCool4 } from "./themes";
 import { superCool5 } from "./utils";
 import { superCool6 } from "./views";
 
@@ -17,7 +16,6 @@ console.log(
   superCool,
   superCool2,
   superCool3,
-  superCool4,
   superCool5,
   superCool6
 );
