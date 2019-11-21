@@ -8,13 +8,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/imagenes/Icon-Composer-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     }
   ],
-  "start_url": ".",
+  "scope": "/micolmena",
+  "start_url": "/",
+  "background_color": "#FED24D",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0056A3"
 }
