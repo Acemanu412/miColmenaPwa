@@ -12,10 +12,4 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 serviceWorker.register();
 
-console.log(
-  superCool,
-  superCool2,
-  superCool3,
-  superCool5,
-  superCool6
-);
+console.log(superCool, superCool2, superCool3, superCool5, superCool6);

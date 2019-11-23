@@ -1,9 +1,14 @@
 import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+
+import Login from "../views/login";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>I LOVE react-script :)</h1>
+      <BrowserRouter>
+        <Route path="/" component={Login} />
+      </BrowserRouter>
     </div>
   );
 };
