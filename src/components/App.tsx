@@ -1,9 +1,11 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import Signup from "../views/signup";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>I LOVE react-script :)</h1>
+      <Route exact path="/" component={Signup} />
     </div>
   );
 };
