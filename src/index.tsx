@@ -1,21 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { ContextProvider } from "./hooks/useStore";
+
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { superCool } from "./api";
-import { superCool2 } from "./hooks";
-import { superCool3 } from "./store";
-import { superCool5 } from "./utils";
-import { superCool6 } from "./views";
+import RootStore, { IRootStore } from "./store";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const store = RootStore.create({});
+
+ReactDOM.render(
+  <ContextProvider value={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ContextProvider>,
+
+  document.getElementById("root")
+);
 
 serviceWorker.register();
-
-console.log(
-  superCool,
-  superCool2,
-  superCool3,
-  superCool5,
-  superCool6
-);
