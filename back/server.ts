@@ -7,7 +7,14 @@ const session = require("express-session"); // req.session || https://www.tutori
 const cookieParser = require("cookie-parser"); // req.cookies
 // // const passport = require("passport");
 // const LocalStrategy = require("passport-local").Strategy;
-const User = "./models/User.ts";
+const {
+  User,
+  Colmena,
+  DeviceInput,
+  ManualColmena,
+  ManualReina,
+  ManualConsejos
+} = require("./models");
 
 const bodyParser = require("body-parser");
 
