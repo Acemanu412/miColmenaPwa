@@ -4,8 +4,27 @@ type InputProps = {
   placeholder: string;
   type: string;
   name: string;
+  value: string;
+  onChange: any;
+  required: string;
 };
 
-export default function Input({ type, placeholder, name }: InputProps) {
-  return <input name={name} type={type} placeholder={placeholder} />;
+export default function Input({
+  placeholder,
+  type,
+  name,
+  value,
+  onChange,
+  required = ""
+}: InputProps) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      //{required}
+    />
+  );
 }
