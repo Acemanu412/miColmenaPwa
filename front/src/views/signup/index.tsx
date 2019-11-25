@@ -7,41 +7,7 @@ import { SignUpFormProperties } from "../../store";
 
 import Button from "../../components/Button";
 
-import {
-  ButtonContainer,
-  Container,
-  InputStyles
-} from "../../styles/SignupStyles";
-
 const Signup: React.FC = () => {
-<<<<<<< HEAD:src/views/signup/index.tsx
-  return (
-    <Container>
-      <form>
-        <Input
-          type="text"
-          placeholder="Nombre de usuario"
-          name="Nombre de usuario"
-        />
-        <Input
-          type="email"
-          placeholder="Correo electronico"
-          name="Correo electronico"
-        />
-
-        <ButtonContainer>
-          <Button text="ENTRAR" type="submit" />
-        </ButtonContainer>
-
-        {/* <button
-          onClick={e => {
-            e.preventDefault();
-          }}
-        >
-          Registrarte
-        </button> */}
-      </form>
-=======
   // const store = useStores();
   // console.log(store);
   return (
@@ -64,13 +30,12 @@ const Signup: React.FC = () => {
       >
         Registrarte
       </button>
->>>>>>> c28fd48e7d20b9ddc8b0c32ac2143b94f2075f8d:front/src/views/signup/index.tsx
 
       <div>
         <span>¿Ya tienes una cuenta?</span>
-        <Link to="/login">Ingresa aqui</Link>
+        <Link to="/">Ingresa aqui</Link>
       </div>
-    </Container>
+    </form>
   );
 };
 
