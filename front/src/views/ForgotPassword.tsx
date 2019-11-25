@@ -4,17 +4,12 @@ import styled from "styled-components";
 
 const ContainerCentrado = styled.div`
   display: flex;
+  flex: 1;
+  height: 100vh;
   justify-content: center;
-  align-content: stretch;
   flex-direction: column;
-  background-color: #0056a3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
+  background-image: url(${require("../utils/Rectangle.png")});
+  background-size: cover;
 `;
 const Input = styled.input`
   margin: 20px;
@@ -27,10 +22,12 @@ const Input = styled.input`
     color: white;
   }
 `;
-const Label = styled.label`
-  margin: 20px;
-  font-family: roboto;
-  color: white;
+const Img = styled.img`
+  object-fit: scale-down;
+  background-image: url(${require("../utils/Rectangle4.png")});
+  max-width: 100%;
+  height: auto;
+  
 `;
 
 const Button = styled.button`
@@ -49,7 +46,7 @@ const Button = styled.button`
 export default function ForgotPassword() {
   return (
     <ContainerCentrado>
-      <Label>EMAIL:</Label>
+      <Img></Img>
       <Input></Input>
       <Button>SUBMIT</Button>
     </ContainerCentrado>

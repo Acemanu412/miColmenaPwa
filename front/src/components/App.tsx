@@ -8,9 +8,9 @@ const App: React.FC = () => {
   return (
     <div>
       <Switch>
-        <Route path="/" component={Login} />
-        <Route path="/forgotP" component={ForgotPassword} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/forgotP" component={ForgotPassword} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </div>
   );
