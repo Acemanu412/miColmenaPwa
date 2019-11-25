@@ -26,7 +26,7 @@ ManualReina.init(
       allowNull: false
     },
 
-    marcada: {
+    mercado: {
       type: S.BOOLEAN,
       allowNull: false
     },
