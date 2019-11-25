@@ -1,0 +1,3 @@
+import { FieldName } from '../types';
+declare const _default: <FormValues extends Record<string, any>>(errorFields: Partial<Record<FieldName<FormValues>, import("../types").FieldError>>, validFieldNames: FieldName<FormValues>[]) => {};
+export default _default;

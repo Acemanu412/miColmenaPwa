@@ -1,0 +1,19 @@
+version: "3"
+services:
+  docker1:
+    build: ./back
+    ports:
+      - "7777:7777"
+    environment:
+      DB_HOST: host.docker.internal
+      DB_USER: erikaastef99
+  docker2:
+    build: ./front
+  db:
+    container_name: "psql"
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: miColmena
+      POSTGRES_USER: erikaastef99
