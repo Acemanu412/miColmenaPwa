@@ -7,11 +7,10 @@ import Signup from "../views/signup";
 const App: React.FC = () => {
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/forgotP" component={ForgotPassword} />
-        <Route exact path="/signup" component={Signup} />
-      </Switch>
+      <Route exact path="/" component={Login} />
+
+      <Route exact path="/forgotP" component={ForgotPassword} />
+      <Route exact path="/signup" component={Signup} />
     </div>
   );
 };
