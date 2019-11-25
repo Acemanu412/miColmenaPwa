@@ -5,6 +5,17 @@ const app = express();
 const path = require("path");
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
+// // const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
+const {
+  User,
+  Colmena,
+  DeviceInput,
+  ManualColmena,
+  ManualReina,
+  ManualConsejos
+} = require("./models");
+
 const bodyParser = require("body-parser");
 
 const db = require("./config/db");
