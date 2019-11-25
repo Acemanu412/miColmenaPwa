@@ -58,9 +58,9 @@ app.use(cookieParser());
 
 // app.use("/api", routes);
 
-app.get("/*", (req: any, res: any) => {
-  res.sendFile(path.join(__dirname, "../front/public/index.html"));
-});
+// app.get("/*", (req: any, res: any) => {
+//   res.sendFile(path.join(__dirname, "../front/public/index.html"));
+// });
 
 let port = process.env.PORT || 7777;
 db.sync({ force: false })

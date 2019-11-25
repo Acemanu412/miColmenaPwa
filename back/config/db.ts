@@ -1,6 +1,13 @@
+export {};
 const Sequelize = require("sequelize");
+const config = require("./dbconfig.json");
+require("dotenv").config();
 
-const sequelize = new Sequelize("postgres://erikaastef99@db:5432/miColmena", {
-  logging: false
-});
-module.exports = sequelize;
+const db = new Sequelize(
+  config.database,
+  process.env.DB_USER,
+  process.env.DB_PASS,
+  config
+);
+
+module.exports = db;
