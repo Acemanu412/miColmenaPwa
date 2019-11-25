@@ -2,29 +2,34 @@ export {};
 const S = require("sequelize");
 const db = require("../config/db");
 
-class Notas extends S.Model {}
+class EstadoGeneral extends S.Model {}
 
-Notas.init(
+EstadoGeneral.init(
   {
     date: {
       type: S.DATE,
       allowNull: false
     },
 
-    notas: {
+    salud: {
       type: S.STRING,
       allowNull: false
     },
 
-    notaDeVoz: {
+    audio: {
       type: S.STRING,
       allowNull: false
-    }
+    },
+
+    imagen: {
+      type: S.STRING,
+      allowNull: false
+    },
   },
   {
     sequelize: db,
-    modelName: "notas"
+    modelName: "estadoGeneral"
   }
 );
 
-module.exports = Notas;
+module.exports = EstadoGeneral;
