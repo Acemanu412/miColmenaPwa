@@ -1,9 +1,9 @@
 import React from "react";
 
-type ButtonProps = {
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-};
+}
 
-export default function Button({ text }: ButtonProps) {
-  return <button>{text}</button>;
+export default function Button({ text, type }: IButtonProps) {
+  return <button type={type}>{text}</button>;
 }
