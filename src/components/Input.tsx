@@ -3,8 +3,9 @@ import React from "react";
 type InputProps = {
   placeholder: string;
   type: string;
+  name: string;
 };
 
-export default function Input({ placeholder, type }: InputProps) {
-  return <input type="text" placeholder={placeholder} />;
+export default function Input({ type, placeholder, name }: InputProps) {
+  return <input name={name} type={type} placeholder={placeholder} />;
 }
