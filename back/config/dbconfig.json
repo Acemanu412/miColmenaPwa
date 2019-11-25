@@ -1,0 +1,6 @@
+{
+  "database": "miColmena",
+  "host": "localhost",
+  "dialect": "postgres",
+  "logging": false
+}

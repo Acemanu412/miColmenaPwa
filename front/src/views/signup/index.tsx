@@ -6,30 +6,25 @@ import { useStores } from "../../hooks/useStore";
 import { SignUpFormProperties } from "../../store";
 
 const Signup: React.FC = () => {
-  const store = useStores();
-  console.log(store);
+  // const store = useStores();
+  // console.log(store);
   return (
     <form>
       <input
         type="text"
         placeholder="Nombre de usuario"
         name="Nombre de usuario"
-        onChange={e => {
-          console.log("aqui", e.target.value);
-          store.handleChange(SignUpFormProperties.email, e.target.value);
-        }}
-      />
-      <Input
-        type="email"
-        placeholder="Correo electronico"
-        name="Correo electronico"
+        // onChange={e => {
+        //   console.log("aqui", e.target.value);
+        //   store.handleChange(SignUpFormProperties.email, e.target.value);
+        // }}
       />
 
       <button
-        onClick={e => {
-          e.preventDefault();
-          console.log(store);
-        }}
+      // onClick={e => {
+      //   e.preventDefault();
+      //   console.log(store);
+      // }}
       >
         Registrarte
       </button>
