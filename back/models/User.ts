@@ -7,14 +7,6 @@ class User extends S.Model {}
 
 User.init(
   {
-    name: {
-      type: S.STRING,
-      allowNull: false
-    },
-    lastName: {
-      type: S.STRING,
-      allowNull: false
-    },
     email: {
       type: S.STRING,
       allowNull: false,
@@ -23,16 +15,27 @@ User.init(
         isEmail: true
       }
     },
-    isAdmin: {
-      type: S.BOOLEAN,
-      allowNull: true,
-      defaultValue: false
-    },
 
     password: {
       type: S.STRING,
       allowNull: false
     },
+
+    username: {
+      type: S.STRING,
+      allowNull: false
+    },
+
+    activationCode: {
+      type: S.STRING,
+      allowNull: false
+    },
+
+    activation: {
+      type: S.BOOLEAN,
+      allowNull: false
+    },
+
     salt: {
       type: S.STRING
     }

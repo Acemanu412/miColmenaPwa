@@ -11,11 +11,11 @@ const RootStore = types
     password: types.optional(types.string, "")
   })
   .actions(self => ({
-    handleChange: (key: SignUpFormProperties, val: string) => {
+    handleChangee: (key: SignUpFormProperties, val: string) => {
       console.log(key);
       // selfemail = val;
     },
-    handleSubmit: () => {
+    handleSubmitt: () => {
       console.log(self);
     }
   }));
