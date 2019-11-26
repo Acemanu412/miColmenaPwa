@@ -6,7 +6,7 @@ export const LoginImage = styled.img`
 `;
 
 export const Container = styled.div`
-  display:flex  
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -19,8 +19,10 @@ display:flex
 align-items: center;
 `;
 
+// componentes que existen
+
 export const StyledInputLogin = styled(Input)`
-  color: #555555;
+  color: red;
   font: "Montserrat";
   font-size: 80px;
   ::-webkit-input-placeholder {

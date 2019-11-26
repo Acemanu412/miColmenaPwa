@@ -1,15 +1,17 @@
 import React from "react";
 import useForm from "react-hook-form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import { observer } from "mobx-react";
+
 import { useStores } from "../hooks/useStore";
-import { SignUpFormProperties } from "../store";
 
 import Button from "../components/Button";
 
-const Signup: React.FC = () => {
-  // const store = useStores();
-  // console.log(store);
+const Signup: React.FC = observer(() => {
+  const store = useStores();
+  console.log(store);
+
   return (
     <form>
       <input
@@ -33,10 +35,10 @@ const Signup: React.FC = () => {
 
       <div>
         <span>¿Ya tienes una cuenta?</span>
-        <Link to="/">Ingresa aqui</Link>
+        {/* <Link to="/">Ingresa aqui</Link> */}
       </div>
     </form>
   );
-};
+});
 
 export default Signup;
