@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSignUpForm } from "../../hooks/loginHook";
+import { useSignUpForm } from "../hooks/loginHook";
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import {
-  Container,
-  LoginImage,
-  ButtonContainer
-} from "../../styles/LoginStyles";
+import Input from "../components/Input";
+
+import Button from "../components/Button";
+
+import { ButtonContainer, Container, LoginImage } from "../styles/LoginStyles";
 
 export default function Login() {
   const signup = () => {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import ForgotPassword from "../views/ForgotPassword";
-import Login from "../views/login";
-import Signup from "../views/signup";
+import Login from "../views/Login";
+import Signup from "../views/Signup";
 
 const App: React.FC = () => {
   return (

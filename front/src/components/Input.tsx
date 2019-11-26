@@ -5,8 +5,8 @@ type InputProps = {
   type: string;
   name: string;
   value: string;
-  onChange: any;
-  required: string;
+  onChange?: any;
+  required?: string;
 };
 
 export default function Input({
@@ -15,7 +15,7 @@ export default function Input({
   name,
   value,
   onChange,
-  required = "",
+  required
 }: InputProps) {
   return (
     <input
@@ -24,7 +24,7 @@ export default function Input({
       name={name}
       value={value}
       onChange={onChange}
-      // {required}
+      required={required}
     />
   );
 }
