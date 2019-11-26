@@ -29,7 +29,7 @@ export const StyledLink = styled(Link)`
 
 export const LoginLogo = styled.img`
   url: ${require("../utils/logoSombra@2x.png")};
-  height: 27vh;
+  height: 20vh;
   margin: 4rem;
   padding-top: 4rem;
 `;
