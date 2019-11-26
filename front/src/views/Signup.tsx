@@ -1,14 +1,12 @@
 import React from "react";
-import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 // import Input from "../components/Input";
 import { observer } from "mobx-react";
 
 import { useStores } from "../hooks/useStore";
 
-import Button from "../components/Button";
-
 const Signup: React.FC = observer(() => {
+  //para que se vuelva a montar el compponente, ante los cambios en el state
   const store = useStores();
   console.log(store);
 
