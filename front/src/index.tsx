@@ -6,7 +6,7 @@ import { ContextProvider } from "./hooks/useStore";
 import App from "./components/App";
 
 import * as serviceWorker from "./serviceWorker";
-import RootStore, { IRootStore } from "./store";
+import RootStore from "./store";
 
 const store = RootStore.create({});
 

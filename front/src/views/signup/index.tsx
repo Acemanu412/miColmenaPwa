@@ -8,8 +8,8 @@ import { SignUpFormProperties } from "../../store";
 import Button from "../../components/Button";
 
 const Signup: React.FC = () => {
-  // const store = useStores();
-  // console.log(store);
+  const store = useStores();
+  //console.log(store);
   return (
     <form>
       <input
