@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { useSignUpForm } from "../../hooks/loginHook";
+import axios from "axios";
 
 import {
   Container,
@@ -16,13 +16,22 @@ import {
 } from "../../styles/LoginStyles";
 
 export default function Login() {
-  const signup = () => {
-    alert(`User Created!
+  const login = () => {
+    //Generar el axios para realizar el login al hacer el submit
+    alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
+    if (!inputs.password.length) throw Error("No password");
+    return axios
+      .post("/api/sessions", { email: inputs.email, password: inputs.password })
+      .then(res => res.data)
+      .then(data => console.log(data))
+      .catch(err => {
+        throw err;
+      });
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signup);
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
 
   return (
     <Container>
