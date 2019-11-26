@@ -66,17 +66,6 @@ justify-content: center;
 margin-top: 2rem
 `;
 
-// componentes que existen
-
-export const StyledInputLogin = styled(Input)`
-  color: red;
-  font: "Montserrat";
-  font-size: 80px;
-  ::-webkit-input-placeholder {
-    color: white;
-    opacity: 1;
-  }
-  
 export const TextLogin = styled.div`
   color: #ffffff;
   margin-bottom: 3rem;
