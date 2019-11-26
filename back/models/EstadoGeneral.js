@@ -1,8 +1,7 @@
-export {};
 const S = require("sequelize");
 const db = require("../config/db");
 
-class EstadoGeneral extends S.Model {}
+class EstadoGeneral extends S.Model { }
 
 EstadoGeneral.init(
   {

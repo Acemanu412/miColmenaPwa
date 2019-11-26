@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const useSignUpForm = (callback: any) => {
   const [inputs, setInputs] = useState({ email: "", password: "" });
@@ -12,15 +12,15 @@ export const useSignUpForm = (callback: any) => {
 
   const handleInputChange = (event: any) => {
     event.persist();
-    setInputs(inputs => ({
-      ...inputs,
-      [event.target.name]: event.target.value
+    setInputs((inputss) => ({
+      ...inputss,
+      [event.target.name]: event.target.value,
     }));
   };
 
   return {
     handleInputChange,
     handleSubmit,
-    inputs
+    inputs,
   };
 };

@@ -1,4 +1,3 @@
-export {};
 const Sequelize = require("sequelize");
 const config = require("./dbconfig.json");
 require("dotenv").config();

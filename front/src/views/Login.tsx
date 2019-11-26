@@ -16,7 +16,6 @@ import {
 
 export default function Login() {
   const login = () => {
-    //Generar el axios para realizar el login al hacer el submit
     alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
@@ -27,7 +26,6 @@ export default function Login() {
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
-
       <div>
         <form onSubmit={handleSubmit}>
           <InputContainer>

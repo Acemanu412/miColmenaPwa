@@ -1,7 +1,7 @@
+import { observer } from "mobx-react";
 import React from "react";
 import { Link } from "react-router-dom";
 // import Input from "../components/Input";
-import { observer } from "mobx-react";
 
 import { useStores } from "../hooks/useStore";
 

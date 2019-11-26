@@ -31,7 +31,7 @@ const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
   width: 300px;
   height: 60vh;
 `;
-const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
+const Candado = styled.img.attrs({ src: require("../utils/candado.png") })`
   object-fit: scale-down;
   width: 30px;
 `;
@@ -50,21 +50,31 @@ const Button = styled.button`
   color: solid white;
   width: 100px;
 `;
+const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
+  object-fit: scale-down;
+  width: 30px;
+`;
 
-export default function ForgotPassword() {
+export default function SendCode() {
   return (
     <ContainerCentrado>
       <Img></Img>
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center"
         }}
       >
-        <Sobre />
-        <Input></Input>
+        <div>
+          <Sobre />
+          <Input></Input>
+        </div>
+        <div>
+          <Candado />
+          <Input></Input>
+        </div>
       </div>
 
       <Button>SUBMIT</Button>
