@@ -1,15 +1,17 @@
 import React from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Input } from "../../components/Input";
-import { useStores } from "../../hooks/useStore";
-import { SignUpFormProperties } from "../../store";
+// import Input from "../components/Input";
+import { observer } from "mobx-react";
 
-import Button from "../../components/Button";
+import { useStores } from "../hooks/useStore";
 
-const Signup: React.FC = () => {
-  // const store = useStores();
-  // console.log(store);
+import Button from "../components/Button";
+
+const Signup: React.FC = observer(() => {
+  const store = useStores();
+  console.log(store);
+
   return (
     <form>
       {/* <Input
@@ -37,6 +39,6 @@ const Signup: React.FC = () => {
       </div>
     </form>
   );
-};
+});
 
 export default Signup;

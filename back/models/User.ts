@@ -28,12 +28,13 @@ User.init(
 
     activationCode: {
       type: S.STRING,
-      allowNull: false
+      allowNull: true
     },
 
     activation: {
       type: S.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: false
     },
 
     salt: {

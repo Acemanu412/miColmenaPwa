@@ -1,9 +1,9 @@
-import React from "react";
-import { useSignUpForm } from "../../hooks/loginHook";
+import React, { useState } from "react";
+import { useSignUpForm } from "../hooks/loginHook";
 
 import {
-  Container,
   ButtonContainer,
+  Container,
   StyledInputLogin,
   LoginLogo,
   StyledButtonLogin,
@@ -12,7 +12,7 @@ import {
   InputContainer,
   TextLogin,
   StyledLink
-} from "../../styles/LoginStyles";
+} from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
@@ -26,11 +26,11 @@ export default function Login() {
 
   return (
     <Container>
-      <LoginLogo src={require("../../utils/logoSombra@2x.png")} />
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <div>
         <form onSubmit={handleSubmit}>
           <InputContainer>
-            <LoginSobre src={require("../../utils/sobre@2x.png")} />
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
               placeholder="Correo electrónico"
               type="email"
@@ -41,7 +41,7 @@ export default function Login() {
             />
           </InputContainer>
           <InputContainer>
-            <LoginCandado src={require("../../utils/candado@2x.png")} />
+            <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
               placeholder="Contraseña"
               type="password"
