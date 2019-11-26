@@ -1,49 +1,32 @@
-<<<<<<< HEAD:front/src/views/Login.tsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useSignUpForm } from "../hooks/loginHook";
-
-import Input from "../components/Input";
-
-import Button from "../components/Button";
-=======
-import React from "react";
-import { useSignUpForm } from "../../hooks/loginHook";
 import axios from "axios";
->>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1:front/src/views/login/index.tsx
+import React from "react";
+
+import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   ButtonContainer,
   Container,
-<<<<<<< HEAD:front/src/views/Login.tsx
-  LoginImage,
-  StyledInputLogin
-} from "../styles/LoginStyles";
-=======
-  ButtonContainer,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
   InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
   TextLogin,
-  StyledLink
-} from "../../styles/LoginStyles";
->>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1:front/src/views/login/index.tsx
+} from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    //Generar el axios para realizar el login al hacer el submit
     alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
-    if (!inputs.password.length) throw Error("No password");
+    if (!inputs.password.length) {throw Error("No password"); }
     return axios
       .post("/api/sessions", { email: inputs.email, password: inputs.password })
-      .then(res => res.data)
-      .then(data => console.log(data))
-      .catch(err => {
+      .then((res) => res.data)
+      .then((data) => console.log(data))
+      .catch((err) => {
         throw err;
       });
   };
@@ -52,11 +35,11 @@ export default function Login() {
 
   return (
     <Container>
-      <LoginLogo src={require("../../utils/logoSombra@2x.png")} />
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <div>
         <form onSubmit={handleSubmit}>
           <InputContainer>
-            <LoginSobre src={require("../../utils/sobre@2x.png")} />
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
               placeholder="Correo electrónico"
               type="email"
@@ -67,7 +50,7 @@ export default function Login() {
             />
           </InputContainer>
           <InputContainer>
-            <LoginCandado src={require("../../utils/candado@2x.png")} />
+            <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
               placeholder="Contraseña"
               type="password"
