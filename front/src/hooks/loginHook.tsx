@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import { useState } from "react";
->>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1
 
 export const useSignUpForm = (callback: any) => {
   const [inputs, setInputs] = useState({ email: "", password: "" });

@@ -66,7 +66,6 @@ justify-content: center;
 margin-top: 2rem
 `;
 
-<<<<<<< HEAD
 // componentes que existen
 
 export const StyledInputLogin = styled(Input)`
@@ -77,10 +76,9 @@ export const StyledInputLogin = styled(Input)`
     color: white;
     opacity: 1;
   }
-=======
+  
 export const TextLogin = styled.div`
   color: #ffffff;
   margin-bottom: 3rem;
   font-size: 0.8rem;
->>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1
 `;
