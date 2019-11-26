@@ -4,6 +4,6 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-export default function Button({ text, type }: IButtonProps) {
-  return <button type={type}>{text}</button>;
+export default function Button(props: IButtonProps) {
+  return <button {...props}>{props.text}</button>;
 }
