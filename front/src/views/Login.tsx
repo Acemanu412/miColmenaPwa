@@ -1,10 +1,6 @@
 import React from "react";
 import { useSignUpForm } from "../hooks/loginHook";
 
-import axios from "axios";
-
-import Button from "../components/Button";
-
 import {
   ButtonContainer,
   Container,
@@ -24,14 +20,6 @@ export default function Login() {
     alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
-    if (!inputs.password.length) throw Error("No password");
-    return axios
-      .post("/api/sessions", { email: inputs.email, password: inputs.password })
-      .then(res => res.data)
-      .then(data => console.log(data))
-      .catch(err => {
-        throw err;
-      });
   };
 
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);

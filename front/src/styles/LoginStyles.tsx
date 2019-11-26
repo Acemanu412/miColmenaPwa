@@ -66,8 +66,6 @@ justify-content: center;
 margin-top: 2rem
 `;
 
-// componentes que existen
-
 export const TextLogin = styled.div`
   color: #ffffff;
   margin-bottom: 3rem;
