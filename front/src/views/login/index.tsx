@@ -1,33 +1,46 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { useSignUpForm } from "../../hooks/loginHook";
+import axios from "axios";
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
 import {
   Container,
-  LoginImage,
   ButtonContainer,
-  StyledInputLogin
+  StyledInputLogin,
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
+  TextLogin,
+  StyledLink
 } from "../../styles/LoginStyles";
 
 export default function Login() {
-  const signup = () => {
-    alert(`User Created!
+  const login = () => {
+    //Generar el axios para realizar el login al hacer el submit
+    alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
+    if (!inputs.password.length) throw Error("No password");
+    return axios
+      .post("/api/sessions", { email: inputs.email, password: inputs.password })
+      .then(res => res.data)
+      .then(data => console.log(data))
+      .catch(err => {
+        throw err;
+      });
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signup);
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
 
   return (
     <Container>
-      <div>LOGO</div>
+      <LoginLogo src={require("../../utils/logoSombra@2x.png")} />
       <div>
         <form onSubmit={handleSubmit}>
-          <div>
-            <LoginImage src="https://imageog.flaticon.com/icons/png/512/20/20061.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" />
-            <Input
+          <InputContainer>
+            <LoginSobre src={require("../../utils/sobre@2x.png")} />
+            <StyledInputLogin
               placeholder="Correo electrónico"
               type="email"
               name="email"
@@ -35,9 +48,9 @@ export default function Login() {
               value={inputs.email}
               required={true}
             />
-          </div>
-          <div>
-            <LoginImage src="https://freeiconshop.com/wp-content/uploads/edd/lock-outline.png" />
+          </InputContainer>
+          <InputContainer>
+            <LoginCandado src={require("../../utils/candado@2x.png")} />
             <StyledInputLogin
               placeholder="Contraseña"
               type="password"
@@ -46,20 +59,20 @@ export default function Login() {
               value={inputs.password}
               required={true}
             />
-          </div>
+          </InputContainer>
           <ButtonContainer>
-            <Button text="ENTRAR" type="submit" />
+            <StyledButtonLogin text="ENTRAR" type="submit" />
           </ButtonContainer>
         </form>
       </div>
-      <div>
+      <TextLogin>
         <span>¿No estás registrado?</span>
-        <Link to="/signup">Registrate aquí</Link>
-      </div>
-      <div>
+        <StyledLink to="/signup">Registrate aquí</StyledLink>
+      </TextLogin>
+      <TextLogin>
         <span>¿Olvidaste la clave?</span>
-        <Link to="/forgotP">Ingresa aquí</Link>
-      </div>
+        <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
+      </TextLogin>
     </Container>
   );
 }

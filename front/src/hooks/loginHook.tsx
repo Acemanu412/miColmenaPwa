@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import { useState } from "react";
 
 export const useSignUpForm = (callback: any) => {
   const [inputs, setInputs] = useState({ email: "", password: "" });
