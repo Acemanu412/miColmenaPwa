@@ -1,33 +1,25 @@
-import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   ButtonContainer,
   Container,
-  InputContainer,
-  LoginCandado,
-  LoginLogo,
-  LoginSobre,
-  StyledButtonLogin,
   StyledInputLogin,
-  StyledLink,
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
   TextLogin,
+  StyledLink
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
+    //Generar el axios para realizar el login al hacer el submit
     alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
-    if (!inputs.password.length) {throw Error("No password"); }
-    return axios
-      .post("/api/sessions", { email: inputs.email, password: inputs.password })
-      .then((res) => res.data)
-      .then((data) => console.log(data))
-      .catch((err) => {
-        throw err;
-      });
   };
 
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);

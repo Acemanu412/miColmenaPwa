@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
-import { Link } from "react-router-dom";
-import Button from "../components/Button";
 import { Input } from "../components/Input";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 export const StyledButtonLogin = styled(Button)`
   background-color: #ffd24e;
@@ -30,7 +29,7 @@ export const StyledLink = styled(Link)`
 
 export const LoginLogo = styled.img`
   url: ${require("../utils/logoSombra@2x.png")};
-  height: 17vh;
+  height: 27vh;
   margin: 4rem;
   padding-top: 4rem;
 `;
@@ -62,10 +61,10 @@ export const ButtonContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-display:flex;
+display:flex  
 justify-content: center;
-margin-top: 2rem;`;
-
+margin-top: 2rem
+`;
 
 export const TextLogin = styled.div`
   color: #ffffff;
