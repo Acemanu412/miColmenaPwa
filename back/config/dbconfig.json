@@ -1,5 +1,5 @@
 {
-  "database": "miColmena",
+  "database": "micolmena",
   "host": "localhost",
   "dialect": "postgres",
   "logging": false
