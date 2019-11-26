@@ -1,6 +1,5 @@
-export {};
-const S = require("sequelize");
-const db = require("../config/db");
+const S =require("sequelize");
+const db =require("../config/db");
 
 class Colmena extends S.Model {}
 

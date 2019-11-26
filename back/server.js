@@ -1,8 +1,7 @@
-export{};
-
 const express = require("express");
 const app = express();
 const path = require("path");
+const routes = require("./routes")
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
 // // const passport = require("passport");
@@ -29,27 +28,27 @@ app.use(express.static(path.join(__dirname, "../front/public")));
 app.use(cookieParser());
 app.use(
   session({
-  secret: "abeja",
-  resave: true,
-  saveUninitialized: true
+    secret: "abeja",
+    resave: true,
+    saveUninitialized: true
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use("/api", routes);
+app.use("/api", routes);
 
 // app.get("/*", (req: any, res: any) => {
 //   res.sendFile(path.join(__dirname, "../front/public/index.html"));
 // });
 
-let port = process.env.PORT || 7777;
+let port = process.env.PORT || 2222;
 db.sync({ force: false })
   .then(() => {
     app.listen(port, () => {
-      console.log("listening on port 7777");
+      console.log("listening on port " + port);
     });
   })
-  .catch((error: any) => {
+  .catch((error) => {
     console.log(error);
   });
