@@ -1,9 +1,25 @@
+<<<<<<< HEAD:front/src/views/Login.tsx
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSignUpForm } from "../hooks/loginHook";
+
+import Input from "../components/Input";
+
+import Button from "../components/Button";
+=======
 import React from "react";
 import { useSignUpForm } from "../../hooks/loginHook";
 import axios from "axios";
+>>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1:front/src/views/login/index.tsx
 
 import {
+  ButtonContainer,
   Container,
+<<<<<<< HEAD:front/src/views/Login.tsx
+  LoginImage,
+  StyledInputLogin
+} from "../styles/LoginStyles";
+=======
   ButtonContainer,
   StyledInputLogin,
   LoginLogo,
@@ -14,6 +30,7 @@ import {
   TextLogin,
   StyledLink
 } from "../../styles/LoginStyles";
+>>>>>>> dd681b7382c3ad3b75943a3eb3950bc1d1b6deb1:front/src/views/login/index.tsx
 
 export default function Login() {
   const login = () => {
