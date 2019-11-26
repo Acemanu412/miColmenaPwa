@@ -1,8 +1,7 @@
-export {};
 const S = require("sequelize");
 const db = require("../config/db");
 
-class Notas extends S.Model {}
+class Notas extends S.Model { }
 
 Notas.init(
   {

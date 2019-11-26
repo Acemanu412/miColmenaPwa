@@ -1,60 +1,74 @@
-export {};
 const S = require("sequelize");
 const db = require("../config/db");
 
-class ManualConsejos extends S.Model {}
+class DeviceInput extends S.Model { }
 
-ManualConsejos.init(
+DeviceInput.init(
   {
+    idDevice: {
+      type: S.STRING,
+      allowNull: false
+    },
+
     date: {
       type: S.DATE,
       allowNull: false
     },
 
-    intervenciones: {
-      type: S.ARRAY(S.TEXT),
+    GPSposition: {
+      type: S.STRING,
       allowNull: false
     },
 
-    alimento: {
-      type: S.ARRAY(S.TEXT),
-      allowNull: false
-    },
-
-    miel: {
+    pesoUno: {
       type: S.INTEGER,
       allowNull: false
     },
 
-    jaleaReal: {
+    pesoDos: {
       type: S.INTEGER,
       allowNull: false
     },
 
-    polen: {
+    pesoTres: {
       type: S.INTEGER,
       allowNull: false
     },
 
-    propoleo: {
+    pesoCuatro: {
       type: S.INTEGER,
       allowNull: false
     },
 
-    cera: {
+    humedadInterior: {
       type: S.INTEGER,
       allowNull: false
     },
 
-    panal: {
+    temperaturaInterior: {
+      type: S.INTEGER,
+      allowNull: false
+    },
+
+    audio: {
+      type: S.STRING,
+      allowNull: false
+    },
+
+    imagenPiquera: {
+      type: S.STRING,
+      allowNull: false
+    },
+
+    humedadExterior: {
       type: S.INTEGER,
       allowNull: false
     }
   },
   {
     sequelize: db,
-    modelName: "manualconsejos"
+    modelName: "deviceinput"
   }
 );
 
-module.exports = ManualConsejos;
+module.exports = DeviceInput;

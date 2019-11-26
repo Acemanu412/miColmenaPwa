@@ -1,8 +1,7 @@
-export {};
 const S = require("sequelize");
 const db = require("../config/db");
 
-class ManualColmena extends S.Model {}
+class ManualColmena extends S.Model { }
 
 ManualColmena.init(
   {
