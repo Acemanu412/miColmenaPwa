@@ -10,8 +10,13 @@ export default function Input({
   name,
   value,
   onChange,
+<<<<<<< HEAD
   required
 }: IInputProps) {
+=======
+  required = "",
+}: InputProps) {
+>>>>>>> b52dff81008aebd8f07a92cb13aee5cc3371ac17
   return (
     <input
       type={type}
@@ -19,7 +24,11 @@ export default function Input({
       name={name}
       value={value}
       onChange={onChange}
+<<<<<<< HEAD
       required={required}
+=======
+      // {required}
+>>>>>>> b52dff81008aebd8f07a92cb13aee5cc3371ac17
     />
   );
 }
