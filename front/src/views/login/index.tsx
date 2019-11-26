@@ -7,7 +7,8 @@ import Button from "../../components/Button";
 import {
   Container,
   LoginImage,
-  ButtonContainer
+  ButtonContainer,
+  StyledInputLogin
 } from "../../styles/LoginStyles";
 
 export default function Login() {
@@ -32,18 +33,18 @@ export default function Login() {
               name="email"
               onChange={handleInputChange}
               value={inputs.email}
-              required="required"
+              required={true}
             />
           </div>
           <div>
             <LoginImage src="https://freeiconshop.com/wp-content/uploads/edd/lock-outline.png" />
-            <Input
+            <StyledInputLogin
               placeholder="Contraseña"
               type="password"
               name="password"
               onChange={handleInputChange}
               value={inputs.password}
-              required="required"
+              required={true}
             />
           </div>
           <ButtonContainer>
@@ -53,11 +54,11 @@ export default function Login() {
       </div>
       <div>
         <span>¿No estás registrado?</span>
-        <Link to="/">Registrate aquí</Link>
+        <Link to="/signup">Registrate aquí</Link>
       </div>
       <div>
         <span>¿Olvidaste la clave?</span>
-        <Link to="/">Ingresa aquí</Link>
+        <Link to="/forgotP">Ingresa aquí</Link>
       </div>
     </Container>
   );

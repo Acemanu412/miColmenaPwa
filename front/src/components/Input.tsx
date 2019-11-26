@@ -1,13 +1,8 @@
 import React from "react";
 
-type InputProps = {
-  placeholder: string;
-  type: string;
-  name: string;
-  value: string;
-  onChange: any;
-  required: string;
-};
+interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  onChange: (event: any) => void;
+}
 
 export default function Input({
   placeholder,
@@ -15,8 +10,8 @@ export default function Input({
   name,
   value,
   onChange,
-  required = "",
-}: InputProps) {
+  required
+}: IInputProps) {
   return (
     <input
       type={type}
@@ -24,7 +19,7 @@ export default function Input({
       name={name}
       value={value}
       onChange={onChange}
-      // {required}
+      required={required}
     />
   );
 }
