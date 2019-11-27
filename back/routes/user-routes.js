@@ -25,13 +25,45 @@ router.post(
 );
 
 router.post("/signup", (req, res, next) => {
+
   User.create(req.body)
     .then(user => {
       res.send(user);
     })
-    .catch(err => {
-      res.send("ERROR");
-    });
+    .then(user => {
+      User.findOne({
+        where: {
+          email: req.body.email,
+        }
+      })
+    })
+    .then(user => {
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "micolmena555@gmail.com",
+          pass: "jalea555!"
+        }
+      });
+
+      var mailOptions = {
+        from: "micolmena555@gmail.com",
+        to: req.body.email,
+        subject: "Mi colmena",
+        text: `se envio el emsssail`
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          res.status(400).send(false);
+        } else {
+          console.log("Email sent: " + info.response);
+          res.status(200).send(true);
+        }
+      });
+    })
+
 });
 
 router.post("/olvidoClave", (req, res, next) => {
@@ -41,6 +73,7 @@ router.post("/olvidoClave", (req, res, next) => {
     }
   }).then(user => {
     let codigo = Math.floor(Math.random() * 1000000).toString();
+
     user.update({ password: codigo }).then(user => {
       user.setNewHashedPassword();
       var transporter = nodemailer.createTransport({

@@ -14,13 +14,13 @@ export const useSignUpForm = (callback: any, initialObject) => {
     event.persist();
     setInputs((inputsEntrantes) => ({
       ...inputsEntrantes,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   };
 
   return {
     handleInputChange,
     handleSubmit,
-    inputsSalientes, 
+    inputsSalientes,
   };
 };

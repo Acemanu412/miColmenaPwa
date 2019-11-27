@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Button from "../components/Button";
 import { Input } from "../components/Input";
 
@@ -32,6 +32,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const LoginLogo = styled.img`
+  // tslint:disable-next-line: no-var-requires
   url: ${require("../utils/logoSombra@2x.png")};
   height: 27%;
   margin: 4rem;
@@ -55,6 +56,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  // tslint:disable-next-line: no-var-requires
   background-image: url(${require("../utils/inicioFondo@2x.png")})};
   height: 100vh
   background-size: contain;

@@ -8,6 +8,7 @@ const ContainerCentrado = styled.div`
   height: 100vh;
   justify-content: center;
   flex-direction: column;
+  // tslint:disable-next-line: no-var-requires
   background-image: url(${require("../utils/Rectangle.png")});
   background-size: cover;
 `;
@@ -61,10 +62,10 @@ export default function SendCode() {
       <Img></Img>
       <div
         style={{
+          alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <div>
