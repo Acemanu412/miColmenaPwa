@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
+
 import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
   InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
   TextLogin,
-  StyledLink
+  StyledLink,
+  FormContainer
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    //Generar el axios para realizar el login al hacer el submit
-    alert(`Usuario logueado!
-           Email: ${inputs.email}
-           Password: ${inputs.password}`);
+    return null;
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit
+  } = useSignUpForm(login, { email: "", password: "" });
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
@@ -35,10 +39,11 @@ export default function Login() {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={inputs.email}
+              value={inputsSalientes.email}
               required={true}
             />
           </InputContainer>
+
           <InputContainer>
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
@@ -46,22 +51,21 @@ export default function Login() {
               type="password"
               name="password"
               onChange={handleInputChange}
-              value={inputs.password}
+              value={inputsSalientes.password}
               required={true}
             />
           </InputContainer>
-
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </form>
-      </div>
-      <TextLogin>
-        <span>¿No estás registrado?</span>
-        <StyledLink to="/signup">Registrate aquí</StyledLink>
-      </TextLogin>
-      <TextLogin>
-        <span>¿Olvidaste la clave?</span>
-        <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
-      </TextLogin>
+        <TextLogin>
+          <span>¿No estás registrado?</span>
+          <StyledLink to="/signup">Registrate aquí</StyledLink>
+        </TextLogin>
+        <TextLogin>
+          <span>¿Olvidaste la clave?</span>
+          <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
+        </TextLogin>
+      </FormContainer>
     </Container>
   );
 }
