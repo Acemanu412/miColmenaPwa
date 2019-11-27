@@ -25,7 +25,7 @@ User.init(
       allowNull: false
     },
 
-    activation: {
+    activated: {
       type: S.BOOLEAN,
       defaultValue: false
     },

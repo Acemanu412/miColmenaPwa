@@ -8,11 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/imagenes/celdas.png",
+      "src": "/imagenes/Icon-Composer-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     }
   ],
+  "scope": "/micolmena",
   "start_url": "/",
   "background_color": "#FED24D",
   "display": "standalone",

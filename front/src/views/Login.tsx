@@ -5,14 +5,14 @@ import { fetchRegister } from "../api"
 import {
   ButtonContainer,
   Container,
-  InputContainer,
-  LoginCandado,
-  LoginLogo,
-  LoginSobre,
-  StyledButtonLogin,
   StyledInputLogin,
-  StyledLink,
-  TextLogin
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
+  TextLogin,
+  StyledLink
 } from "../styles/LoginStyles";
 
 export default function Login() {
