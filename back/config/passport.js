@@ -12,13 +12,13 @@ passport.use(
       User.findOne({ where: { email: inputEmail } })
         .then((user) => {
           if (!user) {
-            return done(null, false, { message: "Incorrect username." });
+            return done(null, false, { message: "Username incorrecto" });
           }
           if (!user.validPassword(inputPassword)) {
-            return done(null, false, { message: "Incorrect password." });
+            return done(null, false, { message: "Password incorrecto" });
           }
           if (!user.activated) {
-            return done(null, false, { message: "Unactivated account." })
+            return done(null, false, { message: "La cuenta no ha sido activada" })
           }
           return done(null, user);
         })

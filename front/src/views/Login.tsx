@@ -4,6 +4,7 @@ import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   Container,
+  FormContainer,
   InputContainer,
   LoginCandado,
   LoginLogo,
@@ -12,8 +13,6 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  StyledLink,
-  FormContainer
 } from "../styles/LoginStyles";
 
 export default function Login() {
@@ -24,7 +23,7 @@ export default function Login() {
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
+    handleSubmit,
   } = useSignUpForm(login, { email: "", password: "" });
 
   return (
