@@ -13,7 +13,7 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin,
+  TextLogin
 } from "../styles/LoginStyles";
 
 export default function Login() {
