@@ -2,27 +2,8 @@ import { observer } from "mobx-react";
 import React from "react";
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-
+import { fetchRegister } from "../api";
 import { useSignUpForm } from "../hooks/loginHook";
-
-import { fetchRegister } from "../api"
-
-
-import { useStores } from "../hooks/useStore";
-
-import {
-  ButtonContainer,
-  Container,
-  InputContainer,
-  LoginCandado,
-  LoginLogo,
-  LoginSobre,
-  StyledButtonLogin,
-  StyledInputLogin,
-  StyledLink,
-  TextLogin
-} from "../styles/LoginStyles";
 
 const ContainerCentrado = styled.div`
   display: flex;
@@ -30,20 +11,11 @@ const ContainerCentrado = styled.div`
   height: 100vh;
   justify-content: center;
   flex-direction: column;
+  // tslint:disable-next-line: no-var-requires
   background-image: url(${require("../utils/Rectangle.png")});
   background-size: cover;
 `;
-const Input = styled.input`
-  margin: 20px;
-  font-family: roboto;
-  color: white;
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid white;
-  ::placeholder {
-    color: white;
-  }
-`;
+
 const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
   object-fit: scale-down;
   display: flex;
@@ -52,10 +24,6 @@ const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
 
   width: 300px;
   height: 60vh;
-`;
-const Candado = styled.img.attrs({ src: require("../utils/candado.png") })`
-  object-fit: scale-down;
-  width: 30px;
 `;
 
 const Button = styled.button`
@@ -72,22 +40,16 @@ const Button = styled.button`
   color: solid white;
   width: 100px;
 `;
-const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
-  object-fit: scale-down;
-  width: 30px;
-`;
 
 const Signup: React.FC = observer(() => {
-  //para que se vuelva a montar el compponente, ante los cambios en el state
-
-  const store = useStores();
+  // para que se vuelva a montar el compponente, ante los cambios en el state
 
   const registroAxios = () => {
     fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
-  }
+  };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(registroAxios, { username: "", email: "", password: "" });
-
+  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(registroAxios,
+                                                                            { username: "", email: "", password: "" });
 
   return (
     <form
@@ -97,10 +59,10 @@ const Signup: React.FC = observer(() => {
         <Img></Img>
         <div
           style={{
+            alignItems: "center",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         ></div>
 
@@ -122,7 +84,6 @@ const Signup: React.FC = observer(() => {
           required={true}
         />
 
-
         <input
           name="password"
           placeholder="Constrasena"
@@ -131,8 +92,6 @@ const Signup: React.FC = observer(() => {
           value={inputsSalientes.password}
           required={true}
         />
-
-
 
         <Button>REGISTRARTE</Button>
       </ContainerCentrado>
