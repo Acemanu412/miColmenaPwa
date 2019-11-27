@@ -42,7 +42,7 @@ app.use("/api", routes);
 // });
 
 let port = process.env.PORT || 2222;
-db.sync({ force: false })
+db.sync({ force: true })
   .then(() => {
     app.listen(port, () => {
       console.log("listening on port " + port);

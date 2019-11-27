@@ -1,102 +1,85 @@
-import { observer } from "mobx-react";
 import React from "react";
-
-import styled from "styled-components";
 import { fetchRegister } from "../api";
 import { useForm } from "../hooks/formHook";
+import {
+  Container,
+  FormContainer,
+  InputContainer,
+  LoginAvatar,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
+  TextLogin,
+} from "../styles/LoginStyles";
 
-const ContainerCentrado = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  // tslint:disable-next-line: no-var-requires
-  background-image: url(${require("../utils/Rectangle.png")});
-  background-size: cover;
-`;
-
-const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
-  object-fit: scale-down;
-  display: flex;
-
-  align-self: center;
-
-  width: 300px;
-  height: 60vh;
-`;
-
-const Button = styled.button`
-  display: flex;
-  align-self: center;
-  margin: 20px;
-  border: none;
-  background-color: #fed24d;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 12px;
-  font-family: roboto;
-  color: solid white;
-  width: 100px;
-`;
-
-const Signup: React.FC = observer(() => {
-  // para que se vuelva a montar el compponente, ante los cambios en el state
+export default function Signup() {
+  // para que se vuelva a montar el componente, ante los cambios en el state
 
   const registroAxios = () => {
     fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(registroAxios,
-                                                                            { username: "", email: "", password: "" });
+    { username: "", email: "", password: "" });
 
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
-      <ContainerCentrado>
-        <Img></Img>
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        ></div>
+    <Container>
 
-        <input
-          name="username"
-          placeholder="Nombre de usuario"
-          type="text"
-          onChange={handleInputChange}
-          value={inputsSalientes.username}
-          required={true}
-        />
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
 
-        <input
-          name="email"
-          placeholder="Correo electronico"
-          type="email"
-          onChange={handleInputChange}
-          value={inputsSalientes.email}
-          required={true}
-        />
+      <FormContainer>
 
-        <input
-          name="password"
-          placeholder="Constrasena"
-          type="password"
-          onChange={handleInputChange}
-          value={inputsSalientes.password}
-          required={true}
-        />
+        <form onSubmit={handleSubmit}>
 
-        <Button>REGISTRARTE</Button>
-      </ContainerCentrado>
-    </form>
+          <InputContainer>
+            <LoginAvatar src={require("../utils/avatar@2x.png")} />
+            <StyledInputLogin
+              placeholder="Nombre de usuario"
+              type="user"
+              name="user"
+              onChange={handleInputChange}
+              value={inputsSalientes.user}
+              required={true}
+            />
+          </InputContainer>
+
+          <InputContainer>
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
+            <StyledInputLogin
+              placeholder="Correo electrónico"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+              value={inputsSalientes.email}
+              required={true}
+            />
+          </InputContainer>
+
+          <InputContainer>
+            <LoginCandado src={require("../utils/candado@2x.png")} />
+            <StyledInputLogin
+              placeholder="Contraseña"
+              type="password"
+              name="password"
+              onChange={handleInputChange}
+              value={inputsSalientes.password}
+              required={true}
+            />
+          </InputContainer>
+          <StyledButtonLogin text="REGISTRAR" type="submit" />
+        </form>
+
+        <TextLogin>
+          <span>¿estás registrado?</span>
+          <StyledLink to="/l">Ingresa aquí</StyledLink>
+        </TextLogin>
+
+      </FormContainer>
+
+    </Container>
+
   );
-});
-
-export default Signup;
+}
