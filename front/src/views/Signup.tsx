@@ -1,12 +1,11 @@
 import React from "react";
-import {observer} from "mobx-react"
+import { fetchRegister } from "../api";
 import { useSignUpForm } from "../hooks/loginHook";
-import {fetchRegister} from "../api"
-
 import {
   Container,
-  LoginAvatar,
+  FormContainer,
   InputContainer,
+  LoginAvatar,
   LoginCandado,
   LoginLogo,
   LoginSobre,
@@ -14,12 +13,10 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  FormContainer
 } from "../styles/LoginStyles";
 
-
-const Signup: React.FC = observer(() => {
-  // para que se vuelva a montar el compponente, ante los cambios en el state
+export default function Signup() {
+  // para que se vuelva a montar el componente, ante los cambios en el state
 
   const registroAxios = () => {
     fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
@@ -30,9 +27,13 @@ const Signup: React.FC = observer(() => {
 
   return (
     <Container>
+
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+
       <FormContainer>
+
         <form onSubmit={handleSubmit}>
+
           <InputContainer>
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
@@ -44,6 +45,7 @@ const Signup: React.FC = observer(() => {
               required={true}
             />
           </InputContainer>
+
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -81,4 +83,3 @@ const Signup: React.FC = observer(() => {
 
   );
 }
-)

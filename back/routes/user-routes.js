@@ -28,9 +28,7 @@ router.post("/signup", (req, res, next) => {
 
   User.create(req.body)
     .then(user => {
-      res.send(user);
-    })
-    .then(user => {
+      console.log(user)
       User.findOne({
         where: {
           email: req.body.email,
@@ -38,6 +36,10 @@ router.post("/signup", (req, res, next) => {
       })
     })
     .then(user => {
+      console.log(user)
+
+      const link = "http://localhost:3000/activarCuenta/"
+
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -50,7 +52,7 @@ router.post("/signup", (req, res, next) => {
         from: "micolmena555@gmail.com",
         to: req.body.email,
         subject: "Mi colmena",
-        text: `se envio el emsssail`
+        text: `Ingrese al siguiente link para activar su cuenta: ${link}`
       };
 
       transporter.sendMail(mailOptions, function (error, info) {
@@ -62,6 +64,9 @@ router.post("/signup", (req, res, next) => {
           res.status(200).send(true);
         }
       });
+    })
+    .then((user) => {
+
     })
 
 });
