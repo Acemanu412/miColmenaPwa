@@ -2,29 +2,48 @@ const express = require("express");
 const router = express();
 const { User } = require("../models");
 const nodemailer = require("nodemailer");
+const passport = require("../config/passport");
+
+router.post(
+  "/session",
+  (req, res, next) => {
+    passport.authenticate("local", function (error, user, info) {
+      if (error) {
+        console.log(error);
+        res.status(401).send(error);
+      } else if (!user) {
+        console.log(info);
+        res.status(401).send(info);
+      } else {
+        next();
+      }
+    })(req, res);
+  },
+  function (req, res) {
+    res.status(200).send(req.user);
+  }
+);
 
 router.post("/signup", (req, res, next) => {
-  console.log("POSTBODY", req.body)
+  console.log("-----------------------------------------------------", req.body, "-----------------------------------------");
   User.create(req.body)
-    .then((user) => {
+    .then(user => {
       res.send(user);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.send("ERROR");
     });
 });
 
 router.post("/olvidoClave", (req, res, next) => {
-  //console.log(typeof req.body.email);
   User.findOne({
     where: {
       email: req.body.email
     }
-  }).then((user) => {
+  }).then(user => {
     let codigo = Math.floor(Math.random() * 1000000).toString();
-    console.log(typeof codigo)
-    user.update({ password: codigo }).then((user) => {
+    user.update({ password: codigo }).then(user => {
       user.setNewHashedPassword();
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -44,10 +63,10 @@ router.post("/olvidoClave", (req, res, next) => {
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
-          res.status(400).send(false)
+          res.status(400).send(false);
         } else {
           console.log("Email sent: " + info.response);
-          res.status(200).send(true)
+          res.status(200).send(true);
         }
       });
     });
@@ -56,7 +75,7 @@ router.post("/olvidoClave", (req, res, next) => {
 
 router.post("/nuevoClave", (req, res, next) => {
   if (req.body.password1 === req.body.password2) {
-    req.user.update({ password: req.body.password1 }).then((user) => {
+    req.user.update({ password: req.body.password1 }).then(user => {
       req.user.setNewHashedPassword();
       res.status(200).send(user);
     });

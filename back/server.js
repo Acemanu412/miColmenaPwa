@@ -1,11 +1,10 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const routes = require("./routes")
+const routes = require("./routes");
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
-// // const passport = require("passport");
-// const LocalStrategy = require("passport-local").Strategy;
+const cors = require('cors'); // cors - para permitir 'cross origin resource sharing' || https://github.com/expressjs/cors
 const {
   User,
   Colmena,
@@ -18,7 +17,6 @@ const {
 const bodyParser = require("body-parser");
 
 const db = require("./config/db");
-// const routes = require("./routes");
 const passport = require("./config/passport")
 
 
@@ -35,7 +33,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(cors())
 app.use("/api", routes);
 
 // app.get("/*", (req: any, res: any) => {
