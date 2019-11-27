@@ -1,9 +1,64 @@
 import { observer } from "mobx-react";
 import React from "react";
+
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 // import Input from "../components/Input";
 
 import { useStores } from "../hooks/useStore";
+
+const ContainerCentrado = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(${require("../utils/Rectangle.png")});
+  background-size: cover;
+`;
+const Input = styled.input`
+  margin: 20px;
+  font-family: roboto;
+  color: white;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid white;
+  ::placeholder {
+    color: white;
+  }
+`;
+const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
+  object-fit: scale-down;
+  display: flex;
+
+  align-self: center;
+
+  width: 300px;
+  height: 60vh;
+`;
+const Candado = styled.img.attrs({ src: require("../utils/candado.png") })`
+  object-fit: scale-down;
+  width: 30px;
+`;
+
+const Button = styled.button`
+  display: flex;
+  align-self: center;
+  margin: 20px;
+  border: none;
+  background-color: #fed24d;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  font-family: roboto;
+  color: solid white;
+  width: 100px;
+`;
+const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
+  object-fit: scale-down;
+  width: 30px;
+`;
 
 const Signup: React.FC = observer(() => {
   //para que se vuelva a montar el compponente, ante los cambios en el state
@@ -11,30 +66,25 @@ const Signup: React.FC = observer(() => {
   console.log(store);
 
   return (
-    <form>
-      {/* <Input
-        type="text"
-        placeholder="Nombre de usuario"
-        name="Nombre de usuario"
-        // onChange={e => {
-        //   console.log("aqui", e.target.value);
-        //   store.handleChange(SignUpFormProperties.email, e.target.value);
-        // }}
-      /> */}
+    <form
+      onSubmit={event => {
+        event.preventDefault();
+        console.log(event.target[0]);
+      }}
+    >
+      <ContainerCentrado>
+        <Img></Img>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        ></div>
 
-      <button
-      // onClick={e => {
-      //   e.preventDefault();
-      //   console.log(store);
-      // }}
-      >
-        Registrarte
-      </button>
-
-      <div>
-        <span>¿Ya tienes una cuenta?</span>
-        <Link to="/">Ingresa aqui</Link>
-      </div>
+        <Button>REGISTRARTE</Button>
+      </ContainerCentrado>
     </form>
   );
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSignUpForm } from "../hooks/loginHook";
+import { fetchRegister } from "../api"
 
 import {
   ButtonContainer,
@@ -16,12 +17,9 @@ import {
 
 export default function Login() {
   const login = () => {
-    alert(`Usuario logueado!
-           Email: ${inputs.email}
-           Password: ${inputs.password}`);
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
+  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(login, { email: "", password: "" });
 
   return (
     <Container>
@@ -35,7 +33,7 @@ export default function Login() {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={inputs.email}
+              value={inputsSalientes.email}
               required={true}
             />
           </InputContainer>
@@ -47,7 +45,7 @@ export default function Login() {
               type="password"
               name="password"
               onChange={handleInputChange}
-              value={inputs.password}
+              value={inputsSalientes.password}
               required={true}
             />
           </InputContainer>
@@ -70,3 +68,23 @@ export default function Login() {
     </Container>
   );
 }
+
+const array= [3,4,2,8,9]
+
+
+ const diff = (array) => {
+  let menor = array[0];
+  let mayor = array[0]
+
+  for(let i =0; i < array.length; i++) {
+    if(array[i] <= menor) {
+        menor = array[i]
+    }
+    else if(array[i] >= mayor) {
+      mayor = array[i]
+    }
+  }
+
+  return mayor - menor
+
+ }
