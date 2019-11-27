@@ -12,21 +12,29 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin,
+  TextLogin
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    alert(`Usuario logueado!
+    if (!inputs.password.length) {
+      throw Error("No password");
+    }
+    return axios
+      .post("http://localhost:2222/api/user/session", {
+        email: inputs.email,
+        password: inputs.password
+      })
+      .then((res: any) => res.data)
+      .then(data => {
+        alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
-    if (!inputs.password.length) {throw Error("No password"); }
-    return axios
-      .post("/api/sessions", { email: inputs.email, password: inputs.password })
-      .then((res) => res.data)
-      .then((data) => console.log(data))
-      .catch((err) => {
-        throw err;
+        console.log(data);
+      })
+      .catch(err => {
+        alert(`no pude entrar`);
+        console.log(err);
       });
   };
 
