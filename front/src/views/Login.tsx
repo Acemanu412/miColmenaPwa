@@ -1,9 +1,11 @@
+import axios from "axios";
 import React from "react";
 
 import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   Container,
+  FormContainer,
   InputContainer,
   LoginCandado,
   LoginLogo,
@@ -12,19 +14,35 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  StyledLink,
-  FormContainer
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    return null;
+    if (!inputsSalientes.password.length) {
+      throw Error("No password");
+    }
+    return axios
+      .post("http://localhost:2222/api/user/session", {
+        email: inputsSalientes.email,
+        password: inputsSalientes.password,
+      })
+      .then((res: any) => res.data)
+      .then((data) => {
+        alert(`Usuario logueado!
+           Email: ${inputsSalientes.email}
+           Password: ${inputsSalientes.password}`);
+        console.log(data);
+      })
+      .catch((err) => {
+        alert(`Invalid entry: ${err.response.data}`);
+        console.log(err);
+      });
   };
 
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
+    handleSubmit,
   } = useSignUpForm(login, { email: "", password: "" });
 
   return (
