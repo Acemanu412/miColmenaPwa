@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSignUpForm } from "../hooks/loginHook";
-import axios from "axios"
+import { fetchRegister } from "../api"
 
 import {
   ButtonContainer,
@@ -17,28 +17,9 @@ import {
 
 export default function Login() {
   const login = () => {
-    if (!inputs.password.length) {
-      throw Error("No password");
-    }
-    return axios
-      .post("http://localhost:2222/api/user/session", {
-        email: inputs.email,
-        password: inputs.password
-      })
-      .then((res: any) => res.data)
-      .then(data => {
-        alert(`Usuario logueado!
-           Email: ${inputs.email}
-           Password: ${inputs.password}`);
-        console.log(data);
-      })
-      .catch(err => {
-        alert(`no pude entrar`);
-        console.log(err);
-      });
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
+  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(login, { email: "", password: "" });
 
   return (
     <Container>
@@ -52,10 +33,11 @@ export default function Login() {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={inputs.email}
+              value={inputsSalientes.email}
               required={true}
             />
           </InputContainer>
+
           <InputContainer>
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
@@ -63,19 +45,22 @@ export default function Login() {
               type="password"
               name="password"
               onChange={handleInputChange}
-              value={inputs.password}
+              value={inputsSalientes.password}
               required={true}
             />
           </InputContainer>
+
           <ButtonContainer>
             <StyledButtonLogin text="ENTRAR" type="submit" />
           </ButtonContainer>
         </form>
       </div>
+
       <TextLogin>
         <span>¿No estás registrado?</span>
         <StyledLink to="/signup">Registrate aquí</StyledLink>
       </TextLogin>
+
       <TextLogin>
         <span>¿Olvidaste la clave?</span>
         <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
@@ -83,3 +68,4 @@ export default function Login() {
     </Container>
   );
 }
+

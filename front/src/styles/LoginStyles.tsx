@@ -51,7 +51,7 @@ export const LoginCandado = styled.img`
 `;
 
 export const Container = styled.div`
-  display: flex;
+  display:flex  
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -76,3 +76,4 @@ export const TextLogin = styled.div`
   margin-bottom: 3rem;
   font-size: 0.8rem;
 `;
+
