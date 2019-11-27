@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useSignUpForm = (callback: any, initialObject) => {
+export const useForm = (callback: any, initialObject) => {
   const [inputsSalientes, setInputs] = useState(initialObject);
 
   const handleSubmit = (event: any) => {
@@ -11,16 +11,17 @@ export const useSignUpForm = (callback: any, initialObject) => {
   };
 
   const handleInputChange = (event: any) => {
-    event.persist();
-    setInputs((inputsEntrantes) => ({
+    //event.persist();     usar event.persist o guardar los valores para tenerlos dentro de setInputs
+    const { name, value } = event.target;
+    setInputs(inputsEntrantes => ({
       ...inputsEntrantes,
-      [event.target.name]: event.target.value,
+      [name]: value
     }));
   };
 
   return {
     handleInputChange,
     handleSubmit,
-    inputsSalientes,
+    inputsSalientes
   };
 };
