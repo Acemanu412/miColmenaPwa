@@ -17,6 +17,9 @@ passport.use(
           if (!user.validPassword(inputPassword)) {
             return done(null, false, { message: "Incorrect password." });
           }
+          if (!user.activated) {
+            return done(null, false, { message: "Unactivated account." })
+          }
           return done(null, user);
         })
         .catch(done);

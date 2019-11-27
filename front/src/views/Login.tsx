@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSignUpForm } from "../hooks/loginHook";
+import axios from "axios"
 
 import {
   ButtonContainer,
@@ -16,10 +17,25 @@ import {
 
 export default function Login() {
   const login = () => {
-    //Generar el axios para realizar el login al hacer el submit
-    alert(`Usuario logueado!
+    if (!inputs.password.length) {
+      throw Error("No password");
+    }
+    return axios
+      .post("http://localhost:2222/api/user/session", {
+        email: inputs.email,
+        password: inputs.password
+      })
+      .then((res: any) => res.data)
+      .then(data => {
+        alert(`Usuario logueado!
            Email: ${inputs.email}
            Password: ${inputs.password}`);
+        console.log(data);
+      })
+      .catch(err => {
+        alert(`no pude entrar`);
+        console.log(err);
+      });
   };
 
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
