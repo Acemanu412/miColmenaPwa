@@ -1,74 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
-import styled from "styled-components";
+import { useSignUpForm } from "../hooks/loginHook";
 
-const ContainerCentrado = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  // tslint:disable-next-line: no-var-requires
-  background-image: url(${require("../utils/Rectangle.png")});
-  background-size: cover;
-`;
-const Input = styled.input`
-  margin: 20px;
-  font-family: roboto;
-  color: white;
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid white;
-  ::placeholder {
-    color: white;
-  }
-`;
-const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
-  object-fit: scale-down;
-  display: flex;
+import {
+  Container,
+  StyledInputLogin,
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
+  TextLogin,
+  StyledLink,
+  FormContainer
+} from "../styles/LoginStyles";
 
-  align-self: center;
+function ForgotPassword() {
+  const login = () => {
+    return null;
+  };
 
-  width: 300px;
-  height: 60vh;
-`;
-const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
-  object-fit: scale-down;
-  width: 30px;
-`;
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit
+  } = useSignUpForm(login, { email: "" });
 
-const Button = styled.button`
-  display: flex;
-  align-self: center;
-  margin: 20px;
-  border: none;
-  background-color: #fed24d;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 12px;
-  font-family: roboto;
-  color: solid white;
-  width: 100px;
-`;
-
-export default function ForgotPassword() {
   return (
-    <ContainerCentrado>
-      <Img></Img>
-      <div
-        style={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <Sobre />
-        <Input></Input>
-      </div>
+    <Container>
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+      <div>
+        <form onSubmit={handleSubmit}>
+          <InputContainer>
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
+            <StyledInputLogin
+              placeholder="Ingrese su correo electrónico"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+              value={inputsSalientes.email}
+              required={true}
+            />
+          </InputContainer>
 
-      <Button>SUBMIT</Button>
-    </ContainerCentrado>
+          <StyledButtonLogin text="ENVIAR" type="submit" />
+        </form>
+      </div>
+    </Container>
   );
 }
+export default ForgotPassword;
