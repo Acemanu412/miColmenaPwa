@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Input } from "../components/Input";
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import { Input } from "../components/Input";
 
 export const StyledButtonLogin = styled(Button)`
   background-color: #ffd24e;
@@ -51,7 +51,7 @@ export const LoginCandado = styled.img`
 `;
 
 export const Container = styled.div`
-  display:flex  
+  display:flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -65,7 +65,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-display:flex  
+display:flex;
 justify-content: center;
 margin-top: 2rem
 height: 1%
@@ -76,4 +76,3 @@ export const TextLogin = styled.div`
   margin-bottom: 3rem;
   font-size: 0.8rem;
 `;
-

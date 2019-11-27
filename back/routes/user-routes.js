@@ -25,13 +25,11 @@ router.post(
 );
 
 router.post("/signup", (req, res, next) => {
-  console.log("-----------------------------------------------------", req.body, "-----------------------------------------");
   User.create(req.body)
     .then(user => {
       res.send(user);
     })
     .catch(err => {
-      console.log(err);
       res.send("ERROR");
     });
 });

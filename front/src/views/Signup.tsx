@@ -1,28 +1,11 @@
 import { observer } from "mobx-react";
 import React from "react";
-
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-
 import { useSignUpForm } from "../hooks/loginHook";
-
-import { fetchRegister } from "../api"
-
-
+import { fetchRegister } from "../api";
 import { useStores } from "../hooks/useStore";
 
-import {
-  ButtonContainer,
-  Container,
-  InputContainer,
-  LoginCandado,
-  LoginLogo,
-  LoginSobre,
-  StyledButtonLogin,
-  StyledInputLogin,
-  StyledLink,
-  TextLogin
-} from "../styles/LoginStyles";
+
 
 const ContainerCentrado = styled.div`
   display: flex;
@@ -51,7 +34,7 @@ const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
   align-self: center;
 
   width: 300px;
-  height: 60vh;
+  height: 60vh;:10.100.0.49
 `;
 const Candado = styled.img.attrs({ src: require("../utils/candado.png") })`
   object-fit: scale-down;

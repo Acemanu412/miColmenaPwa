@@ -1,6 +1,5 @@
 import React from "react";
 import { useSignUpForm } from "../hooks/loginHook";
-import { fetchRegister } from "../api"
 
 import {
   ButtonContainer,
