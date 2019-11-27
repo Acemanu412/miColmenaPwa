@@ -1,44 +1,22 @@
-import { observer } from "mobx-react";
 import React from "react";
-import styled from "styled-components";
-import { fetchRegister } from "../api";
+import {observer} from "mobx-react"
 import { useSignUpForm } from "../hooks/loginHook";
+import {fetchRegister} from "../api"
 
-const ContainerCentrado = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  // tslint:disable-next-line: no-var-requires
-  background-image: url(${require("../utils/Rectangle.png")});
-  background-size: cover;
-`;
+import {
+  Container,
+  LoginAvatar,
+  InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
+  TextLogin,
+  FormContainer
+} from "../styles/LoginStyles";
 
-const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
-  object-fit: scale-down;
-  display: flex;
-
-  align-self: center;
-
-  width: 300px;
-  height: 60vh;:10.100.0.49
-`;
-
-const Button = styled.button`
-  display: flex;
-  align-self: center;
-  margin: 20px;
-  border: none;
-  background-color: #fed24d;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 12px;
-  font-family: roboto;
-  color: solid white;
-  width: 100px;
-`;
 
 const Signup: React.FC = observer(() => {
   // para que se vuelva a montar el compponente, ante los cambios en el state
@@ -51,51 +29,56 @@ const Signup: React.FC = observer(() => {
     { username: "", email: "", password: "" });
 
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
-      <ContainerCentrado>
-        <Img></Img>
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        ></div>
+    <Container>
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+      <FormContainer>
+        <form onSubmit={handleSubmit}>
+          <InputContainer>
+            <LoginAvatar src={require("../utils/avatar@2x.png")} />
+            <StyledInputLogin
+              placeholder="Nombre de usuario"
+              type="user"
+              name="user"
+              onChange={handleInputChange}
+              value={inputsSalientes.user}
+              required={true}
+            />
+          </InputContainer>
+          <InputContainer>
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
+            <StyledInputLogin
+              placeholder="Correo electrónico"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+              value={inputsSalientes.email}
+              required={true}
+            />
+          </InputContainer>
 
-        <input
-          name="username"
-          placeholder="Nombre de usuario"
-          type="text"
-          onChange={handleInputChange}
-          value={inputsSalientes.username}
-          required={true}
-        />
+          <InputContainer>
+            <LoginCandado src={require("../utils/candado@2x.png")} />
+            <StyledInputLogin
+              placeholder="Contraseña"
+              type="password"
+              name="password"
+              onChange={handleInputChange}
+              value={inputsSalientes.password}
+              required={true}
+            />
+          </InputContainer>
+          <StyledButtonLogin text="REGISTRAR" type="submit" />
+        </form>
 
-        <input
-          name="email"
-          placeholder="Correo electronico"
-          type="email"
-          onChange={handleInputChange}
-          value={inputsSalientes.email}
-          required={true}
-        />
+        <TextLogin>
+          <span>¿estás registrado?</span>
+          <StyledLink to="/l">Ingresa aquí</StyledLink>
+        </TextLogin>
 
-        <input
-          name="password"
-          placeholder="Constrasena"
-          type="password"
-          onChange={handleInputChange}
-          value={inputsSalientes.password}
-          required={true}
-        />
+      </FormContainer>
 
-        <Button>REGISTRARTE</Button>
-      </ContainerCentrado>
-    </form>
+    </Container>
+
   );
-});
-
-export default Signup;
+}
+)
