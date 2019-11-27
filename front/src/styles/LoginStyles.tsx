@@ -65,16 +65,10 @@ export const ButtonContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-<<<<<<< HEAD
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-=======
 display:flex  
 justify-content: center;
 margin-top: 2rem
 height: 1%
->>>>>>> 2c0ed67ce4fad2cae757c67334abe833671c6326
 `;
 
 export const TextLogin = styled.div`
