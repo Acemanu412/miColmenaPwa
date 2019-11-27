@@ -1,35 +1,36 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React from "react";
+
 import { useSignUpForm } from "../hooks/loginHook";
-import axios from "axios"
 
 import {
-  ButtonContainer,
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
+  FormContainer,
   InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
   TextLogin,
-  StyledLink
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    if (!inputs.password.length) {
+    if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
     return axios
       .post("http://localhost:2222/api/user/session", {
-        email: inputs.email,
-        password: inputs.password
+        email: inputsSalientes.email,
+        password: inputsSalientes.password,
       })
       .then((res: any) => res.data)
-      .then(data => {
+      .then((data) => {
         alert(`Usuario logueado!
-           Email: ${inputs.email}
-           Password: ${inputs.password}`);
+           Email: ${inputsSalientes.email}
+           Password: ${inputsSalientes.password}`);
         console.log(data);
       })
       .catch((err) => {
@@ -38,12 +39,16 @@ export default function Login() {
       });
   };
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit,
+  } = useSignUpForm(login, { email: "", password: "" });
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
@@ -52,10 +57,11 @@ export default function Login() {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={inputs.email}
+              value={inputsSalientes.email}
               required={true}
             />
           </InputContainer>
+
           <InputContainer>
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
@@ -63,23 +69,21 @@ export default function Login() {
               type="password"
               name="password"
               onChange={handleInputChange}
-              value={inputs.password}
+              value={inputsSalientes.password}
               required={true}
             />
           </InputContainer>
-          <ButtonContainer>
-            <StyledButtonLogin text="ENTRAR" type="submit" />
-          </ButtonContainer>
+          <StyledButtonLogin text="ENTRAR" type="submit" />
         </form>
-      </div>
-      <TextLogin>
-        <span>¿No estás registrado?</span>
-        <StyledLink to="/signup">Registrate aquí</StyledLink>
-      </TextLogin>
-      <TextLogin>
-        <span>¿Olvidaste la clave?</span>
-        <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
-      </TextLogin>
+        <TextLogin>
+          <span>¿No estás registrado?</span>
+          <StyledLink to="/signup">Registrate aquí</StyledLink>
+        </TextLogin>
+        <TextLogin>
+          <span>¿Olvidaste la clave?</span>
+          <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
+        </TextLogin>
+      </FormContainer>
     </Container>
   );
 }
