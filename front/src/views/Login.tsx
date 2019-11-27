@@ -78,7 +78,7 @@ export default function Login() {
         </StyledForm>
         <TextLogin>
           <span>¿No estás registrado?</span>
-          <StyledLink to="/signup">Registrate aquí</StyledLink>
+          <StyledLink to="/signup">Registrate aquí</Auto-mergingStyledLink>
         </TextLogin>
         <TextLogin>
           <span>¿Olvidaste la clave?</span>
