@@ -3,7 +3,6 @@ import React from "react";
 import { useSignUpForm } from "../hooks/loginHook";
 
 import {
-  ButtonContainer,
   Container,
   InputContainer,
   LoginCandado,
@@ -13,6 +12,8 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
+  StyledLink,
+  FormContainer
 } from "../styles/LoginStyles";
 
 export default function Login() {
@@ -20,12 +21,16 @@ export default function Login() {
     return null;
   };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(login, { email: "", password: "" });
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit
+  } = useSignUpForm(login, { email: "", password: "" });
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
@@ -50,22 +55,17 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
-
-          <ButtonContainer>
-            <StyledButtonLogin text="ENTRAR" type="submit" />
-          </ButtonContainer>
+          <StyledButtonLogin text="ENTRAR" type="submit" />
         </form>
-      </div>
-
-      <TextLogin>
-        <span>¿No estás registrado?</span>
-        <StyledLink to="/signup">Registrate aquí</StyledLink>
-      </TextLogin>
-
-      <TextLogin>
-        <span>¿Olvidaste la clave?</span>
-        <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
-      </TextLogin>
+        <TextLogin>
+          <span>¿No estás registrado?</span>
+          <StyledLink to="/signup">Registrate aquí</StyledLink>
+        </TextLogin>
+        <TextLogin>
+          <span>¿Olvidaste la clave?</span>
+          <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
+        </TextLogin>
+      </FormContainer>
     </Container>
   );
 }
