@@ -8,7 +8,7 @@ export const StyledButtonLogin = styled(Button)`
   color: #0056a2;
   font-weight: bold;
   border-radius: 0.3rem;
-  width: 14rem;
+  width: 16rem;
   height: 2rem;
 `;
 
@@ -18,6 +18,7 @@ export const StyledInputLogin = styled(Input)`
   background: rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #ffffff
   height: fit-content
+  width: 100%;
   ::placeholder {
     color: #ffffff;
   }
@@ -60,10 +61,6 @@ export const Container = styled.div`
   background-size: contain;
 `;
 
-export const ButtonContainer = styled.div`
-  margin: 2rem 5rem 1rem;
-`;
-
 export const InputContainer = styled.div`
 display:flex  
 justify-content: center;
@@ -75,4 +72,10 @@ export const TextLogin = styled.div`
   color: #ffffff;
   margin-bottom: 3rem;
   font-size: 0.8rem;
+`;
+export const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;

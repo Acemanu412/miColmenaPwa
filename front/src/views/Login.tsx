@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSignUpForm } from "../hooks/loginHook";
 
 import {
-  ButtonContainer,
   Container,
   StyledInputLogin,
   LoginLogo,
@@ -51,9 +50,8 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
-          <ButtonContainer>
-            <StyledButtonLogin text="ENTRAR" type="submit" />
-          </ButtonContainer>
+
+          <StyledButtonLogin text="ENTRAR" type="submit" />
         </form>
       </div>
       <TextLogin>

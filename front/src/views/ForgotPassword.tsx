@@ -1,79 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
-import styled from "styled-components";
-import { observer } from "mobx-react";
+import { useSignUpForm } from "../hooks/loginHook";
 
-import { useStores } from "../hooks/useStore";
+import {
+  Container,
+  StyledInputLogin,
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
+  TextLogin,
+  StyledLink,
+  FormContainer
+} from "../styles/LoginStyles";
 
-const ContainerCentrado = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  background-image: url(${require("../utils/Rectangle.png")});
-  background-size: cover;
-`;
-const Input = styled.input`
-  margin: 4vw;
-  font-family: roboto;
-  color: white;
-  background: transparent;
-  border: 0;
-  border-bottom: 0.05vh solid white;
-  ::placeholder {
-    color: white;
-  }
-`;
-const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
-  object-fit: scale-down;
-  display: flex;
-
-  align-self: center;
-
-  width: 70vw;
-  height: 60vh;
-`;
-const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
-  object-fit: scale-down;
-  width: 7vw;
-`;
-
-const Button = styled.button`
-  display: flex;
-  align-self: center;
-  margin: 3vw;
-  border: none;
-  background-color: #fed24d;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 2vw;
-  font-family: roboto;
-  color: solid white;
-  width: 25vw;
-`;
-const ForgotPassword: React.FC = observer(() => {
-  const store = useStores();
-  console.log(store);
+function ForgotPassword() {
+  const login = () => {
+    //Generar el axios para realizar el login al hacer el submit
+    alert(`Usuario logueado!
+           Email: ${inputs.email}
+           Password: ${inputs.password}`);
+  };
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
 
   return (
-    <ContainerCentrado>
-      <Img></Img>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <Sobre />
-        <Input onChange={e => store.forgotP.handleEmail(e)}></Input>
-      </div>
+    <Container>
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+      <div>
+        <form onSubmit={handleSubmit}>
+          <InputContainer>
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
+            <StyledInputLogin
+              placeholder="Ingrese su correo electrónico"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+              value={inputs.email}
+              required={true}
+            />
+          </InputContainer>
 
-      <Button>SUBMIT</Button>
-    </ContainerCentrado>
+          <StyledButtonLogin text="ENVIAR" type="submit" />
+        </form>
+      </div>
+    </Container>
   );
-});
+}
 export default ForgotPassword;
