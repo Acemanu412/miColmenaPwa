@@ -36,9 +36,13 @@ export const StyledLink = styled(Link)`
 
 export const LoginLogo = styled.img`
   display: flex;
-  flex: 0, 5;
+  flex: 0.5;
   url: ${require("../utils/logoSombra@2x.png")};
   width: 80%;
+  object-fit: contain;
+  @media (min-width: 700px) {
+    width: 30%;
+  }
 `;
 
 export const LoginSobre = styled.img`
@@ -69,12 +73,17 @@ export const FormContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  background-color: red;
   justify-content: space-around;
   flex-direction: column;
   background-image: url(${require("../utils/inicioFondo@2x.png")})};
   height: 100vh;
   background-size: cover;
   padding-top: 30%;
+  @media (min-width: 700px) {
+    padding-top: 0;
+    justify-content: center;
+  }
 `;
 
 export const InputContainer = styled.div`

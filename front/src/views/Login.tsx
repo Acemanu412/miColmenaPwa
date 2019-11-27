@@ -13,8 +13,7 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin,
-
+  TextLogin
 } from "../styles/LoginStyles";
 
 export default function Login() {
@@ -25,16 +24,16 @@ export default function Login() {
     return axios
       .post("http://localhost:2222/api/user/session", {
         email: inputsSalientes.email,
-        password: inputsSalientes.password,
+        password: inputsSalientes.password
       })
       .then((res: any) => res.data)
-      .then((data) => {
+      .then(data => {
         alert(`Usuario logueado!
            Email: ${inputsSalientes.email}
            Password: ${inputsSalientes.password}`);
         console.log(data);
       })
-      .catch((err) => {
+      .catch(err => {
         alert(`Invalid entry: ${err.response.data}`);
         console.log(err);
       });
@@ -43,7 +42,7 @@ export default function Login() {
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit,
+    handleSubmit
   } = useSignUpForm(login, { email: "", password: "" });
 
   return (
