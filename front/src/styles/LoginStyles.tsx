@@ -58,7 +58,6 @@ export const Container = styled.div`
   background-image: url(${require("../utils/inicioFondo@2x.png")})};
   height: 100vh
   background-size: contain;
-  //position:fixed;
 `;
 
 export const ButtonContainer = styled.div`
