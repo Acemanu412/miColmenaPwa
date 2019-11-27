@@ -77,8 +77,10 @@ router.post("/olvidoClave", (req, res, next) => {
   }).then(user => {
     let codigo = Math.floor(Math.random() * 1000000).toString();
 
+
     user.update({ password: codigo }).then(user => {
       user.setNewHashedPassword();
+      user.save();
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
