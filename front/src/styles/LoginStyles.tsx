@@ -8,7 +8,7 @@ export const StyledButtonLogin = styled(Button)`
   color: #0056a2;
   font-weight: bold;
   border-radius: 0.3rem;
-  width: 16rem;
+  width: 15rem;
   height: 2rem;
   margin-top: 4rem;
 `;
@@ -19,13 +19,19 @@ export const StyledInputLogin = styled(Input)`
   background: transparent;
   border-bottom: 2px solid #ffffff
   height: fit-content
-  width: 100%;
+  width: 12rem;
   ::placeholder {
     color: #ffffff;
   };
-  
- 
   align-self: center;
+`;
+
+export const StyledForm = styled.form`
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export const StyledLink = styled(Link)`
@@ -46,12 +52,12 @@ export const LoginLogo = styled.img`
 `;
 
 export const LoginSobre = styled.img`
-  width: 1.5rem;
+  height: 1.2rem;
   margin-right: 1rem;
 `;
 
 export const LoginCandado = styled.img`
-  width:1.3rem;
+  height:2rem;
   margin-top: 0.5rem
   margin-right: 1.4rem;
   margin-bottom: 1rem
@@ -68,6 +74,7 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width:100%
 `;
 
 export const Container = styled.div`
@@ -92,10 +99,13 @@ flex:1
 justify-content: center;
 margin-top: 2rem
 height: 1%
+width:100%
 `;
 
 export const TextLogin = styled.div`
   color: #ffffff;
   margin: 1rem;
-  font-size: 0.8rem;
+  font-size: 8.5px;
 `;
+
+

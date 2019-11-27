@@ -13,7 +13,8 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin
+  TextLogin,
+  StyledForm,
 } from "../styles/LoginStyles";
 
 export default function Login() {
@@ -50,7 +51,7 @@ export default function Login() {
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -75,7 +76,7 @@ export default function Login() {
             />
           </InputContainer>
           <StyledButtonLogin text="ENTRAR" type="submit" />
-        </form>
+        </StyledForm>
         <TextLogin>
           <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
