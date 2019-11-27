@@ -1,18 +1,18 @@
-import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useSignUpForm } from "../hooks/loginHook";
+import axios from "axios"
 
 import {
   ButtonContainer,
   Container,
-  InputContainer,
-  LoginCandado,
-  LoginLogo,
-  LoginSobre,
-  StyledButtonLogin,
   StyledInputLogin,
-  StyledLink,
-  TextLogin
+  LoginLogo,
+  StyledButtonLogin,
+  LoginSobre,
+  LoginCandado,
+  InputContainer,
+  TextLogin,
+  StyledLink
 } from "../styles/LoginStyles";
 
 export default function Login() {
