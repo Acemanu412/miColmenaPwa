@@ -12,8 +12,8 @@ router.post(
         console.log(error);
         res.status(401).send(error);
       } else if (!user) {
-        console.log(info);
-        res.status(401).send(info);
+        res.statusMessage = info.message
+        res.status(401).send(info.message);
       } else {
         next();
       }

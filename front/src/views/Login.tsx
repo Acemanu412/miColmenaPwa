@@ -32,8 +32,8 @@ export default function Login() {
            Password: ${inputs.password}`);
         console.log(data);
       })
-      .catch(err => {
-        alert(`no pude entrar`);
+      .catch((err) => {
+        alert(`Invalid entry: ${err.response.data}`);
         console.log(err);
       });
   };
