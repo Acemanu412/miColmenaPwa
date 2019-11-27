@@ -69,22 +69,3 @@ export default function Login() {
   );
 }
 
-const array= [3,4,2,8,9]
-
-
- const diff = (array) => {
-  let menor = array[0];
-  let mayor = array[0]
-
-  for(let i =0; i < array.length; i++) {
-    if(array[i] <= menor) {
-        menor = array[i]
-    }
-    else if(array[i] >= mayor) {
-      mayor = array[i]
-    }
-  }
-
-  return mayor - menor
-
- }

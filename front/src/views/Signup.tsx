@@ -3,9 +3,26 @@ import React from "react";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-// import Input from "../components/Input";
+
+import { useSignUpForm } from "../hooks/loginHook";
+
+import { fetchRegister } from "../api"
+
 
 import { useStores } from "../hooks/useStore";
+
+import {
+  ButtonContainer,
+  Container,
+  InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
+  TextLogin
+} from "../styles/LoginStyles";
 
 const ContainerCentrado = styled.div`
   display: flex;
@@ -62,15 +79,19 @@ const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
 
 const Signup: React.FC = observer(() => {
   //para que se vuelva a montar el compponente, ante los cambios en el state
+
   const store = useStores();
-  console.log(store);
+
+  const registroAxios = () => {
+    fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
+  }
+
+  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(registroAxios, { username: "", email: "", password: "" });
+
 
   return (
     <form
-      onSubmit={event => {
-        event.preventDefault();
-        console.log(event.target[0]);
-      }}
+      onSubmit={handleSubmit}
     >
       <ContainerCentrado>
         <Img></Img>
@@ -82,6 +103,36 @@ const Signup: React.FC = observer(() => {
             justifyContent: "center"
           }}
         ></div>
+
+        <input
+          name="username"
+          placeholder="Nombre de usuario"
+          type="text"
+          onChange={handleInputChange}
+          value={inputsSalientes.username}
+          required={true}
+        />
+
+        <input
+          name="email"
+          placeholder="Correo electronico"
+          type="email"
+          onChange={handleInputChange}
+          value={inputsSalientes.email}
+          required={true}
+        />
+
+
+        <input
+          name="password"
+          placeholder="Constrasena"
+          type="password"
+          onChange={handleInputChange}
+          value={inputsSalientes.password}
+          required={true}
+        />
+
+
 
         <Button>REGISTRARTE</Button>
       </ContainerCentrado>
