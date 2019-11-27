@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 
 import {
   Container,
@@ -18,6 +18,7 @@ import {
 
 export default function Login() {
   const login = () => {
+    console.log("LOGIN");
     if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
@@ -42,8 +43,8 @@ export default function Login() {
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
-  } = useSignUpForm(login, { email: "", password: "" });
+    handleSubmit,
+  } = useForm(login, { email: "", password: "" });
 
   return (
     <Container>
@@ -76,11 +77,11 @@ export default function Login() {
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </form>
         <TextLogin>
-          <span>¿No estás registrado?</span>
+          <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
         </TextLogin>
         <TextLogin>
-          <span>¿Olvidaste la clave?</span>
+          <span>¿Olvidaste la clave? </span>
           <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>
