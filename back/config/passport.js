@@ -12,7 +12,7 @@ passport.use(
       User.findOne({ where: { email: inputEmail } })
         .then((user) => {
           if (!user) {
-            return done(null, false, { message: "Username incorrecto" });
+            return done(null, false, { message: "Email incorrecto" });
           }
           if (!user.validPassword(inputPassword)) {
             return done(null, false, { message: "Password incorrecto" });

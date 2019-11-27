@@ -9,3 +9,18 @@ export const fetchRegister = (username, email, password) => (
       return err;
     })
 );
+
+export const fetchLogging = (inputsSalientes) => {
+  axios
+      .post("http://localhost:2222/api/user/session", {
+        email: inputsSalientes.email,
+        password: inputsSalientes.password,
+      })
+      .then((res: any) => res.data)
+      .then(() => {
+        return {message : "" };
+      })
+      .catch((err) => {
+        return { message: err.response.data };
+      });
+};

@@ -5,10 +5,11 @@ import User from "./User";
 const RootStore = types
   .model({
     user: types.maybeNull(User),
+    warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
-    login: (username, password) => {
-      // ajax request to backend
+    updateWarning: (warning) => {
+      // Recibe Undefined. Arreglar.
     },
   }));
 

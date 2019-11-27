@@ -1,6 +1,8 @@
 import React from "react";
 
+import { fetchLogging } from "../api/";
 import { useSignUpForm } from "../hooks/loginHook";
+import { useStores } from "../hooks/useStore";
 
 import {
   Container,
@@ -17,7 +19,11 @@ import {
 
 export default function Login() {
   const login = () => {
-    return null;
+    if (!inputsSalientes.password.length) {
+      throw Error("No password");
+    }
+    const message = fetchLogging(inputsSalientes);
+    return message;
   };
 
   const {
@@ -26,11 +32,16 @@ export default function Login() {
     handleSubmit,
   } = useSignUpForm(login, { email: "", password: "" });
 
+  const store = useStores();
+
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => {
+          const warning = handleSubmit(e);
+          store.updateWarning(warning);
+          }}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin

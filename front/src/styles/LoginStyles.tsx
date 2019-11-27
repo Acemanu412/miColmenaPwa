@@ -8,7 +8,7 @@ export const StyledButtonLogin = styled(Button)`
   color: #0056a2;
   font-weight: bold;
   border-radius: 0.3rem;
-  width: 15rem;
+  width: 16rem;
   height: 2rem;
   margin-top: 4rem;
 `;
@@ -16,12 +16,15 @@ export const StyledButtonLogin = styled(Button)`
 export const StyledInputLogin = styled(Input)`
   color: #ffffff;
   border: solid 0px
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border-bottom: 2px solid #ffffff
   height: fit-content
+  width: 100%;
   ::placeholder {
     color: #ffffff;
-  }
+  };
+  
+ 
   align-self: center;
 `;
 
@@ -33,9 +36,13 @@ export const StyledLink = styled(Link)`
 
 export const LoginLogo = styled.img`
   display: flex;
-  flex: 0, 5;
+  flex: 0.5;
   url: ${require("../utils/logoSombra@2x.png")};
   width: 80%;
+  object-fit: contain;
+  @media (min-width: 700px) {
+    width: 30%;
+  }
 `;
 
 export const LoginSobre = styled.img`
@@ -44,6 +51,12 @@ export const LoginSobre = styled.img`
 `;
 
 export const LoginCandado = styled.img`
+  width:1.3rem;
+  margin-top: 0.5rem
+  margin-right: 1.4rem;
+  margin-bottom: 1rem
+`;
+export const LoginAvatar = styled.img`
   width:1.3rem;
   margin-top: 0.5rem
   margin-right: 1.4rem;
@@ -60,12 +73,17 @@ export const FormContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  background-color: red;
   justify-content: space-around;
   flex-direction: column;
   background-image: url(${require("../utils/inicioFondo@2x.png")})};
   height: 100vh;
   background-size: cover;
   padding-top: 30%;
+  @media (min-width: 700px) {
+    padding-top: 0;
+    justify-content: center;
+  }
 `;
 
 export const InputContainer = styled.div`

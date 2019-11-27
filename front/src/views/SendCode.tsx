@@ -1,84 +1,61 @@
 import React from "react";
+import { useSignUpForm } from "../hooks/loginHook";
 
-import styled from "styled-components";
+import {
+  Container,
+  FormContainer,
+  InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+} from "../styles/LoginStyles";
 
-const ContainerCentrado = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  // tslint:disable-next-line: no-var-requires
-  background-image: url(${require("../utils/Rectangle.png")});
-  background-size: cover;
-`;
-const Input = styled.input`
-  margin: 20px;
-  font-family: roboto;
-  color: white;
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid white;
-  ::placeholder {
-    color: white;
-  }
-`;
-const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
-  object-fit: scale-down;
-  display: flex;
+function SendCode() {
+  const login = () => {
+    return null;
+  };
 
-  align-self: center;
+  const {
+    // inputsSalientes,
+    handleInputChange,
+    handleSubmit,
+  } = useSignUpForm(login, { email: "", codigo: "" });
 
-  width: 300px;
-  height: 60vh;
-`;
-const Candado = styled.img.attrs({ src: require("../utils/candado.png") })`
-  object-fit: scale-down;
-  width: 30px;
-`;
-
-const Button = styled.button`
-  display: flex;
-  align-self: center;
-  margin: 20px;
-  border: none;
-  background-color: #fed24d;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 12px;
-  font-family: roboto;
-  color: solid white;
-  width: 100px;
-`;
-const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
-  object-fit: scale-down;
-  width: 30px;
-`;
-
-export default function SendCode() {
   return (
-    <ContainerCentrado>
-      <Img></Img>
-      <div
-        style={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <div>
-          <Sobre />
-          <Input></Input>
-        </div>
-        <div>
-          <Candado />
-          <Input></Input>
-        </div>
-      </div>
+    <Container>
+      <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+      <FormContainer>
+        <form onSubmit={handleSubmit}>
+          <InputContainer>
+            <LoginSobre src={require("../utils/sobre@2x.png")} />
+            <StyledInputLogin
+              placeholder="Correo electrónico"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+              // value={inputs.email}
+              required={true}
+            />
+          </InputContainer>
+          <InputContainer>
+            <LoginCandado src={require("../utils/candado@2x.png")} />
+            <StyledInputLogin
+              placeholder="Código"
+              type="codigo"
+              name="codigo"
+              onChange={handleInputChange}
+              // value={inputs.password}
+              required={true}
+            />
+          </InputContainer>
 
-      <Button>SUBMIT</Button>
-    </ContainerCentrado>
+          <StyledButtonLogin text="ENVIAR" type="submit" />
+        </form>
+      </FormContainer>
+    </Container>
   );
 }
+
+export default SendCode;
