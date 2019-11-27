@@ -1,10 +1,12 @@
 import Register from "./Register";
 import User from "./User";
+import ForgotP from "./ForgotP";
 import { types } from "mobx-state-tree";
 
 const RootStore = types
   .model({
     register: types.optional(Register, {}),
+    forgotP: types.optional(ForgotP, {}),
     user: types.maybeNull(User)
   })
   .actions(self => ({

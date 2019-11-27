@@ -1,6 +1,9 @@
 import React from "react";
 
 import styled from "styled-components";
+import { observer } from "mobx-react";
+
+import { useStores } from "../hooks/useStore";
 
 const ContainerCentrado = styled.div`
   display: flex;
@@ -12,12 +15,12 @@ const ContainerCentrado = styled.div`
   background-size: cover;
 `;
 const Input = styled.input`
-  margin: 20px;
+  margin: 4vw;
   font-family: roboto;
   color: white;
   background: transparent;
   border: 0;
-  border-bottom: 2px solid white;
+  border-bottom: 0.05vh solid white;
   ::placeholder {
     color: white;
   }
@@ -28,30 +31,32 @@ const Img = styled.img.attrs({ src: require("../utils/Rectangle4.png") })`
 
   align-self: center;
 
-  width: 300px;
+  width: 70vw;
   height: 60vh;
 `;
 const Sobre = styled.img.attrs({ src: require("../utils/sobre.png") })`
   object-fit: scale-down;
-  width: 30px;
+  width: 7vw;
 `;
 
 const Button = styled.button`
   display: flex;
   align-self: center;
-  margin: 20px;
+  margin: 3vw;
   border: none;
   background-color: #fed24d;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 12px;
+  border-radius: 2vw;
   font-family: roboto;
   color: solid white;
-  width: 100px;
+  width: 25vw;
 `;
+const ForgotPassword: React.FC = observer(() => {
+  const store = useStores();
+  console.log(store);
 
-export default function ForgotPassword() {
   return (
     <ContainerCentrado>
       <Img></Img>
@@ -64,10 +69,11 @@ export default function ForgotPassword() {
         }}
       >
         <Sobre />
-        <Input></Input>
+        <Input onChange={e => store.forgotP.handleEmail(e)}></Input>
       </div>
 
       <Button>SUBMIT</Button>
     </ContainerCentrado>
   );
-}
+});
+export default ForgotPassword;
