@@ -17,12 +17,14 @@ import {
 
 function ForgotPassword() {
   const login = () => {
-    //Generar el axios para realizar el login al hacer el submit
-    alert(`Usuario logueado!
-           Email: ${inputs.email}
-           Password: ${inputs.password}`);
+    return null;
   };
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(login);
+
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit
+  } = useSignUpForm(login, { email: "" });
 
   return (
     <Container>
@@ -36,7 +38,7 @@ function ForgotPassword() {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={inputs.email}
+              value={inputsSalientes.email}
               required={true}
             />
           </InputContainer>
