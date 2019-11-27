@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { postNuevoClave } from "../api";
+import { useForm } from "../hooks/formHook";
 
-import { useSignUpForm } from "../hooks/loginHook";
 
 import {
   Container,
@@ -16,15 +17,15 @@ import {
 } from "../styles/LoginStyles";
 
 function ForgotPassword() {
-  const login = () => {
-    return null;
+  const claveAxios = () => {
+    postNuevoClave(inputsSalientes.email);
   };
 
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
-  } = useSignUpForm(login, { email: "" });
+    handleSubmit,
+  } = useForm(claveAxios, { email: "" });
 
   return (
     <Container>
