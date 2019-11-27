@@ -12,7 +12,6 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  StyledLink,
   FormContainer
 } from "../styles/LoginStyles";
 

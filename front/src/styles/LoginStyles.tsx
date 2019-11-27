@@ -39,12 +39,12 @@ export const LoginLogo = styled.img`
 `;
 
 export const LoginSobre = styled.img`
-  width: 1.5rem;
+  height: 1.2rem;
   margin-right: 1rem;
 `;
 
 export const LoginCandado = styled.img`
-  width:1.3rem;
+  height:2rem;
   margin-top: 0.5rem
   margin-right: 1.4rem;
   margin-bottom: 1rem
