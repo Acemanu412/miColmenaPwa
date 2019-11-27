@@ -9,3 +9,13 @@ export const fetchRegister = (username, email, password) => (
       return err;
     })
 );
+
+export const activate = (id) => (
+  axios.get(`http://localhost:2222/api/user/activarCuenta/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err;
+    })
+);

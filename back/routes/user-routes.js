@@ -24,21 +24,20 @@ router.post(
   }
 );
 
+
+
 router.post("/signup", (req, res, next) => {
 
   User.create(req.body)
     .then(user => {
-      console.log(user)
-      User.findOne({
+      return User.findOne({
         where: {
-          email: req.body.email,
+          email: user.email,
         }
       })
     })
     .then(user => {
-      console.log(user)
-
-      const link = "http://localhost:3000/activarCuenta/"
+      const link = `http://localhost:3000/activarCuenta/${user.id}`
 
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -50,7 +49,7 @@ router.post("/signup", (req, res, next) => {
 
       var mailOptions = {
         from: "micolmena555@gmail.com",
-        to: req.body.email,
+        to: user.email,
         subject: "Mi colmena",
         text: `Ingrese al siguiente link para activar su cuenta: ${link}`
       };
@@ -65,11 +64,22 @@ router.post("/signup", (req, res, next) => {
         }
       });
     })
-    .then((user) => {
-
-    })
 
 });
+
+router.get("/activarCuenta/:id", (req, res, next) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(user => {
+      return user.update({ activated: true })
+    })
+    .then(user => {
+      res.send(user)
+    })
+})
 
 router.post("/olvidoClave", (req, res, next) => {
   User.findOne({
