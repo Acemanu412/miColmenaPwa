@@ -8,17 +8,21 @@ export const StyledButtonLogin = styled(Button)`
   color: #0056a2;
   font-weight: bold;
   border-radius: 0.3rem;
-  width: 75vw;
-  height: 6vh;
+  width: 14rem;
+  height: 2rem;
 `;
 
 export const StyledInputLogin = styled(Input)`
   color: #ffffff;
   border: solid 0px
   background: rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #ffffff
+  height: fit-content
   ::placeholder {
     color: #ffffff;
   }
+  align-self: center;
+
 `;
 
 export const StyledLink = styled(Link)`
@@ -29,21 +33,21 @@ export const StyledLink = styled(Link)`
 
 export const LoginLogo = styled.img`
   url: ${require("../utils/logoSombra@2x.png")};
-  height: 20vh;
+  height: 27%;
   margin: 4rem;
   padding-top: 4rem;
 `;
 
 export const LoginSobre = styled.img`
-  width: 4.5vh;
+  width: 1.5rem;
   margin-right: 1rem;
 `;
 
 export const LoginCandado = styled.img`
-  width: 4vh;
+  width:1.3rem;
   margin-top: 0.5rem
   margin-right: 1.4rem;
-  padding-bottom: 1.3rem
+  margin-bottom: 1rem
 `;
 
 export const Container = styled.div`
@@ -54,7 +58,6 @@ export const Container = styled.div`
   background-image: url(${require("../utils/inicioFondo@2x.png")})};
   height: 100vh
   background-size: contain;
-  position:fixed;
 `;
 
 export const ButtonContainer = styled.div`
@@ -65,6 +68,7 @@ export const InputContainer = styled.div`
 display:flex  
 justify-content: center;
 margin-top: 2rem
+height: 1%
 `;
 
 export const TextLogin = styled.div`
