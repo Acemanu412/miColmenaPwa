@@ -1,10 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
+
 import ForgotPassword from "../views/ForgotPassword";
 import Login from "../views/Login";
-import Signup from "../views/Signup";
 import NewPassword from "../views/NewPassword";
 import SendCode from "../views/SendCode";
+import Signup from "../views/Signup";
 
 const App: React.FC = () => {
   return (

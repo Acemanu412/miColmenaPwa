@@ -1,6 +1,7 @@
 import React from "react";
-import { NavBar } from "./NavBar";
+
 import { Colmenas } from "./Colmenas";
+import { NavBar } from "./NavBar";
 
 export const Home: React.FC = () => {
   return (

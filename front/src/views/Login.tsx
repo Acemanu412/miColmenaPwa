@@ -1,22 +1,23 @@
 import React from "react";
+
 import { useSignUpForm } from "../hooks/loginHook";
-import { fetchRegister } from "../api"
 
 import {
   ButtonContainer,
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
   InputContainer,
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+  StyledLink,
   TextLogin,
-  StyledLink
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
+    return null;
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(login, { email: "", password: "" });
@@ -68,4 +69,3 @@ export default function Login() {
     </Container>
   );
 }
-
