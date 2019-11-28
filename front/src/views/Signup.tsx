@@ -39,10 +39,11 @@ export default function Signup(props) {
     });
   };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
-    registroAxios,
-    { username: "", email: "", password: "" },
-  );
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit,
+  } = useForm(registroAxios, { username: "", email: "", password: "" });
 
   return (
     <Container>

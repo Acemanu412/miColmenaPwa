@@ -46,6 +46,6 @@ export const postNuevoClave = (email) => (
     return res.data;
   })
     .catch((err) => {
-      return err;
+      return {message: err.response.data};
     })
 );

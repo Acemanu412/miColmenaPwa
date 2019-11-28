@@ -24,10 +24,19 @@ export const StyledInputLogin = styled(Input)`
     color: #ffffff;
   };
   align-self: center;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+    
+  }
+
 `;
 
 export const StyledForm = styled.form`
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,17 +83,20 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width:100%
+  width: 100%;
 `;
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  background-color: red;
   justify-content: space-around;
   flex-direction: column;
-  background-image: url(${require("../utils/inicioFondo@2x.png")})};
+  background-image: url(${require("../utils/inicioFondo@2x.png")});
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   height: 100vh;
+  overflow: scroll;
   background-size: cover;
   padding-top: 30%;
   @media (min-width: 700px) {
@@ -100,10 +112,19 @@ justify-content: center;
 margin-top: 2rem
 height: 1%
 width:100%
+margin-bottom: 3%;
 `;
-
+export const InputContainerPassword = styled.div`
+display:flex
+flex:1
+justify-content: center;
+margin-top: 2rem
+height: 1%
+width:100%
+margin-bottom: 10%;
+`;
 export const TextLogin = styled.div`
   color: #ffffff;
   margin: 1rem;
-  font-size: 8.5px;
+  font-size: 10px;
 `;

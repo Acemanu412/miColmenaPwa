@@ -7,7 +7,6 @@ font-weight: bold;
 color:yellow;
 width:100%;
 height: 2rem;
-box-sizing:border-box;
 `;
 
 export const Spacer = styled.div`

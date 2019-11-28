@@ -1,43 +1,63 @@
 import React from "react";
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import { StyledWarning } from "../styles/GlobalStyles";
+
 import {
   Container,
-  InputContainer,
+  InputContainerPassword,
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
   StyledInputLogin,
+  FormContainer,
+  StyledForm
 } from "../styles/LoginStyles";
 
-function ForgotPassword() {
+function ForgotPassword(props) {
   const claveAxios = () => {
-    postNuevoClave(inputsSalientes.email);
+    store.updateWarning({ message: "Estamos mandandote un correo..." });
+    postNuevoClave(inputsSalientes.email).then((data) => {
+      // si 'data' tiene un mensage significa que es un error. fijase en api/index para ver como llega 'data'
+      if (data.message) {
+        store.updateWarning(data);
+      } else {
+        store.updateWarning({ message: "Te mandamos una clave temporario a tu correo electronico" });
+      }
+    });
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
     claveAxios,
-    { email: "" }
+    { email: "" },
   );
+
+  const store = useStores();
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <div>
-        <form onSubmit={handleSubmit}>
-          <InputContainer>
-            <LoginSobre src={require("../utils/sobre@2x.png")} />
-            <StyledInputLogin
-              placeholder="Ingrese su correo electrónico"
-              type="email"
-              name="email"
-              onChange={handleInputChange}
-              value={inputsSalientes.email}
-              required={true}
-            />
-          </InputContainer>
-          <StyledButtonLogin text="ENVIAR" type="submit" />
-        </form>
+        <FormContainer>
+          <StyledForm onSubmit={handleSubmit}>
+            <InputContainerPassword>
+              <LoginSobre src={require("../utils/sobre@2x.png")} />
+              <StyledInputLogin
+                placeholder="Ingrese su correo electrónico"
+                type="email"
+                name="email"
+                onChange={handleInputChange}
+                value={inputsSalientes.email}
+                required={true}
+              />
+            </InputContainerPassword>
+            <StyledWarning />
+            <StyledButtonLogin text="ENVIAR" type="submit" />
+          </StyledForm>
+
+        </FormContainer>
+
       </div>
     </Container>
   );
