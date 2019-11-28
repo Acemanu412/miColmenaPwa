@@ -9,10 +9,6 @@ import {
   LoginSobre,
   StyledButtonLogin,
   StyledInputLogin,
-// LoginCandado,
-// TextLogin,
-// StyledLink,
-// FormContainer
 } from "../styles/LoginStyles";
 
 function ForgotPassword(props) {
