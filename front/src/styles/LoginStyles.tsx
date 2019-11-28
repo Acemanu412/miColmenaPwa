@@ -126,5 +126,5 @@ margin-bottom: 10%;
 export const TextLogin = styled.div`
   color: #ffffff;
   margin: 1rem;
-  font-size: 8.5px;
+  font-size: 10px;
 `;
