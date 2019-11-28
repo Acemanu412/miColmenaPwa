@@ -9,13 +9,11 @@ import {
 
 function ActivarCuenta(props) {
   return (
-    <Container>
+    <Container style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
-      <div>
         <StyledButtonLogin onClick={() => {
           return activate(props.match.params.id);
         }} text="ACTIVAR CUENTA" type="submit"/>
-      </div>
     </Container>
   );
 }
