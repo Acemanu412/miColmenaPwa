@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchRegister } from "../api";
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 import {
   Container,
   FormContainer,
@@ -22,7 +22,7 @@ export default function Signup() {
     fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
   };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useSignUpForm(registroAxios,
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(registroAxios,
     { username: "", email: "", password: "" });
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 
 import {
   Container,
@@ -23,7 +23,7 @@ function SendCode() {
     // inputsSalientes,
     handleInputChange,
     handleSubmit
-  } = useSignUpForm(login, { email: "", codigo: "" });
+  } = useForm(login, { email: "", codigo: "" });
 
   return (
     <Container>

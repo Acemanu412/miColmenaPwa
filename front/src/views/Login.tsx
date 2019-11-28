@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 
 import {
   Container,
@@ -14,27 +14,28 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-
+  StyledForm,
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
+    console.log("LOGIN");
     if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
     return axios
       .post("http://localhost:2222/api/user/session", {
         email: inputsSalientes.email,
-        password: inputsSalientes.password,
+        password: inputsSalientes.password
       })
       .then((res: any) => res.data)
-      .then((data) => {
+      .then(data => {
         alert(`Usuario logueado!
            Email: ${inputsSalientes.email}
            Password: ${inputsSalientes.password}`);
         console.log(data);
       })
-      .catch((err) => {
+      .catch(err => {
         alert(`Invalid entry: ${err.response.data}`);
         console.log(err);
       });
@@ -44,13 +45,13 @@ export default function Login() {
     inputsSalientes,
     handleInputChange,
     handleSubmit,
-  } = useSignUpForm(login, { email: "", password: "" });
+  } = useForm(login, { email: "", password: "" });
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -75,13 +76,13 @@ export default function Login() {
             />
           </InputContainer>
           <StyledButtonLogin text="ENTRAR" type="submit" />
-        </form>
+        </StyledForm>
         <TextLogin>
-          <span>¿No estás registrado?</span>
+          <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
         </TextLogin>
         <TextLogin>
-          <span>¿Olvidaste la clave?</span>
+          <span>¿Olvidaste la clave? </span>
           <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>

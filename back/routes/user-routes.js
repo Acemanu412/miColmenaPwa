@@ -7,19 +7,18 @@ const passport = require("../config/passport");
 router.post(
   "/session",
   (req, res, next) => {
-    passport.authenticate("local", function (error, user, info) {
+    passport.authenticate("local", function(error, user, info) {
       if (error) {
-        console.log(error);
         res.status(401).send(error);
       } else if (!user) {
-        res.statusMessage = info.message
+        res.statusMessage = info.message;
         res.status(401).send(info.message);
       } else {
         next();
       }
     })(req, res);
   },
-  function (req, res) {
+  function(req, res) {
     res.status(200).send(req.user);
   }
 );
@@ -27,7 +26,6 @@ router.post(
 
 
 router.post("/signup", (req, res, next) => {
-
   User.create(req.body)
     .then(user => {
       return User.findOne({
@@ -89,8 +87,10 @@ router.post("/olvidoClave", (req, res, next) => {
   }).then(user => {
     let codigo = Math.floor(Math.random() * 1000000).toString();
 
+
     user.update({ password: codigo }).then(user => {
       user.setNewHashedPassword();
+      user.save();
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -106,7 +106,7 @@ router.post("/olvidoClave", (req, res, next) => {
         text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
       };
 
-      transporter.sendMail(mailOptions, function (error, info) {
+      transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
           console.log(error);
           res.status(400).send(false);
