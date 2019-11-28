@@ -1,19 +1,18 @@
 import React from "react";
+<<<<<<< HEAD
+=======
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
+>>>>>>> 693b5eab603075d056cd19f12abfe6498ef20c86
 
 
 import {
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
   InputContainer,
-  TextLogin,
-  StyledLink,
-  FormContainer
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
 } from "../styles/LoginStyles";
 
 function ForgotPassword() {
@@ -25,7 +24,11 @@ function ForgotPassword() {
     inputsSalientes,
     handleInputChange,
     handleSubmit,
+<<<<<<< HEAD
+  } = useSignUpForm(login, { email: "" });
+=======
   } = useForm(claveAxios, { email: "" });
+>>>>>>> 693b5eab603075d056cd19f12abfe6498ef20c86
 
   return (
     <Container>

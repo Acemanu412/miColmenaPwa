@@ -1,17 +1,20 @@
+<<<<<<< HEAD
+import React from "react";
+import { useSignUpForm } from "../hooks/loginHook";
+=======
 import React, { useState } from "react";
 import { useForm } from "../hooks/formHook";
+>>>>>>> 693b5eab603075d056cd19f12abfe6498ef20c86
 
 import {
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
+  FormContainer,
   InputContainer,
-  TextLogin,
-  StyledLink,
-  FormContainer
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
 } from "../styles/LoginStyles";
 
 function SendCode() {
@@ -22,8 +25,13 @@ function SendCode() {
   const {
     // inputsSalientes,
     handleInputChange,
+<<<<<<< HEAD
+    handleSubmit,
+  } = useSignUpForm(login, { email: "", codigo: "" });
+=======
     handleSubmit
   } = useForm(login, { email: "", codigo: "" });
+>>>>>>> 693b5eab603075d056cd19f12abfe6498ef20c86
 
   return (
     <Container>
