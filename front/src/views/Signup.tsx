@@ -1,11 +1,11 @@
 import React from "react";
-
-import { useSignUpForm } from "../hooks/loginHook";
-
+import { fetchRegister } from "../api";
+import { useForm } from "../hooks/formHook";
 import {
   Container,
-  LoginAvatar,
+  FormContainer,
   InputContainer,
+  LoginAvatar,
   LoginCandado,
   LoginLogo,
   LoginSobre,
@@ -13,25 +13,27 @@ import {
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  FormContainer
 } from "../styles/LoginStyles";
 
 export default function Signup() {
-  const login = () => {
-    return null;
+  // para que se vuelva a montar el componente, ante los cambios en el state
+
+  const registroAxios = () => {
+    fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
   };
 
-  const {
-    inputsSalientes,
-    handleInputChange,
-    handleSubmit
-  } = useSignUpForm(login, { email: "", password: "", user: "" });
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(registroAxios,
+    { username: "", email: "", password: "" });
 
   return (
     <Container>
+
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
+
       <FormContainer>
+
         <form onSubmit={handleSubmit}>
+
           <InputContainer>
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
@@ -43,6 +45,7 @@ export default function Signup() {
               required={true}
             />
           </InputContainer>
+
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -68,11 +71,15 @@ export default function Signup() {
           </InputContainer>
           <StyledButtonLogin text="REGISTRAR" type="submit" />
         </form>
+
         <TextLogin>
           <span>¿estás registrado?</span>
           <StyledLink to="/l">Ingresa aquí</StyledLink>
         </TextLogin>
+
       </FormContainer>
+
     </Container>
+
   );
 }

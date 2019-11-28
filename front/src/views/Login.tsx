@@ -2,7 +2,7 @@ import {observer} from "mobx-react";
 import React from "react";
 
 import { fetchLogging } from "../api/";
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 
 import {
@@ -13,6 +13,7 @@ import {
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
+  StyledForm,
   StyledInputLogin,
   StyledLink,
   TextLogin,
@@ -31,7 +32,7 @@ export default observer(function Login() {
     inputsSalientes,
     handleInputChange,
     handleSubmit,
-  } = useSignUpForm(login, { email: "", password: "" });
+  } = useForm(login, { email: "", password: "" });
 
   const store = useStores();
 
@@ -39,7 +40,7 @@ export default observer(function Login() {
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <form onSubmit={async (e) => {
+        <StyledForm onSubmit={async (e) => {
           const warning = await handleSubmit(e);
           store.updateWarning(warning);
           }}>
@@ -54,7 +55,6 @@ export default observer(function Login() {
               required={true}
             />
           </InputContainer>
-
           <InputContainer>
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
@@ -67,14 +67,14 @@ export default observer(function Login() {
             />
           </InputContainer>
           <StyledButtonLogin text="ENTRAR" type="submit" />
-        </form>
+        </StyledForm>
         <strong style={{color: "red", backgroundColor: "white"}}>{store.warning}</strong>
         <TextLogin>
-          <span>¿No estás registrado?</span>
+          <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
         </TextLogin>
         <TextLogin>
-          <span>¿Olvidaste la clave?</span>
+          <span>¿Olvidaste la clave? </span>
           <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>
