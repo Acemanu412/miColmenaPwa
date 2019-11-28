@@ -1,9 +1,8 @@
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
 
-export const fetchRegister = (username, email, password) =>
+export const fetchRegister = (username, email, password) => (
   axios
-    .post("http://localhost:2222/api/user/signup", {
+    .post("http://10.100.0.49:2222/api/user/signup", {
       email,
       password,
       username,
@@ -13,21 +12,22 @@ export const fetchRegister = (username, email, password) =>
     })
     .catch((err) => {
       return err;
-    });
-
-export const activate = (id) =>
-  axios
-    .get(`http://localhost:2222/api/user/activarCuenta/${id}`)
-    .then((res) => {
-      return res.data;
     })
-    .catch((err) => {
-      return err;
-    });
+);
+
+export const activate = (id) => (axios
+  .get(`http://10.100.0.49:2222/api/user/activarCuenta/${id}`)
+  .then((res) => {
+    return res.data;
+  })
+  .catch((err) => {
+    return err;
+  })
+);
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post("http://localhost:2222/api/user/session", {
+    .post("http://10.100.0.49:2222/api/user/session", {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -41,7 +41,8 @@ export const fetchLogging = (inputsSalientes) => {
 };
 
 export const postNuevoClave = (email) => (
-  axios.post("http://localhost:2222/api/user/olvidoClave", { email }).then((res) => {
+  axios.post("http://10.100.0.49:2222/api/user/olvidoClave", { email }).then((res) => {
+    alert("Te manda una clave temporario a tu correo electronico");
     return res.data;
   })
     .catch((err) => {
