@@ -1,6 +1,6 @@
 import React from "react";
-import { LogoMenu } from "../styles/MenuStyles";
+import { LogoMenu, Spacer } from "../styles/MenuStyles";
 
 export const Menu: React.FC = () =>
-  <LogoMenu>—<br />—<br />—
+  <LogoMenu><Spacer>—</Spacer><Spacer>—</Spacer><Spacer>—</Spacer>
   </LogoMenu>

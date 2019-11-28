@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const LogoMenu = styled.div`
-margin: 2px;
-font-size: 1rem;
+margin-left: 1rem;
+font-size: 1.5rem;
 font-weight: bold;
 color:yellow;
 width:100%;
 height: 2rem;
 box-sizing:border-box;
-padding: 7px;
+`;
+
+export const Spacer = styled.div`
+width: 1rem;
+height: 0.5rem;
 `;

@@ -39,8 +39,8 @@ export default function Login() {
       <FormContainer>
         <StyledForm onSubmit={async (e) => {
           const warning = await handleSubmit(e);
-          store.updateWarning(warning);
-          }}>
+          if (warning !== "") { store.updateWarning(warning); }
+        }}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -52,9 +52,10 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
-          <InputContainer>
+          <InputContainer >
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
+              // style={{ marginBottom: 0 }}
               placeholder="Contraseña"
               type="password"
               name="password"
@@ -63,7 +64,7 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
-          <StyledWarning/>
+          <StyledWarning />
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </StyledForm>
         <TextLogin>
