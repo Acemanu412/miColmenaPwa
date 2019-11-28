@@ -1,12 +1,12 @@
 import React from "react";
 import { Menu } from "../components/Menu";
-import { LogoNavBar } from "../styles/NavBarStyles";
+import { LogoNavBar, StyledMenu, NavBarContainer } from "../styles/NavBarStyles";
 
 export const NavBar: React.FC = () => {
   return (
-    <div>
-      <Menu />
-      <LogoNavBar />
-    </div>
+    <NavBarContainer>
+      <StyledMenu />
+      <LogoNavBar src={require("../utils/miColmenaLogo@2x.png")} />
+    </NavBarContainer>
   );
 };
