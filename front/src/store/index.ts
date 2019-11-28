@@ -9,7 +9,7 @@ const RootStore = types
   })
   .actions((self) => ({
     updateWarning: (warning) => {
-      // Recibe Undefined. Arreglar.
+      self.warning = warning.message;
     },
   }));
 

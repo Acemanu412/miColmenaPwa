@@ -11,7 +11,7 @@ export const fetchRegister = (username, email, password) => (
 );
 
 export const fetchLogging = (inputsSalientes) => {
-  axios
+  return axios
       .post("http://localhost:2222/api/user/session", {
         email: inputsSalientes.email,
         password: inputsSalientes.password,
