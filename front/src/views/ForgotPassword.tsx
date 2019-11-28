@@ -2,7 +2,6 @@ import React from "react";
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
 
-
 import {
   Container,
   InputContainer,
@@ -10,10 +9,6 @@ import {
   LoginSobre,
   StyledButtonLogin,
   StyledInputLogin,
-// LoginCandado,
-// TextLogin,
-// StyledLink,
-// FormContainer
 } from "../styles/LoginStyles";
 
 function ForgotPassword() {

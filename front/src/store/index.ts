@@ -1,16 +1,15 @@
 import { types } from "mobx-state-tree";
 
-import Register from "./Register";
 import User from "./User";
 
 const RootStore = types
   .model({
-    register: types.optional(Register, {}),
     user: types.maybeNull(User),
+    warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
-    login: (username, password) => {
-      // ajax request to backend
+    updateWarning: (warning) => {
+      self.warning = warning.message;
     },
   }));
 
