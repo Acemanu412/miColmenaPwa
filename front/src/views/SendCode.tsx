@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+
 import { useForm } from "../hooks/formHook";
 
 import {
@@ -20,7 +21,7 @@ function SendCode() {
   const {
     // inputsSalientes,
     handleInputChange,
-    handleSubmit
+    handleSubmit,
   } = useForm(login, { email: "", codigo: "" });
 
   return (
