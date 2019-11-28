@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const path = require("path");
 const routes = require("./routes");
@@ -19,7 +20,7 @@ const bodyParser = require("body-parser");
 const db = require("./config/db");
 const passport = require("./config/passport")
 
-
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../front/public")));
@@ -41,7 +42,7 @@ app.use("/api", routes);
 // });
 
 let port = process.env.PORT || 2222;
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => {
     app.listen(port, () => {
       console.log("listening on port " + port);

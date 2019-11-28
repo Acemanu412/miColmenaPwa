@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchRegister } from "../api";
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 import {
   Container,
   FormContainer,
@@ -12,7 +12,7 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin
+  TextLogin,
 } from "../styles/LoginStyles";
 
 export default function Signup() {
@@ -29,8 +29,8 @@ export default function Signup() {
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
-  } = useSignUpForm(registroAxios, { username: "", email: "", password: "" });
+    handleSubmit,
+  } = useForm(registroAxios, { username: "", email: "", password: "" });
 
   return (
     <Container>
@@ -77,7 +77,7 @@ export default function Signup() {
         </form>
 
         <TextLogin>
-          <span>¿estás registrado?</span>
+          <span>¿Estás registrado?</span>
           <StyledLink to="/">Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>

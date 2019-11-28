@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-import { useSignUpForm } from "../hooks/loginHook";
+import { useForm } from "../hooks/formHook";
 
 import {
   Container,
@@ -13,11 +13,13 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
-  TextLogin
+  TextLogin,
+  StyledForm,
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
+    console.log("LOGIN");
     if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
@@ -42,14 +44,14 @@ export default function Login() {
   const {
     inputsSalientes,
     handleInputChange,
-    handleSubmit
-  } = useSignUpForm(login, { email: "", password: "" });
+    handleSubmit,
+  } = useForm(login, { email: "", password: "" });
 
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -74,13 +76,13 @@ export default function Login() {
             />
           </InputContainer>
           <StyledButtonLogin text="ENTRAR" type="submit" />
-        </form>
+        </StyledForm>
         <TextLogin>
-          <span>¿No estás registrado?</span>
+          <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
         </TextLogin>
         <TextLogin>
-          <span>¿Olvidaste la clave?</span>
+          <span>¿Olvidaste la clave? </span>
           <StyledLink to="/forgotP">Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>
