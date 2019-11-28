@@ -2,7 +2,6 @@ import React from "react";
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
 
-
 import {
   Container,
   InputContainer,
@@ -16,9 +15,13 @@ import {
 // FormContainer
 } from "../styles/LoginStyles";
 
-function ForgotPassword() {
+function ForgotPassword(props) {
   const claveAxios = () => {
-    postNuevoClave(inputsSalientes.email);
+    postNuevoClave(inputsSalientes.email).then((data) => {
+      if (data instanceof Error) {
+        alert("no bueno");
+      } else {props.history.push("/"); }
+    });
   };
 
   const {

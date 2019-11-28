@@ -75,37 +75,43 @@ router.post("/olvidoClave", (req, res, next) => {
       email: req.body.email
     }
   }).then(user => {
-    let codigo = Math.floor(Math.random() * 1000000).toString();
+    if(user){
+      let codigo = Math.floor(Math.random() * 1000000).toString();
 
+      user.update({ password: codigo }).then(user => {
+        user.setNewHashedPassword();
+        user.save();
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "micolmena555@gmail.com",
+            pass: "jalea555!"
+          }
+        });
 
-    user.update({ password: codigo }).then(user => {
-      user.setNewHashedPassword();
-      user.save();
-      var transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "micolmena555@gmail.com",
-          pass: "jalea555!"
-        }
+        var mailOptions = {
+          from: "micolmena555@gmail.com",
+          to: req.body.email,
+          subject: "Forgot your password motherf@#&%!er",
+          text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
+        };
+
+        transporter.sendMail(mailOptions, function(error, info) {
+          if (error) {
+            console.log(error);
+            res.status(400).send(false);
+          } else {
+            console.log("Email sent: " + info.response);
+            res.status(200).send(true);
+          }
+        });
       });
-
-      var mailOptions = {
-        from: "micolmena555@gmail.com",
-        to: req.body.email,
-        subject: "Forgot your password motherf@#&%!er",
-        text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
-      };
-
-      transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-          console.log(error);
-          res.status(400).send(false);
-        } else {
-          console.log("Email sent: " + info.response);
-          res.status(200).send(true);
-        }
-      });
-    });
+    }
+    else {
+      res.statusMessage = "Email no existe";
+      res.status(400).send("Email no existe");
+    }
+    
   });
 });
 

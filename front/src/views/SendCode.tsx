@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../hooks/formHook";
 
 import {
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
+  FormContainer,
   InputContainer,
-  TextLogin,
-  StyledLink,
-  FormContainer
+  LoginCandado,
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
 } from "../styles/LoginStyles";
 
 function SendCode() {
@@ -22,7 +20,7 @@ function SendCode() {
   const {
     // inputsSalientes,
     handleInputChange,
-    handleSubmit
+    handleSubmit,
   } = useForm(login, { email: "", codigo: "" });
 
   return (

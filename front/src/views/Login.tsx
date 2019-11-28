@@ -16,7 +16,7 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default function Login(props) {
+export default function Login() {
   const login = () => {
     console.log("LOGIN");
     if (!inputsSalientes.password.length) {
