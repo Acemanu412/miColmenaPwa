@@ -24,12 +24,13 @@ export const fetchLogging = (inputsSalientes) => {
       return { message: err.response.data };
     });
 };
+
 export const postNuevoClave = (email) => (
   axios.post("http://localhost:2222/api/user/olvidoClave", { email }).then((res) => {
     alert("Te manda una clave temporario a tu correo electronico");
     return res.data;
   })
     .catch((err) => {
-      return err;
+      return {message: err.response.data};
     })
 );

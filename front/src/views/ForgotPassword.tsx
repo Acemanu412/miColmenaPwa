@@ -1,6 +1,8 @@
 import React from "react";
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import { StyledWarning } from "../styles/GlobalStyles";
 
 import {
   Container,
@@ -11,9 +13,17 @@ import {
   StyledInputLogin,
 } from "../styles/LoginStyles";
 
-function ForgotPassword() {
+function ForgotPassword(props) {
   const claveAxios = () => {
-    postNuevoClave(inputsSalientes.email);
+    store.updateWarning({message: "Estamos mandandote un correo..."});
+    postNuevoClave(inputsSalientes.email).then((data) => {
+      // si 'data' tiene un mensage significa que es un error. fijase en api/index para ver como llega 'data'
+      if (data.message) {
+        store.updateWarning(data);
+      } else {
+        props.history.push("/");
+      }
+    });
   };
 
   const {
@@ -21,6 +31,8 @@ function ForgotPassword() {
     handleInputChange,
     handleSubmit,
   } = useForm(claveAxios, { email: "" });
+
+  const store = useStores();
 
   return (
     <Container>
@@ -38,7 +50,7 @@ function ForgotPassword() {
               required={true}
             />
           </InputContainer>
-
+          <StyledWarning/>
           <StyledButtonLogin text="ENVIAR" type="submit" />
         </form>
       </div>

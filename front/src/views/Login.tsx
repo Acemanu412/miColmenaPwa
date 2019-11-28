@@ -1,5 +1,4 @@
 import React from "react";
-
 import { fetchLogging } from "../api/";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
@@ -18,7 +17,7 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default function Login(props) {
+export default function Login() {
   const login = () => {
     if (!inputsSalientes.password.length) {
       throw Error("No password");
@@ -40,7 +39,7 @@ export default function Login(props) {
       <FormContainer>
         <StyledForm onSubmit={async (e) => {
           const warning = await handleSubmit(e);
-          store.updateWarning(warning);
+          if (warning !== "") {store.updateWarning(warning); }
           }}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
