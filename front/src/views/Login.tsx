@@ -1,10 +1,9 @@
-import {observer} from "mobx-react";
 import React from "react";
 
 import { fetchLogging } from "../api/";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
-
+import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
   FormContainer,
@@ -19,7 +18,7 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default observer(function Login() {
+export default function Login() {
   const login = () => {
     if (!inputsSalientes.password.length) {
       throw Error("No password");
@@ -66,9 +65,9 @@ export default observer(function Login() {
               required={true}
             />
           </InputContainer>
+          <StyledWarning/>
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </StyledForm>
-        <strong style={{color: "red", backgroundColor: "white"}}>{store.warning}</strong>
         <TextLogin>
           <span>¿No estás registrado? </span>
           <StyledLink to="/signup">Registrate aquí</StyledLink>
@@ -80,4 +79,4 @@ export default observer(function Login() {
       </FormContainer>
     </Container>
   );
-});
+}
