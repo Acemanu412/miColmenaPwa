@@ -16,7 +16,6 @@ export const LogoNavBar = styled.img`
 export const NavBarContainer = styled.div`
 position:fixed;
 top: 0;
-padding-top: 0.25rem;
 width: 100%;
 height: 8%;
 background-color:#0056A2;

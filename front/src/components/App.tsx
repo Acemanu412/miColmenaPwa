@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <Route exact path="/home" component={Home} />
       <Route exact path="/forgotP" component={ForgotPassword} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/activarCuenta/:id" component={ActivarCuenta}/>
+      <Route exact path="/activarCuenta/:id" component={ActivarCuenta} />
     </div>
   );
 };
