@@ -22,21 +22,21 @@ export default function Signup(props) {
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
-      inputsSalientes.password,
-    )
-      .then((data) => {
-        if (data instanceof Error) {
-          alert("Este email ya se encuentra registrado");
-        } else {
-          props.history.push("/");
-          }
-      });
+      inputsSalientes.password
+    ).then((data) => {
+      if (data instanceof Error) {
+        alert("Este email ya se encuentra registrado");
+      } else {
+        props.history.push("/");
+      }
+    });
   };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
-    registroAxios,
-    { username: "", email: "", password: "" },
-  );
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit,
+  } = useForm(registroAxios, { username: "", email: "", password: "" });
 
   return (
     <Container>
