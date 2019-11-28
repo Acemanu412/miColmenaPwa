@@ -10,7 +10,6 @@ export const fetchRegister = (username, email, password) => (
     })
 );
 
-<<<<<<< HEAD
 export const fetchLogging = (inputsSalientes) => {
   return axios
       .post("http://localhost:2222/api/user/session", {
@@ -25,7 +24,6 @@ export const fetchLogging = (inputsSalientes) => {
         return { message: err.response.data };
       });
 };
-=======
 export const postNuevoClave = (email) => (
   axios.post("http://localhost:2222/api/user/olvidoClave", {email}).then((res) => {
     alert("Te manda una clave temporario a tu correo electronico");
@@ -35,4 +33,3 @@ export const postNuevoClave = (email) => (
   return err;
   })
 );
->>>>>>> 693b5eab603075d056cd19f12abfe6498ef20c86
