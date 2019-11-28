@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Menu } from "../components/Menu";
 
 export const StyledMenu = styled(Menu)`
-  
 
 
 }
