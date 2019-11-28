@@ -107,5 +107,3 @@ export const TextLogin = styled.div`
   margin: 1rem;
   font-size: 8.5px;
 `;
-
-
