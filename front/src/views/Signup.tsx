@@ -15,25 +15,35 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default function Signup() {
+export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
 
   const registroAxios = () => {
-    fetchRegister(inputsSalientes.username, inputsSalientes.email, inputsSalientes.password);
+    fetchRegister(
+      inputsSalientes.username,
+      inputsSalientes.email,
+      inputsSalientes.password
+    ).then((data) => {
+      if (data instanceof Error) {
+        alert("Este email ya se encuentra registrado");
+      } else {
+        props.history.push("/");
+      }
+    });
   };
 
-  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(registroAxios,
-    { username: "", email: "", password: "" });
+  const {
+    inputsSalientes,
+    handleInputChange,
+    handleSubmit,
+  } = useForm(registroAxios, { username: "", email: "", password: "" });
 
   return (
     <Container>
-
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
 
       <FormContainer>
-
         <form onSubmit={handleSubmit}>
-
           <InputContainer>
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
@@ -69,17 +79,15 @@ export default function Signup() {
               required={true}
             />
           </InputContainer>
+
           <StyledButtonLogin text="REGISTRAR" type="submit" />
         </form>
 
         <TextLogin>
-          <span>¿estás registrado?</span>
-          <StyledLink to="/l">Ingresa aquí</StyledLink>
+          <span>¿Estás registrado?</span>
+          <StyledLink to="/">Ingresa aquí</StyledLink>
         </TextLogin>
-
       </FormContainer>
-
     </Container>
-
   );
 }

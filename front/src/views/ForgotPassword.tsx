@@ -26,11 +26,10 @@ function ForgotPassword(props) {
     });
   };
 
-  const {
-    inputsSalientes,
-    handleInputChange,
-    handleSubmit,
-  } = useForm(claveAxios, { email: "" });
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
+    claveAxios,
+    { email: "" }
+  );
 
   const store = useStores();
 
