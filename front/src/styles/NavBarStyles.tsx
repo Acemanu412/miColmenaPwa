@@ -4,7 +4,7 @@ import { Menu } from "../components/Menu";
 export const StyledMenu = styled(Menu)`
 
 
-}
+
 `;
 
 export const LogoNavBar = styled.img`

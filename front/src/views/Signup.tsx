@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchRegister } from "../api";
 import { useForm } from "../hooks/formHook";
+import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
   FormContainer,
@@ -12,25 +13,30 @@ import {
   StyledButtonLogin,
   StyledInputLogin,
   StyledLink,
+  StyledForm,
   TextLogin,
 } from "../styles/LoginStyles";
 
+import { useStores } from "../hooks/useStore";
+
 export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
+  const store = useStores();
+
+
 
   const registroAxios = () => {
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
       inputsSalientes.password,
-    )
-      .then((data) => {
-        if (data instanceof Error) {
-          alert("Este email ya se encuentra registrado");
-        } else {
-          props.history.push("/");
-          }
-      });
+    ).then((data) => {
+      if (data instanceof Error) {
+        store.updateWarning({ message: "Este email ya se encuentra registrado" })
+      } else {
+        props.history.push("/");
+      }
+    });
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
@@ -43,7 +49,7 @@ export default function Signup(props) {
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
 
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <InputContainer>
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
@@ -62,7 +68,10 @@ export default function Signup(props) {
               placeholder="Correo electrónico"
               type="email"
               name="email"
-              onChange={handleInputChange}
+              onChange={(e) => {
+                handleInputChange(e)
+                store.updateWarning({ message: "" })
+              }}
               value={inputsSalientes.email}
               required={true}
             />
@@ -79,9 +88,10 @@ export default function Signup(props) {
               required={true}
             />
           </InputContainer>
+          <StyledWarning />
 
           <StyledButtonLogin text="REGISTRAR" type="submit" />
-        </form>
+        </StyledForm>
 
         <TextLogin>
           <span>¿Estás registrado?</span>
