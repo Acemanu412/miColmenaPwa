@@ -114,8 +114,8 @@ router.post("/olvidoClave", (req, res, next) => {
       });
     }
     else {
-      res.statusMessage = "no existe usuario con ese correo electrónico";
-      res.status(401).send("no existe usuario con ese correo electrónico");
+      res.statusMessage = "No existe usuario con ese correo electrónico";
+      res.status(401).send("No existe usuario con ese correo electrónico");
     }
   });
 });

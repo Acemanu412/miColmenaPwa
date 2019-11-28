@@ -6,29 +6,31 @@ import { StyledWarning } from "../styles/GlobalStyles";
 
 import {
   Container,
-  InputContainer,
+  InputContainerPassword,
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
   StyledInputLogin,
+  FormContainer,
+  StyledForm
 } from "../styles/LoginStyles";
 
 function ForgotPassword(props) {
   const claveAxios = () => {
-    store.updateWarning({message: "Estamos mandandote un correo..."});
+    store.updateWarning({ message: "Estamos mandandote un correo..." });
     postNuevoClave(inputsSalientes.email).then((data) => {
       // si 'data' tiene un mensage significa que es un error. fijase en api/index para ver como llega 'data'
       if (data.message) {
         store.updateWarning(data);
       } else {
-        props.history.push("/");
+        store.updateWarning({ message: "Te mandamos una clave temporario a tu correo electronico" });
       }
     });
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
     claveAxios,
-    { email: "" }
+    { email: "" },
   );
 
   const store = useStores();
@@ -37,21 +39,25 @@ function ForgotPassword(props) {
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <div>
-        <form onSubmit={handleSubmit}>
-          <InputContainer>
-            <LoginSobre src={require("../utils/sobre@2x.png")} />
-            <StyledInputLogin
-              placeholder="Ingrese su correo electrónico"
-              type="email"
-              name="email"
-              onChange={handleInputChange}
-              value={inputsSalientes.email}
-              required={true}
-            />
-          </InputContainer>
-          <StyledWarning/>
-          <StyledButtonLogin text="ENVIAR" type="submit" />
-        </form>
+        <FormContainer>
+          <StyledForm onSubmit={handleSubmit}>
+            <InputContainerPassword>
+              <LoginSobre src={require("../utils/sobre@2x.png")} />
+              <StyledInputLogin
+                placeholder="Ingrese su correo electrónico"
+                type="email"
+                name="email"
+                onChange={handleInputChange}
+                value={inputsSalientes.email}
+                required={true}
+              />
+            </InputContainerPassword>
+            <StyledWarning />
+            <StyledButtonLogin text="ENVIAR" type="submit" />
+          </StyledForm>
+
+        </FormContainer>
+
       </div>
     </Container>
   );
