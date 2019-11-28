@@ -11,19 +11,16 @@ import {
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
+  StyledForm,
   StyledInputLogin,
   StyledLink,
-  StyledForm,
   TextLogin,
 } from "../styles/LoginStyles";
-
 import { useStores } from "../hooks/useStore";
 
 export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
   const store = useStores();
-
-
 
   const registroAxios = () => {
     fetchRegister(
