@@ -5,15 +5,15 @@ import { useForm } from "../hooks/formHook";
 
 import {
   Container,
-  StyledInputLogin,
-  LoginLogo,
-  StyledButtonLogin,
-  LoginSobre,
-  LoginCandado,
   InputContainer,
-  TextLogin,
-  StyledLink,
-  FormContainer
+  LoginLogo,
+  LoginSobre,
+  StyledButtonLogin,
+  StyledInputLogin,
+// LoginCandado,
+// TextLogin,
+// StyledLink,
+// FormContainer
 } from "../styles/LoginStyles";
 
 function ForgotPassword() {

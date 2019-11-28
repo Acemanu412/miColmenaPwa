@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-
 import { useForm } from "../hooks/formHook";
 
 import {
@@ -11,13 +10,13 @@ import {
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
+  StyledForm,
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  StyledForm,
 } from "../styles/LoginStyles";
 
-export default function Login() {
+export default function Login(props) {
   const login = () => {
     console.log("LOGIN");
     if (!inputsSalientes.password.length) {
@@ -26,26 +25,25 @@ export default function Login() {
     return axios
       .post("http://localhost:2222/api/user/session", {
         email: inputsSalientes.email,
-        password: inputsSalientes.password
+        password: inputsSalientes.password,
       })
       .then((res: any) => res.data)
-      .then(data => {
+      .then((data) => {
         alert(`Usuario logueado!
            Email: ${inputsSalientes.email}
            Password: ${inputsSalientes.password}`);
         console.log(data);
       })
-      .catch(err => {
+      .catch((err) => {
         alert(`Invalid entry: ${err.response.data}`);
         console.log(err);
       });
   };
 
-  const {
-    inputsSalientes,
-    handleInputChange,
-    handleSubmit,
-  } = useForm(login, { email: "", password: "" });
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(login, {
+    email: "",
+    password: "",
+  });
 
   return (
     <Container>
