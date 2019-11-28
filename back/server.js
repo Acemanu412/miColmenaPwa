@@ -5,20 +5,20 @@ const path = require("path");
 const routes = require("./routes");
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
-const cors = require('cors'); // cors - para permitir 'cross origin resource sharing' || https://github.com/expressjs/cors
+const cors = require("cors"); // cors - para permitir 'cross origin resource sharing' || https://github.com/expressjs/cors
 const {
   User,
   Colmena,
   DeviceInput,
   ManualColmena,
   ManualReina,
-  ManualConsejos
+  ManualConsejos,
 } = require("./models");
 
 const bodyParser = require("body-parser");
 
 const db = require("./config/db");
-const passport = require("./config/passport")
+const passport = require("./config/passport");
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -29,12 +29,12 @@ app.use(
   session({
     secret: "abeja",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors())
+app.use(cors());
 app.use("/api", routes);
 
 // app.get("/*", (req: any, res: any) => {

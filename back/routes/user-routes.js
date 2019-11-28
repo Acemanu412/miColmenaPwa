@@ -7,7 +7,7 @@ const passport = require("../config/passport");
 router.post(
   "/session",
   (req, res, next) => {
-    passport.authenticate("local", function(error, user, info) {
+    passport.authenticate("local", function (error, user, info) {
       if (error) {
         res.status(401).send(error);
       } else if (!user) {
@@ -18,7 +18,7 @@ router.post(
       }
     })(req, res);
   },
-  function(req, res) {
+  function (req, res) {
     res.status(200).send(req.user);
   }
 );
@@ -26,14 +26,7 @@ router.post(
 
 
 router.post("/signup", (req, res, next) => {
-  User.create(req.body)
-    .then(user => {
-      return User.findOne({
-        where: {
-          email: user.email,
-        }
-      })
-    })
+  return User.create(req.body)
     .then(user => {
       const link = `http://localhost:3000/activarCuenta/${user.id}`
 
@@ -61,6 +54,9 @@ router.post("/signup", (req, res, next) => {
           res.status(200).send(true);
         }
       });
+    })
+    .catch(error => {
+      res.status(400).send(error)
     })
 
 });
@@ -106,7 +102,7 @@ router.post("/olvidoClave", (req, res, next) => {
         text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
       };
 
-      transporter.sendMail(mailOptions, function(error, info) {
+      transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
           res.status(400).send(false);

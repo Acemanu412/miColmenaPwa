@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { activate } from "../api";
 import {
   Container,
@@ -12,9 +12,9 @@ function ActivarCuenta(props) {
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <div>
-        <button onClick={() => {
-          return activate(props.match.params.id)
-        }}>ACTIVAR CUENTA</button>
+        <StyledButtonLogin onClick={() => {
+          return activate(props.match.params.id);
+        }} text="ACTIVAR CUENTA" type="submit"/>
       </div>
     </Container>
   );

@@ -11,17 +11,17 @@ export const useForm = (callback: any, initialObject) => {
   };
 
   const handleInputChange = (event: any) => {
-    //event.persist();     usar event.persist o guardar los valores para tenerlos dentro de setInputs
+    // event.persist();     usar event.persist o guardar los valores para tenerlos dentro de setInputs
     const { name, value } = event.target;
-    setInputs(inputsEntrantes => ({
+    setInputs((inputsEntrantes) => ({
       ...inputsEntrantes,
-      [name]: value
+      [name]: value,
     }));
   };
 
   return {
     handleInputChange,
     handleSubmit,
-    inputsSalientes
+    inputsSalientes,
   };
 };
