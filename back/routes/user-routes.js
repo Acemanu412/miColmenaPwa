@@ -7,7 +7,7 @@ const passport = require("../config/passport");
 router.post(
   "/session",
   (req, res, next) => {
-    passport.authenticate("local", function(error, user, info) {
+    passport.authenticate("local", function (error, user, info) {
       if (error) {
         res.status(401).send(error);
       } else if (!user) {
@@ -18,25 +18,17 @@ router.post(
       }
     })(req, res);
   },
-  function(req, res) {
+  function (req, res) {
     res.status(200).send(req.user);
   }
 );
 
-router.post("/signup", (req, res, next) => {
-  User.create(req.body)
-    .then(user => {
-      console.log(user)
-      User.findOne({
-        where: {
-          email: req.body.email,
-        }
-      })
-    })
-    .then(user => {
-      console.log(user)
 
-      const link = "http://localhost:3000/activarCuenta/"
+
+router.post("/signup", (req, res, next) => {
+  return User.create(req.body)
+    .then(user => {
+      const link = `http://localhost:3000/activarCuenta/${user.id}`
 
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -48,7 +40,7 @@ router.post("/signup", (req, res, next) => {
 
       var mailOptions = {
         from: "micolmena555@gmail.com",
-        to: req.body.email,
+        to: user.email,
         subject: "Mi colmena",
         text: `Ingrese al siguiente link para activar su cuenta: ${link}`
       };
@@ -63,11 +55,25 @@ router.post("/signup", (req, res, next) => {
         }
       });
     })
-    .then((user) => {
-
+    .catch(error => {
+      res.status(400).send(error)
     })
 
 });
+
+router.get("/activarCuenta/:id", (req, res, next) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(user => {
+      return user.update({ activated: true })
+    })
+    .then(user => {
+      res.send(user)
+    })
+})
 
 router.post("/olvidoClave", (req, res, next) => {
   User.findOne({
@@ -96,7 +102,7 @@ router.post("/olvidoClave", (req, res, next) => {
         text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
       };
 
-      transporter.sendMail(mailOptions, function(error, info) {
+      transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
           res.status(400).send(false);

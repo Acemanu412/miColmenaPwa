@@ -1,7 +1,6 @@
 import React from "react";
 import { postNuevoClave } from "../api";
 import { useForm } from "../hooks/formHook";
-
 import {
   Container,
   InputContainer,
@@ -16,11 +15,10 @@ function ForgotPassword() {
     postNuevoClave(inputsSalientes.email);
   };
 
-  const {
-    inputsSalientes,
-    handleInputChange,
-    handleSubmit,
-  } = useForm(claveAxios, { email: "" });
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(
+    claveAxios,
+    { email: "" }
+  );
 
   return (
     <Container>
@@ -38,7 +36,6 @@ function ForgotPassword() {
               required={true}
             />
           </InputContainer>
-
           <StyledButtonLogin text="ENVIAR" type="submit" />
         </form>
       </div>
