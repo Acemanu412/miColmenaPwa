@@ -15,7 +15,7 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default function Signup() {
+export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
 
   const registroAxios = () => {
@@ -23,7 +23,13 @@ export default function Signup() {
       inputsSalientes.username,
       inputsSalientes.email,
       inputsSalientes.password
-    );
+    ).then((data) => {
+      if (data instanceof Error) {
+        alert("Este email ya se encuentra registrado");
+      } else {
+        props.history.push("/");
+      }
+    });
   };
 
   const {
@@ -73,6 +79,7 @@ export default function Signup() {
               required={true}
             />
           </InputContainer>
+
           <StyledButtonLogin text="REGISTRAR" type="submit" />
         </form>
 

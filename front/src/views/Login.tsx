@@ -1,8 +1,9 @@
-import axios from "axios";
 import React from "react";
 
+import { fetchLogging } from "../api/";
 import { useForm } from "../hooks/formHook";
-
+import { useStores } from "../hooks/useStore";
+import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
   FormContainer,
@@ -11,34 +12,19 @@ import {
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
+  StyledForm,
   StyledInputLogin,
   StyledLink,
   TextLogin,
-  StyledForm,
 } from "../styles/LoginStyles";
 
 export default function Login() {
   const login = () => {
-    console.log("LOGIN");
     if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
-    return axios
-      .post("http://localhost:2222/api/user/session", {
-        email: inputsSalientes.email,
-        password: inputsSalientes.password
-      })
-      .then((res: any) => res.data)
-      .then(data => {
-        alert(`Usuario logueado!
-           Email: ${inputsSalientes.email}
-           Password: ${inputsSalientes.password}`);
-        console.log(data);
-      })
-      .catch(err => {
-        alert(`Invalid entry: ${err.response.data}`);
-        console.log(err);
-      });
+    const warning = fetchLogging(inputsSalientes);
+    return warning;
   };
 
   const {
@@ -47,11 +33,16 @@ export default function Login() {
     handleSubmit,
   } = useForm(login, { email: "", password: "" });
 
+  const store = useStores();
+
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <FormContainer>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={async (e) => {
+          const warning = await handleSubmit(e);
+          store.updateWarning(warning);
+          }}>
           <InputContainer>
             <LoginSobre src={require("../utils/sobre@2x.png")} />
             <StyledInputLogin
@@ -63,7 +54,6 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
-
           <InputContainer>
             <LoginCandado src={require("../utils/candado@2x.png")} />
             <StyledInputLogin
@@ -75,6 +65,7 @@ export default function Login() {
               required={true}
             />
           </InputContainer>
+          <StyledWarning/>
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </StyledForm>
         <TextLogin>
