@@ -74,7 +74,7 @@ export default function Signup() {
 
         <TextLogin>
           <span>¿estás registrado?</span>
-          <StyledLink to="/l">Ingresa aquí</StyledLink>
+          <StyledLink to="/">Ingresa aquí</StyledLink>
         </TextLogin>
 
       </FormContainer>
