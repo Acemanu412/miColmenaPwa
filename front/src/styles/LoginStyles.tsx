@@ -24,6 +24,7 @@ export const StyledInputLogin = styled(Input)`
     color: #ffffff;
   };
   align-self: center;
+
 `;
 
 export const StyledForm = styled.form`
@@ -103,8 +104,17 @@ justify-content: center;
 margin-top: 2rem
 height: 1%
 width:100%
+margin-bottom: 3%;
 `;
-
+export const InputContainerPassword = styled.div`
+display:flex
+flex:1
+justify-content: center;
+margin-top: 2rem
+height: 1%
+width:100%
+margin-bottom: 10%;
+`;
 export const TextLogin = styled.div`
   color: #ffffff;
   margin: 1rem;
