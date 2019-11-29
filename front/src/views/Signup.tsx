@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchRegister } from "../api";
 import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
 import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
@@ -16,20 +17,20 @@ import {
   StyledLink,
   TextLogin,
 } from "../styles/LoginStyles";
-import { useStores } from "../hooks/useStore";
 
 export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
   const store = useStores();
 
   const registroAxios = () => {
+    console.log("USERNAME", inputsSalientes.username);
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
       inputsSalientes.password,
     ).then((data) => {
       if (data instanceof Error) {
-        store.updateWarning({ message: "Este email ya se encuentra registrado" })
+        store.updateWarning({ message: "Este email ya se encuentra registrado" });
       } else {
         props.history.push("/");
       }
@@ -52,8 +53,8 @@ export default function Signup(props) {
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
               placeholder="Nombre de usuario"
-              type="user"
-              name="user"
+              type="username"
+              name="username"
               onChange={handleInputChange}
               value={inputsSalientes.user}
               required={true}
@@ -67,8 +68,8 @@ export default function Signup(props) {
               type="email"
               name="email"
               onChange={(e) => {
-                handleInputChange(e)
-                store.updateWarning({ message: "" })
+                handleInputChange(e);
+                store.updateWarning({ message: "" });
               }}
               value={inputsSalientes.email}
               required={true}
