@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-
 import App from "./components/App";
 import { ContextProvider } from "./hooks/useStore";
 import * as serviceWorker from "./serviceWorker";

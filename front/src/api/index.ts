@@ -1,9 +1,8 @@
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
 
 export const fetchRegister = (username, email, password) =>
   axios
-    .post("http://localhost:2222/api/user/signup", {
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
       password,
       username,
@@ -17,7 +16,7 @@ export const fetchRegister = (username, email, password) =>
 
 export const activate = (id) =>
   axios
-    .get(`http://localhost:2222/api/user/activarCuenta/${id}`)
+    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -27,7 +26,7 @@ export const activate = (id) =>
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post("http://localhost:2222/api/user/session", {
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -41,10 +40,10 @@ export const fetchLogging = (inputsSalientes) => {
 };
 
 export const postNuevoClave = (email) => (
-  axios.post("http://localhost:2222/api/user/olvidoClave", { email }).then((res) => {
+  axios.post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, { email }).then((res) => {
     return res.data;
   })
     .catch((err) => {
-      return {message: err.response.data};
+      return { message: err.response.data };
     })
 );

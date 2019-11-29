@@ -7,11 +7,13 @@ const passport = require("../config/passport");
 router.post(
   "/session",
   (req, res, next) => {
+    console.log("Hola session")
     passport.authenticate("local", function (error, user, info) {
       if (error) {
         res.status(401).send(error);
       } else if (!user) {
-        res.statusMessage = info.message;
+        console.log("NO user")
+        console.log(info.message);
         res.status(401).send(info.message);
       } else {
         next();
@@ -81,7 +83,7 @@ router.post("/olvidoClave", (req, res, next) => {
       email: req.body.email
     }
   }).then(user => {
-    if(user){
+    if (user) {
       let codigo = Math.floor(Math.random() * 1000000).toString();
 
       user.update({ password: codigo }).then(user => {
@@ -98,11 +100,11 @@ router.post("/olvidoClave", (req, res, next) => {
         var mailOptions = {
           from: "micolmena555@gmail.com",
           to: req.body.email,
-          subject: "Forgot your password motherf@#&%!er",
-          text: `Hey friend, this is your new temporary password: ${codigo}. After logging in go to settings to change your password.`
+          subject: "Contraseña olvidada",
+          text: `Hola, aća es tu nueva contraseña: ${codigo}. Despues de loggear va a ajustes para cambiar tu contraseña. \n Gracias, \n miColmena`
         };
 
-        transporter.sendMail(mailOptions, function(error, info) {
+        transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             console.log(error);
             res.status(400).send(false);

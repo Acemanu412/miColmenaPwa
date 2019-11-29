@@ -39,6 +39,7 @@ export default function Login() {
       <FormContainer>
         <StyledForm onSubmit={async (e) => {
           const warning = await handleSubmit(e);
+          console.log("warning", warning);
           if (warning !== "") { store.updateWarning(warning); }
         }}>
           <InputContainer>
