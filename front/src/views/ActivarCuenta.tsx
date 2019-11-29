@@ -5,7 +5,7 @@ import { activate } from "../api";
 import { useStores } from "../hooks/useStore";
 import { StyledWarning } from "../styles/GlobalStyles";
 import {
-  Container,
+  ContainerActivacion,
   LoginLogo,
   StyledButtonLogin,
 
@@ -15,7 +15,7 @@ const ActivarCuenta = observer((props: any) => {
   const store = useStores();
 
   return (
-    <Container>
+    <ContainerActivacion>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <StyledButtonLogin onClick={() => {
         store.updateWarning({ message: `Su cuenta ya ha sido activada, ingrese al siguiente link` });
@@ -23,12 +23,12 @@ const ActivarCuenta = observer((props: any) => {
       }} text="ACTIVAR CUENTA" type="submit" />
       <StyledWarning />
       {(store.warning ?
-        <Link to="/" style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center",color: "white" }}> Hola Papi, clickeame :P <img style={{height: "6cm", width: "6cm"}} alt="ManuPapi"src={`${require("../utils/manu.jpeg")}`}></img>  </Link>
+        <Link to="/" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", color: "white" }}> Ir a Login </Link>
         :
         null
       )}
-    </Container>
+    </ContainerActivacion>
   );
-}
-)
+},
+);
 export default ActivarCuenta;

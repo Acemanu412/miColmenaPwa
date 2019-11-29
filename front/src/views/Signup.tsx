@@ -23,7 +23,7 @@ export default function Signup(props) {
   const store = useStores();
 
   const registroAxios = () => {
-    console.log("USERNAME", inputsSalientes.username);
+    store.updateWarning({ message: "Estamos mandandote un mail..." });
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
@@ -32,6 +32,7 @@ export default function Signup(props) {
       if (data instanceof Error) {
         store.updateWarning({ message: "Este email ya se encuentra registrado" });
       } else {
+        store.updateHomeMessage({ message: "Un mail ha sido enviado con un link para activar tu cuenta."});
         props.history.push("/");
       }
     });
