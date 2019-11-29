@@ -23,7 +23,7 @@ const ActivarCuenta = observer((props: any) => {
       }} text="ACTIVAR CUENTA" type="submit" />
       <StyledWarning />
       {(store.warning ?
-        <Link style={{ color: "white" }} to="/"> MiColmena.com</Link>
+        <Link style={{ color: "black" }} to="/"> MiColmena.com</Link>
         :
         null
       )}
