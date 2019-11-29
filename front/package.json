@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "tslint": "^5.20.1"
+    "tslint": "^5.20.1",
+    "dotenv": "^8.2.0"
   }
 }
