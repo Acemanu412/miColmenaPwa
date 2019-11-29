@@ -9,10 +9,12 @@ import {
   InputContainerPassword,
   LoginLogo,
   LoginSobre,
+  FormContainer,
   StyledButtonLogin,
   StyledInputLogin,
-  FormContainer,
-  StyledForm
+  StyledForm,
+  StyledLink,
+  TextLogin,
 } from "../styles/LoginStyles";
 
 function ForgotPassword(props) {
@@ -55,6 +57,11 @@ function ForgotPassword(props) {
             <StyledWarning />
             <StyledButtonLogin text="ENVIAR" type="submit" />
           </StyledForm>
+
+          <TextLogin>
+            <span>¿Estás registrado?</span>
+            <StyledLink to="/"> Ingresa aqui</StyledLink>
+          </TextLogin>
 
         </FormContainer>
 
