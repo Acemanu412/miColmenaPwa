@@ -23,7 +23,7 @@ const ActivarCuenta = observer((props: any) => {
       }} text="ACTIVAR CUENTA" type="submit" />
       <StyledWarning />
       {(store.warning ?
-        <Link to="/" style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center",color: "white" }}> Hola Papi, clickeame :P <img style={{height: "6cm", width: "6cm"}} src={`${require("../utils/manu.jpeg")}`}></img>  </Link>
+        <Link to="/" style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center",color: "white" }}> Hola Papi, clickeame :P <img style={{height: "6cm", width: "6cm"}} alt="ManuPapi"src={`${require("../utils/manu.jpeg")}`}></img>  </Link>
         :
         null
       )}
