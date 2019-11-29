@@ -30,7 +30,6 @@ export const StyledInputLogin = styled(Input)`
   &:-webkit-autofill:active {
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
     -webkit-transition-delay: 9999s;
-    
   }
 
 `;

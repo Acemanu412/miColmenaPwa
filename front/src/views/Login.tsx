@@ -17,12 +17,21 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-export default function Login() {
+//import { PropTypes } from "mobx-react";
+
+export default function Login(props) {
   const login = () => {
     if (!inputsSalientes.password.length) {
       throw Error("No password");
     }
-    const warning = fetchLogging(inputsSalientes);
+    const warning = fetchLogging(inputsSalientes).then((data) => {
+      if (data.message) {
+        store.updateWarning(data);
+      } else {
+        props.history.push("/home");
+      }
+      return data;
+    })
     return warning;
   };
 

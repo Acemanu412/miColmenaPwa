@@ -1,6 +1,8 @@
 import React from "react";
 import { fetchRegister } from "../api";
 import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
   FormContainer,
@@ -10,6 +12,7 @@ import {
   LoginLogo,
   LoginSobre,
   StyledButtonLogin,
+  StyledForm,
   StyledInputLogin,
   StyledLink,
   TextLogin,
@@ -17,15 +20,17 @@ import {
 
 export default function Signup(props) {
   // para que se vuelva a montar el componente, ante los cambios en el state
+  const store = useStores();
 
   const registroAxios = () => {
+    console.log("USERNAME", inputsSalientes.username);
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
-      inputsSalientes.password
+      inputsSalientes.password,
     ).then((data) => {
       if (data instanceof Error) {
-        alert("Este email ya se encuentra registrado");
+        store.updateWarning({ message: "Este email ya se encuentra registrado" });
       } else {
         props.history.push("/");
       }
@@ -43,13 +48,13 @@ export default function Signup(props) {
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
 
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <InputContainer>
             <LoginAvatar src={require("../utils/avatar@2x.png")} />
             <StyledInputLogin
               placeholder="Nombre de usuario"
-              type="user"
-              name="user"
+              type="username"
+              name="username"
               onChange={handleInputChange}
               value={inputsSalientes.user}
               required={true}
@@ -62,7 +67,10 @@ export default function Signup(props) {
               placeholder="Correo electrónico"
               type="email"
               name="email"
-              onChange={handleInputChange}
+              onChange={(e) => {
+                handleInputChange(e);
+                store.updateWarning({ message: "" });
+              }}
               value={inputsSalientes.email}
               required={true}
             />
@@ -79,9 +87,10 @@ export default function Signup(props) {
               required={true}
             />
           </InputContainer>
+          <StyledWarning />
 
           <StyledButtonLogin text="REGISTRAR" type="submit" />
-        </form>
+        </StyledForm>
 
         <TextLogin>
           <span>¿Estás registrado?</span>

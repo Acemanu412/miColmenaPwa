@@ -1,6 +1,5 @@
 import React from "react";
-import { Menu } from "../components/Menu";
-import { LogoNavBar, StyledMenu, NavBarContainer } from "../styles/NavBarStyles";
+import { LogoNavBar, NavBarContainer, StyledMenu } from "../styles/NavBarStyles";
 
 export const NavBar: React.FC = () => {
   return (
