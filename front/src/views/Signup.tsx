@@ -23,7 +23,6 @@ export default function Signup(props) {
   const store = useStores();
 
   const registroAxios = () => {
-    console.log("USERNAME", inputsSalientes.username);
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
