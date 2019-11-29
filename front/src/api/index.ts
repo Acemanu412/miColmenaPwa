@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchRegister = (username, email, password) => (
   axios
-    .post("http://10.100.0.49:2222/api/user/signup", {
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
       password,
       username,
@@ -16,7 +16,7 @@ export const fetchRegister = (username, email, password) => (
 );
 
 export const activate = (id) => (axios
-  .get(`http://10.100.0.49:2222/api/user/activarCuenta/${id}`)
+  .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
   .then((res) => {
     return res.data;
   })
@@ -27,7 +27,7 @@ export const activate = (id) => (axios
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post("http://10.100.0.49:2222/api/user/session", {
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -41,11 +41,10 @@ export const fetchLogging = (inputsSalientes) => {
 };
 
 export const postNuevoClave = (email) => (
-  axios.post("http://10.100.0.49:2222/api/user/olvidoClave", { email }).then((res) => {
-    alert("Te manda una clave temporario a tu correo electronico");
+  axios.post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, { email }).then((res) => {
     return res.data;
   })
     .catch((err) => {
-      return {message: err.response.data};
+      return { message: err.response.data };
     })
 );
