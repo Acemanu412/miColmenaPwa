@@ -11,7 +11,8 @@ export const useForm = (callback: any, initialObject) => {
   };
 
   const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
+    let { name, value, checked, type } = event.target;
+    type === "checkbox" && (value = checked);
     setInputs((inputsEntrantes) => ({
       ...inputsEntrantes,
       [name]: value,
