@@ -22,7 +22,6 @@ export const Reina: React.FC = () => {
         removed: false,
         swarm: false
     });
-    console.log(inputsSalientes)
 
     return (
         <div>
