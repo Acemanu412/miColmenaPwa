@@ -24,6 +24,7 @@ export const StyledInputLogin = styled(Input)`
     color: #ffffff;
   };
   ::on
+  outline: none;
   align-self: center;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
