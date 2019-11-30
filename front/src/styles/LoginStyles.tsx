@@ -23,6 +23,7 @@ export const StyledInputLogin = styled(Input)`
   ::placeholder {
     color: #ffffff;
   };
+  ::on
   outline: none;
   align-self: center;
   &:-webkit-autofill,
