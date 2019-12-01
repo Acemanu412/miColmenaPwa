@@ -1,5 +1,5 @@
 import React from "react";
-import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, Cuadro, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha } from "../styles/ConsejosStyles";
+import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, Cuadro, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha, SelectCosecha, LabelUnidad } from "../styles/ConsejosStyles";
 
 export const Consejos: React.FC = () => {
 
@@ -50,46 +50,81 @@ export const Consejos: React.FC = () => {
                         <LabelCosecha>Miel</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="cuadros">cuadros</option>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                     <ValorCosecha>
                         <InputCosecha placeholder=" " />
                         <LabelCosecha>Jalea Real</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                            <option value="g">oz</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                     <ValorCosecha>
                         <InputCosecha placeholder=" " />
                         <LabelCosecha>Polen</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                            <option value="g">oz</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                     <ValorCosecha>
                         <InputCosecha placeholder=" " />
                         <LabelCosecha>Propoleo</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                            <option value="g">oz</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                     <ValorCosecha>
                         <InputCosecha placeholder=" " />
                         <LabelCosecha>Cera</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                            <option value="g">oz</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                     <ValorCosecha>
                         <InputCosecha placeholder=" " />
                         <LabelCosecha>Panal</LabelCosecha>
                     </ValorCosecha>
                     <UnidadCosecha>
-
+                        <SelectCosecha>
+                            <option value="cuadros">cuadros</option>
+                            <option value="kg">kg</option>
+                            <option value="lb">lb</option>
+                            <option value="g">g</option>
+                        </SelectCosecha>
+                        <LabelUnidad>Unidades</LabelUnidad>
                     </UnidadCosecha>
                 </CosechaContainer>
             </Cosechas>
         </ConsejosContainer>
     )
 }
-//https://codepen.io/joshadamous/pen/yyyqJZ

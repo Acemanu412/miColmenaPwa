@@ -72,7 +72,7 @@ export const ValorCosecha = styled.div`
         color:${amarillo};
       }
     > input:placeholder-shown ~ label     {
-        color: #999; 
+        color: ${negro}; 
         font-size: 23px;
         font-weight: normal;
         position: absolute;
@@ -86,6 +86,8 @@ export const ValorCosecha = styled.div`
 export const UnidadCosecha = styled.div`
     height: 100%;
     width: 50%;
+    position: relative; 
+
 `;
 
 export const InputCosecha = styled.input`
@@ -94,7 +96,7 @@ export const InputCosecha = styled.input`
 	-webkit-appearance: none;
 	display: block;
 	background: ${blanco};
-	color: #636363;
+	color: ${amarillo};
 	width: 100%;
 	border: none;
 	border-radius: 0;
@@ -103,7 +105,7 @@ export const InputCosecha = styled.input`
 `;
 
 export const LabelCosecha = styled.label`
-    color: #999; 
+    color: ${negro}; 
     font-size: 18px;
     font-weight: normal;
     position: absolute;
@@ -112,3 +114,32 @@ export const LabelCosecha = styled.label`
     top: 10px;
     transition: all 0.2s ease;
 `;
+
+export const SelectCosecha = styled.select`
+    font-size: 18px;
+    padding: 10px 10px 10px 30px;
+    -webkit-appearance: none;
+    display: block;
+    background: ${blanco};
+    color: ${amarillo};
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+    :focus { outline: none; }
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-position: center right 20px;
+`;
+
+export const LabelUnidad = styled.label`
+    color: ${negro}; 
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 30px;
+    top: -10px;
+    transition: all 0.2s ease;
+`;
+
