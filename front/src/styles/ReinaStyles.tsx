@@ -1,4 +1,4 @@
-import styled, { StyledFunction } from "styled-components";
+import styled from "styled-components";
 
 import { color } from "../themes";
 
