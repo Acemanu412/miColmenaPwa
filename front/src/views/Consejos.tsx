@@ -1,7 +1,8 @@
 import React from "react";
 
 import { NavBar } from "./NavBar";
-import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, Cuadro, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha, SelectCosecha, LabelUnidad } from "../styles/ConsejosStyles";
+import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha, SelectCosecha, LabelUnidad, CheckboxContainer, LabelCheckbox, CheckboxConsejos } from "../styles/ConsejosStyles";
+import { useForm } from "../hooks/formHook";
 
 export const Consejos: React.FC = () => {
 
@@ -9,6 +10,15 @@ export const Consejos: React.FC = () => {
         alert("Submit datos consejos");
     }
 
+    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(consejos, {
+        reinaPresente: false,
+        huevosVistos: false,
+        alasRotas: false,
+        marcada: false,
+        celulasReina: 0,
+        removed: false,
+        swarm: false
+    });
 
     return (
         <div>
@@ -16,35 +26,113 @@ export const Consejos: React.FC = () => {
             <ConsejosContainer>
                 <ConsejosTexto>Intervenciones: Toca las que aplican</ConsejosTexto>
                 <Intervenciones>
-                    <Cuadro>Nueva Colmena</Cuadro>
-                    <Cuadro>Abejas Agregadas</Cuadro>
-                    <Cuadro>Reina Agregada</Cuadro>
-                    <Cuadro>Exclusor de Reina</Cuadro>
-                    <Cuadro>Colmena Dividida</Cuadro>
-                    <Cuadro>Celdas Cambiadas</Cuadro>
-                    <Cuadro>Colmena Limpia</Cuadro>
-                    <Cuadro>Colmena con Aislante</Cuadro>
-                    <Cuadro>Exclusor de Reina</Cuadro>
-                    <Cuadro>Exclusor de Reina</Cuadro>
-                    <Cuadro>Pantalla Abierta</Cuadro>
-                    <Cuadro>Nosema</Cuadro>
-                    <Cuadro>Pantalla Cerrada</Cuadro>
-                    <Cuadro>Antivarroa</Cuadro>
-                    <Cuadro>Otros Antivarroa</Cuadro>
-                    <Cuadro>Med. Nosema</Cuadro>
-                    <Cuadro>Acarapisosis</Cuadro>
-                    <Cuadro>Med escara.</Cuadro>
-                    <Cuadro>Antihongos</Cuadro>
-                    <Cuadro>Antibióticos</Cuadro>
+                    <CheckboxContainer>
+                        Nueva Colmena
+                        <CheckboxConsejos type="checkbox" name="nuevaColmena" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Abejas Agregadas
+                        <CheckboxConsejos type="checkbox" name="abejasAgregadas" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Reina Agregada
+                        <CheckboxConsejos type="checkbox" name="reinaAgregada" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Exclusor de Reina
+                        <CheckboxConsejos type="checkbox" name="exclusorReina" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Colmena Dividida
+                        <CheckboxConsejos type="checkbox" name="colmenaDividida" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Celdas Cambiadas
+                        <CheckboxConsejos type="checkbox" name="celdasCambiadas" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Colmena Limpia
+                        <CheckboxConsejos type="checkbox" name="colmenaLimpia" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Colmena con Aislante
+                        <CheckboxConsejos type="checkbox" name="colmenaAislante" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Exclusor de Reina
+                        <CheckboxConsejos type="checkbox" name="exclusorReina" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Exclusor de Reina2
+                        <CheckboxConsejos type="checkbox" name="exclusorReina2" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Pantalla Abierta
+                        <CheckboxConsejos type="checkbox" name="pantallaAbierta" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Nosema
+                        <CheckboxConsejos type="checkbox" name="nosema" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Pantalla Cerrada
+                        <CheckboxConsejos type="checkbox" name="pantallaCerrada" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Antivarroa
+                        <CheckboxConsejos type="checkbox" name="antivarroa" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Otros Antivarroa
+                        <CheckboxConsejos type="checkbox" name="otrosAntivarroa" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Med. Nosema
+                        <CheckboxConsejos type="checkbox" name="medNosema" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Acarapisosis
+                        <CheckboxConsejos type="checkbox" name="acarapisosis" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Med escara
+                        <CheckboxConsejos type="checkbox" name="medEscara" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Antihongos
+                        <CheckboxConsejos type="checkbox" name="antihongos" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Antibióticos
+                        <CheckboxConsejos type="checkbox" name="antibioticos" />
+                    </CheckboxContainer>
                 </Intervenciones>
                 <ConsejosTexto>Alimento: Toca las que aplican</ConsejosTexto>
                 <Alimento>
-                    <Cuadro>Jarabe Liviano</Cuadro>
-                    <Cuadro>Jarabe Espeso</Cuadro>
-                    <Cuadro>Mezcla Seca</Cuadro>
-                    <Cuadro>Nueva Colmena</Cuadro>
-                    <Cuadro>Agregar Abejas</Cuadro>
-                    <Cuadro>Agregar Reina</Cuadro>
+                    <CheckboxContainer>
+                        Jarabe Liviano
+                        <CheckboxConsejos type="checkbox" name="jarabeLiviano" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Jarabe Espeso
+                        <CheckboxConsejos type="checkbox" name="jarabeEspeso" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Mezcla Seca
+                        <CheckboxConsejos type="checkbox" name="mezclaSeca" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Nueva Colmena
+                        <CheckboxConsejos type="checkbox" name="nuevaColmena" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Agregar Abejas
+                        <CheckboxConsejos type="checkbox" name="agregarAbejas" />
+                    </CheckboxContainer>
+                    <CheckboxContainer>
+                        Agregar Reina
+                        <CheckboxConsejos type="checkbox" name="agregarReina" />
+                    </CheckboxContainer>
                 </Alimento>
                 <ConsejosTexto>Cosecha</ConsejosTexto>
                 <Cosechas>
