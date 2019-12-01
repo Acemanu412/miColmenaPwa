@@ -23,7 +23,6 @@ export default function Signup(props) {
   const store = useStores();
 
   const registroAxios = () => {
-    console.log("USERNAME", inputsSalientes.username);
     fetchRegister(
       inputsSalientes.username,
       inputsSalientes.email,
@@ -94,7 +93,7 @@ export default function Signup(props) {
 
         <TextLogin>
           <span>¿Estás registrado?</span>
-          <StyledLink to="/">Ingresa aquí</StyledLink>
+          <StyledLink to="/"> Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>
     </Container>

@@ -1,24 +1,24 @@
 import React from "react";
 
+import {
+    Alimento,
+    CheckboxConsejos,
+    CheckboxContainer,
+    ConsejosContainer,
+    ConsejosTexto,
+    CosechaContainer,
+    Cosechas,
+    InputCosecha,
+    Intervenciones,
+    LabelCosecha,
+    LabelUnidad,
+    SelectCosecha,
+    UnidadCosecha,
+    ValorCosecha,
+} from "../styles/ConsejosStyles";
 import { NavBar } from "./NavBar";
-import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha, SelectCosecha, LabelUnidad, CheckboxContainer, LabelCheckbox, CheckboxConsejos } from "../styles/ConsejosStyles";
-import { useForm } from "../hooks/formHook";
 
 export const Consejos: React.FC = () => {
-
-    const consejos = () => {
-        alert("Submit datos consejos");
-    }
-
-    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(consejos, {
-        reinaPresente: false,
-        huevosVistos: false,
-        alasRotas: false,
-        marcada: false,
-        celulasReina: 0,
-        removed: false,
-        swarm: false
-    });
 
     return (
         <div>
@@ -219,5 +219,5 @@ export const Consejos: React.FC = () => {
                 </Cosechas>
             </ConsejosContainer>
         </div>
-    )
-}
+    );
+};
