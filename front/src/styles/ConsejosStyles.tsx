@@ -9,14 +9,17 @@ export const ConsejosContainer = styled.div`
     display:flex;
     flex-direction: column;
     margin-top: 3rem;
+    align-items: center;
 `;
 
 export const Intervenciones = styled.div`
     display: flex;
     flex-flow: row wrap;
     padding: 2rem;
+    padding-left: 2rem;
     height: 50%;
     padding-bottom: 0;
+    justify-content: center;
 `;
 
 export const Alimento = styled.div`
@@ -30,19 +33,6 @@ export const Alimento = styled.div`
 
 export const Cosechas = styled.div`
     height: 30%;
-`;
-
-export const Cuadro = styled.div`
-    border: 1px solid #e0e0e0;
-    width: 25%;
-    height: 3rem;
-    text-align: center;
-    padding: 0.7rem 0rem;
-    color: ${azul};
-    background-color: white;
-    font-weight: bold;
-    font-size: 0.7rem;
-    min-width: 4rem;
 `;
 
 export const ConsejosTexto = styled.div`
@@ -65,7 +55,7 @@ export const ValorCosecha = styled.div`
     height: 50%;
     width: 50%;
     position: relative; 
-    margin-bottom: 45px; 
+    margin-bottom: 4rem; 
     > input:focus ~ label, input:valid ~ label, input:focus:placeholder-shown ~ label {
         top:-20px;
         font-size: 18px;
@@ -144,3 +134,42 @@ export const LabelUnidad = styled.label`
     transition: all 0.2s ease;
 `;
 
+interface ICheckboxContainer {
+    activo: boolean;
+}
+
+export const CheckboxContainer = styled.label<ICheckboxContainer>`
+    position: relative;   
+    padding-left: 0.8rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 4rem;
+    height: 3rem;
+    border: 1px solid #e0e0e0;
+    background-color: ${props => props.activo ? amarillo : blanco};
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6rem;
+    color: ${azul};
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const LabelCheckbox = styled.label`
+    position: absolute;
+    left: 5px;
+    top: 10px;  
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: ${azul};
+    background-color: ${azul}
+`;
+
+export const CheckboxConsejos = styled.input`
+    visibility: hidden;
+`

@@ -4,17 +4,18 @@ import { Checkbox } from "../components/Checkbox";
 import { RangeSlider } from "../components/RangeSlider";
 import { ToggleSwitch } from "../components/ToggleSwitch";
 import { useForm } from "../hooks/formHook";
-import { CelulasReina,
-         CheckboxContainer,
-         CheckboxesReina,
-         EstadoReinaHuevos,
-         RangeSlidersReina,
-         RangeSliderText,
-         ReinaContainer,
-         ReinaText,
-         ToggleSwitchContainer,
-         ToggleSwitchsReina,
-          } from "../styles/ReinaStyles";
+import {
+    CelulasReina,
+    CheckboxContainer,
+    CheckboxesReina,
+    EstadoReinaHuevos,
+    RangeSlidersReina,
+    RangeSliderText,
+    ReinaContainer,
+    ReinaText,
+    ToggleSwitchContainer,
+    ToggleSwitchsReina,
+} from "../styles/ReinaStyles";
 import { NavBar } from "./NavBar";
 
 export const Reina: React.FC = () => {
@@ -23,7 +24,7 @@ export const Reina: React.FC = () => {
         alert("Submit datos reina");
     };
 
-    const { inputsSalientes, handleInputChange} = useForm(reina, {
+    const { inputsSalientes, handleInputChange } = useForm(reina, {
         alasRotas: false,
         celulasReina: 0,
         huevosVistos: false,
@@ -42,10 +43,11 @@ export const Reina: React.FC = () => {
                     <ToggleSwitchsReina>
                         <ToggleSwitchContainer>
                             <ToggleSwitch name="reinaPresente"
-                                          handleInputChange={(e) => {
-                                                                handleInputChange(e);
-                                                                inputsSalientes.alasRotas = false;
-                                                                inputsSalientes.marcada = false; }} />
+                                handleInputChange={(e) => {
+                                    handleInputChange(e);
+                                    inputsSalientes.alasRotas = false;
+                                    inputsSalientes.marcada = false;
+                                }} />
                             <strong>Reina Presente</strong>
                         </ToggleSwitchContainer>
                         <ToggleSwitchContainer>
@@ -69,10 +71,10 @@ export const Reina: React.FC = () => {
                     <ReinaText>Células de Reina</ReinaText>
                     <RangeSlidersReina>
                         <RangeSlider min="0"
-                                     max="5"
-                                     value={inputsSalientes.celulasReina}
-                                     name="celulasReina"
-                                     handleInputChange={handleInputChange} />
+                            max="5"
+                            value={inputsSalientes.celulasReina}
+                            name="celulasReina"
+                            handleInputChange={handleInputChange} />
                         <RangeSliderText>{inputsSalientes.celulasReina}</RangeSliderText>
                     </RangeSlidersReina>
                     {inputsSalientes.celulasReina > 0 &&
