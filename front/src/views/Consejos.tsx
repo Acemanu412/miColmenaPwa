@@ -1,14 +1,22 @@
 import React from "react";
 
+import { Alimento,
+         ConsejosContainer,
+         ConsejosTexto,
+         CosechaContainer,
+         Cosechas,
+         Cuadro,
+         InputCosecha,
+         Intervenciones,
+         LabelCosecha,
+         LabelUnidad,
+         SelectCosecha,
+         UnidadCosecha,
+         ValorCosecha,
+          } from "../styles/ConsejosStyles";
 import { NavBar } from "./NavBar";
-import { ConsejosContainer, Intervenciones, Alimento, Cosechas, ConsejosTexto, Cuadro, CosechaContainer, ValorCosecha, UnidadCosecha, InputCosecha, LabelCosecha, SelectCosecha, LabelUnidad } from "../styles/ConsejosStyles";
 
 export const Consejos: React.FC = () => {
-
-    const consejos = () => {
-        alert("Submit datos consejos");
-    }
-
 
     return (
         <div>
@@ -131,5 +139,5 @@ export const Consejos: React.FC = () => {
                 </Cosechas>
             </ConsejosContainer>
         </div>
-    )
-}
+    );
+};
