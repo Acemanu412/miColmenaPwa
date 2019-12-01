@@ -134,7 +134,11 @@ export const LabelUnidad = styled.label`
     transition: all 0.2s ease;
 `;
 
-export const CheckboxContainer = styled.label`
+interface ICheckboxContainer {
+    activo: boolean;
+}
+
+export const CheckboxContainer = styled.label<ICheckboxContainer>`
     position: relative;   
     padding-left: 0.8rem;
     cursor: pointer;
@@ -145,7 +149,7 @@ export const CheckboxContainer = styled.label`
     width: 4rem;
     height: 3rem;
     border: 1px solid #e0e0e0;
-    background-color: white;
+    background-color: ${props => props.activo ? amarillo : blanco};
     text-align: center;
     font-weight: bold;
     font-size: 0.6rem;
