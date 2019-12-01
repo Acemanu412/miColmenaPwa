@@ -8,6 +8,7 @@ export const ConsejosContainer = styled.div`
     height: 100vh;
     display:flex;
     flex-direction: column;
+    margin-top: 3rem;
 `;
 
 export const Intervenciones = styled.div`
