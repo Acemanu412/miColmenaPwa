@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express();
-const { User } = require("../models");
 const nodemailer = require("nodemailer");
+
 const passport = require("../config/passport");
+const { User } = require("../models");
 
 router.post(
   "/session",
@@ -27,7 +28,7 @@ router.post(
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${process.env.IP}:3000/activarCuenta/${user.id}`
+      const link = `${process.env.IP}:2222/api/user/activarCuenta/${user.id}`
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -66,13 +67,19 @@ router.get("/activarCuenta/:id", (req, res, next) => {
       id: req.params.id
     }
   })
-    .then(user => {
+    .then((user) => {
       return user.update({ activated: true })
     })
-    .then(user => {
-      res.send(user)
+    .then((user) => {
+      req.login(user, function(err){
+        err ? res.status(400).redirect(`http://${process.env.IP}:3000/`)
+            : res.status(200).redirect(`http://${process.env.IP}:3000/home`)
+      })
     })
-})
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
 
 router.post("/olvidoClave", (req, res, next) => {
   User.findOne({
