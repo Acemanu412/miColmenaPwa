@@ -2,8 +2,7 @@ import React from "react";
 import { fetchLogging } from "../api/";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
-import { StyledHomeMessage } from "../styles/GlobalStyles";
-import { StyledWarning } from "../styles/GlobalStyles";
+import { StyledHomeMessage, StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
   FormContainer,

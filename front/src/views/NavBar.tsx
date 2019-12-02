@@ -1,5 +1,5 @@
 import React from "react";
-import { SideNav } from "../components/SideNav"
+import { SideNav } from "../components/SideNav";
 import { LogoNavBar, NavBarContainer} from "../styles/NavBarStyles";
 
 export const NavBar: React.FC = () => {
