@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const fetchRegister = (username, email, password) => (
+export const fetchRegister = (username, email, password, telefono) => (
   axios
     .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
       password,
+      telefono,
       username,
     })
     .then((res) => {

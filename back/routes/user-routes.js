@@ -7,13 +7,10 @@ const passport = require("../config/passport");
 router.post(
   "/session",
   (req, res, next) => {
-    console.log("Hola session")
     passport.authenticate("local", function (error, user, info) {
       if (error) {
         res.status(401).send(error);
       } else if (!user) {
-        console.log("NO user")
-        console.log(info.message);
         res.status(401).send(info.message);
       } else {
         next();
@@ -31,8 +28,7 @@ router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
       const link = `${process.env.IP}:3000/activarCuenta/${user.id}`
-
-      var transporter = nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
           user: "micolmena555@gmail.com",
@@ -40,7 +36,7 @@ router.post("/signup", (req, res, next) => {
         }
       });
 
-      var mailOptions = {
+      const mailOptions = {
         from: "micolmena555@gmail.com",
         to: user.email,
         subject: "Mi colmena",
@@ -49,16 +45,17 @@ router.post("/signup", (req, res, next) => {
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          console.log(error);
           res.status(400).send(false);
         } else {
-          console.log("Email sent: " + info.response);
           res.status(200).send(true);
         }
       });
     })
-    .catch(error => {
-      res.status(400).send(error)
+    .catch((error) => {
+      let mensaje;
+      error.message.includes("invalid input syntax for integer")? mensaje = "Teléfono incluye caracteres no numéricos"
+                                                                : mensaje = "Este correo ya está registrado";
+      res.status(400).send(mensaje)
     })
 
 });
@@ -106,10 +103,8 @@ router.post("/olvidoClave", (req, res, next) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
-            console.log(error);
             res.status(400).send(false);
           } else {
-            console.log("Email sent: " + info.response);
             res.status(200).send(true);
           }
         });
