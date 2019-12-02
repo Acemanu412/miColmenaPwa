@@ -59,11 +59,6 @@ DeviceInput.init(
       type: S.STRING,
       allowNull: false
     },
-
-    humedadExterior: {
-      type: S.INTEGER,
-      allowNull: false
-    }
   },
   {
     sequelize: db,
