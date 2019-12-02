@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { useStores } from "../hooks/useStore";
 import { StyledWarning } from "../styles/GlobalStyles";
 import {
-  Container,
+  ContainerActivacion,
   LoginLogo,
   StyledButtonLogin,
 
@@ -15,7 +15,7 @@ const ActivarCuenta = observer((props: any) => {
   const store = useStores();
 
   return (
-    <Container>
+    <ContainerActivacion>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
       <StyledButtonLogin onClick={() => {
         store.updateWarning({ message: `Su cuenta ya ha sido activada, ingrese al siguiente link` });
@@ -27,8 +27,8 @@ const ActivarCuenta = observer((props: any) => {
         :
         null
       )}
-    </Container>
+    </ContainerActivacion>
   );
-}
+},
 );
 export default ActivarCuenta;

@@ -2,6 +2,7 @@ import React from "react";
 import { fetchLogging } from "../api/";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
+import { StyledHomeMessage } from "../styles/GlobalStyles";
 import { StyledWarning } from "../styles/GlobalStyles";
 import {
   Container,
@@ -17,7 +18,7 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-//import { PropTypes } from "mobx-react";
+// import { PropTypes } from "mobx-react";
 
 export default function Login(props) {
   const login = () => {
@@ -31,7 +32,7 @@ export default function Login(props) {
         props.history.push("/home");
       }
       return data;
-    })
+    });
     return warning;
   };
 
@@ -74,6 +75,7 @@ export default function Login(props) {
             />
           </InputContainer>
           <StyledWarning />
+          <StyledHomeMessage />
           <StyledButtonLogin text="ENTRAR" type="submit" />
         </StyledForm>
         <TextLogin>

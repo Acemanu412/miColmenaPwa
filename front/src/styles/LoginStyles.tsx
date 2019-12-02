@@ -3,6 +3,27 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { Input } from "../components/Input";
 
+export const ContainerActivacion = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(${require("../utils/inicioFondo@2x.png")});
+  height: 100vh;
+  overflow: scroll;
+  @media (min-width: 700px) {
+    padding-top: 0;
+    justify-content: center;
+  };
+
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
+
 export const StyledButtonLogin = styled(Button)`
   background-color: #ffd24e;
   color: #0056a2;
@@ -103,7 +124,12 @@ export const Container = styled.div`
   @media (min-width: 700px) {
     padding-top: 0;
     justify-content: center;
-  }
+  };
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 export const InputContainer = styled.div`
