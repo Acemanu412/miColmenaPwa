@@ -1,21 +1,17 @@
 import styled from "styled-components";
-import { Menu } from "../components/Menu";
-
-export const StyledMenu = styled(Menu)`
-
-`;
 
 export const LogoNavBar = styled.img`
   position: fixed;
   right: 4%;
-  top: 1.2%
   height: 2rem;
+  align-self: center;
 `;
 
 export const NavBarContainer = styled.div`
+display: flex;
 position:fixed;
 top: 0;
 width: 100%;
-height: 8%;
+height: 9vh;
 background-color:#0056A2;
 `;
