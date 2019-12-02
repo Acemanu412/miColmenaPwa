@@ -42,8 +42,6 @@ export default function Login(props) {
 
   const store = useStores();
 
-  console.log(props)
-
   return (
     <Container>
       <LoginLogo src={require("../utils/logoSombra@2x.png")} />
