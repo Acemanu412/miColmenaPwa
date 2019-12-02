@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { NavBar } from "./NavBar";
 import {
     ImagenGrabacion,
     InputNotas,
@@ -9,6 +8,7 @@ import {
     TextoImagenGrabacion,
     TextoNotas,
 } from "../styles/NotasStyles";
+import { NavBar } from "./NavBar";
 
 export const Notas: React.FC = () => {
 
@@ -24,5 +24,5 @@ export const Notas: React.FC = () => {
                 <InputNotas rows={8} cols={30}></InputNotas>
             </NotasContainer>
         </div>
-    )
-}
+    );
+};

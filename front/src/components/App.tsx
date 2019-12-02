@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import ActivarCuenta from "../views/ActivarCuenta";
 import { Consejos } from "../views/Consejos";
 import ForgotPassword from "../views/ForgotPassword";
 import { Home } from "../views/Home";
@@ -17,7 +16,6 @@ const App: React.FC = () => {
       <Route exact path="/home" component={Home} />
       <Route exact path="/forgotP" component={ForgotPassword} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/activarCuenta/:id" component={ActivarCuenta} />
       <Route exact path="/reina" component={Reina} />
       <Route exact path="/consejos" component={Consejos} />
       <Route exact path="/notas" component={Notas} />
