@@ -27,9 +27,10 @@ export default function Signup(props) {
       inputsSalientes.username,
       inputsSalientes.email,
       inputsSalientes.password,
+      inputsSalientes.telefono,
     ).then((data) => {
-      if (data instanceof Error) {
-        store.updateWarning({ message: "Este email ya se encuentra registrado" });
+      if (data.response) {
+        store.updateWarning({ message: data.response.data });
       } else {
         props.history.push("/");
       }
@@ -40,7 +41,10 @@ export default function Signup(props) {
     inputsSalientes,
     handleInputChange,
     handleSubmit,
-  } = useForm(registroAxios, { username: "", email: "", password: "" });
+  } = useForm(registroAxios, { email: "",
+                               password: "",
+                               telefono: "",
+                               username: "" });
 
   return (
     <Container>
@@ -71,6 +75,20 @@ export default function Signup(props) {
                 store.updateWarning({ message: "" });
               }}
               value={inputsSalientes.email}
+              required={true}
+            />
+          </InputContainer>
+
+          <InputContainer>
+            <StyledInputLogin
+              placeholder="Teléfono (Opcional)"
+              type="tel"
+              name="telefono"
+              onChange={(e) => {
+                handleInputChange(e);
+                store.updateWarning({ message: "" });
+              }}
+              value={inputsSalientes.telefono}
               required={true}
             />
           </InputContainer>
