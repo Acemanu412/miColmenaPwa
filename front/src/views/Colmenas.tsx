@@ -1,5 +1,12 @@
 import React from "react";
-import { ColmenasContainer, ImageColmenasContainer1, ImageColmenasContainer2, DataColmenaContainer, StyledBotonAgregarColmenas, ButtonColmenasContainer } from "../styles/ColmenasStyles";
+import {
+  ButtonColmenasContainer,
+  ColmenasContainer,
+  DataColmenaContainer,
+  ImageColmenasContainer1,
+  ImageColmenasContainer2,
+  StyledBotonAgregarColmenas,
+} from "../styles/ColmenasStyles";
 
 export const Colmenas: React.FC = () => {
   return (
@@ -12,9 +19,11 @@ export const Colmenas: React.FC = () => {
       <DataColmenaContainer>
         Nombre de Colmena B
       </DataColmenaContainer>
+
       <ButtonColmenasContainer>
         <StyledBotonAgregarColmenas text="Agregar Colmena" />
       </ButtonColmenasContainer>
+
     </ColmenasContainer>
   )
 };

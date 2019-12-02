@@ -10,7 +10,7 @@ export const StyledBotonAgregarColmenas = styled(Button)`
   height: 2rem;
   margin-top: 1rem;
   margin-left: 15%;
-  `
+  `;
 
 export const ColmenasContainer = styled.div`
   height: 93vh;
@@ -50,4 +50,4 @@ export const ButtonColmenasContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%
-`;
+  `;

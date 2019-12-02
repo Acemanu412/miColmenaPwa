@@ -1,9 +1,19 @@
 import React from "react";
-
 import { NavBar } from "./NavBar";
 import { Checkbox } from "../components/Checkbox";
 import { ToggleSwitch } from "../components/ToggleSwitch";
-import { ReinaContainer, EstadoReinaHuevos, CelulasReina, ToggleSwitchsReina, CheckboxesReina, RangeSlidersReina, ToggleSwitchContainer, CheckboxContainer, RangeSliderText, ReinaText } from "../styles/ReinaStyles";
+import {
+    ReinaContainer,
+    EstadoReinaHuevos,
+    CelulasReina,
+    ToggleSwitchsReina,
+    CheckboxesReina,
+    RangeSlidersReina,
+    ToggleSwitchContainer,
+    CheckboxContainer,
+    RangeSliderText,
+    ReinaText
+} from "../styles/ReinaStyles";
 import { RangeSlider } from "../components/RangeSlider";
 import { useForm } from "../hooks/formHook";
 
