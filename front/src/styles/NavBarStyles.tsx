@@ -18,4 +18,5 @@ top: 0;
 width: 100%;
 height: 8%;
 background-color:#0056A2;
+z-index: 10;
 `;
