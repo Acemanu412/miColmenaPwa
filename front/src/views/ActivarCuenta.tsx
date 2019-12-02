@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { observer } from "mobx-react";
 import { activate } from "../api";
+import { observer } from "mobx-react";
 import { useStores } from "../hooks/useStore";
 import { StyledWarning } from "../styles/GlobalStyles";
 import {
@@ -23,7 +23,7 @@ const ActivarCuenta = observer((props: any) => {
       }} text="ACTIVAR CUENTA" type="submit" />
       <StyledWarning />
       {(store.warning ?
-        <Link to="/" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", color: "white" }}> Ir a Login </Link>
+        <Link style={{ color: "white" }} to="/"> MiColmena.com</Link>
         :
         null
       )}

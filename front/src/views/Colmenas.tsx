@@ -3,14 +3,12 @@ import { ColmenasContainer, ImageColmenasContainer1, ImageColmenasContainer2, Da
 
 export const Colmenas: React.FC = () => {
   return (
-    <ColmenasContainer>.
-      <ImageColmenasContainer1>
-      </ImageColmenasContainer1>
+    <ColmenasContainer>
+      <ImageColmenasContainer1 />
       <DataColmenaContainer>
         Nombre de Colmena A
       </DataColmenaContainer>
-      <ImageColmenasContainer2>
-      </ImageColmenasContainer2>
+      <ImageColmenasContainer2 />
       <DataColmenaContainer>
         Nombre de Colmena B
       </DataColmenaContainer>

@@ -95,7 +95,7 @@ export default function Signup(props) {
 
         <TextLogin>
           <span>¿Estás registrado?</span>
-          <StyledLink to="/">Ingresa aquí</StyledLink>
+          <StyledLink to="/"> Ingresa aquí</StyledLink>
         </TextLogin>
       </FormContainer>
     </Container>
