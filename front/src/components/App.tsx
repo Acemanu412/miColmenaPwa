@@ -5,10 +5,12 @@ import ForgotPassword from "../views/ForgotPassword";
 import Login from "../views/Login";
 import Signup from "../views/Signup";
 import { Home } from "../views/Home";
+import VistaColmena from "../views/VistaColmena";
 
 const App: React.FC = () => {
   return (
     <div>
+      <Route exact path="/colmena" component={VistaColmena} />
       <Route exact path="/" component={Login} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/forgotP" component={ForgotPassword} />
