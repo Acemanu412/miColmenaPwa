@@ -23,14 +23,14 @@ export const EstadoReinaHuevos = styled.div<IEstadoReinaHuevos>`
     justify-content:flex-start;
     align-items: center;
     width: 100%;
-    height: ${props => props.reinaPresente ? "24%" : "15%"};
+    height: ${(props) => props.reinaPresente ? "24%" : "15%"};
     text-align: center;
     ;
 `;
 
 export const CelulasReina = styled.div`
     display:flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     height: 30%;
