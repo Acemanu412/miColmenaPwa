@@ -1,6 +1,8 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "../hooks/formConsejosHook";
+import { useStores } from "../hooks/useStore";
 import {
     Alimento,
     CheckboxConsejos,
@@ -17,12 +19,17 @@ import {
     UnidadCosecha,
     ValorCosecha,
 } from "../styles/ConsejosStyles";
+import { FormAtrasButton,
+         FormSiguienteButton } from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 
-export const Consejos: React.FC = () => {
+export const Consejos: React.FC<RouteComponentProps> = (props) => {
+    const store = useStores();
 
     const consejos = () => {
-        alert("Submit datos consejos");
+     store.updateConsejos(inputsSalientesIntervenciones,
+                          inputsSalientesAlimento,
+                          inputsSalientesCosecha);
     };
 
     const { inputsSalientesIntervenciones,
@@ -30,7 +37,8 @@ export const Consejos: React.FC = () => {
             inputsSalientesCosecha,
             handleInputIntervencionesChange,
             handleInputAlimentoChange,
-            handleInputCosechaChange }: any = useForm(consejos);
+            handleInputCosechaChange,
+            handleSubmit }: any = useForm(consejos);
 
     return (
         <div>
@@ -302,6 +310,15 @@ export const Consejos: React.FC = () => {
                             <LabelUnidad>Unidades</LabelUnidad>
                         </UnidadCosecha>
                     </CosechaContainer>
+                <FormAtrasButton onClick={(e) => {
+                                          e.preventDefault();
+                                          props.history.push("/reina");
+                }}/>
+                <FormSiguienteButton onClick={(e) => {
+                                          e.preventDefault();
+                                          props.history.push("/notas");
+                                          handleSubmit(e);
+                }}/>
                 </Cosechas>
             </ConsejosContainer>
         </div>

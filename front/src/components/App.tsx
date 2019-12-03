@@ -15,7 +15,6 @@ const App: React.FC = () => {
   return (
     <div>
       <Route exact path="/colmenaPrueba" component={VistaColmena1} />
-
       <Route exact path="/colmena" component={VistaColmenaData} />
       <Route exact path="/" component={Login} />
       <Route exact path="/home" component={Home} />
