@@ -19,7 +19,7 @@ app.use(
   session({
     secret: "abeja",
     resave: true,
-    // saveUninitialized: true,
+    saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
