@@ -25,6 +25,11 @@ User.init(
       allowNull: false
     },
 
+    telefono: {
+      type: S.INTEGER,
+      allowNull: true
+    },
+
     activated: {
       type: S.BOOLEAN,
       defaultValue: false

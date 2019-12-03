@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const fetchRegister = (username, email, password) =>
+export const fetchRegister = (username, email, password, telefono) =>
   axios
     .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
       password,
+      telefono,
       username,
     })
     .then((res) => {
@@ -31,8 +32,8 @@ export const fetchLogging = (inputsSalientes) => {
       password: inputsSalientes.password,
     })
     .then((res: any) => res.data)
-    .then(() => {
-      return { message: "" };
+    .then((user) => {
+      return user;
     })
     .catch((err) => {
       return { message: err.response.data };
@@ -49,4 +50,13 @@ export const postNuevoClave = (email) =>
     })
     .catch((err) => {
       return { message: err.response.data };
+    });
+export const logOut = () =>
+  axios
+    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
     });
