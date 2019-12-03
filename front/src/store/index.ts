@@ -9,6 +9,9 @@ const RootStore = types
     warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
+    setUser(user: any) {
+      self.user = user;
+    },
     updateHomeMessage: (homeMessage) => {
       self.homeMessage = homeMessage.message;
     },

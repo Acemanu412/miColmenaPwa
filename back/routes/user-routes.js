@@ -14,16 +14,16 @@ router.post(
       } else if (!user) {
         res.status(401).send(info.message);
       } else {
-        next();
+       req.logIn(user, function(err) {
+         console.log('LOGIN')
+         console.log(user);
+         if (err) {res.status(401).send("No se pudo abrir el session")}
+         res.status(200).send(user);
+       })
       }
     })(req, res);
-  },
-  function (req, res) {
-    res.status(200).send(req.user);
   }
 );
-
-
 
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
@@ -81,6 +81,11 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     });
 });
 
+router.get("/logout", (req,res) => {
+  req.logout();
+  res.sendStatus(200);
+})
+
 router.post("/olvidoClave", (req, res, next) => {
   User.findOne({
     where: {
@@ -134,5 +139,7 @@ router.post("/nuevoClave", (req, res, next) => {
     res.status(400).send(false);
   }
 });
+
+
 
 module.exports = router;

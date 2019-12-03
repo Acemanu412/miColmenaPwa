@@ -1,7 +1,7 @@
 import { types } from "mobx-state-tree";
 
 const User = types
-  .model("Registro", {
+  .model("User", {
     email: types.string,
     id: types.number,
     username: types.string,

@@ -33,8 +33,8 @@ export const fetchLogging = (inputsSalientes) => {
       password: inputsSalientes.password,
     })
     .then((res: any) => res.data)
-    .then(() => {
-      return { message: "" };
+    .then((user) => {
+      return user;
     })
     .catch((err) => {
       return { message: err.response.data };
@@ -49,3 +49,11 @@ export const postNuevoClave = (email) => (
       return { message: err.response.data };
     })
 );
+
+export const logOut = () => (
+  axios.get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`).then((res) => {
+    return res;
+  }).catch((err) => {
+    return err;
+  })
+)

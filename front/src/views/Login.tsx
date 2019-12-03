@@ -17,8 +17,6 @@ import {
   TextLogin,
 } from "../styles/LoginStyles";
 
-// import { PropTypes } from "mobx-react";
-
 export default function Login(props) {
   const login = () => {
     if (!inputsSalientes.password.length) {
@@ -28,6 +26,7 @@ export default function Login(props) {
       if (data.message) {
         store.updateWarning(data);
       } else {
+        store.setUser(data);
         props.history.push("/home");
       }
       return data;
