@@ -56,4 +56,5 @@ export const logOut = () => (
   }).catch((err) => {
     return err;
   })
-)
+);
+
