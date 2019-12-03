@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchRegister = (username, email, password, telefono) => (
+export const fetchRegister = (username, email, password, telefono) =>
   axios
     .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
@@ -13,18 +13,17 @@ export const fetchRegister = (username, email, password, telefono) => (
     })
     .catch((err) => {
       return err;
-    })
-);
+    });
 
-export const activate = (id) => (axios
-  .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
-  .then((res) => {
-    return res.data;
-  })
-  .catch((err) => {
-    return err;
-  })
-);
+export const activate = (id) =>
+  axios
+    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
@@ -41,19 +40,23 @@ export const fetchLogging = (inputsSalientes) => {
     });
 };
 
-export const postNuevoClave = (email) => (
-  axios.post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, { email }).then((res) => {
-    return res.data;
-  })
+export const postNuevoClave = (email) =>
+  axios
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, {
+      email,
+    })
+    .then((res) => {
+      return res.data;
+    })
     .catch((err) => {
       return { message: err.response.data };
+    });
+export const logOut = () =>
+  axios
+    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`)
+    .then((res) => {
+      return res;
     })
-);
-
-export const logOut = () => (
-  axios.get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`).then((res) => {
-    return res;
-  }).catch((err) => {
-    return err;
-  })
-)
+    .catch((err) => {
+      return err;
+    });
