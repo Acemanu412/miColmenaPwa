@@ -8,10 +8,15 @@ import Login from "../views/Login";
 import { Notas } from "../views/Notas";
 import { Reina } from "../views/Reina";
 import Signup from "../views/Signup";
+import VistaColmena1 from "../views/VistaColmena1";
+import VistaColmenaData from "../views/VistaColmenaData";
 
 const App: React.FC = () => {
   return (
     <div>
+      <Route exact path="/colmenaPrueba" component={VistaColmena1} />
+
+      <Route exact path="/colmena" component={VistaColmenaData} />
       <Route exact path="/" component={Login} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/forgotP" component={ForgotPassword} />

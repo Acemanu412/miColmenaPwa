@@ -10,7 +10,10 @@ const RootStore = types
     user: types.maybeNull(User),
     warning: types.optional(types.string, ""),
   })
-  .actions((self: any) => ({
+  .actions((self) => ({
+    setUser(user: any) {
+      self.user = user;
+    },
     updateHomeMessage: (homeMessage) => {
       self.homeMessage = homeMessage.message;
     },

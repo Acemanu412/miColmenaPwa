@@ -24,6 +24,7 @@ export const ContainerActivacion = styled.div`
   bottom: 0;
 `;
 
+
 export const StyledButtonLogin = styled(Button)`
   background-color: #ffd24e;
   color: #0056a2;
@@ -131,6 +132,7 @@ export const Container = styled.div`
   right: 0;
   bottom: 0;
 `;
+
 
 export const InputContainer = styled.div`
 display:flex
