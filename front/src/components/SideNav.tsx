@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { logOut } from "../api/index";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+
+import { logOut } from "../api/index";
 import { ImgDiv, LinkDiv, LinkImg, LinkTextSpan, SideNavImg, SideNavMenu } from "../styles/SideNavStyles";
 
 const SideNav: React.FC = (props: any) => {
