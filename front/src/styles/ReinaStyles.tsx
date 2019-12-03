@@ -4,7 +4,7 @@ import { color } from "../themes";
 
 const { amarillo, negro } = color;
 
-export const ReinaContainer = styled.div`
+export const ReinaContainer = styled.form`
     display:flex;
     flex-direction: column;
     font-size: 10px;

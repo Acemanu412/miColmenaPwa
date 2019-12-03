@@ -21,6 +21,7 @@ const App: React.FC = () => {
       <Route exact path="/home" component={Home} />
       <Route exact path="/forgotP" component={ForgotPassword} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path="/colmena" component={Home} />
       <Route exact path="/reina" component={Reina} />
       <Route exact path="/consejos" component={Consejos} />
       <Route exact path="/notas" component={Notas} />
