@@ -1,6 +1,12 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
-export const fetchRegister = (username, email, password, telefono) => (
+// const $axios = axios.create({
+//   withCredentials: true,
+// });
+
+export const fetchRegister = (username, email, password, telefono) => {
+  return (
   axios
     .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
       email,
@@ -14,7 +20,7 @@ export const fetchRegister = (username, email, password, telefono) => (
     .catch((err) => {
       return err;
     })
-);
+); };
 
 export const activate = (id) => (axios
   .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
@@ -57,4 +63,3 @@ export const logOut = () => (
     return err;
   })
 );
-

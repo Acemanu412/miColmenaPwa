@@ -5,6 +5,7 @@ const moment = require('moment');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+      console.log(req.user);
       cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
@@ -15,6 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post("/photo", upload.single('photo'), (req,res,next) => {
+    console.log(req.user);
     console.log(Date.now());
     console.log(new Date());
     console.log(moment().format("YYYY_MM_D_hh_mm_ss"));
