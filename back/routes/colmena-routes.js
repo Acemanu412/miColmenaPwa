@@ -5,8 +5,10 @@ const moment = require('moment');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      console.log(req.user);
-      cb(null, 'uploads/')
+      file.mimetype.split("/")[1];
+      if(file.mimetype.split("/")[1] === "mp3") cb(null, 'uploads/audios/')
+      else cb(null, 'uploads/fotos/')
+      
     },
     filename: function (req, file, cb) {
       cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
