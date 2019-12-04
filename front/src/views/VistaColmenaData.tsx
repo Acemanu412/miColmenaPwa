@@ -1,35 +1,35 @@
-import React, { useState } from "react";
 import { observer } from "mobx-react";
 import moment from "moment";
+import React, { useState } from "react";
 
 import {
+  AbejaBlanca,
+  Abejas,
+  Audio,
+  BotonesContainer,
+  Button,
+  Button2,
+  Button3,
   Container,
-  Header,
-  ProfileContainer,
-  NameContainer,
   ContainerSaludable,
+  Corazon,
+  Dia,
+  Enlace,
+  EnlaceContainer,
+  Header,
+  Libro,
+  Mas,
+  Menos,
+  NameContainer,
+  ProfileContainer,
   Saludable1,
   Saludable2,
   SemanaContainer,
-  EnlaceContainer,
-  BotonesContainer,
-  Audio,
-  Enlace,
-  Button2,
-  Button,
-  AbejaBlanca,
-  Abejas,
-  Corazon,
-  Libro,
-  Dia,
-  Mas,
-  Menos,
-  Button3,
 } from "../styles/ColmenaStyles";
-import VistaColmena1 from "./VistaColmena1";
-import VistaColmena3 from "./VistaColmena3";
-import VistaColmena2 from "./VistaColmena2";
 import { NavBar } from "./NavBar";
+import VistaColmena1 from "./VistaColmena1";
+import VistaColmena2 from "./VistaColmena2";
+import VistaColmena3 from "./VistaColmena3";
 
 const VistaColmenaData = observer(() => {
   const [vista1, setVista1] = useState(true);
@@ -73,7 +73,6 @@ const VistaColmenaData = observer(() => {
     .date()
     .toString();
 
-  console.log();
   return (
     <Container>
       <NavBar />
