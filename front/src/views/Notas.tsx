@@ -1,6 +1,5 @@
-import download from "downloadjs"
 import MicRecorder from 'mic-recorder-to-mp3'
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import {
     ImagenGrabacion,
