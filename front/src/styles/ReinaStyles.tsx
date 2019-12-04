@@ -4,7 +4,7 @@ import { color } from "../themes";
 
 const { amarillo, negro } = color;
 
-export const ReinaContainer = styled.div`
+export const ReinaContainer = styled.form`
     display:flex;
     flex-direction: column;
     font-size: 10px;
@@ -23,7 +23,7 @@ export const EstadoReinaHuevos = styled.div<IEstadoReinaHuevos>`
     justify-content:flex-start;
     align-items: center;
     width: 100%;
-    height: ${props => props.reinaPresente ? "24%" : "15%"};
+    height: ${(props) => props.reinaPresente ? "24%" : "15%"};
     text-align: center;
     ;
 `;

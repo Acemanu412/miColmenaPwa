@@ -42,7 +42,7 @@ export const ConsejosTexto = styled.div`
     margin-bottom: 0;
 `;
 
-export const CosechaContainer = styled.div`    
+export const CosechaContainer = styled.div`
 display: flex;
     flex-flow: row wrap;
     height: 100%;
@@ -54,8 +54,8 @@ display: flex;
 export const ValorCosecha = styled.div`
     height: 50%;
     width: 50%;
-    position: relative; 
-    margin-bottom: 4rem; 
+    position: relative;
+    margin-bottom: 4rem;
     > input:focus ~ label, input:valid ~ label, input:focus:placeholder-shown ~ label {
         top:-20px;
         font-size: 18px;
@@ -63,7 +63,7 @@ export const ValorCosecha = styled.div`
         color:${amarillo};
       }
     > input:placeholder-shown ~ label     {
-        color: ${negro}; 
+        color: ${negro};
         font-size: 23px;
         font-weight: normal;
         position: absolute;
@@ -77,7 +77,7 @@ export const ValorCosecha = styled.div`
 export const UnidadCosecha = styled.div`
     height: 100%;
     width: 50%;
-    position: relative; 
+    position: relative;
 
 `;
 
@@ -96,7 +96,7 @@ export const InputCosecha = styled.input`
 `;
 
 export const LabelCosecha = styled.label`
-    color: ${negro}; 
+    color: ${negro};
     font-size: 18px;
     font-weight: normal;
     position: absolute;
@@ -124,7 +124,7 @@ export const SelectCosecha = styled.select`
 `;
 
 export const LabelUnidad = styled.label`
-    color: ${negro}; 
+    color: ${negro};
     font-size: 15px;
     font-weight: normal;
     position: absolute;
@@ -139,7 +139,7 @@ interface ICheckboxContainer {
 }
 
 export const CheckboxContainer = styled.label<ICheckboxContainer>`
-    position: relative;   
+    position: relative;
     padding-left: 0.8rem;
     cursor: pointer;
     -webkit-user-select: none;
@@ -149,7 +149,7 @@ export const CheckboxContainer = styled.label<ICheckboxContainer>`
     width: 4rem;
     height: 3rem;
     border: 1px solid #e0e0e0;
-    background-color: ${props => props.activo ? amarillo : blanco};
+    background-color: ${(props) => props.activo ? amarillo : blanco};
     text-align: center;
     font-weight: bold;
     font-size: 0.6rem;
@@ -172,4 +172,4 @@ export const LabelCheckbox = styled.label`
 
 export const CheckboxConsejos = styled.input`
     visibility: hidden;
-`
+`;

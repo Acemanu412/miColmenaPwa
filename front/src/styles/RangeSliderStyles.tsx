@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Input } from "../components/Input";
-import { color } from "../themes/index"
+import { color } from "../themes/index";
 
 const { amarillo, blanco } = color;
 
@@ -15,7 +15,7 @@ export const SliderInput = styled(Input)`
   height: 25px; /* Specified height */
   height: 0.20rem;
   border-radius: 5px;
-  background: ${amarillo}; 
+  background: ${amarillo};
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -29,7 +29,7 @@ export const SliderInput = styled(Input)`
     width: 25px; /* Set a specific slider handle width */
     height: 25px;
     border: 5px solid ${amarillo};
-    border-radius: 50%; 
+    border-radius: 50%;
     height: 25px; /* Slider handle height */
     background: ${blanco};
     cursor: pointer; /* Cursor on hover */
@@ -37,9 +37,10 @@ export const SliderInput = styled(Input)`
   ::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px;
-    border-radius: 50%; 
+    border: 5px solid ${amarillo};
+    border-radius: 50%;
     height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: ${blanco};
     cursor: pointer; /* Cursor on hover */
   }
 `;

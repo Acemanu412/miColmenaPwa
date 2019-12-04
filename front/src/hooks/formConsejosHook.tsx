@@ -5,7 +5,6 @@ export const useForm = (callback: any) => {
   const [inputsSalientesAlimento, setInputsAlimento] = useState({});
   const [inputsSalientesCosecha, setInputsCosecha] = useState({});
 
-
   const handleSubmit = async (event: any) => {
     if (event) {
       event.preventDefault();
@@ -14,7 +13,7 @@ export const useForm = (callback: any) => {
   };
 
   const handleInputIntervencionesChange = (event: any) => {
-    let { name, checked } = event.target;
+    const { name, checked } = event.target;
     setInputsIntervenciones((inputsEntrantes: any) => ({
       ...inputsEntrantes,
       [name]: checked,
@@ -22,7 +21,7 @@ export const useForm = (callback: any) => {
   };
 
   const handleInputAlimentoChange = (event: any) => {
-    let { name, checked } = event.target;
+    const { name, checked } = event.target;
     setInputsAlimento((inputsEntrantes: any) => ({
       ...inputsEntrantes,
       [name]: checked,
@@ -30,7 +29,7 @@ export const useForm = (callback: any) => {
   };
 
   const handleInputCosechaChange = (event: any) => {
-    let { name, value } = event.target;
+    const { name, value } = event.target;
     setInputsCosecha((inputsEntrantes: any) => ({
       ...inputsEntrantes,
       [name]: value,
@@ -38,12 +37,12 @@ export const useForm = (callback: any) => {
   };
 
   return {
-    handleInputIntervencionesChange,
     handleInputAlimentoChange,
     handleInputCosechaChange,
+    handleInputIntervencionesChange,
     handleSubmit,
-    inputsSalientesIntervenciones,
     inputsSalientesAlimento,
     inputsSalientesCosecha,
+    inputsSalientesIntervenciones,
   };
 };

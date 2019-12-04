@@ -5,4 +5,4 @@ export const Checkbox: any = ({ name, handleInputChange }) =>
     <CheckboxContainer >
         <CheckboxInput type="checkbox" name={name} onChange={handleInputChange} />
         <Checkmark />
-    </CheckboxContainer>
+    </CheckboxContainer>;

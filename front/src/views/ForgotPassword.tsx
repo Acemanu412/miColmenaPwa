@@ -6,13 +6,13 @@ import { StyledWarning } from "../styles/GlobalStyles";
 
 import {
   Container,
+  FormContainer,
   InputContainerPassword,
   LoginLogo,
   LoginSobre,
-  FormContainer,
   StyledButtonLogin,
-  StyledInputLogin,
   StyledForm,
+  StyledInputLogin,
   StyledLink,
   TextLogin,
 } from "../styles/LoginStyles";
@@ -25,7 +25,8 @@ function ForgotPassword(props) {
       if (data.message) {
         store.updateWarning(data);
       } else {
-        store.updateWarning({ message: "Te mandamos una clave temporario a tu correo electronico" });
+        store.updateHomeMessage({ message: "Un mail ha sido enviado con una contraseña temporaria."});
+        props.history.push("/");
       }
     });
   };

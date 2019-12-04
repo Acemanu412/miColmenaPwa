@@ -1,9 +1,17 @@
 import React from "react";
 import { NavBar } from "./NavBar";
 
+import { RouteComponentProps } from "react-router-dom";
+
 import { RangeSlider } from "../components/RangeSlider";
-import { useForm } from "../hooks/formHook";
 import { useFormColmenas } from "../hooks/formColmenasHook";
+import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import {
+  FormAtrasButton,
+  FormSiguienteButton,
+} from "../styles/FormStyles";
+
 import {
   CheckboxContainer,
   CheckboxFormColmenas,
@@ -14,20 +22,24 @@ import {
   Text,
 } from "../styles/FormColmenasStyles";
 
-export const FormColmenas: React.FC = () => {
+export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
+
+  const store = useStores();
+  console.log(store)
 
   const formColmenas = () => {
-    alert("submit datos colmenas");
+    store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
   };
 
-  const { inputsSalientes, handleInputChange } = useForm(formColmenas, {
+  const { inputsSalientes, handleInputChange, handleSubmit } = useForm(formColmenas, {
     calidadCrias: 0,
     comportamiento: 0,
-    numComidas: 0,
-    numCuadrosTotalesCrias: 0,
-    numCuadroTotalesMiel: 0,
+    numeroComidas: 0,
+    // numeroCuadrosTotalesCrias: 0,
+    // numeroCuadroTotalesMiel: 0,
     poblacion: 0,
   });
+
 
   const problemasSalud = () => {
     alert("Submit datos problemasSalud");
@@ -43,51 +55,51 @@ export const FormColmenas: React.FC = () => {
       <NavBar />
       <FormColmenasContainer>
 
-      <RangeSliderColmenas>
-        <Text>Poblacion</Text>
-        <RangeSlider
-          min="0"
-          max="5"
-          value={inputsSalientes.poblacion}
-          name="poblacion"
-          handleInputChange={handleInputChange}>
-        </RangeSlider>
-      </RangeSliderColmenas>
+        <RangeSliderColmenas>
+          <Text>Poblacion</Text>
+          <RangeSlider
+            min="0"
+            max="5"
+            value={inputsSalientes.poblacion}
+            name="poblacion"
+            handleInputChange={handleInputChange}>
+          </RangeSlider>
+        </RangeSliderColmenas>
 
-      <RangeSliderColmenas>
-        <Text>Comportamiento</Text>
-        <RangeSlider
-          min="0"
-          max="5"
-          value={inputsSalientes.comportamiento}
-          name="comportamiento"
-          handleInputChange={handleInputChange}>
-        </RangeSlider>
-      </RangeSliderColmenas>
+        <RangeSliderColmenas>
+          <Text>Comportamiento</Text>
+          <RangeSlider
+            min="0"
+            max="5"
+            value={inputsSalientes.comportamiento}
+            name="comportamiento"
+            handleInputChange={handleInputChange}>
+          </RangeSlider>
+        </RangeSliderColmenas>
 
-      <RangeSliderColmenas>
-        <Text>Calidad crias</Text>
-        <RangeSlider
-          min="0"
-          max="5"
-          value={inputsSalientes.caliodadCrias}
-          name="calidadCrias"
-          handleInputChange={handleInputChange}>
-        </RangeSlider>
-      </RangeSliderColmenas>
+        <RangeSliderColmenas>
+          <Text>Calidad crias</Text>
+          <RangeSlider
+            min="0"
+            max="5"
+            value={inputsSalientes.calidadCrias}
+            name="calidadCrias"
+            handleInputChange={handleInputChange}>
+          </RangeSlider>
+        </RangeSliderColmenas>
 
-      <RangeSliderColmenas>
-        <Text>Numero de comidas</Text>
-        <RangeSlider
-          min="0"
-          max="5"
-          value={inputsSalientes.numComidas}
-          name="numeroComidas"
-          handleInputChange={handleInputChange}>
-        </RangeSlider>
-      </RangeSliderColmenas>
+        <RangeSliderColmenas>
+          <Text>Numero de comidas</Text>
+          <RangeSlider
+            min="0"
+            max="5"
+            value={inputsSalientes.numeroComidas}
+            name="numeroComidas"
+            handleInputChange={handleInputChange}>
+          </RangeSlider>
+        </RangeSliderColmenas>
 
-      <CheckboxText>Problemas de salud: Toca las que correspondan</CheckboxText>
+        <CheckboxText>Problemas de salud: Toca las que correspondan</CheckboxText>
 
         <Intervenciones>
           <CheckboxContainer activo={inputsSalientesIntervenciones.numeroDeComidas}>
@@ -117,10 +129,6 @@ export const FormColmenas: React.FC = () => {
           <CheckboxContainer activo={inputsSalientesIntervenciones.pupasPicadas}>
             Pupas picadas
             <CheckboxFormColmenas type="checkbox" name="pupasPicadas" onChange={handleInputIntervencionesChange} />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.alasDeformadas}>
-            Alas deformadas
-            <CheckboxFormColmenas type="checkbox" name="alasDeformadas" onChange={handleInputIntervencionesChange} />
           </CheckboxContainer>
           <CheckboxContainer activo={inputsSalientesIntervenciones.acarosBarroa}>
             Acaros Barroa
@@ -168,6 +176,19 @@ export const FormColmenas: React.FC = () => {
             <CheckboxFormColmenas type="checkbox" name="loqueEuropea" onChange={handleInputIntervencionesChange} />
           </CheckboxContainer>
         </Intervenciones>
+
+        <h1>hola</h1>
+
+        <FormAtrasButton onClick={(e) => {
+          e.preventDefault();
+          props.history.push("/colmena");
+          console.log(props)
+        }} />
+        <FormSiguienteButton onClick={(e) => {
+          e.preventDefault();
+          props.history.push("/reina");
+          handleSubmit(e);
+        }} />
 
       </FormColmenasContainer>
     </div>

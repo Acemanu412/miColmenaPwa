@@ -1,9 +1,15 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 import { Checkbox } from "../components/Checkbox";
 import { RangeSlider } from "../components/RangeSlider";
 import { ToggleSwitch } from "../components/ToggleSwitch";
 import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import {
+    FormAtrasButton,
+    FormSiguienteButton
+} from "../styles/FormStyles";
 import {
     CelulasReina,
     CheckboxContainer,
@@ -18,13 +24,14 @@ import {
 } from "../styles/ReinaStyles";
 import { NavBar } from "./NavBar";
 
-export const Reina: React.FC = () => {
-
+export const Reina: React.FC<RouteComponentProps> = (props) => {
+    const store = useStores();
+    console.log(store)
     const reina = () => {
-        alert("Submit datos reina");
+        store.updateReinaForm(inputsSalientes);
     };
 
-    const { inputsSalientes, handleInputChange } = useForm(reina, {
+    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(reina, {
         alasRotas: false,
         celulasReina: 0,
         huevosVistos: false,
@@ -37,7 +44,7 @@ export const Reina: React.FC = () => {
     return (
         <div>
             <NavBar />
-            <ReinaContainer>
+            <ReinaContainer >
                 <EstadoReinaHuevos reinaPresente={inputsSalientes.reinaPresente}>
                     <ReinaText>Población de Colmena</ReinaText>
                     <ToggleSwitchsReina>
@@ -74,6 +81,7 @@ export const Reina: React.FC = () => {
                             max="5"
                             value={inputsSalientes.celulasReina}
                             name="celulasReina"
+                            defaultValue="0"
                             handleInputChange={handleInputChange} />
                         <RangeSliderText>{inputsSalientes.celulasReina}</RangeSliderText>
                     </RangeSlidersReina>
@@ -89,6 +97,15 @@ export const Reina: React.FC = () => {
                             </ToggleSwitchContainer>
                         </ToggleSwitchsReina>}
                 </CelulasReina>
+                <FormAtrasButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/colmena");
+                }} />
+                <FormSiguienteButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/consejos");
+                    handleSubmit(e);
+                }} />
             </ReinaContainer>
         </div>
 

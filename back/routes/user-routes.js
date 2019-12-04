@@ -1,38 +1,33 @@
 const express = require("express");
 const router = express();
-const { User } = require("../models");
 const nodemailer = require("nodemailer");
+
 const passport = require("../config/passport");
+const { User } = require("../models");
 
 router.post(
   "/session",
   (req, res, next) => {
-    console.log("Hola session")
     passport.authenticate("local", function (error, user, info) {
       if (error) {
         res.status(401).send(error);
       } else if (!user) {
-        console.log("NO user")
-        console.log(info.message);
         res.status(401).send(info.message);
       } else {
-        next();
+       req.logIn(user, function(err) {
+         if (err) {res.status(401).send("No se pudo abrir el session")}
+         res.status(200).send(user);
+       })
       }
     })(req, res);
-  },
-  function (req, res) {
-    res.status(200).send(req.user);
   }
 );
-
-
 
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${process.env.IP}:3000/activarCuenta/${user.id}`
-
-      var transporter = nodemailer.createTransport({
+      const link = `${process.env.IP}:2222/api/user/activarCuenta/${user.id}`
+      const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
           user: "micolmena555@gmail.com",
@@ -40,7 +35,7 @@ router.post("/signup", (req, res, next) => {
         }
       });
 
-      var mailOptions = {
+      const mailOptions = {
         from: "micolmena555@gmail.com",
         to: user.email,
         subject: "Mi colmena",
@@ -49,16 +44,17 @@ router.post("/signup", (req, res, next) => {
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          console.log(error);
           res.status(400).send(false);
         } else {
-          console.log("Email sent: " + info.response);
           res.status(200).send(true);
         }
       });
     })
-    .catch(error => {
-      res.status(400).send(error)
+    .catch((error) => {
+      let mensaje;
+      error.message.includes("invalid input syntax for integer")? mensaje = "Teléfono incluye caracteres no numéricos"
+                                                                : mensaje = "Este correo ya está registrado";
+      res.status(400).send(mensaje)
     })
 
 });
@@ -69,12 +65,23 @@ router.get("/activarCuenta/:id", (req, res, next) => {
       id: req.params.id
     }
   })
-    .then(user => {
+    .then((user) => {
       return user.update({ activated: true })
     })
-    .then(user => {
-      res.send(user)
+    .then((user) => {
+      req.login(user, function(err){
+        err ? res.status(400).redirect(`http://${process.env.IP}:3000/`)
+            : res.status(200).redirect(`http://${process.env.IP}:3000/home`)
+      })
     })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
+
+router.get("/logout", (req,res) => {
+  req.logout();
+  res.sendStatus(200);
 })
 
 router.post("/olvidoClave", (req, res, next) => {
@@ -106,10 +113,8 @@ router.post("/olvidoClave", (req, res, next) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
-            console.log(error);
             res.status(400).send(false);
           } else {
-            console.log("Email sent: " + info.response);
             res.status(200).send(true);
           }
         });
