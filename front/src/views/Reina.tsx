@@ -6,7 +6,13 @@ import { RangeSlider } from "../components/RangeSlider";
 import { ToggleSwitch } from "../components/ToggleSwitch";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+
+import {
+    FormAtrasButton,
+    FormSiguienteButton
+} from "../styles/FormStyles";
+
+
 import {
   CelulasReina,
   CheckboxContainer,
@@ -22,7 +28,7 @@ import {
 import { NavBar } from "./NavBar";
 
 export const Reina: React.FC<RouteComponentProps> = (props) => {
-  const store = useStores();
+
 
   const reina = () => {
     store.updateReinaForm(inputsSalientes);

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+
   ColmenasContainer,
   ImageColmenasContainer1,
   ImageColmenasContainer2,
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 export const Colmenas: React.FC = () => {
   return (
     <ColmenasContainer>
+
       <Link
         to="/vistaColmena"
         style={{ textDecoration: "none", color: "black" }}
@@ -30,9 +32,11 @@ export const Colmenas: React.FC = () => {
           Nombre de Colmena B
         </DataColmenaContainer>
       </Link>
+
       <ButtonColmenasContainer>
         <StyledBotonAgregarColmenas text="Agregar Colmena" />
       </ButtonColmenasContainer>
+
     </ColmenasContainer>
   );
 };
