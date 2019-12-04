@@ -8,7 +8,6 @@ import {
     NotasContainer,
     Separador,
     TextoNotas,
-    ImagenContainer,
 } from "../styles/NotasStyles";
 import { NavBar } from "./NavBar";
 
@@ -21,7 +20,6 @@ export const Notas: any = () => {
     let grabando = false;
 
     function startRecording() {
-        console.log("start!!!")
         grabando = true;
         recorder.start().then((e) => {
         }).catch((e) => {
@@ -30,16 +28,14 @@ export const Notas: any = () => {
     }
 
     function stopRecording() {
-        console.log("stop!!!")
         grabando = false;
         recorder.stop().getMp3().then(([buffer, blob]) => {
-            console.log(buffer, blob);
             const file = new File(buffer, 'music.mp3', {
                 type: blob.type,
                 lastModified: Date.now()
             });
-            const player = new Audio(URL.createObjectURL(file));
-            player.play()
+            // const player = new Audio(URL.createObjectURL(file));
+            // player.play()
             //download(file, "/user/file.mp3", "audio/mp3");
 
         }).catch((e) => {
@@ -52,15 +48,21 @@ export const Notas: any = () => {
             <NavBar />
             <NotasContainer>
                 <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
-                <ImagenContainer onClick={() =>
-                    grabando ? stopRecording() : startRecording()
+                <div id="divGrabando" className="noGrabando" onClick={() => {
+                    let claseGrabando = document.querySelector("#divGrabando")
+                    grabando ? stopRecording() : startRecording();
+                    return claseGrabando !== null && grabando
+                        ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
+                        : (claseGrabando.classList.remove("Grabando"), claseGrabando.classList.add("noGrabando"));
+
+                }
                 }>
                     <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
-                </ImagenContainer>
+                </div>
                 <Separador />
                 <TextoNotas>Escribe tus notas</TextoNotas>
                 <InputNotas rows={8} cols={30}></InputNotas>
             </NotasContainer>
-        </div>
+        </div >
     );
 };

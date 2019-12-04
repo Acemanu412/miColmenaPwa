@@ -26,23 +26,23 @@ export const ImagenGrabacion = styled.img`
 
 
 
-export const ImagenContainer: any = styled.div`
-    height: 4rem;
-    width: 4rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    &:after {   
-        content: "Toque para grabar";
-        font-weight: bold;
-        font-size: 0.8rem;
-        position: absolute;
-        margin: 2rem;
-        margin-top: 1rem;
-        left: 5.5rem;
-    }
-}
-`;
+// export const ImagenContainer: any = styled.div`
+//     height: 4rem;
+//     width: 4rem;
+//     margin-left: auto;
+//     margin-right: auto;
+//     margin-bottom: 3rem;
+//     &:after {   
+//         content: "Toque para grabar";
+//         font-weight: bold;
+//         font-size: 0.8rem;
+//         position: absolute;
+//         margin: 2rem;
+//         margin-top: 1rem;
+//         left: 5.5rem;
+//     }
+// }
+// `;
 
 export const TextoImagenGrabacion = styled.div`
     
