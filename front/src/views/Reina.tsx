@@ -7,11 +7,7 @@ import { ToggleSwitch } from "../components/ToggleSwitch";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 
-import {
-    FormAtrasButton,
-    FormSiguienteButton
-} from "../styles/FormStyles";
-
+import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   CelulasReina,
@@ -28,8 +24,7 @@ import {
 import { NavBar } from "./NavBar";
 
 export const Reina: React.FC<RouteComponentProps> = (props) => {
-
-
+  const store = useStores();
   const reina = () => {
     store.updateReinaForm(inputsSalientes);
   };
@@ -123,7 +118,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
         <FormAtrasButton
           onClick={(e) => {
             e.preventDefault();
-            props.history.push("/colmena");
+            props.history.push("/home");
           }}
         />
         <FormSiguienteButton

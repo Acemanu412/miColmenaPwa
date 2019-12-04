@@ -1,16 +1,14 @@
 import { types } from "mobx-state-tree";
 
-import ColmenasFormsCheckbox from "./ColmenasFormCheckbox";
 import ColmenasForms from "./ColmenasForms";
 import ConsejosForms from "./ConsejosForms";
+import EstadoGeneral from "./EstadoGeneralForm";
 import NotasForms from "./NotasForms";
 import ReinaForms from "./ReinaForms";
-import EstadoGeneral from "./EstadoGeneralForm";
 import User from "./User";
 
 const RootStore = types
   .model("Root", {
-    colmenasFormCheckbox: types.maybeNull(ColmenasFormsCheckbox),
     colmenasForm: types.maybeNull(ColmenasForms),
     consejosForms: types.maybeNull(ConsejosForms),
     homeMessage: types.optional(types.string, ""),
@@ -24,12 +22,41 @@ const RootStore = types
     setUser(user: any) {
       self.user = user;
     },
+    updateColmenasForm: (inputs: any, inputsIntervenciones: any) => {
+      const inputsArmados = {
+        acarapisosis: inputsIntervenciones.acarapisosis,
+        acarosBarroa: inputsIntervenciones.acarosBarroa,
+        alasDeformadas: inputsIntervenciones.alasDeformadas,
+        criaCalcarea: inputsIntervenciones.criaCalcarea,
+        criaDePiedra: inputsIntervenciones.criaDePiedra,
+        escarabajos: inputsIntervenciones.escarabajos,
+        loqueAmericana: inputsIntervenciones.loqueAmericana,
+        loqueEuropea: inputsIntervenciones.loqueEuropa,
+        mesesDeCera: inputsIntervenciones.mesesDeCera,
+        moho: inputsIntervenciones.moho,
+        nosema: inputsIntervenciones.nosema,
+        numeroDeComidas: inputsIntervenciones.numeroDeComidas,
+        paralisisCronica: inputsIntervenciones.paralisisCronica,
+        polillasDeCera: inputsIntervenciones.polillasDeCerca,
+        pupaComidas: inputsIntervenciones.pupaComidas,
+        pupasPicadas: inputsIntervenciones.pupasPicadas,
+        tropilaelapsosis: inputsIntervenciones.tropilaelapsosis,
+        varroas: inputsIntervenciones.varroas,
 
-    updateConsejos: (inputsIntervenciones: any,
+        calidadCrias: inputs.calidadCrias,
+        comportamiento: inputs.comportamiento,
+        numeroComidas: inputs.numeroComidas,
+        poblacion: inputs.poblacion,
+      };
+
+      self.colmenasForm = inputsArmados;
+    },
+
+    updateConsejos: (
+      inputsIntervenciones: any,
       inputsAlimento: any,
-      inputsCosecha: any) => {
-
-
+      inputsCosecha: any
+    ) => {
       const inputsArmados = {
         abejasAgregadas: inputsIntervenciones.abejasAgregadas,
         acarapisosis: inputsIntervenciones.acarapisosis,
@@ -88,7 +115,6 @@ const RootStore = types
     updateEstadoGeneral: (inputs: any) => {
       self.estadoGeneral = inputs;
     },
-
   }));
 
 export default RootStore;

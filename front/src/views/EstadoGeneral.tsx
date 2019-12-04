@@ -75,6 +75,13 @@ const EstadoGeneral = observer((props) => {
           props.history.push("/vistaColmena");
         }}
       />
+      <FormSiguienteButton
+        onClick={(e) => {
+          e.preventDefault();
+          props.history.push("/colmenas");
+          // handleSubmit(e);
+        }}
+      />
     </Container>
   );
 });
