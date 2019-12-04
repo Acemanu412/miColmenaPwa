@@ -6,13 +6,13 @@ import { StyledWarning } from "../styles/GlobalStyles";
 
 import {
   Container,
+  FormContainer,
   InputContainerPassword,
   LoginLogo,
   LoginSobre,
-  FormContainer,
   StyledButtonLogin,
-  StyledInputLogin,
   StyledForm,
+  StyledInputLogin,
   StyledLink,
   TextLogin,
 } from "../styles/LoginStyles";
