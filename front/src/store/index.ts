@@ -1,16 +1,22 @@
 import { types } from "mobx-state-tree";
 
+import ColmenasFormsCheckbox from "./ColmenasFormCheckbox";
+import ColmenasForms from "./ColmenasForms";
 import ConsejosForms from "./ConsejosForms";
 import NotasForms from "./NotasForms";
 import ReinaForms from "./ReinaForms";
+import EstadoGeneral from "./EstadoGeneralForm";
 import User from "./User";
 
 const RootStore = types
   .model("Root", {
+    colmenasFormCheckbox: types.maybeNull(ColmenasFormsCheckbox),
+    colmenasForm: types.maybeNull(ColmenasForms),
     consejosForms: types.maybeNull(ConsejosForms),
     homeMessage: types.optional(types.string, ""),
     notasForms: types.maybeNull(NotasForms),
     reinaForms: types.maybeNull(ReinaForms),
+    estadoGeneral: types.maybeNull(EstadoGeneral),
     user: types.maybeNull(User),
     warning: types.optional(types.string, ""),
   })
@@ -18,9 +24,12 @@ const RootStore = types
     setUser(user: any) {
       self.user = user;
     },
+
     updateConsejos: (inputsIntervenciones: any,
       inputsAlimento: any,
       inputsCosecha: any) => {
+
+
       const inputsArmados = {
         abejasAgregadas: inputsIntervenciones.abejasAgregadas,
         acarapisosis: inputsIntervenciones.acarapisosis,
@@ -75,6 +84,11 @@ const RootStore = types
     updateWarning: (warning) => {
       self.warning = warning.message;
     },
+
+    updateEstadoGeneral: (inputs: any) => {
+      self.estadoGeneral = inputs;
+    },
+
   }));
 
 export default RootStore;

@@ -4,7 +4,6 @@ export const useForm = (callback: any, initialObject) => {
   const [inputsSalientes, setInputs] = useState(initialObject);
 
   const handleSubmit = async (event: any) => {
-    console.log("HOOK")
     if (event) {
       event.preventDefault();
     }

@@ -14,7 +14,7 @@ export const ContainerActivacion = styled.div`
   @media (min-width: 700px) {
     padding-top: 0;
     justify-content: center;
-  };
+  }
 
   background-size: cover;
   position: absolute;
@@ -23,7 +23,6 @@ export const ContainerActivacion = styled.div`
   right: 0;
   bottom: 0;
 `;
-
 
 export const StyledButtonLogin = styled(Button)`
   background-color: #ffd24e;
@@ -125,14 +124,13 @@ export const Container = styled.div`
   @media (min-width: 700px) {
     padding-top: 0;
     justify-content: center;
-  };
+  }
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 `;
-
 
 export const InputContainer = styled.div`
 display:flex
