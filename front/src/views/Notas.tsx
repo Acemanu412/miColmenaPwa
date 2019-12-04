@@ -1,7 +1,12 @@
+import axios from "axios";
 import download from "downloadjs"
 import MicRecorder from 'mic-recorder-to-mp3'
 import React, { useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router-dom";
 
+import { useForm } from "../hooks/formHook";
+import { useStores } from "../hooks/useStore";
+import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";
 import {
     ImagenGrabacion,
     InputNotas,
@@ -11,7 +16,18 @@ import {
 } from "../styles/NotasStyles";
 import { NavBar } from "./NavBar";
 
-export const Notas: any = () => {
+export const Notas: React.FC<RouteComponentProps> = (props) => {
+    const store = useStores();
+
+    const notas = () => {
+        store.updateNotasForm(inputsSalientes);
+
+    };
+
+    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(notas, {
+        urlNotaAudio: "",
+        notaTexto: "",
+    });
 
     const recorder = new MicRecorder({
         bitRate: 128,
@@ -30,13 +46,20 @@ export const Notas: any = () => {
     function stopRecording() {
         grabando = false;
         recorder.stop().getMp3().then(([buffer, blob]) => {
-            const file = new File(buffer, 'music.mp3', {
+            const audio = new File(buffer, 'music.mp3', {
                 type: blob.type,
                 lastModified: Date.now()
             });
-            // const player = new Audio(URL.createObjectURL(file));
+            const formData = new FormData();
+            formData.append("audio", audio);
+            const config = {
+                headers: { "content-type": "multipart/form-data" }
+            };
+            axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`, formData, config);
+
+            // const player = new Audio(URL.createObjectURL(audio));
             // player.play()
-            //download(file, "/user/file.mp3", "audio/mp3");
+            //download(audio, "/user/audio.mp3", "audio/mp3");
 
         }).catch((e) => {
             console.error(e);
@@ -61,7 +84,16 @@ export const Notas: any = () => {
                 </div>
                 <Separador />
                 <TextoNotas>Escribe tus notas</TextoNotas>
-                <InputNotas rows={8} cols={30}></InputNotas>
+                <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+                <FormAtrasButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/consejos");
+                }} />
+                <FormSubmitButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/vistaColmena");
+                    handleSubmit(e);
+                }} />
             </NotasContainer>
         </div >
     );
