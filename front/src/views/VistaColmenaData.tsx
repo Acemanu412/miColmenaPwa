@@ -2,6 +2,8 @@ import { observer } from "mobx-react";
 import moment from "moment";
 import React, { useState } from "react";
 
+import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+
 import {
   AbejaBlanca,
   Abejas,
@@ -31,7 +33,7 @@ import VistaColmena1 from "./VistaColmena1";
 import VistaColmena2 from "./VistaColmena2";
 import VistaColmena3 from "./VistaColmena3";
 
-const VistaColmenaData = observer(() => {
+const VistaColmenaData = observer((props) => {
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
@@ -152,23 +154,29 @@ const VistaColmenaData = observer(() => {
       </EnlaceContainer>
       <BotonesContainer>
         <Button
-          onClick={() => { setVista1(true);
-                           setVista2(false);
-                           setVista3(false); }}
+          onClick={() => {
+            setVista1(true);
+            setVista2(false);
+            setVista3(false);
+          }}
         >
           <Audio />
         </Button>{" "}
         <Button
-          onClick={() => { setVista1(false);
-                           setVista2(true);
-                           setVista3(false); }}
+          onClick={() => {
+            setVista1(false);
+            setVista2(true);
+            setVista3(false);
+          }}
         >
           <Corazon />
         </Button>
         <Button
-          onClick={() => {setVista1(false);
-                          setVista2(false);
-                          setVista3(true); }}
+          onClick={() => {
+            setVista1(false);
+            setVista2(false);
+            setVista3(true);
+          }}
         >
           <Libro />
         </Button>
@@ -176,6 +184,21 @@ const VistaColmenaData = observer(() => {
       {vista1 === true && <VistaColmena1 />}
       {vista2 === true && <VistaColmena2 />}
       {vista3 === true && <VistaColmena3 />}
+      <div style={{ alignSelf: "end" }}>
+        <FormAtrasButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/colmena");
+          }}
+        />
+        <FormSiguienteButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/estadoGeneral");
+            // handleSubmit(e);
+          }}
+        />
+      </div>
     </Container>
   );
 });

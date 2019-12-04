@@ -26,6 +26,7 @@ import { NavBar } from "./NavBar";
 export const Consejos: React.FC<RouteComponentProps> = (props) => {
     const store = useStores();
 
+    console.log(store)
     const consejos = () => {
      store.updateConsejos(inputsSalientesIntervenciones,
                           inputsSalientesAlimento,
