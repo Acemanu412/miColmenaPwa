@@ -119,13 +119,21 @@ export const Button2 = styled.button`
   flex: 1;
   width: 7rem;
   height: 3rem;
+  border-width: 0.3;
+  outline: none;
 `;
 
 export const Button = styled.button`
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   flex: 1;
   width: 7rem;
   height: 2rem;
+  border-color: #dddddd;
+  border-width: 0.5;
+  outline: none;
+  &:focus {
+    background-color: white;
+  }
 `;
 
 export const Corazon = styled.img.attrs({
@@ -290,4 +298,9 @@ export const Button3 = styled.button`
   flex: 1;
   background-color: transparent;
   height: 3rem;
+  outline: none;
+
+  &:focus {
+    background-color: #ffd24e;
+  }
 `;

@@ -12,7 +12,7 @@ const VistaColmena3 = observer(() => {
       </label>
       <p style={{ padding: "4%" }}>Puedes llenar un formulario sencillo</p>
 
-      <Link to="/colmena">
+      <Link to="/vistaColmena">
         <AgregrarRegistro style={{ padding: "4%" }} />
       </Link>
 

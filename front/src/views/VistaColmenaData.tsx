@@ -153,24 +153,36 @@ const VistaColmenaData = observer(() => {
       </EnlaceContainer>
       <BotonesContainer>
         <Button
-          onClick={() => (setVista1(true), setVista2(false), setVista3(false))}
+          onClick={() => {
+            setVista1(true);
+            setVista2(false);
+            setVista3(false);
+          }}
         >
           <Audio />
         </Button>{" "}
         <Button
-          onClick={() => (setVista1(false), setVista2(true), setVista3(false))}
+          onClick={() => {
+            setVista1(false);
+            setVista2(true);
+            setVista3(false);
+          }}
         >
           <Corazon />
         </Button>
         <Button
-          onClick={() => (setVista1(false), setVista2(false), setVista3(true))}
+          onClick={() => {
+            setVista1(false);
+            setVista2(false);
+            setVista3(true);
+          }}
         >
           <Libro />
         </Button>
       </BotonesContainer>
-      {vista1 == true && <VistaColmena1 />}
-      {vista2 == true && <VistaColmena2 />}
-      {vista3 == true && <VistaColmena3 />}
+      {vista1 === true && <VistaColmena1 />}
+      {vista2 === true && <VistaColmena2 />}
+      {vista3 === true && <VistaColmena3 />}
     </Container>
   );
 });
