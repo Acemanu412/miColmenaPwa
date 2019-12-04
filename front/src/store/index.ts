@@ -1,20 +1,16 @@
 import { types } from "mobx-state-tree";
 
-<<<<<<< HEAD
-=======
 import ConsejosForms from "./ConsejosForms";
->>>>>>> be0f5dbc247074c2e4a5938d1f0e8b25a45f2d09
 import ReinaForms from "./ReinaForms";
+import EstadoGeneral from "./EstadoGeneralForm";
 import User from "./User";
 
 const RootStore = types
   .model("Root", {
-<<<<<<< HEAD
-=======
     consejosForms: types.maybeNull(ConsejosForms),
->>>>>>> be0f5dbc247074c2e4a5938d1f0e8b25a45f2d09
     homeMessage: types.optional(types.string, ""),
     reinaForms: types.maybeNull(ReinaForms),
+    estadoGeneral: types.maybeNull(EstadoGeneral),
     user: types.maybeNull(User),
     warning: types.optional(types.string, ""),
   })
@@ -22,9 +18,11 @@ const RootStore = types
     setUser(user: any) {
       self.user = user;
     },
-    updateConsejos: (inputsIntervenciones: any,
-                     inputsAlimento: any,
-                     inputsCosecha: any) => {
+    updateConsejos: (
+      inputsIntervenciones: any,
+      inputsAlimento: any,
+      inputsCosecha: any
+    ) => {
       const inputsArmados = {
         abejasAgregadas: inputsIntervenciones.abejasAgregadas,
         acarapisosis: inputsIntervenciones.acarapisosis,
@@ -75,6 +73,9 @@ const RootStore = types
     },
     updateWarning: (warning) => {
       self.warning = warning.message;
+    },
+    updateEstadoGeneral: (inputs: any) => {
+      self.estadoGeneral = inputs;
     },
   }));
 

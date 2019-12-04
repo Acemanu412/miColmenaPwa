@@ -4,11 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-size: cover;
-  position: relative;
+  position: absolute;
   top: 5vh;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Header = styled.div`
@@ -45,7 +47,6 @@ export const Saludable2 = styled.div`
 export const SemanaContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1;
   align-items: center;
   font-size: 0.65rem;
 `;
@@ -60,7 +61,6 @@ export const EnlaceContainer = styled.div`
 export const BotonesContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1;
 `;
 
 export const DataContainer = styled.div`
@@ -72,13 +72,11 @@ export const DataRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex: 1;
 `;
 export const DataColumn = styled.div`
   display: flex;
   flex-direction: column;
 
-  flex: 1;
   padding: 2%;
 `;
 export const DataRow2 = styled.div`

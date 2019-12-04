@@ -5,6 +5,11 @@ import { NavBar } from "./NavBar";
 
 import moment from "moment";
 
+import { useForm } from "../hooks/formConsejosHook";
+import { useStores } from "../hooks/useStore";
+
+import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+
 import {
   Container,
   Panel,
@@ -17,7 +22,8 @@ import {
   Microfono,
 } from "../styles/EstadoGeneralS";
 
-const EstadoGeneral = observer(() => {
+const EstadoGeneral = observer((props) => {
+  const store = useStores();
   return (
     <Container>
       <NavBar />
@@ -28,7 +34,11 @@ const EstadoGeneral = observer(() => {
         <label>Fecha</label>
         <DataRow>
           <Calendar />
-          <p>{`${moment().date()} /${moment().month()}  /${moment().year()}`}</p>
+          <input
+            style={{ border: "none", outline: "none" }}
+            type="text"
+            defaultValue={`${moment().date()} /${moment().month()}  /${moment().year()}`}
+          />
         </DataRow>
         <label>Estado de salud</label>
 
@@ -36,19 +46,35 @@ const EstadoGeneral = observer(() => {
           <select
             style={{
               flex: 1,
+              outline: "none",
             }}
           >
-            <option>Saludable</option>
-            <option>Colapsadas</option>
-            <option>Enjambrazón</option>
+            <option>Estado de salud</option>
+            <option value="saludable">Saludable</option>
+            <option value="colapsadas">Colapsadas</option>
+            <option value="enjambrazon">Enjambrazón</option>
           </select>
         </DataRow>
-        <ContainerCentrado>
-          <label>Grabaciones</label>
-          <Microfono />
-          <p style={{ fontSize: "0.8rem" }}>Toca para grabar</p>
-        </ContainerCentrado>
       </DataContainer>
+      <ContainerCentrado>
+        <label style={{ paddingBottom: "10%" }}>Grabaciones</label>
+
+        <Microfono />
+
+        <p
+          style={{
+            paddingTop: "10%",
+          }}
+        >
+          Toca para grabar
+        </p>
+      </ContainerCentrado>
+      <FormAtrasButton
+        onClick={(e) => {
+          e.preventDefault();
+          props.history.push("/vistaColmena");
+        }}
+      />
     </Container>
   );
 });

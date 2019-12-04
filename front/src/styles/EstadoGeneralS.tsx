@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
   background-size: cover;
-  position: relative;
+  position: absolute;
   top: 5vh;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Header = styled.div`
@@ -68,7 +70,7 @@ export const Calendar = styled.img.attrs({
 export const ContainerCentrado = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding: 6%;
   align-items: center;
 `;
 
