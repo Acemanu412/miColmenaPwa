@@ -2,7 +2,6 @@ import MicRecorder from 'mic-recorder-to-mp3'
 import React, { useState, useEffect } from "react";
 import download from "downloadjs"
 
-import { NavBar } from "./NavBar";
 import {
     ImagenGrabacion,
     InputNotas,
@@ -12,6 +11,7 @@ import {
     TextoNotas,
     ImagenContainer,
 } from "../styles/NotasStyles";
+import { NavBar } from "./NavBar";
 
 export const Notas: any = () => {
 
@@ -62,10 +62,6 @@ export const Notas: any = () => {
                 <TextoNotas>Escribe tus notas</TextoNotas>
                 <InputNotas rows={8} cols={30}></InputNotas>
             </NotasContainer>
-        </div >
-    )
-}
-
-
-// https://mobx-state-tree.gitbook.io/docs/concepts/volatile-state#model-volatile
-// https://www.npmjs.com/package/mic-recorder-to-mp3
+        </div>
+    );
+};
