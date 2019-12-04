@@ -1,13 +1,12 @@
+import download from "downloadjs"
 import MicRecorder from 'mic-recorder-to-mp3'
 import React, { useState, useEffect } from "react";
-import download from "downloadjs"
 
 import {
     ImagenGrabacion,
     InputNotas,
     NotasContainer,
     Separador,
-    TextoImagenGrabacion,
     TextoNotas,
     ImagenContainer,
 } from "../styles/NotasStyles";
