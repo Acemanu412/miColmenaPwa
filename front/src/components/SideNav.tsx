@@ -36,7 +36,7 @@ const SideNav: React.FC = (props: any) => {
   return (
     <div style={{ display: "flex" }}>
       <SideNavMenu id="sideNav">
-        <Link to="/colmena" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <LinkDiv>
             {" "}
             <ImgDiv>
