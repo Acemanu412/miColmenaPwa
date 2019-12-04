@@ -1,4 +1,4 @@
-import styled, { StyledFunction } from "styled-components";
+import styled from "styled-components";
 
 import { color } from "../themes";
 
@@ -30,7 +30,7 @@ export const EstadoReinaHuevos = styled.div<IEstadoReinaHuevos>`
 
 export const CelulasReina = styled.div`
     display:flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     height: 30%;

@@ -1,6 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
+
 import ActivarCuenta from "../views/ActivarCuenta";
+import { Consejos } from "../views/Consejos";
 import ForgotPassword from "../views/ForgotPassword";
 import { FormColmenas } from "../views/FormColmenas";
 import { Home } from "../views/Home";
@@ -18,6 +20,7 @@ const App: React.FC = () => {
       <Route exact path="/activarCuenta/:id" component={ActivarCuenta} />
       <Route exact path="/reina" component={Reina} />
       <Route exact path="/colmenas" component={FormColmenas} />
+      <Route exact path="/consejos" component={Consejos} />
     </div>
   );
 };
