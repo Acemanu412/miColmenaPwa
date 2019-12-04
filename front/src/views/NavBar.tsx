@@ -6,7 +6,7 @@ export const NavBar: React.FC = () => {
   return (
     <NavBarContainer id="navBar">
       <SideNav/>
-      <LogoNavBar src={require("../utils/miColmenaLogo@2x.png")} />
+        <LogoNavBar src={require("../utils/miColmenaLogo@2x.png")} />
     </NavBarContainer>
   );
 };

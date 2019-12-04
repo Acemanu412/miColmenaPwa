@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
+import { AgregarColmena } from "../views/AgregarColmena";
 import { Consejos } from "../views/Consejos";
 import ForgotPassword from "../views/ForgotPassword";
 import { Home } from "../views/Home";
@@ -14,6 +15,7 @@ import VistaColmenaData from "../views/VistaColmenaData";
 const App: React.FC = () => {
   return (
     <div>
+      <Route exact path="/agregarColmena" component={AgregarColmena} />
       <Route exact path="/colmenaPrueba" component={VistaColmena1} />
       <Route exact path="/colmena" component={VistaColmenaData} />
       <Route exact path="/" component={Login} />
