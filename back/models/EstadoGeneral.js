@@ -20,10 +20,10 @@ EstadoGeneral.init(
       allowNull: false
     },
 
-    imagen: {
-      type: S.STRING,
-      allowNull: false
-    },
+    // imagen: {
+    //   type: S.STRING,
+    //   allowNull: false
+    // },
   },
   {
     sequelize: db,
