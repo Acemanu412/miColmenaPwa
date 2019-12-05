@@ -1,7 +1,6 @@
 import axios from "axios";
-import download from "downloadjs"
-import MicRecorder from 'mic-recorder-to-mp3'
-import React, { useState, useEffect } from "react";
+import MicRecorder from "mic-recorder-to-mp3";
+import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "../hooks/formHook";
@@ -24,10 +23,10 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     };
 
-    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(notas, {
-        urlNotaAudio: "",
-        notaTexto: "",
-    });
+    const { inputsSalientes,
+            handleInputChange,
+            handleSubmit } = useForm(notas, { notaTexto: "",
+                                              urlNotaAudio: ""});
 
     const recorder = new MicRecorder({
         bitRate: 128,
@@ -37,32 +36,28 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     function startRecording() {
         grabando = true;
-        recorder.start().then((e) => {
-        }).catch((e) => {
-            console.error(e);
+        recorder.start()
+        .then((e) => undefined)
+        .catch((e) => {
+            throw e;
         });
     }
 
     function stopRecording() {
         grabando = false;
         recorder.stop().getMp3().then(([buffer, blob]) => {
-            const audio = new File(buffer, 'music.mp3', {
+            const audio = new File(buffer, "music.mp3", {
+                lastModified: Date.now(),
                 type: blob.type,
-                lastModified: Date.now()
             });
             const formData = new FormData();
             formData.append("audio", audio);
             const config = {
-                headers: { "content-type": "multipart/form-data" }
+                headers: { "content-type": "multipart/form-data" },
             };
             axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`, formData, config);
-
-            // const player = new Audio(URL.createObjectURL(audio));
-            // player.play()
-            //download(audio, "/user/audio.mp3", "audio/mp3");
-
         }).catch((e) => {
-            console.error(e);
+            throw e;
         });
     }
 
@@ -72,7 +67,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
             <NotasContainer>
                 <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
                 <div id="divGrabando" className="noGrabando" onClick={() => {
-                    let claseGrabando = document.querySelector("#divGrabando")
+                    const claseGrabando = document.querySelector("#divGrabando");
                     grabando ? stopRecording() : startRecording();
                     return claseGrabando !== null && grabando
                         ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
