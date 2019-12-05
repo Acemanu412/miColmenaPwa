@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Input } from "../components/Input";
 import { color } from "../themes";
 
-const { amarillo, negro } = color;
+const { amarillo } = color;
 
 export const StyledForm = styled.form`
     padding: 0.5rem;

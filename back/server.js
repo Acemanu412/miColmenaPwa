@@ -13,6 +13,7 @@ app.use(function (req, res, next) {
   let allowedOrigins = [`http://${process.env.IP}:3000`, `http://localhost:3000`];
   var origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
+    console.log("allowheader", origin);
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
   res.header('Access-Control-Allow-Credentials', true);
@@ -31,10 +32,6 @@ app.use(
     secret: "abeja",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-      sameSite: "None",
-      secure: true
-    }
   })
 );
 app.use(passport.initialize());

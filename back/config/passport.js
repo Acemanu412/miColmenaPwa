@@ -28,10 +28,12 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
+  console.log("serialize user");
   done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
+  console.log("Deserialize user");
   User.findByPk(id).then((user) => done(null, user));
 });
 

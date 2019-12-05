@@ -80,6 +80,7 @@ router.get("/activarCuenta/:id", (req, res, next) => {
 });
 
 router.get("/logout", (req,res) => {
+  console.log(req.user);
   req.logout();
   res.send(req.user);
 })
