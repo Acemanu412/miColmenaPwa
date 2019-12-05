@@ -13,20 +13,18 @@ import {
   BoldText,
   CheckboxContainer,
   CheckboxFormColmenas,
-  ContentButton,
   ContentText,
   FormColmenasContainer,
   Header,
   Intervenciones,
-  RangeSliderColmenas,
   Panel,
+  RangeSliderColmenas,
   Text,
   TextCantidad,
   TextGray,
 } from "../styles/FormColmenasStyles";
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
-  const store = useStores();
 
   const formColmenas = () => {
     // store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
@@ -48,13 +46,13 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   });
   return (
     <div>
-   <NavBar />
+      <NavBar />
 
-  <div>
-    <Header>
-      <Panel /><BoldText>Colmena</BoldText>
-    </Header>
-  </div>
+      <div>
+        <Header>
+          <Panel /><BoldText>Colmena</BoldText>
+        </Header>
+      </div>
       <FormColmenasContainer>
 
         <RangeSliderColmenas>
@@ -153,7 +151,6 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         <div>
           <TextCantidad style={{ justifyContent: "space-around" }}>{inputsSalientes.numeroComidas}/5</TextCantidad>
         </div>
-
 
         <TextGray>Problemas de salud: Toca las que correspondan</TextGray>
 
@@ -328,27 +325,27 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
           </CheckboxContainer>
         </Intervenciones>
 
-          <TextCantidad>
-          </TextCantidad>
+        <TextCantidad>
+        </TextCantidad>
 
-          <TextCantidad>
-          </TextCantidad>
+        <TextCantidad>
+        </TextCantidad>
 
-          <div style={{display: "flex", justifyContent: "space-between"}}>
-            <FormAtrasButton
-              onClick={(e) => {
-                e.preventDefault();
-                props.history.push("/estadoGeneral");
-              }}
-            />
-            <FormSiguienteButton
-              onClick={(e) => {
-                e.preventDefault();
-                props.history.push("/reina");
-                handleSubmit(e);
-              }}
-            />
-          </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/estadoGeneral");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/reina");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </FormColmenasContainer>
     </div>
   );

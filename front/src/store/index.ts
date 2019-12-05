@@ -1,18 +1,22 @@
 import { types } from "mobx-state-tree";
 
+import AgregarColmenaForms from "./AgregarColmena";
 import ColmenasForms from "./ColmenasForms";
 import ConsejosForms from "./ConsejosForms";
 import EstadoGeneral from "./EstadoGeneralForm";
+import Media from "./Media";
 import NotasForms from "./NotasForms";
 import ReinaForms from "./ReinaForms";
 import User from "./User";
 
 const RootStore = types
   .model("Root", {
+    agregarColmenaForms: types.maybeNull(AgregarColmenaForms),
     colmenasForm: types.maybeNull(ColmenasForms),
     consejosForms: types.maybeNull(ConsejosForms),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
+    media: types.maybeNull(Media),
     notasForms: types.maybeNull(NotasForms),
     reinaForms: types.maybeNull(ReinaForms),
     user: types.maybeNull(User),
@@ -21,6 +25,21 @@ const RootStore = types
   .actions((self) => ({
     setUser(user: any) {
       self.user = user;
+    },
+    setMedia(media: any) {
+      self.media = media;
+    },
+    updateAgregarColmenaForm: (inputs: any) => {
+      console.log(inputs)
+      const inputsArmados = {
+        direccionColmenas: inputs.direccionColmena,
+        especieAbejas: inputs.especieAbejas,
+        nombreColmena: inputs.nombreColmena,
+        tipoColmena: inputs.tipoColmena,
+      };
+      console.log(inputsArmados)
+      self.agregarColmenaForms = inputsArmados;
+
     },
     updateColmenasForm: (inputs: any, inputsIntervenciones: any) => {
       const inputsArmados = {
