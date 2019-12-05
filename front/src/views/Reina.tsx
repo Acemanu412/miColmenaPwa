@@ -115,19 +115,21 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
             </ToggleSwitchsReina>
           )}
         </CelulasReina>
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/home");
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/consejos");
-            handleSubmit(e);
-          }}
-        />
+        <div style={{display: "flex", justifyContent: "space-between"}}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/colmenas");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/consejos");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </ReinaContainer>
     </div>
   );
