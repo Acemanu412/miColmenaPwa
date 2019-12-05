@@ -62,19 +62,21 @@ const EstadoGeneral = observer((props) => {
           Toca para grabar
         </p>
       </ContainerCentrado>
-      <FormAtrasButton
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push("/vistaColmena");
-        }}
-      />
-      <FormSiguienteButton
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push("/colmenas");
-          // handleSubmit(e);
-        }}
-      />
+      <div style={{display: "flex", justifyContent: "space-between"}}>
+        <FormAtrasButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/vistaColmena");
+          }}
+        />
+        <FormSiguienteButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/colmenas");
+            // handleSubmit(e);
+          }}
+        />
+      </div>
     </Container>
   );
 });

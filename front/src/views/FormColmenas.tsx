@@ -21,7 +21,6 @@ import {
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   const store = useStores();
-  console.log(store);
 
   const formColmenas = () => {
     store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
@@ -34,12 +33,11 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
     handleInputChange,
     handleSubmit,
   }: any = useFormColmenas(formColmenas, {
-    calidadCrias: 0,
-    comportamiento: 0,
-    numeroComidas: 0,
-    numCuadroTotalesMiel: 0,
-    poblacion: 0,
-  });
+                                          calidadCrias: 0,
+                                          comportamiento: 0,
+                                          numCuadroTotalesMiel: 0,
+                                          numeroComidas: 0,
+                                          poblacion: 0 });
 
   return (
     <div>
@@ -263,23 +261,21 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
             />
           </CheckboxContainer>
         </Intervenciones>
-
-        <h1>hola</h1>
-
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/home");
-            console.log(props);
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/reina");
-            handleSubmit(e);
-          }}
-        />
+          <div style={{display: "flex", justifyContent: "space-between"}}>
+            <FormAtrasButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/estadoGeneral");
+              }}
+            />
+            <FormSiguienteButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/reina");
+                handleSubmit(e);
+              }}
+            />
+          </div>
       </FormColmenasContainer>
     </div>
   );
