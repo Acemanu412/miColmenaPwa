@@ -3,16 +3,15 @@ import styled from "styled-components";
 import { Input } from "../components/Input";
 import { color } from "../themes";
 
-const { amarillo, blanco } = color;
+const { amarillo, blanco, azul } = color;
 
 export const CheckboxContainer = styled.label`
-    display: block;
     position: relative;
-    top: -6px;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
+    display: flex;
+    justify-content:flex-start;
+    margin-left: 1rem;
+    width: 40px;
+    height: 20px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -33,7 +32,7 @@ export const CheckboxContainer = styled.label`
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
-    }    
+    }
   `;
 
 export const CheckboxInput = styled(Input)`
@@ -48,9 +47,9 @@ export const Checkmark = styled.span`
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
-    border: 0.1rem solid ${amarillo}
+    height: 30px;
+    width: 30px;
+    border: 0.1rem solid ${azul}
     background-color: ${blanco};
     :after {
         content: "";

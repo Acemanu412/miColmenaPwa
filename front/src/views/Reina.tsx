@@ -11,12 +11,14 @@ import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   CelulasReina,
-  CheckboxContainer,
+  ReinaCheckboxContainer,
   CheckboxesReina,
   EstadoReinaHuevos,
   RangeSlidersReina,
   RangeSliderText,
   ReinaContainer,
+  ReinaGreyText,
+  ReinaGreyTextCheckBox,
   ReinaText,
   ToggleSwitchContainer,
   ToggleSwitchsReina,
@@ -44,7 +46,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
       <NavBar />
       <ReinaContainer>
         <EstadoReinaHuevos reinaPresente={inputsSalientes.reinaPresente}>
-          <ReinaText>Población de Colmena</ReinaText>
+          <ReinaText>Población</ReinaText>
           <ToggleSwitchsReina>
             <ToggleSwitchContainer>
               <ToggleSwitch
@@ -55,32 +57,32 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
                   inputsSalientes.marcada = false;
                 }}
               />
-              <strong>Reina Presente</strong>
+              <ReinaGreyText>Reina Presente</ReinaGreyText>
             </ToggleSwitchContainer>
             <ToggleSwitchContainer>
               <ToggleSwitch
                 name="huevosVistos"
                 handleInputChange={handleInputChange}
               />
-              <strong>Huevos Vistos</strong>
+              <ReinaGreyText>Huevos Vistos</ReinaGreyText>
             </ToggleSwitchContainer>
           </ToggleSwitchsReina>
           {inputsSalientes.reinaPresente && (
             <CheckboxesReina>
-              <CheckboxContainer>
+              <ReinaCheckboxContainer>
                 <Checkbox
                   name="alasRotas"
                   handleInputChange={handleInputChange}
                 />
-                <strong>Alas Rotas</strong>
-              </CheckboxContainer>
-              <CheckboxContainer>
+                <ReinaGreyTextCheckBox>Alas Rotas</ReinaGreyTextCheckBox>
+              </ReinaCheckboxContainer>
+              <ReinaCheckboxContainer>
                 <Checkbox
                   name="marcada"
                   handleInputChange={handleInputChange}
                 />
-                <strong>Marcada</strong>
-              </CheckboxContainer>
+                <ReinaGreyTextCheckBox>Marcada</ReinaGreyTextCheckBox>
+              </ReinaCheckboxContainer>
             </CheckboxesReina>
           )}
         </EstadoReinaHuevos>
@@ -103,14 +105,14 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
                   name="removed"
                   handleInputChange={handleInputChange}
                 />
-                <strong>Removed</strong>
+                <ReinaGreyText>Removed</ReinaGreyText>
               </ToggleSwitchContainer>
               <ToggleSwitchContainer>
                 <ToggleSwitch
                   name="swarm"
                   handleInputChange={handleInputChange}
                 />
-                <strong>Swarm</strong>
+                <ReinaGreyText>Swarm</ReinaGreyText>
               </ToggleSwitchContainer>
             </ToggleSwitchsReina>
           )}

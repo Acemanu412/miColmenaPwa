@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 import { color } from "../themes";
 
-const { amarillo, negro } = color;
+const { amarillo, negro, gris } = color;
 
 export const ReinaContainer = styled.form`
     display:flex;
     flex-direction: column;
     font-size: 10px;
     width: 100%;
-    height:100vh
-    padding: 3.5rem 1rem;
+    height: 100vh
+    padding-top: 9vh;
+    padding-left: 1vw;
+    padding-right: 2rem;
 `;
 
 interface IEstadoReinaHuevos {
@@ -63,15 +65,13 @@ export const RangeSlidersReina = styled.div`
 
 export const ToggleSwitchContainer = styled.div`
     display:flex;
-    justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
 `;
 
-export const CheckboxContainer = styled.div`
+export const ReinaCheckboxContainer = styled.div`
     display:flex;
-    justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
@@ -84,12 +84,21 @@ export const RangeSliderText = styled.div`
     `;
 
 export const ReinaText = styled.span`
-    font-weight: bold;
+    font-weight: 500;
     color: ${negro};
     font-size:0.9rem;
-    height: 2rem;
+    height: 1.5rem;
     width: 100%;
     background-color:white
     padding-top: 0.5rem;
     text-align:left;
+`;
+
+export const ReinaGreyText = styled.strong`
+    color: ${gris};
+`;
+
+export const ReinaGreyTextCheckBox = styled.strong`
+    display: flex;
+    color: ${gris};
 `;

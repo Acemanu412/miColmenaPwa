@@ -26,11 +26,11 @@ export const SliderInput = styled(Input)`
   ::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
+    width: 20px; /* Set a specific slider handle width */
     height: 25px;
     border: 5px solid ${amarillo};
     border-radius: 50%;
-    height: 25px; /* Slider handle height */
+    height: 20px; /* Slider handle height */
     background: ${blanco};
     cursor: pointer; /* Cursor on hover */
   }
