@@ -5,7 +5,7 @@ export const Container = styled.form`
   flex-direction: column;
   background-size: cover;
   position: absolute;
-  top: 5vh;
+  top: 9vh;
   left: 0;
   right: 0;
   bottom: 0;
@@ -19,9 +19,7 @@ flex-direction:row;
 align-items:center;
 background-color: #F9F9F9
 height: 10vh;
-position: relative;
-top: 4vh;
-padding-left:3%;
+
 
 
 `;
@@ -41,11 +39,7 @@ export const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-size: cover;
-  position: relative;
-  top: 4vh;
-  left: 0;
-  right: 0;
-  bottom: 0;
+
   padding: 6%;
 `;
 

@@ -269,7 +269,7 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         <FormAtrasButton
           onClick={(e) => {
             e.preventDefault();
-            props.history.push("/home");
+            props.history.push("/estadoGeneral");
             console.log(props);
           }}
         />
