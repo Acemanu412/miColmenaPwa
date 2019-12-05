@@ -1,29 +1,22 @@
-import React from "react";
 import { observer } from "mobx-react";
-
-import { NavBar } from "./NavBar";
-
 import moment from "moment";
-
-import { useForm } from "../hooks/formConsejosHook";
-import { useStores } from "../hooks/useStore";
-
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+import React from "react";
 
 import {
-  Container,
-  Panel,
-  Header,
   BoldText,
+  Calendar,
+  Container,
+  ContainerCentrado,
   DataContainer,
   DataRow,
-  Calendar,
-  ContainerCentrado,
+  Header,
   Microfono,
+  Panel,
 } from "../styles/EstadoGeneralS";
+import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+import { NavBar } from "./NavBar";
 
 const EstadoGeneral = observer((props) => {
-  const store = useStores();
   return (
     <Container>
       <NavBar />
@@ -73,6 +66,13 @@ const EstadoGeneral = observer((props) => {
         onClick={(e) => {
           e.preventDefault();
           props.history.push("/vistaColmena");
+        }}
+      />
+      <FormSiguienteButton
+        onClick={(e) => {
+          e.preventDefault();
+          props.history.push("/colmenas");
+          // handleSubmit(e);
         }}
       />
     </Container>

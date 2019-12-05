@@ -1,16 +1,16 @@
 import React from "react";
-import {
-
-  ColmenasContainer,
-  ImageColmenasContainer1,
-  ImageColmenasContainer2,
-  DataColmenaContainer,
-  StyledBotonAgregarColmenas,
-  ButtonColmenasContainer,
-} from "../styles/ColmenasStyles";
 import { Link } from "react-router-dom";
 
-export const Colmenas: React.FC = () => {
+import {
+  ButtonColmenasContainer,
+  ColmenasContainer,
+  DataColmenaContainer,
+  ImageColmenasContainer1,
+  ImageColmenasContainer2,
+  StyledBotonAgregarColmenas,
+} from "../styles/ColmenasStyles";
+
+export const Colmenas: React.FC = (props) => {
   return (
     <ColmenasContainer>
 
@@ -34,7 +34,11 @@ export const Colmenas: React.FC = () => {
       </Link>
 
       <ButtonColmenasContainer>
-        <StyledBotonAgregarColmenas text="Agregar Colmena" />
+        <Link
+          to="/agregarColmena"
+        >
+          <StyledBotonAgregarColmenas text="Agregar Colmena" />
+        </Link>
       </ButtonColmenasContainer>
 
     </ColmenasContainer>
