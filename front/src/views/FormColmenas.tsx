@@ -329,18 +329,9 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         </Intervenciones>
 
           <TextCantidad>
-            <FormAtrasButton onClick={(e) => {
-              e.preventDefault();
-              props.history.push("/colmena");
-            }} />
           </TextCantidad>
 
           <TextCantidad>
-            <FormSiguienteButton onClick={(e) => {
-              e.preventDefault();
-              props.history.push("/reina");
-              handleSubmit(e);
-            }} />
           </TextCantidad>
 
           <div style={{display: "flex", justifyContent: "space-between"}}>
