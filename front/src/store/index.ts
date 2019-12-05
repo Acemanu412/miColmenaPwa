@@ -30,14 +30,12 @@ const RootStore = types
       self.media = media;
     },
     updateAgregarColmenaForm: (inputs: any) => {
-      console.log(inputs)
       const inputsArmados = {
         direccionColmenas: inputs.direccionColmena,
         especieAbejas: inputs.especieAbejas,
         nombreColmena: inputs.nombreColmena,
         tipoColmena: inputs.tipoColmena,
       };
-      console.log(inputsArmados)
       self.agregarColmenaForms = inputsArmados;
 
     },
