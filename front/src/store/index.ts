@@ -46,6 +46,8 @@ const RootStore = types
         calidadCrias: inputs.calidadCrias,
         comportamiento: inputs.comportamiento,
         numeroComidas: inputs.numeroComidas,
+        numeroCuadrosTotalesCrias: inputs.numeroCuadrosTotalesCrias,
+        numeroCuadrosTotalesMiel: inputs.numeroCuadrosTotalesMiel,
         poblacion: inputs.poblacion,
       };
 

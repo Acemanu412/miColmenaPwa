@@ -27,8 +27,6 @@ import { NavBar } from "./NavBar";
 
 export const Consejos: React.FC<RouteComponentProps> = (props) => {
     const store = useStores();
-
-    console.log(store);
     const consejos = () => {
         store.updateConsejos(inputsSalientesIntervenciones,
             inputsSalientesAlimento,
@@ -313,17 +311,19 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             <LabelUnidad>Unidades</LabelUnidad>
                         </UnidadCosecha>
                     </CosechaContainer>
-                    <FormAtrasButton onClick={(e) => {
-                        e.preventDefault();
-                        props.history.push("/reina");
-                    }} />
-                    <FormSiguienteButton onClick={(e) => {
-                        e.preventDefault();
-                        props.history.push("/notas");
-                        handleSubmit(e);
-                    }} />
                 </Cosechas>
             </ConsejosContainer>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <FormAtrasButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/reina");
+                }} />
+                <FormSiguienteButton onClick={(e) => {
+                    e.preventDefault();
+                    props.history.push("/notas");
+                    handleSubmit(e);
+                }} />
+            </div>
         </div>
     );
 };

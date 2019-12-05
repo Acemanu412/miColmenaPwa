@@ -31,10 +31,12 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         store.updateNotasForm(inputsSalientes);
     };
 
-    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(notas, {
-        notaTexto: "",
-        urlNotaAudio: "",
-    });
+    const { inputsSalientes,
+        handleInputChange,
+        handleSubmit } = useForm(notas, {
+            notaTexto: "",
+            urlNotaAudio: "",
+        });
 
     const recorder = new MicRecorder({
         bitRate: 128,
@@ -44,10 +46,10 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     function startRecording() {
         grabando = true;
-        recorder.start().then((e) => {
-        }).catch((e) => {
-            console.error(e);
-        });
+        recorder.start()
+            .catch((e) => {
+                throw e;
+            });
     }
 
     async function stopRecording() {
@@ -56,36 +58,34 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         const audioRec = new File(buffer, "music.mp3", {
             lastModified: Date.now(),
             type: blob.type,
-        })
+        });
         setAudio(audioRec);
 
         const player = new Audio(URL.createObjectURL(audioRec));
-        player.play()
+        player.play();
     }
 
     return (
         <div>
             <NavBar />
             <NotasContainer>
-                <form action="POST" onSubmit={handleSubmit}>
-                    <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
-                    <div id="divGrabando" className="noGrabando" onClick={() => {
-                        const claseGrabando = document.querySelector("#divGrabando");
-                        grabando ? stopRecording() : startRecording();
-                        return claseGrabando !== null && grabando
-                            ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
-                            : (claseGrabando.classList.remove("Grabando"), claseGrabando.classList.add("noGrabando"));
+                <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
+                <div id="divGrabando" className="noGrabando" onClick={() => {
+                    const claseGrabando = document.querySelector("#divGrabando");
+                    grabando ? stopRecording() : startRecording();
+                    return claseGrabando !== null && grabando
+                        ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
+                        : (claseGrabando.classList.remove("Grabando"), claseGrabando.classList.add("noGrabando"));
 
-                    }
-                    }>
-                        <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
-                    </div>
-                    <Separador />
-                    <TextoNotas>Escribe tus notas</TextoNotas>
-                    <InputNotas rows={8} cols={30} name={inputsSalientes.notaTexto}
-                        onChange={handleInputChange}></InputNotas>
-                </form>
-
+                }
+                }>
+                    <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
+                </div>
+                <Separador />
+                <TextoNotas>Escribe tus notas</TextoNotas>
+                <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+            </NotasContainer>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <FormAtrasButton onClick={(e) => {
                     e.preventDefault();
                     props.history.push("/consejos");
@@ -95,7 +95,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                     props.history.push("/vistaColmena");
                     handleSubmit(e);
                 }} />
-            </NotasContainer>
+            </div>
         </div >
     );
 };
