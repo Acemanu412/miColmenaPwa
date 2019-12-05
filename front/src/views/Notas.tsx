@@ -53,13 +53,14 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
     async function stopRecording() {
         grabando = false;
         const [buffer, blob] = await recorder.stop().getMp3();
-        setAudio(new File(buffer, "music.mp3", {
+        const audioRec = new File(buffer, "music.mp3", {
             lastModified: Date.now(),
             type: blob.type,
-        }));
+        })
+        setAudio(audioRec);
 
-        // const player = new Audio(URL.createObjectURL(audio));
-        // player.play()
+        const player = new Audio(URL.createObjectURL(audioRec));
+        player.play()
     }
 
     return (
@@ -91,7 +92,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                 }} />
                 <FormSubmitButton onClick={(e) => {
                     e.preventDefault();
-                    props.history.push("/colmena");
+                    props.history.push("/vistaColmena");
                     handleSubmit(e);
                 }} />
             </NotasContainer>

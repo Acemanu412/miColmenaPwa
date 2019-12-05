@@ -10,7 +10,6 @@ import User from "./User";
 const RootStore = types
   .model("Root", {
     colmenasForm: types.maybeNull(ColmenasForms),
-    colmenasFormCheckbox: types.maybeNull(ColmenasFormsCheckbox),
     consejosForms: types.maybeNull(ConsejosForms),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
