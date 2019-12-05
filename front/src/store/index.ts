@@ -11,10 +11,10 @@ const RootStore = types
   .model("Root", {
     colmenasForm: types.maybeNull(ColmenasForms),
     consejosForms: types.maybeNull(ConsejosForms),
+    estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
     notasForms: types.maybeNull(NotasForms),
     reinaForms: types.maybeNull(ReinaForms),
-    estadoGeneral: types.maybeNull(EstadoGeneral),
     user: types.maybeNull(User),
     warning: types.optional(types.string, ""),
   })
@@ -22,11 +22,10 @@ const RootStore = types
     setUser(user) {
       self.user = user;
     },
-    updateColmenasForm: (inputs, inputsIntervenciones) => {
-      console.log(inputs, "-----", inputsIntervenciones);
+    updateColmenasForm: (inputs) => {
+      console.log(inputs, "-----");
       const inputsArmados = {
         ...inputs,
-        ...inputsIntervenciones,
       };
       self.colmenasForm = inputsArmados;
     },

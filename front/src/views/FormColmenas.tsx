@@ -10,40 +10,50 @@ import { useStores } from "../hooks/useStore";
 import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
 import {
+  BoldText,
   CheckboxContainer,
   CheckboxFormColmenas,
-  CheckboxText,
+  ContentButton,
+  ContentText,
   FormColmenasContainer,
+  Header,
   Intervenciones,
   RangeSliderColmenas,
+  Panel,
   Text,
+  TextCantidad,
+  TextGray,
 } from "../styles/FormColmenasStyles";
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   const store = useStores();
-  console.log(store);
 
   const formColmenas = () => {
-    store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
+    store.updateColmenasForm(inputsSalientes);
   };
 
   const {
-    handleInputIntervencionesChange,
-    inputsSalientesIntervenciones,
     inputsSalientes,
     handleInputChange,
     handleSubmit,
   }: any = useFormColmenas(formColmenas, {
-    calidadCrias: 0,
-    comportamiento: 0,
-    numeroComidas: 0,
-    numCuadroTotalesMiel: 0,
-    poblacion: 0,
+    calidadCrias: "0",
+    comportamiento: "0",
+    numeroComidas: "0",
+    numeroCuadrosTotalesCrias: "0",
+    numeroCuadrosTotalesMiel: "0",
+    poblacion: "0",
   });
-
   return (
     <div>
       <NavBar />
+
+      <div>
+        <Header>
+          <Panel />
+          <BoldText>Colmena</BoldText>
+        </Header>
+      </div>
       <FormColmenasContainer>
         <RangeSliderColmenas>
           <Text>Poblacion</Text>
@@ -55,6 +65,11 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
             handleInputChange={handleInputChange}
           ></RangeSlider>
         </RangeSliderColmenas>
+        <ContentText>
+          <TextGray>Vacia</TextGray>
+          <TextCantidad>{inputsSalientes.poblacion}/5</TextCantidad>
+          <TextGray>Llena</TextGray>
+        </ContentText>
 
         <RangeSliderColmenas>
           <Text>Comportamiento</Text>
@@ -66,6 +81,11 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
             handleInputChange={handleInputChange}
           ></RangeSlider>
         </RangeSliderColmenas>
+        <ContentText>
+          <TextGray>Calmo</TextGray>
+          <TextCantidad>{inputsSalientes.comportamiento}/5</TextCantidad>
+          <TextGray>Agresivo</TextGray>
+        </ContentText>
 
         <RangeSliderColmenas>
           <Text>Calidad crias</Text>
@@ -77,209 +97,235 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
             handleInputChange={handleInputChange}
           ></RangeSlider>
         </RangeSliderColmenas>
+        <ContentText>
+          <TextGray>Sin crias</TextGray>
+          <TextCantidad>{inputsSalientes.calidadCrias}/5</TextCantidad>
+          <TextGray>Crias estables</TextGray>
+        </ContentText>
+
+        <RangeSliderColmenas>
+          <Text>Numero de cuadros totales</Text>
+          <RangeSlider
+            min="0"
+            max="40"
+            value={inputsSalientes.numeroCuadrosTotalesCrias}
+            name="numeroCuadrosTotalesCrias"
+            handleInputChange={handleInputChange}
+          ></RangeSlider>
+        </RangeSliderColmenas>
+        <ContentText>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <TextGray>Crias:</TextGray>
+            <TextCantidad>
+              {inputsSalientes.numeroCuadrosTotalesCrias}
+            </TextCantidad>
+          </div>
+          <TextGray>Max.40</TextGray>
+        </ContentText>
+
+        <RangeSliderColmenas>
+          <RangeSlider
+            min="0"
+            max="40"
+            value={inputsSalientes.numeroCuadrosTotalesMiel}
+            name="numeroCuadrosTotalesMiel"
+            handleInputChange={handleInputChange}
+          ></RangeSlider>
+        </RangeSliderColmenas>
+        <ContentText>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <TextGray>Miel:</TextGray>
+            <TextCantidad>
+              {inputsSalientes.numeroCuadrosTotalesMiel}
+            </TextCantidad>
+          </div>
+          <TextGray>Max.40</TextGray>
+        </ContentText>
 
         <RangeSliderColmenas>
           <Text>Numero de comidas</Text>
           <RangeSlider
             min="0"
-            max="5"
+            max="40"
             value={inputsSalientes.numeroComidas}
             name="numeroComidas"
             handleInputChange={handleInputChange}
           ></RangeSlider>
         </RangeSliderColmenas>
+        <div>
+          <TextCantidad style={{ justifyContent: "space-around" }}>
+            {inputsSalientes.numeroComidas}/5
+          </TextCantidad>
+        </div>
 
-        <CheckboxText>
-          Problemas de salud: Toca las que correspondan
-        </CheckboxText>
+        <TextGray>Problemas de salud: Toca las que correspondan</TextGray>
 
         <Intervenciones>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.numeroDeComidas}
-          >
+          <CheckboxContainer activo={inputsSalientes.numeroDeComidas}>
             Numero de comidas
             <CheckboxFormColmenas
               type="checkbox"
               name="numeroDeComidas"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.pupaComidas}>
+          <CheckboxContainer activo={inputsSalientes.pupaComidas}>
             Pupa Comidas
             <CheckboxFormColmenas
               type="checkbox"
               name="pupaComidas"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.alasDeformadas}
-          >
+          <CheckboxContainer activo={inputsSalientes.alasDeformadas}>
             Alas deformadas
             <CheckboxFormColmenas
               type="checkbox"
               name="alasDeformadas"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.varroas}>
+          <CheckboxContainer activo={inputsSalientes.varroas}>
             Varroas
             <CheckboxFormColmenas
               type="checkbox"
               name="varroas"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.polillasDeCera}
-          >
+          <CheckboxContainer activo={inputsSalientes.polillasDeCera}>
             Polillas de cera
             <CheckboxFormColmenas
               type="checkbox"
               name="polillasDeCera"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.acarapisosis}
-          >
+          <CheckboxContainer activo={inputsSalientes.acarapisosis}>
             Acarapisosis
             <CheckboxFormColmenas
               type="checkbox"
               name="acarapisosis"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.pupasPicadas}
-          >
+          <CheckboxContainer activo={inputsSalientes.pupasPicadas}>
             Pupas picadas
             <CheckboxFormColmenas
               type="checkbox"
               name="pupasPicadas"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.acarosBarroa}
-          >
+          <CheckboxContainer activo={inputsSalientes.acarosBarroa}>
             Acaros Barroa
             <CheckboxFormColmenas
               type="checkbox"
               name="acarosBarroa"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.mesesDeCera}>
+          <CheckboxContainer activo={inputsSalientes.mesesDeCera}>
             Meses de cera
             <CheckboxFormColmenas
               type="checkbox"
               name="mesesDeCera"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.nosema}>
+          <CheckboxContainer activo={inputsSalientes.nosema}>
             Nosema
             <CheckboxFormColmenas
               type="checkbox"
               name="nosema"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.paralisisCronica}
-          >
+          <CheckboxContainer activo={inputsSalientes.paralisisCronica}>
             Paralisis cronica
             <CheckboxFormColmenas
               type="checkbox"
               name="paralisisCronica"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.escarabajos}>
+          <CheckboxContainer activo={inputsSalientes.escarabajos}>
             Escarabajos
             <CheckboxFormColmenas
               type="checkbox"
               name="escarabajos"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.tropilaelapsosis}
-          >
+          <CheckboxContainer activo={inputsSalientes.tropilaelapsosis}>
             Tropila- elapsosis
             <CheckboxFormColmenas
               type="checkbox"
               name="tropilaelapsosis"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.criaDePiedra}
-          >
+          <CheckboxContainer activo={inputsSalientes.criaDePiedra}>
             Cria de piedra
             <CheckboxFormColmenas
               type="checkbox"
               name="criaDePiedra"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.criaCalcarea}
-          >
+          <CheckboxContainer activo={inputsSalientes.criaCalcarea}>
             Cria calcarea
             <CheckboxFormColmenas
               type="checkbox"
               name="criaCalcarea"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientesIntervenciones.moho}>
+          <CheckboxContainer activo={inputsSalientes.moho}>
             Moho
             <CheckboxFormColmenas
               type="checkbox"
               name="moho"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.loqueAmericana}
-          >
+          <CheckboxContainer activo={inputsSalientes.loqueAmericana}>
             Loque Americana
             <CheckboxFormColmenas
               type="checkbox"
               name="loqueAmericana"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
-          <CheckboxContainer
-            activo={inputsSalientesIntervenciones.loqueEuropea}
-          >
+          <CheckboxContainer activo={inputsSalientes.loqueEuropea}>
             Loque Europea
             <CheckboxFormColmenas
               type="checkbox"
               name="loqueEuropea"
-              onChange={handleInputIntervencionesChange}
+              onChange={handleInputChange}
             />
           </CheckboxContainer>
         </Intervenciones>
 
-        <h1>hola</h1>
+        <TextCantidad></TextCantidad>
 
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/estadoGeneral");
-            console.log(props);
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/reina");
-            handleSubmit(e);
-          }}
-        />
+        <TextCantidad></TextCantidad>
+
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/estadoGeneral");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/reina");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </FormColmenasContainer>
     </div>
   );

@@ -10,7 +10,7 @@ export const Container = styled.form`
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const Header = styled.div`

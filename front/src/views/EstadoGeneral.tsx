@@ -135,20 +135,29 @@ const EstadoGeneral = observer((props) => {
           <Microfono />
         </div>
       </ContainerCentrado>
-      <FormAtrasButton
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push("/vistaColmena");
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
         }}
-      />
-      <FormSiguienteButton
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push("/colmenas");
-          handleSubmit(e);
-        }}
-      />
+      >
+        <FormAtrasButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/vistaColmena");
+          }}
+        />
+        <FormSiguienteButton
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/colmenas");
+            handleSubmit(e);
+          }}
+        />
+      </div>
     </Container>
   );
 });
+
 export default EstadoGeneral;

@@ -80,16 +80,18 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                 <Separador />
                 <TextoNotas>Escribe tus notas</TextoNotas>
                 <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
-                <FormAtrasButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/consejos");
-                }} />
-                <FormSubmitButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/vistaColmena");
-                    handleSubmit(e);
-                }} />
             </NotasContainer>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <FormAtrasButton onClick={(e) => {
+                        e.preventDefault();
+                        props.history.push("/consejos");
+                    }} />
+                    <FormSubmitButton onClick={(e) => {
+                        e.preventDefault();
+                        props.history.push("/vistaColmena");
+                        handleSubmit(e);
+                    }} />
+            </div>
         </div >
     );
 };
