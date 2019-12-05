@@ -7,19 +7,19 @@ import { RangeSlider } from "../components/RangeSlider";
 import { useFormColmenas } from "../hooks/formColmenasHook";
 
 import { useStores } from "../hooks/useStore";
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+import { FormAtrasButton,
+         FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   BoldText,
   CheckboxContainer,
   CheckboxFormColmenas,
-  ContentButton,
   ContentText,
   FormColmenasContainer,
   Header,
   Intervenciones,
-  RangeSliderColmenas,
   Panel,
+  RangeSliderColmenas,
   Text,
   TextCantidad,
   TextGray,
@@ -153,7 +153,6 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         <div>
           <TextCantidad style={{ justifyContent: "space-around" }}>{inputsSalientes.numeroComidas}/5</TextCantidad>
         </div>
-
 
         <TextGray>Problemas de salud: Toca las que correspondan</TextGray>
 
