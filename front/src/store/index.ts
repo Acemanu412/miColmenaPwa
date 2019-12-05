@@ -55,7 +55,7 @@ const RootStore = types
     updateConsejos: (
       inputsIntervenciones: any,
       inputsAlimento: any,
-      inputsCosecha: any
+      inputsCosecha: any,
     ) => {
       const inputsArmados = {
         abejasAgregadas: inputsIntervenciones.abejasAgregadas,
