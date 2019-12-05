@@ -26,7 +26,7 @@ import {
 } from "../styles/FormColmenasStyles";
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
-
+  const store = useStores();
   const formColmenas = () => {
     store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
   };
