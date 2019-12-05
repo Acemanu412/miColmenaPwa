@@ -28,7 +28,7 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   console.log(store)
 
   const formColmenas = () => {
-    store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
+    // store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
   };
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(formColmenas, {

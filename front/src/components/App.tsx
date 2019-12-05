@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
       <Route exact path="/estadoGeneral" component={EstadoGeneral} />
 
-      <Route exact path="/vistaColmena" component={VistaColmenaData} />
+      <Route exact path="/colmena" component={VistaColmenaData} />
       <Route exact path="/" component={Login} />
       <Route exact path="/photo" component={Photo} />
 

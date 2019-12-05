@@ -19,27 +19,29 @@ import {
     UnidadCosecha,
     ValorCosecha,
 } from "../styles/ConsejosStyles";
-import { FormAtrasButton,
-         FormSiguienteButton } from "../styles/FormStyles";
+import {
+    FormAtrasButton,
+    FormSiguienteButton,
+} from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 
 export const Consejos: React.FC<RouteComponentProps> = (props) => {
     const store = useStores();
 
-    console.log(store)
+    console.log(store);
     const consejos = () => {
-     store.updateConsejos(inputsSalientesIntervenciones,
-                          inputsSalientesAlimento,
-                          inputsSalientesCosecha);
+        store.updateConsejos(inputsSalientesIntervenciones,
+            inputsSalientesAlimento,
+            inputsSalientesCosecha);
     };
 
     const { inputsSalientesIntervenciones,
-            inputsSalientesAlimento,
-            inputsSalientesCosecha,
-            handleInputIntervencionesChange,
-            handleInputAlimentoChange,
-            handleInputCosechaChange,
-            handleSubmit }: any = useForm(consejos);
+        inputsSalientesAlimento,
+        inputsSalientesCosecha,
+        handleInputIntervencionesChange,
+        handleInputAlimentoChange,
+        handleInputCosechaChange,
+        handleSubmit }: any = useForm(consejos);
 
     return (
         <div>
@@ -50,122 +52,122 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                     <CheckboxContainer activo={inputsSalientesIntervenciones.nuevaColmena}>
                         Nueva Colmena
                         <CheckboxConsejos type="checkbox"
-                                          name="nuevaColmena"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="nuevaColmena"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
-                    <CheckboxContainer activo={inputsSalientesIntervenciones.abejsAgregadas}>
+                    <CheckboxContainer activo={inputsSalientesIntervenciones.abejasAgregadas}>
                         Abejas Agregadas
                         <CheckboxConsejos type="checkbox"
-                                          name="abejasAgregadas"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="abejasAgregadas"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.reinaAgregada}>
                         Reina Agregada
                         <CheckboxConsejos type="checkbox"
-                                          name="reinaAgregada"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="reinaAgregada"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.exclusorReina}>
                         Exclusor de Reina
                         <CheckboxConsejos type="checkbox"
-                                          name="exclusorReina"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="exclusorReina"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.colmenaDividida}>
                         Colmena Dividida
                         <CheckboxConsejos type="checkbox"
-                                          name="colmenaDividida"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="colmenaDividida"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.celdasCambiadas}>
                         Celdas Cambiadas
                         <CheckboxConsejos type="checkbox"
-                                          name="celdasCambiadas"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="celdasCambiadas"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.colmenaLimpia}>
                         Colmena Limpia
                         <CheckboxConsejos type="checkbox"
-                                          name="colmenaLimpia"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="colmenaLimpia"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.colmenaAislante}>
                         Colmena con Aislante
                         <CheckboxConsejos type="checkbox"
-                                          name="colmenaAislante"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="colmenaAislante"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.exclusorReina2}>
                         Exclusor de Reina
                         <CheckboxConsejos type="checkbox"
-                                          name="exclusorReina2"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="exclusorReina2"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.exclusorReina3}>
                         Exclusor de Reina2
                         <CheckboxConsejos type="checkbox"
-                                          name="exclusorReina3"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="exclusorReina3"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.pantallaAbierta}>
                         Pantalla Abierta
                         <CheckboxConsejos type="checkbox"
-                                          name="pantallaAbierta"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="pantallaAbierta"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.nosema}>
                         Nosema
                         <CheckboxConsejos type="checkbox"
-                                          name="nosema"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="nosema"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.pantallaCerrada}>
                         Pantalla Cerrada
                         <CheckboxConsejos type="checkbox"
-                                          name="pantallaCerrada"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="pantallaCerrada"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.antivarroa}>
                         Antivarroa
                         <CheckboxConsejos type="checkbox"
-                                          name="antivarroa"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="antivarroa"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.otrosAntivarroa}>
                         Otros Antivarroa
                         <CheckboxConsejos type="checkbox"
-                                          name="otrosAntivarroa"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="otrosAntivarroa"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.medNosema}>
                         Med. Nosema
                         <CheckboxConsejos type="checkbox"
-                                          name="medNosema"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="medNosema"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.acarapisosis}>
                         Acarapisosis
                         <CheckboxConsejos type="checkbox"
-                                          name="acarapisosis"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="acarapisosis"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.medEscara}>
                         Med escara
                         <CheckboxConsejos type="checkbox"
-                                          name="medEscara"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="medEscara"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.antihongos}>
                         Antihongos
                         <CheckboxConsejos type="checkbox"
-                                          name="antihongos"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="antihongos"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesIntervenciones.antibioticos}>
                         Antibióticos
                         <CheckboxConsejos type="checkbox"
-                                          name="antibioticos"
-                                          onChange={handleInputIntervencionesChange} />
+                            name="antibioticos"
+                            onChange={handleInputIntervencionesChange} />
                     </CheckboxContainer>
                 </Intervenciones>
                 <ConsejosTexto>Alimento: Toca las que aplican</ConsejosTexto>
@@ -173,38 +175,38 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                     <CheckboxContainer activo={inputsSalientesAlimento.jarabeLiviano}>
                         Jarabe Liviano
                         <CheckboxConsejos type="checkbox"
-                                          name="jarabeLiviano"
-                                          onChange={handleInputAlimentoChange} />
+                            name="jarabeLiviano"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesAlimento.jarabeEspeso}>
                         Jarabe Espeso
                         <CheckboxConsejos type="checkbox"
-                                          name="jarabeEspeso"
-                                          onChange={handleInputAlimentoChange} />
+                            name="jarabeEspeso"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesAlimento.mezclaSeca}>
                         Mezcla Seca
                         <CheckboxConsejos type="checkbox"
-                                          name="mezclaSeca"
-                                          onChange={handleInputAlimentoChange} />
+                            name="mezclaSeca"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesAlimento.nuevaColmena}>
                         Nueva Colmena
                         <CheckboxConsejos type="checkbox"
-                                          name="nuevaColmena"
-                                          onChange={handleInputAlimentoChange} />
+                            name="nuevaColmena"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesAlimento.agregarAbejas}>
                         Agregar Abejas
                         <CheckboxConsejos type="checkbox"
-                                          name="agregarAbejas"
-                                          onChange={handleInputAlimentoChange} />
+                            name="agregarAbejas"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                     <CheckboxContainer activo={inputsSalientesAlimento.agregarReina}>
                         Agregar Reina
                         <CheckboxConsejos type="checkbox"
-                                          name="agregarReina"
-                                          onChange={handleInputAlimentoChange} />
+                            name="agregarReina"
+                            onChange={handleInputAlimentoChange} />
                     </CheckboxContainer>
                 </Alimento>
                 <ConsejosTexto>Cosecha</ConsejosTexto>
@@ -230,8 +232,8 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             <InputCosecha placeholder=" " name="jaleaReal" onChange={(e) => {
                                 handleInputCosechaChange(e);
                                 inputsSalientesCosecha["unidad-jaleaReal"] =
-                                !inputsSalientesCosecha["unidad-jaleaReal"] ? "kg"
-                                                                            : "";
+                                    !inputsSalientesCosecha["unidad-jaleaReal"] ? "kg"
+                                        : "";
                             }} />
                             <LabelCosecha>Jalea Real</LabelCosecha>
                         </ValorCosecha>
@@ -248,8 +250,8 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             <InputCosecha placeholder=" " name="polen" onChange={(e) => {
                                 handleInputCosechaChange(e);
                                 inputsSalientesCosecha["unidad-polen"] =
-                                !inputsSalientesCosecha["unidad-polen"] ? "kg"
-                                                                        : "";
+                                    !inputsSalientesCosecha["unidad-polen"] ? "kg"
+                                        : "";
                             }} />
                             <LabelCosecha>Polen</LabelCosecha>
                         </ValorCosecha>
@@ -311,15 +313,15 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             <LabelUnidad>Unidades</LabelUnidad>
                         </UnidadCosecha>
                     </CosechaContainer>
-                <FormAtrasButton onClick={(e) => {
-                                          e.preventDefault();
-                                          props.history.push("/reina");
-                }}/>
-                <FormSiguienteButton onClick={(e) => {
-                                          e.preventDefault();
-                                          props.history.push("/notas");
-                                          handleSubmit(e);
-                }}/>
+                    <FormAtrasButton onClick={(e) => {
+                        e.preventDefault();
+                        props.history.push("/reina");
+                    }} />
+                    <FormSiguienteButton onClick={(e) => {
+                        e.preventDefault();
+                        props.history.push("/notas");
+                        handleSubmit(e);
+                    }} />
                 </Cosechas>
             </ConsejosContainer>
         </div>

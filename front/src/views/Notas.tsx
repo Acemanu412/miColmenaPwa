@@ -1,6 +1,6 @@
 import axios from "axios";
-import MicRecorder from 'mic-recorder-to-mp3'
-import React, { useState, useEffect } from "react";
+import MicRecorder from "mic-recorder-to-mp3";
+import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "../hooks/formHook";
@@ -21,18 +21,19 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
-        store.updateNotasForm(inputsSalientes);
         const formData = new FormData();
         formData.append("audio", audio);
         const config = {
-            headers: { "content-type": "multipart/form-data" }
+            headers: { "content-type": "multipart/form-data" },
         };
+        inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
         axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`, formData, config);
+        store.updateNotasForm(inputsSalientes);
     };
 
     const { inputsSalientes, handleInputChange, handleSubmit } = useForm(notas, {
-        urlNotaAudio: "",
         notaTexto: "",
+        urlNotaAudio: "",
     });
 
     const recorder = new MicRecorder({
@@ -51,12 +52,11 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     async function stopRecording() {
         grabando = false;
-        const [buffer, blob] = await recorder.stop().getMp3()
-        setAudio(new File(buffer, 'music.mp3', {
+        const [buffer, blob] = await recorder.stop().getMp3();
+        setAudio(new File(buffer, "music.mp3", {
+            lastModified: Date.now(),
             type: blob.type,
-            lastModified: Date.now()
-        }))
-
+        }));
 
         // const player = new Audio(URL.createObjectURL(audio));
         // player.play()
@@ -69,7 +69,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                 <form action="POST" onSubmit={handleSubmit}>
                     <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
                     <div id="divGrabando" className="noGrabando" onClick={() => {
-                        let claseGrabando = document.querySelector("#divGrabando")
+                        const claseGrabando = document.querySelector("#divGrabando");
                         grabando ? stopRecording() : startRecording();
                         return claseGrabando !== null && grabando
                             ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
@@ -81,7 +81,8 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                     </div>
                     <Separador />
                     <TextoNotas>Escribe tus notas</TextoNotas>
-                    <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+                    <InputNotas rows={8} cols={30} name={inputsSalientes.notaTexto}
+                        onChange={handleInputChange}></InputNotas>
                 </form>
 
                 <FormAtrasButton onClick={(e) => {
