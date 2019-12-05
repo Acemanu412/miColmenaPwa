@@ -46,7 +46,6 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
     numeroCuadrosTotalesMiel: "0",
     poblacion: "0",
   });
-
   return (
     <div>
    <NavBar />
@@ -344,6 +343,21 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
             }} />
           </TextCantidad>
 
+          <div style={{display: "flex", justifyContent: "space-between"}}>
+            <FormAtrasButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/estadoGeneral");
+              }}
+            />
+            <FormSiguienteButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/reina");
+                handleSubmit(e);
+              }}
+            />
+          </div>
       </FormColmenasContainer>
     </div>
   );

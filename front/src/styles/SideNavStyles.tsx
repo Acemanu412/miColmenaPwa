@@ -21,6 +21,7 @@ export const SideNavImg = styled.img`
 
 export const LinkImg = styled.img`
     padding-left: 2.3rem;
+    padding-right: 5rem;
     marigin: auto;
     height: 2rem;
 `;
@@ -34,7 +35,8 @@ export const SideNavCloseButton = styled.button`
 `;
 
 export const LinkTextSpan = styled.span`
-    width: 50%;
+    width: 6.75rem;
+    white-space: nowrap;
     justify-content: center;
     marigin: auto;
 `;
@@ -56,5 +58,5 @@ export const LinkDiv = styled.div`
 `;
 
 export const ImgDiv = styled.div`
-    width: 50%;
+    width: 6.75rem;
 `;
