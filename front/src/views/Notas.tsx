@@ -1,7 +1,6 @@
 import axios from "axios";
-import download from "downloadjs";
 import MicRecorder from "mic-recorder-to-mp3";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "../hooks/formHook";
@@ -24,10 +23,10 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     };
 
-    const { inputsSalientes, handleInputChange, handleSubmit } = useForm(notas, {
-        notaTexto: "",
-        urlNotaAudio: "",
-    });
+    const { inputsSalientes,
+            handleInputChange,
+            handleSubmit } = useForm(notas, { notaTexto: "",
+                                              urlNotaAudio: ""});
 
     const recorder = new MicRecorder({
         bitRate: 128,
@@ -37,10 +36,10 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     function startRecording() {
         grabando = true;
-        recorder.start().then((e) => {
-            console.log("we rollin' audio");
-        }).catch((e) => {
-            console.error(e);
+        recorder.start()
+        .then((e) => undefined)
+        .catch((e) => {
+            throw e;
         });
     }
 
@@ -57,13 +56,8 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                 headers: { "content-type": "multipart/form-data" },
             };
             axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`, formData, config);
-
-            // const player = new Audio(URL.createObjectURL(audio));
-            // player.play()
-            // download(audio, "/user/audio.mp3", "audio/mp3");
-
         }).catch((e) => {
-            console.error(e);
+            throw e;
         });
     }
 

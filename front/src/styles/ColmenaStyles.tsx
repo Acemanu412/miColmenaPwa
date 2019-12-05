@@ -76,11 +76,12 @@ export const DataRow = styled.div`
 export const DataColumn = styled.div`
   display: flex;
   flex-direction: column;
-
+  flex: 1;
   padding: 2%;
 `;
 export const DataRow2 = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
 `;
