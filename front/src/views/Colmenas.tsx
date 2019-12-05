@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   ButtonColmenasContainer,
   ColmenasContainer,
@@ -8,22 +10,37 @@ import {
   StyledBotonAgregarColmenas,
 } from "../styles/ColmenasStyles";
 
-export const Colmenas: React.FC = () => {
+export const Colmenas: React.FC = (props) => {
   return (
     <ColmenasContainer>
-      <ImageColmenasContainer1 />
-      <DataColmenaContainer>
-        Nombre de Colmena A
-      </DataColmenaContainer>
-      <ImageColmenasContainer2 />
-      <DataColmenaContainer>
-        Nombre de Colmena B
-      </DataColmenaContainer>
+
+      <Link
+        to="/vistaColmena"
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <DataColmenaContainer>
+          <ImageColmenasContainer1 />
+          Nombre de Colmena A
+        </DataColmenaContainer>
+      </Link>
+      <Link
+        to="/vistaColmena"
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <DataColmenaContainer>
+          <ImageColmenasContainer2 />
+          Nombre de Colmena B
+        </DataColmenaContainer>
+      </Link>
 
       <ButtonColmenasContainer>
-        <StyledBotonAgregarColmenas text="Agregar Colmena" />
+        <Link
+          to="/agregarColmena"
+        >
+          <StyledBotonAgregarColmenas text="Agregar Colmena" />
+        </Link>
       </ButtonColmenasContainer>
 
     </ColmenasContainer>
-  )
+  );
 };

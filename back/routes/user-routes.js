@@ -81,7 +81,7 @@ router.get("/activarCuenta/:id", (req, res, next) => {
 
 router.get("/logout", (req,res) => {
   req.logout();
-  res.sendStatus(200);
+  res.send(req.user);
 })
 
 router.post("/olvidoClave", (req, res, next) => {

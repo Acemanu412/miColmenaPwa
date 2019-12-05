@@ -4,11 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-size: cover;
-  position: relative;
+  position: absolute;
   top: 5vh;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Header = styled.div`
@@ -45,7 +47,6 @@ export const Saludable2 = styled.div`
 export const SemanaContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1;
   align-items: center;
   font-size: 0.65rem;
 `;
@@ -60,7 +61,6 @@ export const EnlaceContainer = styled.div`
 export const BotonesContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1;
 `;
 
 export const DataContainer = styled.div`
@@ -72,17 +72,16 @@ export const DataRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex: 1;
 `;
 export const DataColumn = styled.div`
   display: flex;
   flex-direction: column;
-
   flex: 1;
   padding: 2%;
 `;
 export const DataRow2 = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -119,13 +118,21 @@ export const Button2 = styled.button`
   flex: 1;
   width: 7rem;
   height: 3rem;
+  border-width: 0.3;
+  outline: none;
 `;
 
 export const Button = styled.button`
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   flex: 1;
   width: 7rem;
   height: 2rem;
+  border-color: #dddddd;
+  border-width: 0.5;
+  outline: none;
+  &:focus {
+    background-color: white;
+  }
 `;
 
 export const Corazon = styled.img.attrs({
@@ -290,4 +297,9 @@ export const Button3 = styled.button`
   flex: 1;
   background-color: transparent;
   height: 3rem;
+  outline: none;
+
+  &:focus {
+    background-color: #ffd24e;
+  }
 `;

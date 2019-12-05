@@ -16,10 +16,12 @@ export const ColmenasContainer = styled.div`
   height: 93vh;
   width: 100%
   margin-top: 14%;
+  position: relative;
+top: 4vh;
 `;
 
 export const ImageColmenasContainer1 = styled.div`
-  height: 19%;
+  height: 80%;
   width: 32%;
   background-image: url(${require("../utils/abejas1@2x.png")})};
   background-position: 50% 50%;
@@ -30,7 +32,8 @@ export const ImageColmenasContainer1 = styled.div`
   `;
 
 export const ImageColmenasContainer2 = styled.div`
-  height: 19%;
+
+  height: 80%;
   width: 32%;
   background-image: url(${require("../utils/abejas2@2x.png")})};
   background-position: 50% 50%;
@@ -41,13 +44,18 @@ export const ImageColmenasContainer2 = styled.div`
   `;
 
 export const DataColmenaContainer = styled.div`
-  height: 19%;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 20%;
   margin-top: 1rem;
-  `;
+`;
 
 export const ButtonColmenasContainer = styled.div`
-  clear: both;
   display: flex;
+  justify-center: center;
   align-items: center;
-  width: 100%
-  `;
+  width: 100%;
+`;

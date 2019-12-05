@@ -23,7 +23,7 @@ export const ToggleSwitchContainer = styled.label`
         -webkit-transform: translateX(24px);
         -ms-transform: translateX(24px);
         transform: translateX(24px);
-    }      
+    }
   `;
 
 export const ToggleSwitchInput = styled(Input)`

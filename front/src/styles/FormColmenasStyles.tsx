@@ -3,6 +3,29 @@ import { color } from "../themes";
 
 const { amarillo, negro, azul, blanco, gris } = color;
 
+export const Header = styled.div`
+display:flex;
+flex-direction:row;
+align-items:center;
+background-color: #F9F9F9
+height: 10vh;
+position: relative;
+top: 4vh;
+padding-left:3%;
+margin-top: 1cm;
+`;
+
+export const Panel = styled.img.attrs({
+  src: require("../utils/colmenaGris@2x.png"),
+})`
+  height: 90%;
+`;
+export const BoldText = styled.p`
+  color: #999999;
+  font-weight: 63;
+  padding-left: 3%;
+`;
+
 export const FormColmenasContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,7 +52,7 @@ export const Text = styled.span`
     background-color:white
     padding-top: 0.5rem;
     text-align:left;
-    margin: 1rem;
+    margin-bottom: 1rem;
 `;
 
 export const Intervenciones = styled.div`
@@ -96,7 +119,7 @@ export const TextCantidad = styled.div`
     margin: 2rem;
 `;
 
-export const ContentText = styled.div `
+export const ContentText = styled.div`
   display: flex;
   justify-content: space-between;
 `;
