@@ -72,7 +72,7 @@ export const CheckboxFormColmenas = styled.input`
     visibility: hidden;
 `
 
-export const CheckboxText = styled.div`
+export const TextGray = styled.div`
     color: ${gris};
     font-weight: bold;
     text-align: center;
@@ -86,4 +86,22 @@ export const RangeSliderColmenas = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+`;
+
+export const TextCantidad = styled.div`
+    display: flex;
+    color: ${azul};
+    font-weight: bold;
+    font-size:0.9rem;
+    margin: 2rem;
+`;
+
+export const ContentText = styled.div `
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ContentButton = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
