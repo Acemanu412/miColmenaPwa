@@ -17,7 +17,7 @@ const SideNav: React.FC = (props: any) => {
   function salirHandleClick() {
     const resData = logOut();
     if (resData instanceof Error) {
-      throw new Error("No se pudo cerrar session");
+      throw new Error("No se pudo cerrar la sesión");
     } else {
       props.history.push("/");
     }
@@ -28,6 +28,7 @@ const SideNav: React.FC = (props: any) => {
       document.getElementById("sideNav").style.width = "0";
       isOpen = false;
     } else {
+      // cambiar rem a vw
       document.getElementById("sideNav").style.width = "13.5rem";
       isOpen = true;
     }

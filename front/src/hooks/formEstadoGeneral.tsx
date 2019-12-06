@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export const useForm = (callback: any, initialObject) => {
-  // const [inputsSalientesSalud, setInputsSalud] = useState({});
 
   const [inputsSalientes, setInputs] = useState(initialObject);
   const handleSubmit = async (event: any) => {
@@ -10,15 +9,8 @@ export const useForm = (callback: any, initialObject) => {
     }
     return await callback();
   };
-  // const handleInputSaludChange = (event: any) => {
-  //   const { name, value } = event.target;
-  //   setInputsSalud((inputsEntrantes: any) => ({
-  //     ...inputsEntrantes,
-  //     [name]: value,
-  //   }));
-  // };
   const handleInputChange = (event: any) => {
-    let { name, value, checked, type } = event.target;
+    let { checked, name, type, value } = event.target;
     type === "checkbox" && (value = checked);
     setInputs((inputsEntrantes) => ({
       ...inputsEntrantes,
@@ -27,9 +19,7 @@ export const useForm = (callback: any, initialObject) => {
   };
   return {
     handleInputChange,
-    // handleInputSaludChange,
     handleSubmit,
     inputsSalientes,
-    // inputsSalientesSalud,
   };
 };

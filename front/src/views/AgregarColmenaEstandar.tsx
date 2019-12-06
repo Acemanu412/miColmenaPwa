@@ -22,12 +22,13 @@ import {
 import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 
+axios.defaults.withCredentials = true;
+let photo;
+
 export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
   props
 ) => {
   const store = useStores();
-
-  let photo;
 
   function handleChangeImagen(e) {
     e.preventDefault();
@@ -54,9 +55,8 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
         axios.post(
           `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
           inputsSalientes
-        );
+        ).then(() => props.history.push("/home"));
       })
-      .then(() => props.history.push("/home"))
       .catch((error) => {
         throw error;
       });

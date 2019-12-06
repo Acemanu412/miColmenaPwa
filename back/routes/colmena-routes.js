@@ -12,15 +12,18 @@ const storage = multer.diskStorage({
 
   },
   filename: function (req, file, cb) {
+    // el D es DD? para un number como 23
     cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
   }
 })
 
 const upload = multer({ storage: storage })
 
-router.post("/photo", upload.single('photo'), (req, res, next) =>
-  Colmena.create({
-    foto: req.file.path,
+
+// fijarse que req.user no es undefined
+router.post("/photo", upload.single('photo'), (req, res, next) => {
+   return (Colmena.create({
+    foto: req.file.originalname,
   }).then((newColmena) => {
     User.findOne({ where: { id: req.user.id } })
       .then((user) => {
@@ -28,8 +31,8 @@ router.post("/photo", upload.single('photo'), (req, res, next) =>
         return newColmena;
       })
       .then((newColmenaActualizado) => res.status(200).send(newColmenaActualizado))
-  })
-)
+  }))
+})
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({

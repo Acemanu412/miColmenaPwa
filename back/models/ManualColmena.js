@@ -39,9 +39,11 @@ ManualColmena.init(
       type: S.INTEGER,
       allowNull: false
     },
-
+    
+// se recorre el objeto que contiene los keys de salud y valores boolean. 
+// Cuando el tipo es boolean y true se pushea el key al array
     problemasSalud: {
-      type: S.ARRAY(S.TEXT),
+      type: S.ARRAY(S.TEXT), 
       allowNull: false
     }
   },
