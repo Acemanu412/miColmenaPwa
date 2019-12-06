@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, "../front/public")));
+app.use(express.static(path.join(__dirname, "/uploads/")));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());

@@ -20,10 +20,9 @@ export const ColmenasContainer = styled.div`
 top: 4vh;
 `;
 
-export const ImageColmenasContainer1 = styled.div`
+export const ImageColmenasContainer = styled.div`
   height: 80%;
   width: 32%;
-  background-image: url(${require("../utils/abejas1@2x.png")})};
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;

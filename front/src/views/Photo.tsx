@@ -22,7 +22,7 @@ export const Photo: React.FC = () => {
 
     return (
         <div>
-            <h1>Hola upload a photo bitch</h1>
+            <h1>Hola upload a photo</h1>
             <input type="file" accept="image/*" id="file-input" onChange={handleChange} />
             <button onClick={postPhoto}>Subir Photo</button>
             <input type="file" accept="image/*" id="file-input" capture onChange={handleChange} />
