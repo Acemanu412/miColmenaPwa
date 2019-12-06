@@ -44,7 +44,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
         };
         axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`, formData, config)
             .then(() => props.history.push("/home"))
-            .catch((error) => { throw error; })
+            .catch((error) => { throw error; });
 
     };
 
@@ -68,7 +68,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
             <FormContent>
                 <TextoAmarillo>Nombre Colmena</TextoAmarillo>
                 <StyledInput
-                    placeholder="Nombre de su colmeena"
+                    placeholder="Nombre de su colmena"
                     name="nombreColmena"
                     value={inputsSalientes.nombreColmena}
                     onChange={handleInputChange} />

@@ -22,12 +22,15 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
 
     const notas = () => {
         const formData = new FormData();
-        formData.append("audio", audio);
+        formData.append("audio",
+                        audio);
         const config = {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`, formData, config);
+        axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`,
+                    formData,
+                    config);
         store.updateNotasForm(inputsSalientes);
     };
 
@@ -48,7 +51,11 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         grabando = true;
         recorder.start()
             .catch((e) => {
-                throw e;
+                alert("Active el micrófono para grabar un audio");
+                const claseGrabando = document.querySelector("#divGrabando");
+                claseGrabando.classList.remove("Grabando");
+                claseGrabando.classList.add("noGrabando");
+
             });
     }
 
@@ -60,9 +67,6 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
             type: blob.type,
         });
         setAudio(audioRec);
-
-        const player = new Audio(URL.createObjectURL(audioRec));
-        player.play();
     }
 
     return (

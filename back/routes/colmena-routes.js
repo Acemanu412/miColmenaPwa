@@ -22,14 +22,6 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
 })
 
 router.post("/audio", upload.single('audio'), (req, res, next) => {
-  console.log(req.session);
-
-  // console.log(req.user);
-  // console.log(Date.now());
-  // console.log(new Date());
-  // console.log(moment().format("YYYY_MM_D_hh_mm_ss"));
-  // console.log("sending audio!")
-  // console.log(req.file);
   res.sendStatus(200);
 })
 

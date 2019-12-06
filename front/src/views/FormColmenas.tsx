@@ -7,7 +7,8 @@ import { RangeSlider } from "../components/RangeSlider";
 import { useFormColmenas } from "../hooks/formColmenasHook";
 
 import { useStores } from "../hooks/useStore";
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+import { FormAtrasButton,
+         FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   BoldText,
@@ -25,7 +26,7 @@ import {
 } from "../styles/FormColmenasStyles";
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
-
+  const store = useStores();
   const formColmenas = () => {
     store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
   };
