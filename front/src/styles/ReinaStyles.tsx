@@ -10,9 +10,8 @@ export const ReinaContainer = styled.form`
     font-size: 10px;
     width: 100%;
     height: 100vh
-    padding-top: 9vh;
-    padding-left: 1vw;
-    padding-right: 2rem;
+    padding-left: 8vw;
+    padding-right: 8vw;
 `;
 
 interface IEstadoReinaHuevos {
@@ -43,7 +42,7 @@ export const ToggleSwitchsReina = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    height: 3rem;
+    height: 8vh;
 `;
 
 export const CheckboxesReina = styled.div`
@@ -51,7 +50,7 @@ export const CheckboxesReina = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 3rem;
+    height: 8vh;
 `;
 
 export const RangeSlidersReina = styled.div`
@@ -102,3 +101,13 @@ export const ReinaGreyTextCheckBox = styled.strong`
     display: flex;
     color: ${gris};
 `;
+
+export const Panel = styled.img.attrs({
+    src: require("../utils/abejaGrisCirculo@2x.png"),
+  })`
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+    margin-left: 8vw;
+    height: 8vh;
+    width: 8vh;
+  `;

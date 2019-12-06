@@ -8,9 +8,9 @@ const { amarillo, gris, azul } = color;
 export const ToggleSwitchContainer = styled.label`
     /* The switch - the box around the slider */
     position: relative;
-    margin-left: 1rem;
-    width: 40px;
-    height: 20px;
+    margin-right: 3.5vw;
+    width: 11vw;
+    height: 3.2vh;
     > input:checked + span {
         background-color: ${azul};
     }

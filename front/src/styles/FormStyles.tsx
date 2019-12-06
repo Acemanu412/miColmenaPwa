@@ -7,9 +7,8 @@ import { color } from "../themes";
 const { azul, blanco } = color;
 
 const SubmitWrapper = styled(Button)`
-    position: absolute;
-    bottom: 10vh;
-    right: 10vw;
+    display: inline-block;
+    width: 150px;
 
     background: ${blanco};
     color: ${azul};
@@ -18,16 +17,15 @@ const SubmitWrapper = styled(Button)`
     padding: 0;
 
     cursor: pointer;
-  `;
+`;
 
 export const FormSubmitButton = (({ ...props }) => {
     return <SubmitWrapper {...props} text={"Crear registro"} />;
 });
 
 const SiguienteWrapper = styled(Button)`
-    position: absolute;
-    bottom: 10vh;
-    right: 10vw;
+    display: inline-block;
+    width: 100px;
 
     background: ${blanco};
     color: ${azul};
@@ -43,9 +41,8 @@ export const FormSiguienteButton = (({ ...props }) => {
 });
 
 const AtrasWrapper = styled(Button)`
-    position: absolute;
-    bottom: 10vh;
-    left: 10vw;
+    display: inline-block;
+    width: 100px;
 
     background: ${blanco};
     color: ${azul};

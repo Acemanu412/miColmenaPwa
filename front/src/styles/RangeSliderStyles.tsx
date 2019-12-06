@@ -5,6 +5,7 @@ import { color } from "../themes/index";
 const { amarillo, blanco } = color;
 
 export const SliderContainer = styled.div`
+    display:flex;
     width: 100%; /* Width of the outside container */
 `;
 

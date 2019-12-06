@@ -26,7 +26,7 @@ User.init(
     },
 
     telefono: {
-      type: S.INTEGER,
+      type: S.BIGINT,
       allowNull: true
     },
 

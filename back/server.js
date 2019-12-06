@@ -11,7 +11,7 @@ const routes = require("./routes");
 
 app.use(function (req, res, next) {
   let allowedOrigins = [`http://${process.env.IP}:3000`, `http://localhost:3000`];
-  var origin = req.headers.origin;
+  let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, "../front/public")));
+app.use(express.static(path.join(__dirname, "/uploads/")));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -31,10 +31,6 @@ app.use(
     secret: "abeja",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-      sameSite: "None",
-      secure: true
-    }
   })
 );
 app.use(passport.initialize());

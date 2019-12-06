@@ -11,11 +11,12 @@ import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   CelulasReina,
-  ReinaCheckboxContainer,
   CheckboxesReina,
   EstadoReinaHuevos,
+  Panel,
   RangeSlidersReina,
   RangeSliderText,
+  ReinaCheckboxContainer,
   ReinaContainer,
   ReinaGreyText,
   ReinaGreyTextCheckBox,
@@ -44,6 +45,11 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
   return (
     <div>
       <NavBar />
+        <div style={{marginTop: "9vh"}} >
+          <Panel />
+          <span style={{fontFamily: "montserrat", fontWeight: 500, fontSize: ".8rem" }}>Reina</span>
+          <hr style={{borderColor: "#c7c7c7", borderBottomWidth: "1px", borderStyle: "solid"}}/>
+        </div>
       <ReinaContainer>
         <EstadoReinaHuevos reinaPresente={inputsSalientes.reinaPresente}>
           <ReinaText>Población</ReinaText>
@@ -117,19 +123,21 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
             </ToggleSwitchsReina>
           )}
         </CelulasReina>
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/home");
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/consejos");
-            handleSubmit(e);
-          }}
-        />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/colmenas");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/consejos");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </ReinaContainer>
     </div>
   );
