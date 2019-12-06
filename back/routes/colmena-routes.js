@@ -21,6 +21,7 @@ const upload = multer({ storage: storage })
 router.post("/photo", upload.single('photo'), (req, res, next) => {
   Colmena.create({
     foto: req.file.path,
+    userId: req.user
   }).then(newColmena => {
     res.status(200).send(newColmena)
   })
