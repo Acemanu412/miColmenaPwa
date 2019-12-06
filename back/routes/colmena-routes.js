@@ -2,6 +2,7 @@ const express = require("express");
 const router = express();
 const multer = require('multer');
 const moment = require('moment');
+const { Colmena, } = require('../models');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -18,18 +19,25 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  res.status(200).send("OK");
+  Colmena.create({
+    foto: req.file.path,
+  }).then(newColmena => {
+    res.status(200).send(newColmena)
+  })
+})
+
+router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
+  Colmena.update({
+    nombre: req.body.nombreColmena,
+  },
+    {
+      where: {
+        id: req.params.idColmena
+      }
+    }).then(data => res.status(200).send(data))
 })
 
 router.post("/audio", upload.single('audio'), (req, res, next) => {
-  console.log(req.session);
-
-  // console.log(req.user);
-  // console.log(Date.now());
-  // console.log(new Date());
-  // console.log(moment().format("YYYY_MM_D_hh_mm_ss"));
-  // console.log("sending audio!")
-  // console.log(req.file);
   res.sendStatus(200);
 })
 
