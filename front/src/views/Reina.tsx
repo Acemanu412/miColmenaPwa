@@ -31,7 +31,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(reina, {
     alasRotas: false,
-    celulasReina: 0,
+    celulasReina: "0",
     huevosVistos: false,
     marcada: false,
     reinaPresente: false,
@@ -115,19 +115,21 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
             </ToggleSwitchsReina>
           )}
         </CelulasReina>
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/home");
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/consejos");
-            handleSubmit(e);
-          }}
-        />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/colmenas");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/consejos");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </ReinaContainer>
     </div>
   );

@@ -14,8 +14,10 @@ const {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log(req.user);
-    cb(null, 'uploads/')
+    file.mimetype.split("/")[1];
+    if (file.mimetype.split("/")[1] === "mp3") cb(null, 'uploads/audios/')
+    else cb(null, 'uploads/fotos/')
+
   },
   filename: function (req, file, cb) {
     cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
@@ -25,29 +27,30 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  console.log(req.user);
-  console.log(Date.now());
-  console.log(new Date());
-  console.log(moment().format("YYYY_MM_D_hh_mm_ss"));
-  console.log("your posting a photo!")
-  console.log(req.file);
-  res.sendStatus(200);
+  Colmena.create({
+    foto: req.file.path,
+  }).then(newColmena => {
+    res.status(200).send(newColmena)
+  })
+})
+
+router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
+  Colmena.update({
+    nombre: req.body.nombreColmena,
+  },
+    {
+      where: {
+        id: req.params.idColmena
+      }
+    }).then(data => res.status(200).send(data))
 })
 
 router.post("/audio", upload.single('audio'), (req, res, next) => {
-  console.log(req.session);
-
-  // console.log(req.user);
-  // console.log(Date.now());
-  // console.log(new Date());
-  // console.log(moment().format("YYYY_MM_D_hh_mm_ss"));
-  // console.log("sending audio!")
-  // console.log(req.file);
   res.sendStatus(200);
 });
 
 
-router.post("/registroDiario", (req, res, next) => {
+router.post("/newDailyRegister", (req, res, next) => {
 
 })
 

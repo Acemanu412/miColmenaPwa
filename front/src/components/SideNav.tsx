@@ -63,12 +63,14 @@ const SideNav: React.FC = (props: any) => {
             <LinkTextSpan>Ajustes</LinkTextSpan>
           </LinkDiv>
         </Link>
+        <Link to="#" style={{ textDecoration: "none" }}>
         <LinkDiv onClick={salirHandleClick}>
           <ImgDiv>
             <LinkImg src={require("../utils/salir@2x.png")} />
           </ImgDiv>
           <LinkTextSpan>Salir</LinkTextSpan>
         </LinkDiv>
+        </Link>
       </SideNavMenu>
       <SideNavImg src={require("../utils/hMenu@2x.png")} onClick={toggleNav} />
     </div>

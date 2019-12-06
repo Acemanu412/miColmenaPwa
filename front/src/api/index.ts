@@ -52,6 +52,7 @@ export const postNuevoClave = (email) =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
 export const logOut = () =>
   axios
     .get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`)
@@ -61,3 +62,14 @@ export const logOut = () =>
     .catch((err) => {
       return err;
     });
+
+export const postNewDailyRegister = () => {
+  return axios
+  .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`)
+  .then((res) => {
+    return res;
+  })
+  .catch((err) => {
+    return err;
+  });
+};

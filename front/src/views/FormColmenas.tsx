@@ -7,7 +7,8 @@ import { RangeSlider } from "../components/RangeSlider";
 import { useFormColmenas } from "../hooks/formColmenasHook";
 
 import { useStores } from "../hooks/useStore";
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
+import { FormAtrasButton,
+         FormSiguienteButton } from "../styles/FormStyles";
 
 import {
   BoldText,
@@ -26,7 +27,6 @@ import {
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   const store = useStores();
-
   const formColmenas = () => {
     store.updateColmenasForm(inputsSalientes, inputsSalientesIntervenciones);
   };
@@ -45,7 +45,6 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
     numeroCuadrosTotalesMiel: "0",
     poblacion: "0",
   });
-
   return (
     <div>
       <NavBar />
@@ -55,6 +54,7 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
           <Panel /><BoldText>Colmena</BoldText>
         </Header>
       </div>
+      
       <FormColmenasContainer>
 
         <RangeSliderColmenas>
@@ -153,7 +153,6 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         <div>
           <TextCantidad style={{ justifyContent: "space-around" }}>{inputsSalientes.numeroComidas}/5</TextCantidad>
         </div>
-
 
         <TextGray>Problemas de salud: Toca las que correspondan</TextGray>
 
@@ -329,20 +328,26 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
         </Intervenciones>
 
         <TextCantidad>
-          <FormAtrasButton onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/colmena");
-          }} />
         </TextCantidad>
 
         <TextCantidad>
-          <FormSiguienteButton onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/reina");
-            handleSubmit(e);
-          }} />
         </TextCantidad>
 
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <FormAtrasButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/estadoGeneral");
+            }}
+          />
+          <FormSiguienteButton
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/reina");
+              handleSubmit(e);
+            }}
+          />
+        </div>
       </FormColmenasContainer>
     </div>
   );
