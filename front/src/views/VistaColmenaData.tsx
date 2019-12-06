@@ -184,11 +184,11 @@ const VistaColmenaData = observer((props) => {
       {vista1 === true && <VistaColmena1 />}
       {vista2 === true && <VistaColmena2 />}
       {vista3 === true && <VistaColmena3 />}
-      <div style={{ alignSelf: "end" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <FormAtrasButton
           onClick={(e) => {
             e.preventDefault();
-            props.history.push("/colmena");
+            props.history.push("/home");
           }}
         />
         <FormSiguienteButton

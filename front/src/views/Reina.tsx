@@ -115,7 +115,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
             </ToggleSwitchsReina>
           )}
         </CelulasReina>
-        <div style={{display: "flex", justifyContent: "space-between"}}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <FormAtrasButton
             onClick={(e) => {
               e.preventDefault();

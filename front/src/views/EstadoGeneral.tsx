@@ -2,7 +2,7 @@ import axios from "axios";
 import MicRecorder from "mic-recorder-to-mp3";
 import { observer } from "mobx-react";
 import moment from "moment";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "../hooks/formEstadoGeneral";
 
 import { useStores } from "../hooks/useStore";
@@ -23,7 +23,6 @@ import { NavBar } from "./NavBar";
 const EstadoGeneral = observer((props) => {
   const store = useStores();
 
-  console.log(store);
   const estadoG = () => {
     store.updateEstadoGeneral(inputsSalientes);
   };
@@ -43,42 +42,29 @@ const EstadoGeneral = observer((props) => {
 
   function startRecording() {
     grabando = true;
-    recorder
-      .start()
-      .then((e) => console.log(e))
-      .catch((e) => {
-        alert("Active el micrófono para grabar un audio");
-        const claseGrabando = document.querySelector("#divGrabando");
-        claseGrabando.classList.remove("Grabando");
+    recorder.start().catch((e) => {
+      alert("Active el micrófono para grabar un audio");
+      const claseGrabando = document.querySelector("#divGrabando");
+      claseGrabando.classList.remove("Grabando");
 
-        claseGrabando.classList.add("noGrabando");
-      });
+      claseGrabando.classList.add("noGrabando");
+    });
   }
 
-  function stopRecording() {
+  async function stopRecording() {
     grabando = false;
-    recorder
-      .stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        const audio = new File(buffer, "music.mp3", {
-          lastModified: Date.now(),
-          type: blob.type,
-        });
-        const formData = new FormData();
-        formData.append("audio", audio);
-        const config = {
-          headers: { "content-type": "multipart/form-data" },
-        };
-        axios.post(
-          `http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`,
-          formData,
-          config
-        );
-      })
-      .catch((e) => {
-        throw e;
-      });
+    const [buffer, blob] = await recorder.stop().getMp3();
+    const audioRec = new File(buffer, "music.mp3", {
+      lastModified: Date.now(),
+      type: blob.type,
+    });
+
+    // const player = new Audio(URL.createObjectURL(audioRec));
+
+    store.setMedia({});
+    store.media.setAudio(audioRec);
+
+    // player.play();
   }
 
   return (
@@ -122,7 +108,7 @@ const EstadoGeneral = observer((props) => {
         <div
           id="divGrabando"
           className="noGrabando"
-          onClick={() => {
+          onClick={(e) => {
             const claseGrabando = document.querySelector("#divGrabando");
             grabando ? stopRecording() : startRecording();
             return claseGrabando !== null && grabando
