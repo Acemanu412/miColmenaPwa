@@ -23,9 +23,10 @@ const RootStore = types
     warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
-    setUser(user: any) {
+    setUser(user) {
       self.user = user;
     },
+
     setMedia(media: any) {
       self.media = media;
     },
@@ -37,44 +38,18 @@ const RootStore = types
         tipoColmena: inputs.tipoColmena,
       };
       self.agregarColmenaForms = inputsArmados;
-
     },
-    updateColmenasForm: (inputs: any, inputsIntervenciones: any) => {
+    updateColmenasForm: (inputs) => {
       const inputsArmados = {
-        acarapisosis: inputsIntervenciones.acarapisosis,
-        acarosBarroa: inputsIntervenciones.acarosBarroa,
-        alasDeformadas: inputsIntervenciones.alasDeformadas,
-        criaCalcarea: inputsIntervenciones.criaCalcarea,
-        criaDePiedra: inputsIntervenciones.criaDePiedra,
-        escarabajos: inputsIntervenciones.escarabajos,
-        loqueAmericana: inputsIntervenciones.loqueAmericana,
-        loqueEuropea: inputsIntervenciones.loqueEuropa,
-        mesesDeCera: inputsIntervenciones.mesesDeCera,
-        moho: inputsIntervenciones.moho,
-        nosema: inputsIntervenciones.nosema,
-        numeroDeComidas: inputsIntervenciones.numeroDeComidas,
-        paralisisCronica: inputsIntervenciones.paralisisCronica,
-        polillasDeCera: inputsIntervenciones.polillasDeCerca,
-        pupaComidas: inputsIntervenciones.pupaComidas,
-        pupasPicadas: inputsIntervenciones.pupasPicadas,
-        tropilaelapsosis: inputsIntervenciones.tropilaelapsosis,
-        varroas: inputsIntervenciones.varroas,
-
-        calidadCrias: inputs.calidadCrias,
-        comportamiento: inputs.comportamiento,
-        numeroComidas: inputs.numeroComidas,
-        numeroCuadrosTotalesCrias: inputs.numeroCuadrosTotalesCrias,
-        numeroCuadrosTotalesMiel: inputs.numeroCuadrosTotalesMiel,
-        poblacion: inputs.poblacion,
+        ...inputs,
       };
-
       self.colmenasForm = inputsArmados;
     },
 
     updateConsejos: (
       inputsIntervenciones: any,
       inputsAlimento: any,
-      inputsCosecha: any,
+      inputsCosecha: any
     ) => {
       const inputsArmados = {
         abejasAgregadas: inputsIntervenciones.abejasAgregadas,
@@ -132,7 +107,12 @@ const RootStore = types
     },
 
     updateEstadoGeneral: (inputs: any) => {
-      self.estadoGeneral = inputs;
+      const inputsArmados = {
+        audio: inputs.audio,
+        fecha: inputs.fecha,
+        salud: inputs["salud"],
+      };
+      self.estadoGeneral = inputsArmados;
     },
   }));
 

@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 export const useFormColmenas = (callback: any, initialObject) => {
-  const [inputsSalientesIntervenciones, setInputsIntervenciones] = useState({});
-
   const [inputsSalientes, setInputs] = useState(initialObject);
   const handleSubmit = async (event: any) => {
     if (event) {
@@ -18,19 +16,10 @@ export const useFormColmenas = (callback: any, initialObject) => {
       [name]: value,
     }));
   };
-  const handleInputIntervencionesChange = (event: any) => {
-    const { name, checked } = event.target;
-    setInputsIntervenciones((inputsEntrantes: any) => ({
-      ...inputsEntrantes,
-      [name]: checked,
-    }));
-  };
 
   return {
     handleInputChange,
-    inputsSalientes,
-    handleInputIntervencionesChange,
     handleSubmit,
-    inputsSalientesIntervenciones,
+    inputsSalientes,
   };
 };

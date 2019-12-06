@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-size: cover;
   position: absolute;
-  top: 5vh;
+  top: 9vh;
   left: 0;
   right: 0;
   bottom: 0;
