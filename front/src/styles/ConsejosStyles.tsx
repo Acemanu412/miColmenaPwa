@@ -5,7 +5,7 @@ import { color } from "../themes";
 const { amarillo, azul, blanco, negro } = color;
 
 export const ConsejosContainer = styled.div`
-    height: 100vh;
+    height: 100%;
     display:flex;
     flex-direction: column;
     margin-top: 3rem;
@@ -32,7 +32,7 @@ export const Alimento = styled.div`
 `;
 
 export const Cosechas = styled.div`
-    height: 30%;
+    height: 100%;
 `;
 
 export const ConsejosTexto = styled.div`
@@ -43,7 +43,7 @@ export const ConsejosTexto = styled.div`
 `;
 
 export const CosechaContainer = styled.div`
-display: flex;
+    display: flex;
     flex-flow: row wrap;
     height: 100%;
     padding: 1rem;
