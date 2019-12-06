@@ -34,7 +34,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
         inputsSalientes.foto = photo;
     }
 
-    const agregarColmena = (e) => {
+    const agregarColmena = async (e) => {
         store.updateAgregarColmenaForm(inputsSalientes);
         store.setMedia({ photo });
         const formData = new FormData();
@@ -43,17 +43,22 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
             headers: { "content-type": "multipart/form-data" },
         };
         axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`, formData, config)
+            .then((res) => res.data)
+            .then((newColmena: any) => {
+                axios.post(
+                    `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
+                    inputsSalientes);
+            })
             .then(() => props.history.push("/home"))
             .catch((error) => { throw error; });
-
     };
 
     const { inputsSalientes, handleInputChange, handleSubmit } = useForm(agregarColmena, {
         direccionColmena: "",
-        especieAbejas: "",
-        foto: "",
+        especieAbejas: "Apis mellifera",
+        foto: null,
         nombreColmena: "",
-        tipoColmena: "",
+        tipoColmena: "Langstroth",
     });
 
     return (<div>
@@ -80,7 +85,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
                     name="tipoColmena"
                     value={inputsSalientes.tipoColmena}
                     onChange={handleInputChange}>Tipo de Colmena
-                    <option selected value="langstroth">Langstroth</option>
+                    <option value="langstroth">Langstroth</option>
                     <option value="warre">Warre</option>
                     <option value="topBar">Top Bar</option>
                     <option value="otroTipo">Otro</option>
@@ -92,9 +97,8 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
                 <StyledSelect
                     name="especieAbejas"
                     value={inputsSalientes.especieAbejas}
-                    defaultValue="Apis mellifera"
                     onChange={handleInputChange}>Especie de Abejas
-                    <option selected value="apisMellifera">Apis mellifera</option>
+                    <option value="apisMellifera">Apis mellifera</option>
                     <option value="apisMelliferaCaucasia">Apis mellifera caucasia</option>
                     <option value="apisMelliferaCarnica">Apis mellifera carnica</option>
                     <option value="apisMelliferaLigustica">Apis mellifera ligustica</option>
