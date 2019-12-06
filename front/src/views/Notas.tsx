@@ -24,9 +24,11 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
     };
 
     const { inputsSalientes,
-            handleInputChange,
-            handleSubmit } = useForm(notas, { notaTexto: "",
-                                              urlNotaAudio: ""});
+        handleInputChange,
+        handleSubmit } = useForm(notas, {
+            notaTexto: "",
+            urlNotaAudio: ""
+        });
 
     const recorder = new MicRecorder({
         bitRate: 128,
@@ -37,10 +39,10 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
     function startRecording() {
         grabando = true;
         recorder.start()
-        .then((e) => undefined)
-        .catch((e) => {
-            throw e;
-        });
+            .then((e) => undefined)
+            .catch((e) => {
+                throw e;
+            });
     }
 
     function stopRecording() {
@@ -85,6 +87,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                     props.history.push("/consejos");
                 }} />
                 <FormSubmitButton onClick={(e) => {
+                    console.log(store)
                     e.preventDefault();
                     props.history.push("/vistaColmena");
                     handleSubmit(e);

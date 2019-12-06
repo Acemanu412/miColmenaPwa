@@ -13,13 +13,12 @@ import {
   BoldText,
   CheckboxContainer,
   CheckboxFormColmenas,
-  ContentButton,
   ContentText,
   FormColmenasContainer,
   Header,
   Intervenciones,
-  RangeSliderColmenas,
   Panel,
+  RangeSliderColmenas,
   Text,
   TextCantidad,
   TextGray,
@@ -49,13 +48,13 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
 
   return (
     <div>
-   <NavBar />
+      <NavBar />
 
-  <div>
-    <Header>
-      <Panel /><BoldText>Colmena</BoldText>
-    </Header>
-  </div>
+      <div>
+        <Header>
+          <Panel /><BoldText>Colmena</BoldText>
+        </Header>
+      </div>
       <FormColmenasContainer>
 
         <RangeSliderColmenas>
@@ -329,20 +328,20 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
           </CheckboxContainer>
         </Intervenciones>
 
-          <TextCantidad>
-            <FormAtrasButton onClick={(e) => {
-              e.preventDefault();
-              props.history.push("/colmena");
-            }} />
-          </TextCantidad>
+        <TextCantidad>
+          <FormAtrasButton onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/colmena");
+          }} />
+        </TextCantidad>
 
-          <TextCantidad>
-            <FormSiguienteButton onClick={(e) => {
-              e.preventDefault();
-              props.history.push("/reina");
-              handleSubmit(e);
-            }} />
-          </TextCantidad>
+        <TextCantidad>
+          <FormSiguienteButton onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/reina");
+            handleSubmit(e);
+          }} />
+        </TextCantidad>
 
       </FormColmenasContainer>
     </div>
