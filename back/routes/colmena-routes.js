@@ -42,12 +42,10 @@ router.post("/audio", upload.single('audio'), (req, res, next) => {
 })
 
 router.get("/", (req,res) => {
-  console.log(req.user);
   req.user.getColmena().then((colmenas) => {
     res.status(200).send(colmenas);
   }).catch((err) => {
     res.sendStatus(402)
-    console.log(err);
   })
 
 })
