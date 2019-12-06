@@ -11,7 +11,7 @@ const routes = require("./routes");
 
 app.use(function (req, res, next) {
   let allowedOrigins = [`http://${process.env.IP}:3000`, `http://localhost:3000`];
-  var origin = req.headers.origin;
+  let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     console.log("allowheader", origin);
     res.setHeader('Access-Control-Allow-Origin', origin);
