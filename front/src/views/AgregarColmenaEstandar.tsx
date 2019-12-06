@@ -35,7 +35,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     inputsSalientes.foto = photo;
   }
 
-  const agregarColmena = (e) => {
+  const agregarColmena = async (e) => {
     store.updateAgregarColmenaForm(inputsSalientes);
     store.setMedia({ photo });
     const formData = new FormData();
@@ -49,6 +49,13 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
         formData,
         config
       )
+      .then((res) => res.data)
+      .then((newColmena: any) => {
+        axios.post(
+          `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
+          inputsSalientes
+        );
+      })
       .then(() => props.history.push("/home"))
       .catch((error) => {
         throw error;
