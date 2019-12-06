@@ -73,7 +73,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (props) => 
             <FormContent>
                 <TextoAmarillo>Nombre Colmena</TextoAmarillo>
                 <StyledInput
-                    placeholder="Nombre de su colmeena"
+                    placeholder="Nombre de su colmena"
                     name="nombreColmena"
                     value={inputsSalientes.nombreColmena}
                     onChange={handleInputChange} />
