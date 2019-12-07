@@ -14,4 +14,3 @@ Colmena.bulkCreate([
     })
     
 });
-
