@@ -1,6 +1,7 @@
 import React from "react";
+import { AgregrarRegistro, DataContainer2 } from "../styles/ColmenaStyles";
+
 import { observer } from "mobx-react";
-import { DataContainer2, AgregrarRegistro } from "../styles/ColmenaStyles";
 
 import { Link } from "react-router-dom";
 
