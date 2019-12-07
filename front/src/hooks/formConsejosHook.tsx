@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// ponerle un nombre unico
 export const useForm = (callback: any) => {
   const [inputsSalientesIntervenciones, setInputsIntervenciones] = useState({});
   const [inputsSalientesAlimento, setInputsAlimento] = useState({});

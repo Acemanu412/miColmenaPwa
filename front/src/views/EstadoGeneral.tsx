@@ -1,8 +1,7 @@
-import axios from "axios";
 import MicRecorder from "mic-recorder-to-mp3";
 import { observer } from "mobx-react";
 import moment from "moment";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../hooks/formEstadoGeneral";
 
 import { useStores } from "../hooks/useStore";

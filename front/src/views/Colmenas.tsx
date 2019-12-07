@@ -10,18 +10,25 @@ import {
   StyledBotonAgregarColmenas,
 } from "../styles/ColmenasStyles";
 
+let checkedColmenas = false;
+
 export const Colmenas: React.FC = (props) => {
+console.log("checkedColmenas", checkedColmenas);
 
 const [colmenas, setColmenas] = useState([]);
-if(!colmenas.length) {
+//if (!checkedColmenas) {
   fetchColmenas().then((res) => {
     let colmenaArr = [];
     for (let i = 0; i < res.length; i++) {
       colmenaArr.push(res[i]);
     }
-    setColmenas(colmenaArr);
+    checkedColmenas = true;
+
+    if(!checkedColmenas || colmenaArr.length !== colmenas.length){
+      setColmenas(colmenaArr);
+    }
   });
-}
+//}
 
 return (
     <ColmenasContainer>
@@ -29,7 +36,7 @@ return (
   {colmenas.map((colmena) => {
     return (<Link to="/vistaColmena" style={{ textDecoration: "none", color: "black" }}>
       <DataColmenaContainer>
-        <img src={`http://localhost:2222/fotos/${colmena.foto}`} alt="" style={{height: "70px"}}/>
+        <img src={`http://${process.env.REACT_APP_IP}:2222/fotos/${colmena.foto}`} alt="" style={{height: "70px"}}/>
        {colmena.nombre}
       </DataColmenaContainer>
       </Link>);
