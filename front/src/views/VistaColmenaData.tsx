@@ -37,43 +37,18 @@ const VistaColmenaData = observer((props) => {
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
+  const [week, setWeek] = useState([]);
+  const [addWeek, setAddWeek] = useState(0)
 
-  const monday = moment()
-    .startOf("isoWeek")
-    .date()
-    .toString();
 
-  const tuesday = moment()
-    .startOf("isoWeek")
-    .add(1, "day")
-    .date()
-    .toString();
+  const newWeek = [];
+  const dias = ["L", "M", "M", "J", "V", "S", "D"]
+  const month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
-  const wednesday = moment()
-    .startOf("isoWeek")
-    .add(2, "day")
-    .date()
-    .toString();
-
-  const thursday = moment()
-    .startOf("isoWeek")
-    .add(3, "day")
-    .date()
-    .toString();
-  const friday = moment()
-    .startOf("isoWeek")
-    .add(4, "day")
-    .date()
-    .toString();
-  const saturday = moment()
-    .startOf("isoWeek")
-    .add(5, "day")
-    .date()
-    .toString();
-  const sunday = moment()
-    .endOf("isoWeek")
-    .date()
-    .toString();
+  for (let i = 0; i < 7; i++) {
+    newWeek.push(moment().startOf("isoWeek").add(i + addWeek, "day").date().toString())
+  }
 
   return (
     <Container>
@@ -103,55 +78,24 @@ const VistaColmenaData = observer((props) => {
           </ContainerSaludable>
         </ProfileContainer>
       </Header>
+      <EnlaceContainer>
+        {`${moment().get("day")} de ${month[moment().get("month")]} de ${moment().get("year")}`}
+      </EnlaceContainer>
       <SemanaContainer>
         <Button2>
-          <Mas />
+          <Menos onClick={() => setAddWeek(addWeek - 7)} />
         </Button2>
-        <Button3>
-          <Dia>
-            <p>L</p> <p>{monday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>M</p> <p>{tuesday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>M</p> <p>{wednesday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>J </p> <p>{thursday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>V</p> <p>{friday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>S</p> <p>{saturday}</p>
-          </Dia>
-        </Button3>
-        <Button3>
-          <Dia>
-            <p>D</p> <p>{sunday}</p>
-          </Dia>
-        </Button3>
+        {newWeek.map((day, index) => {
+          return <Button3 key={index}>
+            <Dia>
+              <p>{dias[index]}</p> <p>{day}</p>
+            </Dia>
+          </Button3>;
+        })}
         <Button2>
-          <Menos />
+          <Mas onClick={() => setAddWeek(addWeek + 7)} />
         </Button2>
       </SemanaContainer>
-      <EnlaceContainer>
-        <Enlace />
-        <p style={{ fontSize: "0.8rem", paddingLeft: "1%", color: "white" }}>
-          Comparti una foto de tu colmena
-        </p>
-      </EnlaceContainer>
       <BotonesContainer>
         <Button
           onClick={() => {
