@@ -43,6 +43,8 @@ const VistaColmenaData = observer((props) => {
 
   const newWeek = [];
   const dias = ["L", "M", "M", "J", "V", "S", "D"]
+  const month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
   for (let i = 0; i < 7; i++) {
     newWeek.push(moment().startOf("isoWeek").add(i + addWeek, "day").date().toString())
@@ -76,6 +78,9 @@ const VistaColmenaData = observer((props) => {
           </ContainerSaludable>
         </ProfileContainer>
       </Header>
+      <EnlaceContainer>
+        {`${moment().get("day")} de ${month[moment().get("month")]} de ${moment().get("year")}`}
+      </EnlaceContainer>
       <SemanaContainer>
         <Button2>
           <Menos onClick={() => setAddWeek(addWeek - 7)} />
@@ -91,12 +96,6 @@ const VistaColmenaData = observer((props) => {
           <Mas onClick={() => setAddWeek(addWeek + 7)} />
         </Button2>
       </SemanaContainer>
-      <EnlaceContainer>
-        <Enlace />
-        <p style={{ fontSize: "0.8rem", paddingLeft: "1%", color: "white" }}>
-          Comparti una foto de tu colmena
-        </p>
-      </EnlaceContainer>
       <BotonesContainer>
         <Button
           onClick={() => {
