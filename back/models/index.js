@@ -20,8 +20,6 @@ TorresMeteorologicas.hasMany(Colmena);
 TorresMeteorologicas.hasMany(InformeMeteorologico);
 User.hasMany(Colmena, { as: "colmena" });
 
-console.log(User.prototype)
-
 module.exports = {
   User,
   Colmena,
