@@ -23,14 +23,14 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
     const notas = () => {
         const formData = new FormData();
         formData.append("audio",
-                        audio);
+            audio);
         const config = {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
         axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`,
-                    formData,
-                    config);
+            formData,
+            config);
         store.updateNotasForm(inputsSalientes);
     };
 
@@ -68,6 +68,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         });
         setAudio(audioRec);
     }
+    console.log(store)
 
     return (
         <div>

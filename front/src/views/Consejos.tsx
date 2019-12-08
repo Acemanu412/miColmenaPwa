@@ -25,8 +25,32 @@ import {
 } from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 
+const IntervencionesArr = ["abejasAgregadas", "acarapisosis", "antibioticos", "antihongos", "antivarroa",
+    "celdasCambiadas", "colmenaAislante", "colmenaDividida", "colmenaLimpia", "exclusorReina", "exclusorReina2",
+    "exclusorReina3", "medEscara", "medNosema", "nosema", "nuevaColmenaIntervenciones", "otrosAntivarroa",
+    "pantallaAbierta", "pantallaCerrada", "reinaAgregada"];
+
+const AlimentoArr = ["agregarAbejas", "agregarReina", "jarabeEspeso", "jarabeLiviano", "mezclaSeca",
+    "nuevaColmenaAlimentos"];
+
+const CosechaArr = ["cera", "jaleaReal", "miel", "panal", "polen", "propoleo", "unidad-cera", "unidad-jaleaReal",
+    "unidad-miel", "unidad-panal", "unidad-polen", "unidad-propoleo"];
+
+function ObjectConverter(array, startValue) {
+    const newObj = {};
+    for (const element of array) {
+        newObj[element] = startValue;
+    }
+    return newObj;
+}
+
+const IntervencionesObj = ObjectConverter(IntervencionesArr, false);
+const AlimentoObj = ObjectConverter(AlimentoArr, false);
+const CosechaObj = ObjectConverter(CosechaArr, "");
+
 export const Consejos: React.FC<RouteComponentProps> = (props) => {
     const store = useStores();
+
     const consejos = () => {
         store.updateConsejos(inputsSalientesIntervenciones,
             inputsSalientesAlimento,
@@ -39,8 +63,7 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
         handleInputIntervencionesChange,
         handleInputAlimentoChange,
         handleInputCosechaChange,
-        handleSubmit }: any = useForm(consejos);
-
+        handleSubmit }: any = useForm(consejos, IntervencionesObj, AlimentoObj, CosechaObj);
     return (
         <div>
             <NavBar />

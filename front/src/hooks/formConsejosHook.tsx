@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 // ponerle un nombre unico
-export const useForm = (callback: any) => {
-  const [inputsSalientesIntervenciones, setInputsIntervenciones] = useState({});
-  const [inputsSalientesAlimento, setInputsAlimento] = useState({});
-  const [inputsSalientesCosecha, setInputsCosecha] = useState({});
+export const useForm = (callback: any, initialObjectIntervenciones: any,
+  initialObjectAlimento: any, initialObjectCosecha: any) => {
+  const [inputsSalientesIntervenciones, setInputsIntervenciones] = useState(initialObjectIntervenciones);
+  const [inputsSalientesAlimento, setInputsAlimento] = useState(initialObjectAlimento);
+  const [inputsSalientesCosecha, setInputsCosecha] = useState(initialObjectCosecha);
 
   const handleSubmit = async (event: any) => {
     if (event) {
