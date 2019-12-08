@@ -1,19 +1,21 @@
 version: "3"
 services:
-  docker1:
+  micolmenaback:
     build: ./back
     ports:
-      - "7777:7777"
+      - "2222:2222"
     environment:
       DB_HOST: host.docker.internal
       DB_USER: erikaastef99
-  docker2:
+  micolmenafront:
     build: ./front
+    ports:
+      - "80:3000"
   db:
     container_name: "psql"
     image: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: miColmena
       POSTGRES_USER: erikaastef99

@@ -1,5 +1,6 @@
 FROM node:10-alpine
 COPY . .
-WORKDIR /src
-RUN yarn install
-CMD ["yarn", "start"]
+RUN npm i
+EXPOSE 3000
+WORKDIR /
+CMD ["npm", "start"]

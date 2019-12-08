@@ -8,7 +8,6 @@ Colmena.bulkCreate([
 ]).then((colmenas)=>{
     User.findOne({where:{email: "jsmilbank@gmail.com"}}).then((user) => {
         user.addColmena(colmenas).then(() => {
-            console.log("added colmenas to user")
             process.exit();
         })
     })
