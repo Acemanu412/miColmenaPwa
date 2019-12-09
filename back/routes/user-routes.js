@@ -26,7 +26,7 @@ router.post(
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${PROCESS.ENV.IP}:80/api/user/activarCuenta/${user.id}`
+      const link = `${process.env.IP}:80/api/user/activarCuenta/${user.id}`
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -70,8 +70,8 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     })
     .then((user) => {
       req.login(user, function(err){
-        err ? res.status(400).redirect(`http://${PROCESS.ENV.IP}:80/`)
-            : res.status(200).redirect(`http://${PROCESS.ENV.IP}:80/home`)
+        err ? res.status(400).redirect(`http://${process.env.IP}:80/`)
+            : res.status(200).redirect(`http://${process.env.IP}:80/home`)
       })
     })
     .catch((err) => {
