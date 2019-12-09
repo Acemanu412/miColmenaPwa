@@ -51,7 +51,40 @@ router.post("/audio", upload.single('audio'), (req, res, next) => {
 
 
 router.post("/newDailyRegister", (req, res, next) => {
+  req.body.colmenasForm.date = new Date()
 
-})
+  req.body.colmenasForm.problemasSalud = []
+
+  let colmenasForm = req.body.colmenasForm;
+
+  Object.keys(colmenasForm).map(key => {  // recorre el objeto
+    if (typeof colmenasForm[key] === "boolean" && colmenasForm[key] === true) {
+      colmenasForm.problemasSalud.push(key);
+    }
+  });
+
+  console.log("--------------------------------------------")
+  console.log(req.body)
+  console.log("--------------------------------------------")
+
+
+  ManualColmena.create(req.body.colmenasForm)
+    .then(data => {
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  req.body.consejosForms.date = new Date()
+
+  ManualConsejos.create(req.body.consejosForms)
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("ERROR");
+    });
+});
 
 module.exports = router;

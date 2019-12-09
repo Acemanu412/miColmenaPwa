@@ -63,13 +63,19 @@ export const logOut = () =>
       return err;
     });
 
-export const postNewDailyRegister = () => {
+export const postNewDailyRegister = (colmenasForm, consejosForms, estadoGeneral, notasForms, reinaForms) => {
   return axios
-  .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`)
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => {
-    return err;
-  });
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`, {
+      colmenasForm,
+      consejosForms,
+      estadoGeneral,
+      notasForms,
+      reinaForms,
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
 };

@@ -3,6 +3,7 @@ import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
+import { postNewDailyRegister } from "../api";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";
@@ -99,6 +100,13 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                     e.preventDefault();
                     props.history.push("/vistaColmena");
                     handleSubmit(e);
+                    postNewDailyRegister(
+                        store.colmenasForm,
+                        store.consejosForms,
+                        store.estadoGeneral,
+                        store.notasForms,
+                        store.reinaForms,
+                    );
                 }} />
             </div>
         </div >

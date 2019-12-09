@@ -10,30 +10,25 @@ ManualReina.init(
       allowNull: false
     },
 
-    reina: {
+    reinaPresente: {
       type: S.BOOLEAN,
-      allowNull: false
     },
 
-    huevosVisibles: {
+    huevosVistos: {
       type: S.BOOLEAN,
-      allowNull: false
     },
 
-    alasCortadas: {
+    alasRotas: {
       type: S.BOOLEAN,
-      allowNull: false
     },
 
-    mercado: {
+    marcada: {
       type: S.BOOLEAN,
-      allowNull: false
     },
 
-    celdasReina: {
+    celulasReina: {
       type: S.INTEGER,
-      allowNull: false
-    }
+    },
   },
   {
     sequelize: db,

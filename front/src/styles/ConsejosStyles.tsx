@@ -5,7 +5,7 @@ import { color } from "../themes";
 const { amarillo, azul, blanco, negro } = color;
 
 export const ConsejosContainer = styled.div`
-    height: 100vh;
+    height: 100%;
     display:flex;
     flex-direction: column;
     margin-top: 3rem;
