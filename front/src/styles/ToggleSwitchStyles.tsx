@@ -3,21 +3,19 @@ import styled from "styled-components";
 import { Input } from "../components/Input";
 import { color } from "../themes";
 
-const { amarillo, gris, negro } = color;
+const { amarillo, gris, azul } = color;
 
 export const ToggleSwitchContainer = styled.label`
     /* The switch - the box around the slider */
     position: relative;
-    display: inline-block;
-    top: -5px;
-    left: -7px;
-    width: 40px;
-    height: 25px;
+    margin-right: 3.5vw;
+    width: 10vw;
+    height: 3.2vh;
     > input:checked + span {
-        background-color: ${negro};
+        background-color: ${azul};
     }
     > input:focus + span {
-        box-shadow: 0 0 1px ${negro};
+        box-shadow: 0 0 1px ${azul};
     }
     > input:checked + span:before {
         -webkit-transform: translateX(24px);
@@ -47,10 +45,10 @@ export const Slider = styled.span`
     :before {
         position: absolute;
         content: "";
-        height: 20px;
-        width: 20px;
-        left: -2px;
-        bottom: 0px;
+        height: 2.9vh;
+        width: 5vw;
+        left: 0px;
+        bottom: -2px;
         background-color: ${amarillo};
         -webkit-transition: .4s;
         transition: .4s;
