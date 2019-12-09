@@ -66,11 +66,11 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     agregarColmena,
     {
       direccionColmena: "",
-      especieAbejas: "",
+      especieAbejas: "ApisMellifera",
       foto: "",
       nombreColmena: "",
-      tipoColmena: "",
-    },
+      tipoColmena: "Langstroth",
+    }
   );
 
   return (
@@ -109,7 +109,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
             onChange={handleInputChange}
           >
             Tipo de Colmena
-            <option selected value="langstroth">
+            <option value="langstroth">
               Langstroth
             </option>
             <option value="warre">Warre</option>
@@ -125,11 +125,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <StyledSelect
             name="especieAbejas"
             value={inputsSalientes.especieAbejas}
-            defaultValue="Apis mellifera"
             onChange={handleInputChange}
           >
             Especie de Abejas
-            <option selected value="apisMellifera">
+            <option value="apisMellifera">
               Apis mellifera
             </option>
             <option value="apisMelliferaCaucasia">

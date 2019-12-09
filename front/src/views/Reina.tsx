@@ -38,7 +38,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
 
   const { inputsSalientes, handleInputChange, handleSubmit } = useForm(reina, {
     alasRotas: false,
-    celulasReina: 0,
+    celulasReina: "0",
     huevosVistos: false,
     marcada: false,
     reinaPresente: false,
