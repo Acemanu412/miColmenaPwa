@@ -91,12 +91,3 @@ const RootStore = types
 
 export default RootStore;
 export type IRootStore = typeof RootStore.Type;
-
-
-
-
-
-
-
-
-//frias9@gmail.com
