@@ -118,8 +118,15 @@ export const Button2 = styled.button`
   flex: 1;
   width: 7rem;
   height: 3rem;
-  border-width: 0.3;
+  border: solid;
+  border-top: none;
+
+  border-width: 0.5px;
+  border-color: #d0d0d0;
   outline: none;
+  &:active {
+    background-color: #f9f9f9;
+  }
 `;
 
 export const Button = styled.button`
@@ -127,12 +134,32 @@ export const Button = styled.button`
   flex: 1;
   width: 7rem;
   height: 2rem;
-  border-color: #dddddd;
-  border-width: 0.5;
+  box-shadow: 0.5px 0.5px 0px #c9c1c1;
+
+  border: solid;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  border-width: 0.5px;
+  border-color: #d0d0d0;
+
   outline: none;
   &:focus {
     background-color: white;
   }
+`;
+export const Button3 = styled.button<{ selected?: boolean }>`
+  border: solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+
+  border-width: 0.5px;
+  border-color: #d0d0d0;
+  flex: 1;
+  background-color: ${(props) => (props.selected ? "#ffd24e" : "transparent")};
+  height: 3rem;
+  outline: none;
 `;
 
 export const Corazon = styled.img.attrs({
@@ -291,15 +318,4 @@ export const Menos = styled.img.attrs({
 })`
   object-fit: contain;
   width: 1.3rem;
-`;
-export const Button3 = styled.button`
-  border: none;
-  flex: 1;
-  background-color: transparent;
-  height: 3rem;
-  outline: none;
-
-  &:focus {
-    background-color: #ffd24e;
-  }
 `;
