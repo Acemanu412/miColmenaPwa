@@ -26,7 +26,7 @@ axios.defaults.withCredentials = true;
 let photo;
 
 export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
-  props
+  props,
 ) => {
   const store = useStores();
 
@@ -49,14 +49,14 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
       .post(
         `http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`,
         formData,
-        config
+        config,
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
         console.log("2do axios")
         axios.post(
           `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
-          inputsSalientes
+          inputsSalientes,
         ).then(() => props.history.push("/home"));
       })
       .catch((error) => {
