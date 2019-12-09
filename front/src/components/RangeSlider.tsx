@@ -4,5 +4,10 @@ import { SliderContainer,
 
 export const RangeSlider: any = ({ min, max, value, name, handleInputChange }) =>
     <SliderContainer >
-        <SliderInput type="range" min={min} max={max} value={value} name={name} onChange={handleInputChange} />
+        <SliderInput type="range"
+                     min={min}
+                     max={max}
+                     value={value}
+                     name={name}
+                     onChange={handleInputChange} />
     </SliderContainer>;

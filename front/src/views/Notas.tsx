@@ -69,6 +69,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         });
         setAudio(audioRec);
     }
+    console.log(store)
 
     return (
         <div>
@@ -100,13 +101,12 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
                     e.preventDefault();
                     props.history.push("/vistaColmena");
                     handleSubmit(e);
-                    postNewDailyRegister(
-                        store.colmenasForm,
-                        store.consejosForms,
-                        store.estadoGeneral,
-                        store.notasForms,
-                        store.reinaForms,
-                    );
+                    // postNewDailyRegister(
+                    //     store.colmenasForm,
+                    //     store.estadoGeneral,
+                    //     store.notasForms,
+                    //     store.reinaForms,
+                    // );
                 }} />
             </div>
         </div >

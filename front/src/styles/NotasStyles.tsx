@@ -5,26 +5,23 @@ import { color } from "../themes";
 const { negro } = color;
 
 export const NotasContainer = styled.div`
-    margin-top: 3rem;
-    padding: 1rem 2rem;
+  margin-top: 3rem;
+  padding: 1rem 2rem;
 `;
 
 export const TextoNotas = styled.div`
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 `;
 
 export const ImagenGrabacion = styled.img`
-    height: 4rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  height: 4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
-
-
-
 
 // export const ImagenContainer: any = styled.div`
 //     height: 4rem;
@@ -32,7 +29,7 @@ export const ImagenGrabacion = styled.img`
 //     margin-left: auto;
 //     margin-right: auto;
 //     margin-bottom: 3rem;
-//     &:after {   
+//     &:after {
 //         content: "Toque para grabar";
 //         font-weight: bold;
 //         font-size: 0.8rem;
@@ -44,15 +41,17 @@ export const ImagenGrabacion = styled.img`
 // }
 // `;
 
-export const TextoImagenGrabacion = styled.div`
-    
-`;
+export const TextoImagenGrabacion = styled.div``;
 
 export const InputNotas: any = styled.textarea`
-    border-top: 1px solid ${negro};
+  box-shadow: 0px 0px 3px;
+  border-color: transparent;
+  width: 85vw;
+  outline: none;
+  border-radius: 2px;
 `;
 
 export const Separador: any = styled.div`
-    heigth: 1rem;
-    border: 1px solid ${negro};
+  heigth: 1rem;
+  border: 1px solid ${negro};
 `;

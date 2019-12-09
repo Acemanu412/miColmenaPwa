@@ -20,18 +20,26 @@ const storage = multer.diskStorage({
 
   },
   filename: function (req, file, cb) {
+    // el D es DD? para un number como 23
     cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
   }
 })
 
 const upload = multer({ storage: storage })
 
+
+// fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  Colmena.create({
-    foto: req.file.path,
-  }).then(newColmena => {
-    res.status(200).send(newColmena)
-  })
+  return (Colmena.create({
+    foto: req.file.originalname,
+  }).then((newColmena) => {
+    User.findOne({ where: { id: req.user.id } })
+      .then((user) => {
+        user.addColmena(newColmena)
+        return newColmena;
+      })
+      .then((newColmenaActualizado) => res.status(200).send(newColmenaActualizado))
+  }))
 })
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
@@ -86,5 +94,13 @@ router.post("/newDailyRegister", (req, res, next) => {
       res.send("ERROR");
     });
 });
+
+router.get("/", (req, res) =>
+  req.user.getColmena().then((colmenas) =>
+    res.status(200).send(colmenas)
+  ).catch((err) =>
+    res.sendStatus(402)
+  )
+)
 
 module.exports = router;

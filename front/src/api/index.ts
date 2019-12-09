@@ -79,3 +79,9 @@ export const postNewDailyRegister = (colmenasForm, consejosForms, estadoGeneral,
       return err;
     });
 };
+
+export const fetchColmenas = () =>
+  axios
+    .get(`http://${process.env.REACT_APP_IP}:2222/api/colmena`)
+    .then((res) => res.data)
+    .catch((err) => err)
