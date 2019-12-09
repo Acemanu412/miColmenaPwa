@@ -29,8 +29,8 @@ export const Colmenas: React.FC = (props) => {
   return (
     <ColmenasContainer>
 
-      {colmenas.map((colmena) => {
-        return (<Link to="/vistaColmena" style={{ textDecoration: "none", color: "black" }}>
+      {colmenas.map((colmena, index) => {
+        return (<Link to="/vistaColmena" key={index} style={{ textDecoration: "none", color: "black" }}>
           <DataColmenaContainer>
             <img src={`http://${process.env.REACT_APP_IP}:2222/fotos/${colmena.foto}`}
               alt="" style={{ height: "70px" }} />

@@ -22,8 +22,8 @@ const upload = multer({ storage: storage })
 
 // fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-   return (Colmena.create({
-    foto: req.file.originalname,
+  return (Colmena.create({
+    foto: req.file.filename,
   }).then((newColmena) => {
     User.findOne({ where: { id: req.user.id } })
       .then((user) => {

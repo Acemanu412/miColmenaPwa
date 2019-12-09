@@ -44,6 +44,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     const config = {
       headers: { "content-type": "multipart/form-data" },
     };
+    console.log("axios")
     axios
       .post(
         `http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`,
@@ -52,6 +53,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
+        console.log("2do axios")
         axios.post(
           `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
           inputsSalientes
@@ -66,10 +68,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     agregarColmena,
     {
       direccionColmena: "",
-      especieAbejas: "",
+      especieAbejas: "ApisMellifera",
       foto: "",
       nombreColmena: "",
-      tipoColmena: "",
+      tipoColmena: "Langstroth",
     }
   );
 
@@ -109,7 +111,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
             onChange={handleInputChange}
           >
             Tipo de Colmena
-            <option selected value="langstroth">
+            <option value="langstroth">
               Langstroth
             </option>
             <option value="warre">Warre</option>
@@ -125,11 +127,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <StyledSelect
             name="especieAbejas"
             value={inputsSalientes.especieAbejas}
-            defaultValue="Apis mellifera"
             onChange={handleInputChange}
           >
             Especie de Abejas
-            <option selected value="apisMellifera">
+            <option value="apisMellifera">
               Apis mellifera
             </option>
             <option value="apisMelliferaCaucasia">
@@ -156,16 +157,16 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <ImageContainer>
             <div
               style={{
-                display: "flex",
                 alignSelf: "stretch",
-                height: "4vh",
-                width: "50vw",
-                outline: "none",
-                borderRadius: "2px",
+                backgroundColor: "#ffff",
                 border: "1px solid",
                 borderColor: "#e5e3e3",
-                backgroundColor: "#ffff",
+                borderRadius: "2px",
+                display: "flex",
+                height: "4vh",
+                outline: "none",
                 paddingTop: "0.2rem",
+                width: "50vw",
               }}
             >
               <input
