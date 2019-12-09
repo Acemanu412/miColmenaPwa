@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true;
 
 export const fetchRegister = (username, email, password, telefono) =>
   axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
+    .post(`http://10.100.0.69:2222/api/user/signup`, {
       email,
       password,
       telefono,
@@ -18,7 +18,7 @@ export const fetchRegister = (username, email, password, telefono) =>
 
 export const activate = (id) =>
   axios
-    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
+    .get(`http://10.100.0.69:2222/api/user/activarCuenta/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -28,7 +28,7 @@ export const activate = (id) =>
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/session`, {
+    .post(`http://10.100.0.69:2222/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -43,7 +43,7 @@ export const fetchLogging = (inputsSalientes) => {
 
 export const postNuevoClave = (email) =>
   axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, {
+    .post(`http://10.100.0.69:2222/api/user/olvidoClave`, {
       email,
     })
     .then((res) => {
@@ -54,7 +54,7 @@ export const postNuevoClave = (email) =>
     });
 export const logOut = () =>
   axios
-    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`)
+    .get(`http://10.100.0.69:2222/api/user/logout`)
     .then((res) => {
       return res;
     })
@@ -64,6 +64,6 @@ export const logOut = () =>
 
 export const fetchColmenas = () =>
     axios
-      .get(`http://${process.env.REACT_APP_IP}:2222/api/colmena`)
+      .get(`http://10.100.0.69:2222/api/colmena`)
       .then((res) => res.data)
-      .catch((err) => err)
+      .catch((err) => err);

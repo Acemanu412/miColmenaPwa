@@ -28,7 +28,7 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/audio`,
+        axios.post(`http://10.100.0.69:2222/api/colmena/audio`,
                     formData,
                     config);
         store.updateNotasForm(inputsSalientes);

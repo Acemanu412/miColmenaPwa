@@ -10,7 +10,7 @@ const db = require("./config/db");
 const routes = require("./routes");
 
 app.use(function (req, res, next) {
-  let allowedOrigins = [`http://${process.env.IP}:3000`, `http://localhost:3000`];
+  let allowedOrigins = [`http://10.100.0.69:2222`, `http://localhost:2222`];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -37,6 +37,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api", routes);
+
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'uploads/index.html'));
+});
 
 let port = process.env.PORT || 2222;
 db.sync({ force: false })
