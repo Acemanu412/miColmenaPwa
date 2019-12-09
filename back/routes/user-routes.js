@@ -70,8 +70,8 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     })
     .then((user) => {
       req.login(user, function(err){
-        err ? res.status(400).redirect(`http://10.100.0.69:2222/`)
-            : res.status(200).redirect(`http://10.100.0.69:2222/home`)
+        err ? res.status(400).redirect(`http://${PROCESS.ENV.IP}:2222/`)
+            : res.status(200).redirect(`http://${PROCESS.ENV.IP}:2222/home`)
       })
     })
     .catch((err) => {
