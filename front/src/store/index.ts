@@ -42,10 +42,8 @@ const RootStore = types
       self.agregarColmenaForms = inputsArmados;
     },
     updateColmenasForm: (inputs) => {
-      const inputsArmados = {
-        ...inputs,
-      };
-      self.colmenasForm = inputsArmados;
+      console.log(inputs)
+      self.colmenasForm = inputs;
     },
 
     updateConsejos: (
