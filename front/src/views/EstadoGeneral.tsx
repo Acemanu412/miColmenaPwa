@@ -127,6 +127,8 @@ const EstadoGeneral = observer((props) => {
             style={{
               display: "flex",
               justifyContent: "space-between",
+              justifySelf: "flex-end",
+              margin: "auto 0 ",
             }}
           >
             <FormAtrasButton
