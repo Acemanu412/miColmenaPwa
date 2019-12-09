@@ -15,7 +15,7 @@ router.post(
         res.status(401).send(info.message);
       } else {
        req.logIn(user, function(err) {
-         if (err) {res.status(401).send("No se pudo abrir el session")}
+         if (err) {res.status(401).send("No se pudo abrir la sesión")}
          res.status(200).send(user);
        })
       }
@@ -80,7 +80,6 @@ router.get("/activarCuenta/:id", (req, res, next) => {
 });
 
 router.get("/logout", (req,res) => {
-  console.log(req.user)
   req.logout();
   res.send(req.user);
 })
@@ -122,6 +121,9 @@ router.post("/olvidoClave", (req, res, next) => {
       });
     }
     else {
+
+      // fix this one manu there is 1 too many here. sexy.
+      // make a ticket here MANU
       res.statusMessage = "No existe usuario con ese correo electrónico";
       res.status(401).send("No existe usuario con ese correo electrónico");
     }

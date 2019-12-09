@@ -2,7 +2,7 @@ const express = require("express");
 const router = express();
 const multer = require('multer');
 const moment = require('moment');
-const { Colmena, } = require('../models');
+const { Colmena, User } = require('../models');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -12,18 +12,26 @@ const storage = multer.diskStorage({
 
   },
   filename: function (req, file, cb) {
+    // el D es DD? para un number como 23
     cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
   }
 })
 
 const upload = multer({ storage: storage })
 
+
+// fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  Colmena.create({
-    foto: req.file.path,
-  }).then(newColmena => {
-    res.status(200).send(newColmena)
-  })
+   return (Colmena.create({
+    foto: req.file.originalname,
+  }).then((newColmena) => {
+    User.findOne({ where: { id: req.user.id } })
+      .then((user) => {
+        user.addColmena(newColmena)
+        return newColmena;
+      })
+      .then((newColmenaActualizado) => res.status(200).send(newColmenaActualizado))
+  }))
 })
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
@@ -41,13 +49,12 @@ router.post("/audio", upload.single('audio'), (req, res, next) => {
   res.sendStatus(200);
 })
 
-router.get("/", (req,res) => {
-  req.user.getColmena().then((colmenas) => {
-    res.status(200).send(colmenas);
-  }).catch((err) => {
+router.get("/", (req, res) =>
+  req.user.getColmena().then((colmenas) =>
+    res.status(200).send(colmenas)
+  ).catch((err) =>
     res.sendStatus(402)
-  })
-
-})
+  )
+)
 
 module.exports = router;

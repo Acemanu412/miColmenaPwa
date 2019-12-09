@@ -20,6 +20,11 @@ ManualConsejos.init(
       allowNull: false
     },
 
+// esto es para todo lo que esta abajo
+// se recibe el valor y los unidades por separado 
+// se puede unificar en un string el valor y los unidades.
+// ej: "8kg"
+
     miel: {
       type: S.INTEGER,
       allowNull: false
