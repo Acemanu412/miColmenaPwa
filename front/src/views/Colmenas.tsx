@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useStores } from "../hooks/useStore";
+
 import { fetchColmenas } from "../api/index";
 import {
   ButtonColmenasContainer,
@@ -12,7 +14,7 @@ import {
 let checkedColmenas = false;
 
 export const Colmenas: React.FC = (props) => {
-
+  const store = useStores();
   const [colmenas, setColmenas] = useState([]);
   fetchColmenas().then((res) => {
     const colmenaArr = [];
@@ -28,25 +30,29 @@ export const Colmenas: React.FC = (props) => {
 
   return (
     <ColmenasContainer>
-
       {colmenas.map((colmena) => {
-        return (<Link to="/vistaColmena" style={{ textDecoration: "none", color: "black" }}>
-          <DataColmenaContainer>
-            <img src={`http://${process.env.REACT_APP_IP}:2222/fotos/${colmena.foto}`}
-              alt="" style={{ height: "70px" }} />
-            {colmena.nombre}
-          </DataColmenaContainer>
-        </Link>);
+        return (
+          <Link
+            to="/vistaColmena"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <DataColmenaContainer>
+              <img
+                src={`http://${process.env.REACT_APP_IP}:2222/fotos/${colmena.foto}`}
+                alt=""
+                style={{ height: "70px" }}
+              />
+              {colmena.nombre}
+            </DataColmenaContainer>
+          </Link>
+        );
       })}
 
       <ButtonColmenasContainer>
-        <Link
-          to="/agregarColmena"
-        >
+        <Link to="/agregarColmena">
           <StyledBotonAgregarColmenas text="Agregar Colmena" />
         </Link>
       </ButtonColmenasContainer>
-
     </ColmenasContainer>
   );
 };

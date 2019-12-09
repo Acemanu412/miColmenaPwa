@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import moment from "moment";
 import React, { useState } from "react";
+import { times } from "lodash";
 
 import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
@@ -37,18 +38,56 @@ const VistaColmenaData = observer((props) => {
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
-  const [week, setWeek] = useState([]);
-  const [addWeek, setAddWeek] = useState(0)
+  const [dates, setDates] = useState(() =>
+    times(7, (i) =>
+      moment()
+        .startOf("isoWeek")
+        .add(i, "day")
+    )
+  );
 
+  const [selected, setSelected] = useState(() => {
+    const today = moment().date();
+    return dates.findIndex((d) => d.date() === today);
+  });
+  const addWeek = () => {
+    const newDates = times(7, (i) => dates[i].add(7, "day"));
+    setDates(newDates);
+  };
+  const takeWeek = () => {
+    const newDates = times(7, (i) => dates[i].subtract(7, "day"));
+    setDates(newDates);
+  };
+  // const [week, setWeek] = useState([]);
+  // const [addWeek, setAddWeek] = useState(0);
+  // const [dia, setDia] = useState(moment());
+  // const newWeek = [];
 
-  const newWeek = [];
-  const dias = ["L", "M", "M", "J", "V", "S", "D"]
-  const month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+  const dias = ["L", "M", "M", "J", "V", "S", "D"];
+  const month = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
 
-  for (let i = 0; i < 7; i++) {
-    newWeek.push(moment().startOf("isoWeek").add(i + addWeek, "day").date().toString())
-  }
+  // for (let i = 0; i < 7; i++) {
+  //   newWeek.push(
+  //     moment()
+  //       .startOf("isoWeek")
+  //       .add(i + addWeek, "day")
+  //       .date()
+  //       .toString()
+  //   );
+  // }
 
   return (
     <Container>
@@ -58,7 +97,6 @@ const VistaColmenaData = observer((props) => {
         <ProfileContainer>
           <NameContainer>
             <p>Colmena de muestreo</p>
-            <p>Lunes, 2 de Diciembre a las 15:00</p>
           </NameContainer>
           <ContainerSaludable>
             <Saludable1>
@@ -79,21 +117,30 @@ const VistaColmenaData = observer((props) => {
         </ProfileContainer>
       </Header>
       <EnlaceContainer>
-        {`${moment().get("day")} de ${month[moment().get("month")]} de ${moment().get("year")}`}
+        {`${dates[selected].date()} de ${
+          month[dates[selected].month()]
+        } de ${dates[selected].year()}`}
       </EnlaceContainer>
       <SemanaContainer>
         <Button2>
-          <Menos onClick={() => setAddWeek(addWeek - 7)} />
+          <Menos onClick={takeWeek} />
         </Button2>
-        {newWeek.map((day, index) => {
-          return <Button3 key={index}>
-            <Dia>
-              <p>{dias[index]}</p> <p>{day}</p>
-            </Dia>
-          </Button3>;
+
+        {dates.map((day, index) => {
+          return (
+            <Button3
+              selected={index === selected}
+              key={`id-${index}`}
+              onClick={() => setSelected(index)}
+            >
+              <Dia>
+                <p>{dias[index]}</p> <p>{day.date()}</p>
+              </Dia>
+            </Button3>
+          );
         })}
         <Button2>
-          <Mas onClick={() => setAddWeek(addWeek + 7)} />
+          <Mas onClick={addWeek} />
         </Button2>
       </SemanaContainer>
       <BotonesContainer>
@@ -128,7 +175,14 @@ const VistaColmenaData = observer((props) => {
       {vista1 === true && <VistaColmena1 />}
       {vista2 === true && <VistaColmena2 />}
       {vista3 === true && <VistaColmena3 />}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          justifySelf: "flex-end",
+          margin: "auto 0 ",
+        }}
+      >
         <FormAtrasButton
           onClick={(e) => {
             e.preventDefault();
