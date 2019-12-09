@@ -26,9 +26,11 @@ axios.defaults.withCredentials = true;
 let photo;
 
 export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
-  props
+  props,
 ) => {
   const store = useStores();
+  const IP = process.env.REACT_APP_IP || "5.189.179.214";
+  const PORT = process.env.REACT_APP_PORT || "80";
 
   function handleChangeImagen(e) {
     e.preventDefault();
@@ -46,15 +48,15 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     };
     axios
       .post(
-        `http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`,
+        `http://${IP}:${PORT}/api/colmena/photo`,
         formData,
-        config
+        config,
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
         axios.post(
-          `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
-          inputsSalientes
+          `http://${IP}:${PORT}/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
+          inputsSalientes,
         ).then(() => props.history.push("/home"));
       })
       .catch((error) => {
@@ -66,11 +68,11 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     agregarColmena,
     {
       direccionColmena: "",
-      especieAbejas: "",
+      especieAbejas: "ApisMellifera",
       foto: "",
       nombreColmena: "",
-      tipoColmena: "",
-    }
+      tipoColmena: "Langstroth",
+    },
   );
 
   return (
@@ -109,7 +111,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
             onChange={handleInputChange}
           >
             Tipo de Colmena
-            <option selected value="langstroth">
+            <option value="langstroth">
               Langstroth
             </option>
             <option value="warre">Warre</option>
@@ -125,11 +127,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <StyledSelect
             name="especieAbejas"
             value={inputsSalientes.especieAbejas}
-            defaultValue="Apis mellifera"
             onChange={handleInputChange}
           >
             Especie de Abejas
-            <option selected value="apisMellifera">
+            <option value="apisMellifera">
               Apis mellifera
             </option>
             <option value="apisMelliferaCaucasia">
@@ -156,16 +157,16 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <ImageContainer>
             <div
               style={{
-                display: "flex",
                 alignSelf: "stretch",
-                height: "4vh",
-                width: "50vw",
-                outline: "none",
-                borderRadius: "2px",
+                backgroundColor: "#ffff",
                 border: "1px solid",
                 borderColor: "#e5e3e3",
-                backgroundColor: "#ffff",
+                borderRadius: "2px",
+                display: "flex",
+                height: "4vh",
+                outline: "none",
                 paddingTop: "0.2rem",
+                width: "50vw",
               }}
             >
               <input

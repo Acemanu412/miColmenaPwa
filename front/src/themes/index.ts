@@ -1,7 +1,7 @@
 // index
 export let color = {
-  amarillo: "#FED24D",
-  azul: "#0056A3",
+  amarillo: "#FED24E",
+  azul: "#0056A2",
   blanco: "#ffffff",
   gris: "#999999",
   negro: "#000000",
