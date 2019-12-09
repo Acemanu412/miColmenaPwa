@@ -18,6 +18,7 @@ const RootStore = types
     consejosIntervenciones: types.maybeNull(IntervencionesForm),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
+    isFetchingUser: types.optional(types.boolean, false),
     media: types.maybeNull(Media),
     notasForms: types.maybeNull(NotasForms),
     reinaForms: types.maybeNull(ReinaForms),
@@ -27,8 +28,11 @@ const RootStore = types
   .actions((self) => ({
     setUser(user) {
       self.user = user;
+      self.isFetchingUser = false;
     },
-
+    setIsFetchingUser(fetching) {
+      self.isFetchingUser = fetching;
+    },
     setMedia(media: any) {
       self.media = media;
     },
@@ -42,7 +46,6 @@ const RootStore = types
       self.agregarColmenaForms = inputsArmados;
     },
     updateColmenasForm: (inputs) => {
-      console.log(inputs)
       self.colmenasForm = inputs;
     },
 
@@ -80,7 +83,7 @@ const RootStore = types
       const inputsArmados = {
         audio: inputs.audio,
         fecha: inputs.fecha,
-        salud: inputs["salud"],
+        salud: inputs.salud,
       };
       self.estadoGeneral = inputsArmados;
     },

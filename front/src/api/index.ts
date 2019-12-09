@@ -66,7 +66,18 @@ export const logOut = () =>
     });
 
 export const fetchColmenas = () =>
-    axios
-      .get(`http://${IP}:${PORT}/api/colmena`)
-      .then((res) => res.data)
-      .catch((err) => err);
+
+  axios
+    .get(`http://${IP}:${PORT}/api/colmena`)
+    .then((res) => res.data)
+    .catch((err) => err);
+
+export const fetchUser = () =>
+  axios
+    .get(`http://${IP}:${PORT}/api/user/session`)
+    .then((res) => res.data)
+    .then((user) => user)
+    .catch((err) => {
+      return { message: err.response.data };
+    });
+

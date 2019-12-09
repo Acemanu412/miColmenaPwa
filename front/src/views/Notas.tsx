@@ -1,5 +1,6 @@
 import axios from "axios";
 import MicRecorder from "mic-recorder-to-mp3";
+import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -15,7 +16,7 @@ import {
 } from "../styles/NotasStyles";
 import { NavBar } from "./NavBar";
 
-export const Notas: React.FC<RouteComponentProps> = (props) => {
+export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
     const IP = process.env.REACT_APP_IP || "5.189.179.214";
     const PORT = process.env.REACT_APP_PORT || "80";
@@ -69,38 +70,42 @@ export const Notas: React.FC<RouteComponentProps> = (props) => {
         });
         setAudio(audioRec);
     }
-
     return (
         <div>
             <NavBar />
-            <NotasContainer>
-                <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
-                <div id="divGrabando" className="noGrabando" onClick={() => {
-                    const claseGrabando = document.querySelector("#divGrabando");
-                    grabando ? stopRecording() : startRecording();
-                    return claseGrabando !== null && grabando
-                        ? (claseGrabando.classList.remove("noGrabando"), claseGrabando.classList.add("Grabando"))
-                        : (claseGrabando.classList.remove("Grabando"), claseGrabando.classList.add("noGrabando"));
-
-                }
-                }>
-                    <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
+            {store.user || (!store.user && store.isFetchingUser) ?
+                <div>
+                    <NotasContainer>
+                        <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
+                        <div id="divGrabando" className="noGrabando" onClick={() => {
+                            const claseGrabando = document.querySelector("#divGrabando");
+                            grabando ? stopRecording() : startRecording();
+                            return claseGrabando !== null && grabando
+                                ? (claseGrabando.classList.remove("noGrabando"),
+                                    claseGrabando.classList.add("Grabando"))
+                                : (claseGrabando.classList.remove("Grabando"),
+                                    claseGrabando.classList.add("noGrabando"));
+                        }
+                        }>
+                            <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
+                        </div>
+                        <Separador />
+                        <TextoNotas>Escribe tus notas</TextoNotas>
+                        <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+                    </NotasContainer>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <FormAtrasButton onClick={(e) => {
+                            e.preventDefault();
+                            props.history.push("/consejos");
+                        }} />
+                        <FormSubmitButton onClick={(e) => {
+                            e.preventDefault();
+                            props.history.push("/vistaColmena");
+                            handleSubmit(e);
+                        }} />
+                    </div>
                 </div>
-                <Separador />
-                <TextoNotas>Escribe tus notas</TextoNotas>
-                <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
-            </NotasContainer>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <FormAtrasButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/consejos");
-                }} />
-                <FormSubmitButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/vistaColmena");
-                    handleSubmit(e);
-                }} />
-            </div>
+                : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
         </div >
-    );
-};
+    )
+});
