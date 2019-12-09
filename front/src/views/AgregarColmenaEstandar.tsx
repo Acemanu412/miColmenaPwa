@@ -44,7 +44,6 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     const config = {
       headers: { "content-type": "multipart/form-data" },
     };
-    console.log("axios")
     axios
       .post(
         `http://${process.env.REACT_APP_IP}:2222/api/colmena/photo`,
@@ -53,7 +52,6 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
-        console.log("2do axios")
         axios.post(
           `http://${process.env.REACT_APP_IP}:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
           inputsSalientes,
