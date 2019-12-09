@@ -10,7 +10,7 @@ const db = require("./config/db");
 const routes = require("./routes");
 
 app.use(function (req, res, next) {
-  let allowedOrigins = [`http://${process.env.IP}:80`, `http://localhost:80`];
+  let allowedOrigins = [`http://${process.env.IP}:8080`, `http://localhost:8080`];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -21,6 +21,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(express.static(path.resolve("../front/build")));
 app.use(express.static(path.join(__dirname, "/uploads/")));
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -39,10 +40,10 @@ app.use(passport.session());
 app.use("/api", routes);
 
 app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, 'uploads/index.html'));
+  res.sendFile(path.resolve("../front/build"));
 });
 
-let port = process.env.PORT || 80;
+let port = process.env.PORT || 8080;
 db.sync({ force: false })
   .then(() => {
     app.listen(port, () => {

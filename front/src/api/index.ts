@@ -2,7 +2,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const IP = process.env.REACT_APP_IP || "5.189.179.214";
-const PORT = process.env.REACT_APP_PORT || "80";
+const PORT = process.env.REACT_APP_PORT || "8080";
 
 export const fetchRegister = (username, email, password, telefono) =>
   axios
@@ -30,6 +30,7 @@ export const activate = (id) =>
     });
 
 export const fetchLogging = (inputsSalientes) => {
+  console.log(IP);
   return axios
     .post(`http://${IP}:${PORT}/api/user/session`, {
       email: inputsSalientes.email,
