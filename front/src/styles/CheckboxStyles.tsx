@@ -9,9 +9,8 @@ export const CheckboxContainer = styled.label`
     position: relative;
     display: flex;
     justify-content:flex-start;
-    margin-left: 1rem;
-    width: 40px;
-    height: 20px;
+    width: 14vw;
+    margin-top: .8vh;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -47,8 +46,8 @@ export const Checkmark = styled.span`
     position: absolute;
     top: 0;
     left: 0;
-    height: 30px;
-    width: 30px;
+    height: 5.5vh;
+    width: 10vw;
     border: 0.1rem solid ${azul}
     background-color: ${blanco};
     :after {

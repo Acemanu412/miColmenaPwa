@@ -13,7 +13,11 @@ import {
   CelulasReina,
   CheckboxesReina,
   EstadoReinaHuevos,
-  Panel,
+  FooterBtns,
+  PanelDiv,
+  PanelHR,
+  PanelImg,
+  PanelText,
   RangeSlidersReina,
   RangeSliderText,
   ReinaCheckboxContainer,
@@ -45,11 +49,11 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
   return (
     <div>
       <NavBar />
-        <div style={{marginTop: "9vh"}} >
-          <Panel />
-          <span style={{fontFamily: "montserrat", fontWeight: 500, fontSize: ".8rem" }}>Reina</span>
-          <hr style={{borderColor: "#c7c7c7", borderBottomWidth: "1px", borderStyle: "solid"}}/>
-        </div>
+      <PanelDiv >
+        <PanelImg />
+        <PanelText>Reina</PanelText>
+      </PanelDiv>
+      <PanelHR />
       <ReinaContainer>
         <EstadoReinaHuevos reinaPresente={inputsSalientes.reinaPresente}>
           <ReinaText>Población</ReinaText>
@@ -123,7 +127,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
             </ToggleSwitchsReina>
           )}
         </CelulasReina>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <FooterBtns>
           <FormAtrasButton
             onClick={(e) => {
               e.preventDefault();
@@ -137,7 +141,7 @@ export const Reina: React.FC<RouteComponentProps> = (props) => {
               handleSubmit(e);
             }}
           />
-        </div>
+        </FooterBtns>
       </ReinaContainer>
     </div>
   );

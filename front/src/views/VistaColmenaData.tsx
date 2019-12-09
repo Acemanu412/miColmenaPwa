@@ -16,7 +16,6 @@ import {
   ContainerSaludable,
   Corazon,
   Dia,
-  Enlace,
   EnlaceContainer,
   Header,
   Libro,
@@ -37,7 +36,7 @@ const VistaColmenaData = observer((props) => {
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
-  const [week, setWeek] = useState([]);
+ // const [week, setWeek] = useState([]);
   const [addWeek, setAddWeek] = useState(0)
 
 

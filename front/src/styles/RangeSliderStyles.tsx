@@ -15,6 +15,8 @@ export const SliderInput = styled(Input)`
   width: 100%; /* Full-width */
   height: 25px; /* Specified height */
   height: 0.20rem;
+  margin-bottom: 1vh;
+  margin-top: 1.9vh;
   border-radius: 5px;
   background: ${amarillo};
   outline: none; /* Remove outline */

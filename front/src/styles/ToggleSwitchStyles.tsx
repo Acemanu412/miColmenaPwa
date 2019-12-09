@@ -9,7 +9,7 @@ export const ToggleSwitchContainer = styled.label`
     /* The switch - the box around the slider */
     position: relative;
     margin-right: 3.5vw;
-    width: 11vw;
+    width: 10vw;
     height: 3.2vh;
     > input:checked + span {
         background-color: ${azul};
@@ -45,8 +45,8 @@ export const Slider = styled.span`
     :before {
         position: absolute;
         content: "";
-        height: 18px;
-        width: 18px;
+        height: 2.9vh;
+        width: 5vw;
         left: 0px;
         bottom: -2px;
         background-color: ${amarillo};
