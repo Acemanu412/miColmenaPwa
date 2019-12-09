@@ -14,15 +14,30 @@ import {
   CheckboxContainer,
   CheckboxFormColmenas,
   ContentText,
+  Enfermedades,
   FormColmenasContainer,
   Header,
-  Intervenciones,
   Panel,
   RangeSliderColmenas,
   Text,
   TextCantidad,
   TextGray,
 } from "../styles/FormColmenasStyles";
+
+const EnfermedadesArr = ["AcarosBarroa", "AlasDeformadas", "CalidadCrias", "Comportamiento", "CriaCalcarea",
+  "CriaDePiedra", "Escarabajos", "LoqueAmericana", "LoqueEuropea", "MesesDeCera", "Moho", "Nosema",
+  "NumeroComidas", "NumeroDeComidas", "ParalisisCronica", "Poblacion", "PolillasDeCera", "PupaComidas",
+  "PupasPicadas", "Tropilaelapsosis", "Varroas"];
+
+function ObjectConverter(array, startValue) {
+  const newObj = {};
+  for (const element of array) {
+    newObj[element] = startValue;
+  }
+  return newObj;
+}
+
+const EnfermedadesObj = ObjectConverter(EnfermedadesArr, false);
 
 export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
   const store = useStores();
@@ -35,6 +50,7 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
     handleInputChange,
     handleSubmit,
   }: any = useFormColmenas(formColmenas, {
+    ...EnfermedadesObj,
     calidadCrias: "0",
     comportamiento: "0",
     numeroComidas: "0",
@@ -158,152 +174,18 @@ export const FormColmenas: React.FC<RouteComponentProps> = (props) => {
 
         <TextGray>Problemas de salud: Toca las que correspondan</TextGray>
 
-        <Intervenciones>
-          <CheckboxContainer activo={inputsSalientes.numeroDeComidas}>
-            Numero de comidas
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="numeroDeComidas"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.pupaComidas}>
-            Pupa Comidas
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="pupaComidas"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.alasDeformadas}>
-            Alas deformadas
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="alasDeformadas"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.varroas}>
-            Varroas
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="varroas"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.polillasDeCera}>
-            Polillas de cera
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="polillasDeCera"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.acarapisosis}>
-            Acarapisosis
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="acarapisosis"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.pupasPicadas}>
-            Pupas picadas
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="pupasPicadas"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.acarosBarroa}>
-            Acaros Barroa
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="acarosBarroa"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.mesesDeCera}>
-            Meses de cera
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="mesesDeCera"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.nosema}>
-            Nosema
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="nosema"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.paralisisCronica}>
-            Paralisis cronica
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="paralisisCronica"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.escarabajos}>
-            Escarabajos
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="escarabajos"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.tropilaelapsosis}>
-            Tropila- elapsosis
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="tropilaelapsosis"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.criaDePiedra}>
-            Cria de piedra
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="criaDePiedra"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.criaCalcarea}>
-            Cria calcarea
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="criaCalcarea"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.moho}>
-            Moho
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="moho"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.loqueAmericana}>
-            Loque Americana
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="loqueAmericana"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-          <CheckboxContainer activo={inputsSalientes.loqueEuropea}>
-            Loque Europea
-            <CheckboxFormColmenas
-              type="checkbox"
-              name="loqueEuropea"
-              onChange={handleInputChange}
-            />
-          </CheckboxContainer>
-        </Intervenciones>
+        <Enfermedades>
+          {EnfermedadesArr.map(((enfermedad, index) => {
+            const elemento = enfermedad.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
+            return <CheckboxContainer key={index} activo={inputsSalientes[elemento]}>
+              {elemento}
+              <CheckboxFormColmenas type="checkbox"
+                name={elemento}
+                onChange={handleInputChange} />
+            </CheckboxContainer>;
+          }
+          ))};
+        </Enfermedades>
 
         <TextCantidad></TextCantidad>
 
