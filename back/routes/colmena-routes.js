@@ -22,17 +22,15 @@ const upload = multer({ storage: storage })
 
 // fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  return (Colmena.create({
-    foto: req.file.filename,
-  }).then((newColmena) => {
-    User.findOne({ where: { id: req.user.id } })
-      .then((user) => {
-        user.addColmena(newColmena)
-        return newColmena;
-      })
-      .then((newColmenaActualizado) => res.status(200).send(newColmenaActualizado))
-  }))
-})
+   Colmena.create({foto: req.file.filename})
+    .then((newColmena) => {
+      req.user.addColmena(newColmena)
+      return newColmena
+    })
+        .then((newColmena) => {
+          res.status(200).send(newColmena)
+    })
+  })
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
