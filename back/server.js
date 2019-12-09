@@ -10,7 +10,7 @@ const db = require("./config/db");
 const routes = require("./routes");
 
 app.use(function (req, res, next) {
-  let allowedOrigins = [`http://process.env.IP:80`, `http://localhost:80`];
+  let allowedOrigins = [`http://${process.env.IP}:80`, `http://localhost:80`];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
