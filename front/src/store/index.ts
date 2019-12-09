@@ -2,7 +2,7 @@ import { types } from "mobx-state-tree";
 
 import AgregarColmenaForms from "./AgregarColmena";
 import ColmenasForms from "./ColmenasForms";
-import ConsejosForms from "./ConsejosForms";
+import { AlimentoForm, CosechaForm, IntervencionesForm } from "./ConsejosForms";
 import EstadoGeneral from "./EstadoGeneralForm";
 import Media from "./Media";
 import NotasForms from "./NotasForms";
@@ -13,7 +13,9 @@ const RootStore = types
   .model("Root", {
     agregarColmenaForms: types.maybeNull(AgregarColmenaForms),
     colmenasForm: types.maybeNull(ColmenasForms),
-    consejosForms: types.maybeNull(ConsejosForms),
+    consejosAlimento: types.maybeNull(AlimentoForm),
+    consejosCosecha: types.maybeNull(CosechaForm),
+    consejosIntervenciones: types.maybeNull(IntervencionesForm),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
     media: types.maybeNull(Media),
@@ -40,58 +42,26 @@ const RootStore = types
       self.agregarColmenaForms = inputsArmados;
     },
     updateColmenasForm: (inputs) => {
-      const inputsArmados = {
-        ...inputs,
-      };
-      self.colmenasForm = inputsArmados;
+      console.log(inputs)
+      self.colmenasForm = inputs;
     },
 
     updateConsejos: (
       inputsIntervenciones: any,
       inputsAlimento: any,
-      inputsCosecha: any
+      inputsCosecha: any,
     ) => {
-      const inputsArmados = {
-        abejasAgregadas: inputsIntervenciones.abejasAgregadas,
-        acarapisosis: inputsIntervenciones.acarapisosis,
-        agregarAbejas: inputsAlimento.agregarAbejas,
-        agregarReina: inputsAlimento.agregarReina,
-        antibioticos: inputsIntervenciones.antibioticos,
-        antihongos: inputsIntervenciones.antihongos,
-        antivarroa: inputsIntervenciones.antivarroa,
-        celdasCambiadas: inputsIntervenciones.celdasCambiadas,
-        cera: inputsCosecha.cera,
-        colmenaAislante: inputsIntervenciones.colmenaAislante,
-        colmenaDividida: inputsIntervenciones.colmenaDividida,
-        colmenaLimpia: inputsIntervenciones.colmenaLimpia,
-        exclusorReina: inputsIntervenciones.exclusorReina,
-        exclusorReina2: inputsIntervenciones.exclusorReina2,
-        exclusorReina3: inputsIntervenciones.exclusorReina3,
-        jaleaReal: inputsCosecha.jaleaReal,
-        jarabeEspeso: inputsAlimento.jarabeEspeso,
-        jarabeLiviano: inputsAlimento.jarabeLiviano,
-        medEscara: inputsIntervenciones.medEscara,
-        medNosema: inputsIntervenciones.medNosema,
-        mezclaSeca: inputsAlimento.mezclaSeca,
-        miel: inputsCosecha.miel,
-        nosema: inputsIntervenciones.nosema,
-        nuevaColmenaAlimentos: inputsAlimento.nuevaColmena,
-        nuevaColmenaIntervenciones: inputsIntervenciones.nuevaColmena,
-        otrosAntivarroa: inputsIntervenciones.otrosAntivarroa,
-        panal: inputsCosecha.panal,
-        pantallaAbierta: inputsIntervenciones.pantallaAbierta,
-        pantallaCerrada: inputsIntervenciones.pantallaCerrada,
-        polen: inputsCosecha.polen,
-        propoleo: inputsCosecha.propoleo,
-        reinaAgregada: inputsIntervenciones.reinaAgregada,
-        unidadCera: inputsCosecha["unidad-cera"],
-        unidadJaleaReal: inputsCosecha["unidad-jaleaReal"],
-        unidadMiel: inputsCosecha["unidad-miel"],
-        unidadPanal: inputsCosecha["unidad-panal"],
-        unidadPolen: inputsCosecha["unidad-polen"],
-        unidadPropoleo: inputsCosecha["unidad-propoleo"],
+      const inputsCosechaArmados = {
+        cera: inputsCosecha.cera + inputsCosecha["unidad-cera"],
+        jaleaReal: inputsCosecha.jaleaReal + inputsCosecha["unidad-jaleaReal"],
+        miel: inputsCosecha.miel + inputsCosecha["unidad-miel"],
+        panal: inputsCosecha.panal + inputsCosecha["unidad-panal"],
+        polen: inputsCosecha.polen + inputsCosecha["unidad-polen"],
+        propoleo: inputsCosecha.propoleo + inputsCosecha["unidad-propoleo"],
       };
-      self.consejosForms = inputsArmados;
+      self.consejosIntervenciones = inputsIntervenciones;
+      self.consejosAlimento = inputsAlimento;
+      self.consejosCosecha = inputsCosechaArmados;
     },
     updateHomeMessage: (homeMessage) => {
       self.homeMessage = homeMessage.message;

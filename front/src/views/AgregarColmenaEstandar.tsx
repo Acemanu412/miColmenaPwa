@@ -29,6 +29,8 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
   props,
 ) => {
   const store = useStores();
+  const IP = process.env.REACT_APP_IP || "5.189.179.214";
+  const PORT = process.env.REACT_APP_PORT || "80";
 
   function handleChangeImagen(e) {
     e.preventDefault();
@@ -46,14 +48,14 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     };
     axios
       .post(
-        `http://10.100.0.69:2222/api/colmena/photo`,
+        `http://${IP}:${PORT}/api/colmena/photo`,
         formData,
         config,
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
         axios.post(
-          `http://10.100.0.69:2222/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
+          `http://${IP}:${PORT}/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
           inputsSalientes,
         ).then(() => props.history.push("/home"));
       })
@@ -66,10 +68,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
     agregarColmena,
     {
       direccionColmena: "",
-      especieAbejas: "",
+      especieAbejas: "ApisMellifera",
       foto: "",
       nombreColmena: "",
-      tipoColmena: "",
+      tipoColmena: "Langstroth",
     },
   );
 
@@ -109,7 +111,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
             onChange={handleInputChange}
           >
             Tipo de Colmena
-            <option selected value="langstroth">
+            <option value="langstroth">
               Langstroth
             </option>
             <option value="warre">Warre</option>
@@ -125,11 +127,10 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
           <StyledSelect
             name="especieAbejas"
             value={inputsSalientes.especieAbejas}
-            defaultValue="Apis mellifera"
             onChange={handleInputChange}
           >
             Especie de Abejas
-            <option selected value="apisMellifera">
+            <option value="apisMellifera">
               Apis mellifera
             </option>
             <option value="apisMelliferaCaucasia">

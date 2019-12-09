@@ -17,20 +17,21 @@ import { NavBar } from "./NavBar";
 
 export const Notas: React.FC<RouteComponentProps> = (props) => {
     const store = useStores();
-
+    const IP = process.env.REACT_APP_IP || "5.189.179.214";
+    const PORT = process.env.REACT_APP_PORT || "80";
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
         const formData = new FormData();
         formData.append("audio",
-                        audio);
+            audio);
         const config = {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`http://10.100.0.69:2222/api/colmena/audio`,
-                    formData,
-                    config);
+        axios.post(`http://${IP}:${PORT}/api/colmena/audio`,
+            formData,
+            config);
         store.updateNotasForm(inputsSalientes);
     };
 
