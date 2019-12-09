@@ -69,80 +69,84 @@ const EstadoGeneral = observer((props) => {
   return (
     <Container>
       <NavBar />
-      <Header>
-        <Panel /> <BoldText>Estado General</BoldText>
-      </Header>
-      <DataContainer>
-        <label>Fecha</label>
-        <DataRow>
-          <Calendar />
-          <input
-            style={{ border: "none", outline: "none" }}
-            type="text"
-            onChange={handleInputChange}
-            value={inputsSalientes.fecha}
-          />
-        </DataRow>
-        <label>Estado de salud</label>
+      {store.user || (!store.user && store.isFetchingUser) ?
+        <div>
+          <Header>
+            <Panel /> <BoldText>Estado General</BoldText>
+          </Header>
+          <DataContainer>
+            <label>Fecha</label>
+            <DataRow>
+              <Calendar />
+              <input
+                style={{ border: "none", outline: "none" }}
+                type="text"
+                onChange={handleInputChange}
+                value={inputsSalientes.fecha}
+              />
+            </DataRow>
+            <label>Estado de salud</label>
 
-        <DataRow>
-          <select
-            name="salud"
-            onChange={handleInputChange}
+            <DataRow>
+              <select
+                name="salud"
+                onChange={handleInputChange}
+                style={{
+                  flex: 1,
+                  outline: "none",
+                }}
+              >
+                <option>Estado de salud</option>
+                <option value="saludable">Saludable</option>
+                <option value="colapsadas">Colapsadas</option>
+                <option value="enjambrazon">Enjambrazón</option>
+              </select>
+            </DataRow>
+          </DataContainer>
+          <ContainerCentrado>
+            <label style={{ paddingBottom: "10%" }}>Grabaciones</label>
+
+            <div
+              id="divGrabando"
+              className="noGrabando"
+              onClick={(e) => {
+                const claseGrabando = document.querySelector("#divGrabando");
+                grabando ? stopRecording() : startRecording();
+                return claseGrabando !== null && grabando
+                  ? (claseGrabando.classList.remove("noGrabando"),
+                    claseGrabando.classList.add("Grabando"))
+                  : (claseGrabando.classList.remove("Grabando"),
+                    claseGrabando.classList.add("noGrabando"));
+              }}
+            >
+              <Microfono />
+            </div>
+          </ContainerCentrado>
+
+          <div
             style={{
-              flex: 1,
-              outline: "none",
+              display: "flex",
+              justifyContent: "space-between",
             }}
           >
-            <option>Estado de salud</option>
-            <option value="saludable">Saludable</option>
-            <option value="colapsadas">Colapsadas</option>
-            <option value="enjambrazon">Enjambrazón</option>
-          </select>
-        </DataRow>
-      </DataContainer>
-      <ContainerCentrado>
-        <label style={{ paddingBottom: "10%" }}>Grabaciones</label>
-
-        <div
-          id="divGrabando"
-          className="noGrabando"
-          onClick={(e) => {
-            const claseGrabando = document.querySelector("#divGrabando");
-            grabando ? stopRecording() : startRecording();
-            return claseGrabando !== null && grabando
-              ? (claseGrabando.classList.remove("noGrabando"),
-                claseGrabando.classList.add("Grabando"))
-              : (claseGrabando.classList.remove("Grabando"),
-                claseGrabando.classList.add("noGrabando"));
-          }}
-        >
-          <Microfono />
+            <FormAtrasButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/vistaColmena");
+              }}
+            />
+            <FormSiguienteButton
+              onClick={(e) => {
+                e.preventDefault();
+                props.history.push("/colmenas");
+                handleSubmit(e);
+              }}
+            />
+          </div>
         </div>
-      </ContainerCentrado>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <FormAtrasButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/vistaColmena");
-          }}
-        />
-        <FormSiguienteButton
-          onClick={(e) => {
-            e.preventDefault();
-            props.history.push("/colmenas");
-            handleSubmit(e);
-          }}
-        />
-      </div>
+        : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
     </Container>
-  );
+  )
 });
 
 export default EstadoGeneral;
