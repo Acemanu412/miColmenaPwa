@@ -30,7 +30,6 @@ export const activate = (id) =>
     });
 
 export const fetchLogging = (inputsSalientes) => {
-  console.log(IP);
   return axios
     .post(`http://${IP}:${PORT}/api/user/session`, {
       email: inputsSalientes.email,
