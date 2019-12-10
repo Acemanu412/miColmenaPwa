@@ -65,7 +65,6 @@ export const Consejos: React.FC<RouteComponentProps> = observer((props) => {
         handleInputAlimentoChange,
         handleInputCosechaChange,
         handleSubmit }: any = useForm(consejos, IntervencionesObj, AlimentoObj, CosechaObj);
-    console.log(inputsSalientesAlimento)
     return (
         <div>
             <NavBar />
