@@ -2,7 +2,17 @@ const express = require("express");
 const router = express();
 const multer = require('multer');
 const moment = require('moment');
-const { Colmena, User } = require('../models');
+const {
+  Colmena,
+  Device,
+  DeviceInput,
+  EstadoGeneral,
+  InformeMeteorologico,
+  ManualColmena,
+  ManualReina,
+  ManualConsejos,
+  Notas,
+} = require("../models");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -45,7 +55,81 @@ router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
 
 router.post("/audio", upload.single('audio'), (req, res, next) => {
   res.sendStatus(200);
-})
+});
+
+
+router.post("/newDailyRegister", (req, res, next) => {
+  const date = new Date();
+  req.body.colmenasForm.date = date;
+  req.body.colmenasForm.problemasSalud = []
+  let colmenasForm = req.body.colmenasForm;
+
+  Object.keys(colmenasForm).map(key => { // recorre el objeto
+    if (typeof colmenasForm[key] === "boolean" && colmenasForm[key] === true) {
+      colmenasForm.problemasSalud.push(key);
+    }
+  });
+
+  ManualColmena.create(req.body.colmenasForm)
+    .catch(err => {
+      console.log(err);
+    });
+
+  const consejos = {};
+  consejos.date = date;
+  Object.assign(consejos, req.body.consejosCosecha) //copia el segundo parametro en el primero
+  consejos.alimento = []
+  consejos.intervenciones = []
+
+  const consejosAlimento = req.body.consejosAlimento
+  Object.keys(consejosAlimento).map(key => {  // recorre el objeto
+    if (consejosAlimento[key] === true) {
+      consejos.alimento.push(key);
+    }
+  });
+
+  const consejosIntervenciones = req.body.consejosIntervenciones
+  Object.keys(consejosIntervenciones).map(key => {  // recorre el objeto
+    if (consejosIntervenciones[key] === true) {
+      consejos.intervenciones.push(key);
+    }
+  });
+
+  ManualConsejos.create(consejos)
+    .then(data => {
+      // console.log(data)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  req.body.reinaForms.date = date
+  ManualReina.create(req.body.reinaForms)
+    .then(data => {
+      // console.log(data)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  req.body.estadoGeneral.date = date
+  EstadoGeneral.create(req.body.estadoGeneral)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  req.body.notasForms.date = date
+  Notas.create(req.body.notasForms)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 router.get("/", (req, res) =>
   req.user.getColmena().then((colmenas) =>
