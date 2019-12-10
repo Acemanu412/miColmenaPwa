@@ -56,6 +56,7 @@ export const postNuevoClave = (email) =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
 export const logOut = () =>
   axios
     .get(`${PROTOCOL}://${IP}:${PORT}/api/user/logout`)
@@ -66,8 +67,46 @@ export const logOut = () =>
       return err;
     });
 
+export const postNewDailyRegister = (
+  colmenasForm,
+  consejosAlimento,
+  consejosCosecha,
+  consejosIntervenciones,
+  estadoGeneral,
+  notasForms,
+  reinaForms,
+) => {
+  return axios
+    .post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/newDailyRegister`, {
+      colmenasForm,
+      consejosAlimento,
+      consejosCosecha,
+      consejosIntervenciones,
+      estadoGeneral,
+      notasForms,
+      reinaForms,
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
 export const fetchColmenas = () =>
+
     axios
       .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena`)
       .then((res) => res.data)
       .catch((err) => err);
+
+export const fetchUser = () =>
+  axios
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/session`)
+    .then((res) => res.data)
+    .then((user) => user)
+    .catch((err) => {
+      return { message: err.response.data };
+    });
+

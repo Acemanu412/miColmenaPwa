@@ -10,14 +10,12 @@ Notas.init(
       allowNull: false
     },
 
-    notas: {
+    notaTexto: {
       type: S.STRING,
-      allowNull: false
     },
 
-    notaDeVoz: {
+    urlNotaAudio: {
       type: S.STRING,
-      allowNull: false
     }
   },
   {

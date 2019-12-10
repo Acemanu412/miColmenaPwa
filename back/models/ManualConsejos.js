@@ -7,52 +7,44 @@ ManualConsejos.init(
   {
     date: {
       type: S.DATE,
-      allowNull: false
-    },
-
-    intervenciones: {
-      type: S.ARRAY(S.TEXT),
-      allowNull: false
+      allowNull: false,
     },
 
     alimento: {
-      type: S.ARRAY(S.TEXT),
-      allowNull: false
+      type: S.ARRAY(S.STRING),
     },
 
-// esto es para todo lo que esta abajo
-// se recibe el valor y los unidades por separado 
-// se puede unificar en un string el valor y los unidades.
-// ej: "8kg"
+    intervenciones: {
+      type: S.ARRAY(S.STRING)
+    },
+
+    // esto es para todo lo que esta abajo
+    // se recibe el valor y los unidades por separado 
+    // se puede unificar en un string el valor y los unidades.
+    // ej: "8kg"
 
     miel: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     },
 
     jaleaReal: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     },
 
     polen: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     },
 
     propoleo: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     },
 
     cera: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     },
 
     panal: {
-      type: S.INTEGER,
-      allowNull: false
+      type: S.STRING,
     }
   },
   {

@@ -14,10 +14,10 @@ router.post(
       } else if (!user) {
         res.status(401).send(info.message);
       } else {
-       req.logIn(user, function(err) {
-         if (err) {res.status(401).send("No se pudo abrir la sesión")}
-         res.status(200).send(user);
-       })
+        req.logIn(user, function (err) {
+          if (err) { res.status(401).send("No se pudo abrir la sesión") }
+          res.status(200).send(user);
+        })
       }
     })(req, res);
   }
@@ -52,8 +52,8 @@ router.post("/signup", (req, res, next) => {
     })
     .catch((error) => {
       let mensaje;
-      error.message.includes("invalid input syntax for integer")? mensaje = "Teléfono incluye caracteres no numéricos"
-                                                                : mensaje = "Este correo ya está registrado";
+      error.message.includes("invalid input syntax for integer") ? mensaje = "Teléfono incluye caracteres no numéricos"
+        : mensaje = "Este correo ya está registrado";
       res.status(400).send(mensaje)
     })
 
@@ -69,9 +69,9 @@ router.get("/activarCuenta/:id", (req, res, next) => {
       return user.update({ activated: true })
     })
     .then((user) => {
-      req.login(user, function(err){
+      req.login(user, function (err) {
         err ? res.status(400).redirect(`http://${process.env.IP}:80/`)
-            : res.status(200).redirect(`http://${process.env.IP}:80/home`)
+          : res.status(200).redirect(`http://${process.env.IP}:80/home`)
       })
     })
     .catch((err) => {
@@ -79,7 +79,7 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     });
 });
 
-router.get("/logout", (req,res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.send(req.user);
 })
@@ -140,5 +140,13 @@ router.post("/nuevoClave", (req, res, next) => {
     res.status(400).send(false);
   }
 });
+
+
+router.get("/session", (req, res, next) => {
+  req.logIn(req.user, function (err) {
+    if (err) { res.status(401).send("No se pudo abrir la sesión") }
+    res.status(200).send(req.user);
+  })
+})
 
 module.exports = router;
