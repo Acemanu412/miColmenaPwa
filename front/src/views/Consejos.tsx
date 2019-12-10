@@ -65,7 +65,7 @@ export const Consejos: React.FC<RouteComponentProps> = observer((props) => {
         handleInputAlimentoChange,
         handleInputCosechaChange,
         handleSubmit }: any = useForm(consejos, IntervencionesObj, AlimentoObj, CosechaObj);
-
+    console.log(inputsSalientesAlimento)
     return (
         <div>
             <NavBar />
@@ -76,11 +76,11 @@ export const Consejos: React.FC<RouteComponentProps> = observer((props) => {
                         <Intervenciones>
                             {IntervencionesArr.map(((intervencion, index) => {
                                 const elemento = intervencion.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
-                                return <CheckboxContainer key={index} activo={inputsSalientesIntervenciones[elemento]}>
+                                return <CheckboxContainer key={index} activo={inputsSalientesIntervenciones[intervencion]}>
                                     {elemento}
                                     <CheckboxConsejos type="checkbox"
-                                        name={elemento}
-                                        onChange={handleInputIntervencionesChange} />
+                                        name={intervencion}
+                                        onChange={(e) => { handleInputIntervencionesChange(e) }} />
                                 </CheckboxContainer>;
                             }
                             ))}
@@ -89,11 +89,11 @@ export const Consejos: React.FC<RouteComponentProps> = observer((props) => {
                         <Alimento>
                             {AlimentoArr.map(((alimento, index) => {
                                 const elemento = alimento.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
-                                return <CheckboxContainer key={index} activo={inputsSalientesAlimento[elemento]}>
+                                return <CheckboxContainer key={index} activo={inputsSalientesAlimento[alimento]}>
                                     {elemento}
                                     <CheckboxConsejos type="checkbox"
-                                        name={elemento}
-                                        onChange={handleInputAlimentoChange} />
+                                        name={alimento}
+                                        onChange={(e) => { handleInputAlimentoChange(e) }} />
                                 </CheckboxContainer>;
                             }
                             ))}

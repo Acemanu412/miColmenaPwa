@@ -75,6 +75,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
+    console.log(store.consejosIntervenciones, store.consejosAlimento, store.consejosCosecha)
 
     return (
         <div>
@@ -97,7 +98,12 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                         </div>
                         <Separador />
                         <TextoNotas>Escribe tus notas</TextoNotas>
-                        <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+                        <InputNotas
+                            name="notaTexto"
+                            value={inputsSalientes.notaTexto}
+                            rows={8} cols={30}
+                            onChange={(e) => { handleInputChange(e) }}>
+                        </InputNotas>
                     </NotasContainer>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <FormAtrasButton onClick={(e) => {
@@ -105,9 +111,19 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             props.history.push("/consejos");
                         }} />
                         <FormSubmitButton onClick={(e) => {
+                            console.log(store)
                             e.preventDefault();
                             props.history.push("/vistaColmena");
                             handleSubmit(e);
+                            postNewDailyRegister(
+                                store.colmenasForm,
+                                store.consejosAlimento,
+                                store.consejosCosecha,
+                                store.consejosIntervenciones,
+                                store.estadoGeneral,
+                                store.notasForms,
+                                store.reinaForms,
+                            );
                         }} />
                     </div>
                 </div>

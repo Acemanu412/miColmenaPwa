@@ -178,11 +178,11 @@ export const FormColmenas: React.FC<RouteComponentProps> = observer((props) => {
             <Enfermedades>
               {EnfermedadesArr.map(((enfermedad, index) => {
                 const elemento = enfermedad.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
-                return <CheckboxContainer key={index} activo={inputsSalientes[elemento]}>
+                return <CheckboxContainer key={index} activo={inputsSalientes[enfermedad]}>
                   {elemento}
                   <CheckboxFormColmenas type="checkbox"
-                    name={elemento}
-                    onChange={handleInputChange} />
+                    name={enfermedad}
+                    onChange={(e) => { handleInputChange(e) }} />
                 </CheckboxContainer>;
               }
               ))};
