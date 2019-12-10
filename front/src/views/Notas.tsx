@@ -73,7 +73,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
-    console.log(store.consejosIntervenciones, store.consejosAlimento, store.consejosCosecha)
 
     return (
         <div>
@@ -109,7 +108,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             props.history.push("/consejos");
                         }} />
                         <FormSubmitButton onClick={(e) => {
-                            console.log(store)
                             e.preventDefault();
                             props.history.push("/vistaColmena");
                             handleSubmit(e);
