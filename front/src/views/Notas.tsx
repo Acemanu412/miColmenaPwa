@@ -73,7 +73,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
-    console.log(store.consejosIntervenciones, store.consejosAlimento, store.consejosCosecha)
 
     return (
         <div>
