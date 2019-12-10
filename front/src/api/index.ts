@@ -30,7 +30,6 @@ export const activate = (id) =>
     });
 
 export const fetchLogging = (inputsSalientes) => {
-  console.log(IP);
   return axios
     .post(`http://${IP}:${PORT}/api/user/session`, {
       email: inputsSalientes.email,
@@ -56,6 +55,7 @@ export const postNuevoClave = (email) =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
 export const logOut = () =>
   axios
     .get(`http://${IP}:${PORT}/api/user/logout`)
@@ -66,8 +66,34 @@ export const logOut = () =>
       return err;
     });
 
-export const fetchColmenas = () =>
+export const postNewDailyRegister = (
+  colmenasForm,
+  consejosAlimento,
+  consejosCosecha,
+  consejosIntervenciones,
+  estadoGeneral,
+  notasForms,
+  reinaForms,
+) => {
+  return axios
+    .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`, {
+      colmenasForm,
+      consejosAlimento,
+      consejosCosecha,
+      consejosIntervenciones,
+      estadoGeneral,
+      notasForms,
+      reinaForms,
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
 
+export const fetchColmenas = () =>
   axios
     .get(`http://${IP}:${PORT}/api/colmena`)
     .then((res) => res.data)
@@ -81,4 +107,3 @@ export const fetchUser = () =>
     .catch((err) => {
       return { message: err.response.data };
     });
-

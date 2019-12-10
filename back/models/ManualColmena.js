@@ -7,44 +7,37 @@ ManualColmena.init(
   {
     date: {
       type: S.DATE,
-      allowNull: false
+      allowNull: false,
     },
 
     poblacion: {
       type: S.INTEGER,
-      allowNull: false
     },
 
     comportamiento: {
       type: S.INTEGER,
-      allowNull: false
     },
 
     calidadCrias: {
       type: S.INTEGER,
-      allowNull: false
     },
 
-    cuadroCrias: {
+    numeroCuadrosTotalesCrias: {
       type: S.INTEGER,
-      allowNull: false
     },
 
-    cuadroMiel: {
+    numeroCuadrosTotalesMiel: {
       type: S.INTEGER,
-      allowNull: false
     },
 
-    comidas: {
+    numeroComidas: {
       type: S.INTEGER,
-      allowNull: false
     },
-    
-// se recorre el objeto que contiene los keys de salud y valores boolean. 
-// Cuando el tipo es boolean y true se pushea el key al array
+
+    // se recorre el objeto que contiene los keys de salud y valores boolean. 
+    // Cuando el tipo es boolean y true se pushea el key al array
     problemasSalud: {
-      type: S.ARRAY(S.TEXT), 
-      allowNull: false
+      type: S.ARRAY(S.STRING),
     }
   },
   {

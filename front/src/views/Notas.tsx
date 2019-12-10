@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
+import { postNewDailyRegister } from "../api";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";
@@ -33,6 +34,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         axios.post(`http://${IP}:${PORT}/api/colmena/audio`,
             formData,
             config);
+        console.log(inputsSalientes)
+
         store.updateNotasForm(inputsSalientes);
     };
 
