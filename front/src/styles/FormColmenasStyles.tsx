@@ -55,11 +55,11 @@ export const Text = styled.span`
     margin-bottom: 1rem;
 `;
 
-export const Intervenciones = styled.div`
+export const Enfermedades = styled.div`
     display: flex;
     flex-flow: row wrap;
-    padding: 2rem;
-    padding-left: 2rem;
+    padding: 1rem;
+    padding-left: 1rem;
     height: 50%;
     padding-bottom: 0;
     justify-content: center;

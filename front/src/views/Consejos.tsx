@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -48,7 +49,7 @@ const IntervencionesObj = ObjectConverter(IntervencionesArr, false);
 const AlimentoObj = ObjectConverter(AlimentoArr, false);
 const CosechaObj = ObjectConverter(CosechaArr, "");
 
-export const Consejos: React.FC<RouteComponentProps> = (props) => {
+export const Consejos: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
 
     const consejos = () => {
@@ -64,153 +65,159 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
         handleInputAlimentoChange,
         handleInputCosechaChange,
         handleSubmit }: any = useForm(consejos, IntervencionesObj, AlimentoObj, CosechaObj);
+
     return (
         <div>
             <NavBar />
-            <ConsejosContainer>
-                <ConsejosTexto>Intervenciones: Toca las que aplican</ConsejosTexto>
-                <Intervenciones>
-                    {IntervencionesArr.map(((intervencion, index) => {
-                        const elemento = intervencion.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
-                        return <CheckboxContainer key={index} activo={inputsSalientesIntervenciones[elemento]}>
-                            {elemento}
-                            <CheckboxConsejos type="checkbox"
-                                name={elemento}
-                                onChange={(e) => {handleInputIntervencionesChange(e)}} />
-                        </CheckboxContainer>;
-                    }
-                    ))}
-                </Intervenciones>
-                <ConsejosTexto>Alimento: Toca las que aplican</ConsejosTexto>
-                <Alimento>
-                    {AlimentoArr.map(((alimento, index) => {
-                        const elemento = alimento.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
-                        return <CheckboxContainer key={index} activo={inputsSalientesAlimento[elemento]}>
-                            {elemento}
-                            <CheckboxConsejos type="checkbox"
-                                name={elemento}
-                                onChange={(e) => {handleInputAlimentoChange(e)}} />
-                        </CheckboxContainer>;
-                    }
-                    ))}
-                </Alimento>
-                <ConsejosTexto>Cosecha</ConsejosTexto>
-                <Cosechas>
-                    <CosechaContainer>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="miel" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-miel"] = !inputsSalientesCosecha["unidad-miel"] ? "cuadros" : "";
-                            }} />
-                            <LabelCosecha>Miel</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-miel" onChange={handleInputCosechaChange}>
-                                <option value="cuadros">cuadros</option>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="jaleaReal" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-jaleaReal"] =
-                                    !inputsSalientesCosecha["unidad-jaleaReal"] ? "kg"
-                                        : "";
-                            }} />
-                            <LabelCosecha>Jalea Real</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-jaleaReal" onChange={handleInputCosechaChange}>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                                <option value="oz">oz</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="polen" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-polen"] =
-                                    !inputsSalientesCosecha["unidad-polen"] ? "kg"
-                                        : "";
-                            }} />
-                            <LabelCosecha>Polen</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-polen" onChange={handleInputCosechaChange}>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                                <option value="oz">oz</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="propoleo" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-propoleo"] = !inputsSalientesCosecha["unidad-propoleo"] ? "kg" : "";
-                            }} />
-                            <LabelCosecha>Propoleo</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-propoleo" onChange={handleInputCosechaChange}>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                                <option value="oz">oz</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="cera" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-cera"] = !inputsSalientesCosecha["unidad-cera"] ? "kg" : "";
-                            }} />
-                            <LabelCosecha>Cera</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-cera" onChange={handleInputCosechaChange}>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                                <option value="oz">oz</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                        <ValorCosecha>
-                            <InputCosecha placeholder=" " name="panal" onChange={(e) => {
-                                handleInputCosechaChange(e);
-                                inputsSalientesCosecha["unidad-panal"] = !inputsSalientesCosecha["unidad-panal"] ? "cuadros" : "";
-                            }} />
-                            <LabelCosecha>Panal</LabelCosecha>
-                        </ValorCosecha>
-                        <UnidadCosecha>
-                            <SelectCosecha name="unidad-panal" onChange={handleInputCosechaChange}>
-                                <option value="cuadros">cuadros</option>
-                                <option value="kg">kg</option>
-                                <option value="lb">lb</option>
-                                <option value="g">g</option>
-                            </SelectCosecha>
-                            <LabelUnidad>Unidades</LabelUnidad>
-                        </UnidadCosecha>
-                    </CosechaContainer>
-                </Cosechas>
-            </ConsejosContainer>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <FormAtrasButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/reina");
-                }} />
-                <FormSiguienteButton onClick={(e) => {
-                    e.preventDefault();
-                    props.history.push("/notas");
-                    handleSubmit(e);
-                }} />
-            </div>
+            {store.user || (!store.user && store.isFetchingUser) ?
+                <div>
+                    <ConsejosContainer>
+                        <ConsejosTexto>Intervenciones: Toca las que aplican</ConsejosTexto>
+                        <Intervenciones>
+                            {IntervencionesArr.map(((intervencion, index) => {
+                                const elemento = intervencion.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
+                                return <CheckboxContainer key={index} activo={inputsSalientesIntervenciones[elemento]}>
+                                    {elemento}
+                                    <CheckboxConsejos type="checkbox"
+                                        name={elemento}
+                                        onChange={handleInputIntervencionesChange} />
+                                </CheckboxContainer>;
+                            }
+                            ))}
+                        </Intervenciones>
+                        <ConsejosTexto>Alimento: Toca las que aplican</ConsejosTexto>
+                        <Alimento>
+                            {AlimentoArr.map(((alimento, index) => {
+                                const elemento = alimento.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
+                                return <CheckboxContainer key={index} activo={inputsSalientesAlimento[elemento]}>
+                                    {elemento}
+                                    <CheckboxConsejos type="checkbox"
+                                        name={elemento}
+                                        onChange={handleInputAlimentoChange} />
+                                </CheckboxContainer>;
+                            }
+                            ))}
+                        </Alimento>
+                        <ConsejosTexto>Cosecha</ConsejosTexto>
+                        <Cosechas>
+                            <CosechaContainer>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="miel" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-miel"] = !inputsSalientesCosecha["unidad-miel"] ? "cuadros" : "";
+                                    }} />
+                                    <LabelCosecha>Miel</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-miel" onChange={handleInputCosechaChange}>
+                                        <option value="cuadros">cuadros</option>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="jaleaReal" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-jaleaReal"] =
+                                            !inputsSalientesCosecha["unidad-jaleaReal"] ? "kg"
+                                                : "";
+                                    }} />
+                                    <LabelCosecha>Jalea Real</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-jaleaReal" onChange={handleInputCosechaChange}>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                        <option value="oz">oz</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="polen" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-polen"] =
+                                            !inputsSalientesCosecha["unidad-polen"] ? "kg"
+                                                : "";
+                                    }} />
+                                    <LabelCosecha>Polen</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-polen" onChange={handleInputCosechaChange}>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                        <option value="oz">oz</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="propoleo" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-propoleo"] = !inputsSalientesCosecha["unidad-propoleo"] ? "kg" : "";
+                                    }} />
+                                    <LabelCosecha>Propoleo</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-propoleo" onChange={handleInputCosechaChange}>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                        <option value="oz">oz</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="cera" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-cera"] = !inputsSalientesCosecha["unidad-cera"] ? "kg" : "";
+                                    }} />
+                                    <LabelCosecha>Cera</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-cera" onChange={handleInputCosechaChange}>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                        <option value="oz">oz</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                                <ValorCosecha>
+                                    <InputCosecha placeholder=" " name="panal" onChange={(e) => {
+                                        handleInputCosechaChange(e);
+                                        inputsSalientesCosecha["unidad-panal"] =
+                                            !inputsSalientesCosecha["unidad-panal"] ? "cuadros" : "";
+                                    }} />
+                                    <LabelCosecha>Panal</LabelCosecha>
+                                </ValorCosecha>
+                                <UnidadCosecha>
+                                    <SelectCosecha name="unidad-panal" onChange={handleInputCosechaChange}>
+                                        <option value="cuadros">cuadros</option>
+                                        <option value="kg">kg</option>
+                                        <option value="lb">lb</option>
+                                        <option value="g">g</option>
+                                    </SelectCosecha>
+                                    <LabelUnidad>Unidades</LabelUnidad>
+                                </UnidadCosecha>
+                            </CosechaContainer>
+                        </Cosechas>
+                    </ConsejosContainer>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <FormAtrasButton onClick={(e) => {
+                            e.preventDefault();
+                            props.history.push("/reina");
+                        }} />
+                        <FormSiguienteButton onClick={(e) => {
+                            e.preventDefault();
+                            props.history.push("/notas");
+                            handleSubmit(e);
+                        }} />
+                    </div>
+                </div>
+                : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
         </div>
-    );
-};
+    )
+});

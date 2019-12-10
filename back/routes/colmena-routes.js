@@ -32,18 +32,15 @@ const upload = multer({ storage: storage })
 
 // fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-  return (Colmena.create({
-    foto: req.file.filename,
-  }).then((newColmena) => {
-    console.log(req.user)
-    User.findOne({ where: { id: req.user.id } })
-      .then((user) => {
-        user.addColmena(newColmena)
-        return newColmena;
-      })
-      .then((newColmenaActualizado) => res.status(200).send(newColmenaActualizado))
-  }))
-})
+   Colmena.create({foto: req.file.filename})
+    .then((newColmena) => {
+      req.user.addColmena(newColmena)
+      return newColmena
+    })
+        .then((newColmena) => {
+          res.status(200).send(newColmena)
+    })
+  })
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
@@ -73,16 +70,10 @@ router.post("/newDailyRegister", (req, res, next) => {
     }
   });
 
-  console.log("--------------------------------------------")
-  console.log(req.body)
-  console.log("--------------------------------------------")
-
   ManualColmena.create(req.body.colmenasForm)
     .catch(err => {
       console.log(err);
     });
-
-  //console.prototype(Model) => funciones
 
   const consejos = {};
   consejos.date = date;
@@ -138,7 +129,6 @@ router.post("/newDailyRegister", (req, res, next) => {
     .catch(err => {
       console.log(err);
     });
-
 });
 
 router.get("/", (req, res) =>

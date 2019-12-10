@@ -1,9 +1,12 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+const IP = process.env.REACT_APP_IP || "5.189.179.214";
+const PORT = process.env.REACT_APP_PORT || "8080";
+
 export const fetchRegister = (username, email, password, telefono) =>
   axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/signup`, {
+    .post(`http://${IP}:${PORT}/api/user/signup`, {
       email,
       password,
       telefono,
@@ -18,7 +21,7 @@ export const fetchRegister = (username, email, password, telefono) =>
 
 export const activate = (id) =>
   axios
-    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/activarCuenta/${id}`)
+    .get(`http://${IP}:${PORT}/api/user/activarCuenta/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -28,7 +31,7 @@ export const activate = (id) =>
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/session`, {
+    .post(`http://${IP}:${PORT}/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -43,7 +46,7 @@ export const fetchLogging = (inputsSalientes) => {
 
 export const postNuevoClave = (email) =>
   axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/user/olvidoClave`, {
+    .post(`http://${IP}:${PORT}/api/user/olvidoClave`, {
       email,
     })
     .then((res) => {
@@ -55,7 +58,7 @@ export const postNuevoClave = (email) =>
 
 export const logOut = () =>
   axios
-    .get(`http://${process.env.REACT_APP_IP}:2222/api/user/logout`)
+    .get(`http://${IP}:${PORT}/api/user/logout`)
     .then((res) => {
       return res;
     })
@@ -92,6 +95,15 @@ export const postNewDailyRegister = (
 
 export const fetchColmenas = () =>
   axios
-    .get(`http://${process.env.REACT_APP_IP}:2222/api/colmena`)
+    .get(`http://${IP}:${PORT}/api/colmena`)
     .then((res) => res.data)
     .catch((err) => err);
+
+export const fetchUser = () =>
+  axios
+    .get(`http://${IP}:${PORT}/api/user/session`)
+    .then((res) => res.data)
+    .then((user) => user)
+    .catch((err) => {
+      return { message: err.response.data };
+    });

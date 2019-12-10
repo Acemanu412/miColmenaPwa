@@ -26,7 +26,7 @@ router.post(
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${process.env.IP}:2222/api/user/activarCuenta/${user.id}`
+      const link = `${process.env.IP}:80/api/user/activarCuenta/${user.id}`
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -70,8 +70,8 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     })
     .then((user) => {
       req.login(user, function (err) {
-        err ? res.status(400).redirect(`http://${process.env.IP}:3000/`)
-          : res.status(200).redirect(`http://${process.env.IP}:3000/home`)
+        err ? res.status(400).redirect(`http://${process.env.IP}:80/`)
+          : res.status(200).redirect(`http://${process.env.IP}:80/home`)
       })
     })
     .catch((err) => {
@@ -140,5 +140,13 @@ router.post("/nuevoClave", (req, res, next) => {
     res.status(400).send(false);
   }
 });
+
+
+router.get("/session", (req, res, next) => {
+  req.logIn(req.user, function (err) {
+    if (err) { res.status(401).send("No se pudo abrir la sesión") }
+    res.status(200).send(req.user);
+  })
+})
 
 module.exports = router;
