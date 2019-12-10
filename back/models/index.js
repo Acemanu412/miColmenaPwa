@@ -2,6 +2,7 @@ const Audio = require("./Audio")
 const Colmena = require("./Colmena");
 const Device = require("./Device");
 const DeviceInput = require("./DeviceInput");
+const EstadoGeneral = require("./EstadoGeneral");
 const InformeMeteorologico = require("./InformeMeteorologico")
 const ManualColmena = require("./ManualColmena");
 const ManualReina = require("./ManualReina");
@@ -26,8 +27,10 @@ module.exports = {
   Colmena,
   Device,
   DeviceInput,
+  EstadoGeneral,
   InformeMeteorologico,
   ManualColmena,
   ManualReina,
-  ManualConsejos
+  ManualConsejos,
+  Notas,
 };
