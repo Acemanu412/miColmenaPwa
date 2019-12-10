@@ -76,7 +76,7 @@ export const postNewDailyRegister = (
   reinaForms,
 ) => {
   return axios
-    .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`, {
+    .post(`http://${IP}:${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,
       consejosAlimento,
       consejosCosecha,
