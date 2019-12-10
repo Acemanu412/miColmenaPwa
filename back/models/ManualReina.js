@@ -29,6 +29,14 @@ ManualReina.init(
     celulasReina: {
       type: S.INTEGER,
     },
+
+    removed: {
+      type: S.BOOLEAN,
+    },
+
+    swarm: {
+      type: S.BOOLEAN,
+    }
   },
   {
     sequelize: db,

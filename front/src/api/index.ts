@@ -63,11 +63,21 @@ export const logOut = () =>
       return err;
     });
 
-export const postNewDailyRegister = (colmenasForm, consejosForms, estadoGeneral, notasForms, reinaForms) => {
+export const postNewDailyRegister = (
+  colmenasForm,
+  consejosAlimento,
+  consejosCosecha,
+  consejosIntervenciones,
+  estadoGeneral,
+  notasForms,
+  reinaForms,
+) => {
   return axios
     .post(`http://${process.env.REACT_APP_IP}:2222/api/colmena/newDailyRegister`, {
       colmenasForm,
-      consejosForms,
+      consejosAlimento,
+      consejosCosecha,
+      consejosIntervenciones,
       estadoGeneral,
       notasForms,
       reinaForms,
@@ -84,4 +94,4 @@ export const fetchColmenas = () =>
   axios
     .get(`http://${process.env.REACT_APP_IP}:2222/api/colmena`)
     .then((res) => res.data)
-    .catch((err) => err)
+    .catch((err) => err);

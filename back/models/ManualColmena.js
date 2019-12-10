@@ -7,6 +7,7 @@ ManualColmena.init(
   {
     date: {
       type: S.DATE,
+      allowNull: false,
     },
 
     poblacion: {

@@ -12,18 +12,11 @@ EstadoGeneral.init(
 
     salud: {
       type: S.STRING,
-      allowNull: false
     },
 
     audio: {
       type: S.STRING,
-      allowNull: false
     },
-
-    // imagen: {
-    //   type: S.STRING,
-    //   allowNull: false
-    // },
   },
   {
     sequelize: db,

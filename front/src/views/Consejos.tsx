@@ -76,7 +76,7 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             {elemento}
                             <CheckboxConsejos type="checkbox"
                                 name={elemento}
-                                onChange={handleInputIntervencionesChange} />
+                                onChange={(e) => {handleInputIntervencionesChange(e)}} />
                         </CheckboxContainer>;
                     }
                     ))}
@@ -89,7 +89,7 @@ export const Consejos: React.FC<RouteComponentProps> = (props) => {
                             {elemento}
                             <CheckboxConsejos type="checkbox"
                                 name={elemento}
-                                onChange={handleInputAlimentoChange} />
+                                onChange={(e) => {handleInputAlimentoChange(e)}} />
                         </CheckboxContainer>;
                     }
                     ))}
