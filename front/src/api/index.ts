@@ -6,7 +6,7 @@ const PORT = process.env.REACT_APP_PORT || "8080";
 
 export const fetchRegister = (username, email, password, telefono) =>
   axios
-    .post(`http://${IP}:${PORT}/api/user/signup`, {
+    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/signup`, {
       email,
       password,
       telefono,
@@ -21,7 +21,7 @@ export const fetchRegister = (username, email, password, telefono) =>
 
 export const activate = (id) =>
   axios
-    .get(`http://${IP}:${PORT}/api/user/activarCuenta/${id}`)
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/activarCuenta/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -31,7 +31,7 @@ export const activate = (id) =>
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post(`http://${IP}:${PORT}/api/user/session`, {
+    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -46,7 +46,7 @@ export const fetchLogging = (inputsSalientes) => {
 
 export const postNuevoClave = (email) =>
   axios
-    .post(`http://${IP}:${PORT}/api/user/olvidoClave`, {
+    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/olvidoClave`, {
       email,
     })
     .then((res) => {
@@ -58,7 +58,7 @@ export const postNuevoClave = (email) =>
 
 export const logOut = () =>
   axios
-    .get(`http://${IP}:${PORT}/api/user/logout`)
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/logout`)
     .then((res) => {
       return res;
     })
@@ -76,7 +76,7 @@ export const postNewDailyRegister = (
   reinaForms,
 ) => {
   return axios
-    .post(`http://${IP}:${PORT}/api/colmena/newDailyRegister`, {
+    .post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,
       consejosAlimento,
       consejosCosecha,
@@ -95,13 +95,13 @@ export const postNewDailyRegister = (
 
 export const fetchColmenas = () =>
   axios
-    .get(`http://${IP}:${PORT}/api/colmena`)
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena`)
     .then((res) => res.data)
     .catch((err) => err);
 
 export const fetchUser = () =>
   axios
-    .get(`http://${IP}:${PORT}/api/user/session`)
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/session`)
     .then((res) => res.data)
     .then((user) => user)
     .catch((err) => {
