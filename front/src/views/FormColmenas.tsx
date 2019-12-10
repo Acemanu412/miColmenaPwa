@@ -211,5 +211,5 @@ export const FormColmenas: React.FC<RouteComponentProps> = observer((props) => {
         </div>
         : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
     </div>
-  )
+  );
 });

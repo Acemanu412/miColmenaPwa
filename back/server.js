@@ -39,8 +39,8 @@ app.use(passport.session());
 
 app.use("/api", routes);
 
-app.get('*', function(req, res) {
-  res.sendFile(path.resolve("../front/build"));
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve("../front/build/index.html"));
 });
 
 let port = process.env.PORT || 8080;

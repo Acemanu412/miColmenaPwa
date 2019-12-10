@@ -23,6 +23,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
+        console.log(store)
+
         const formData = new FormData();
         formData.append("audio",
             audio);
@@ -70,6 +72,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
+
     return (
         <div>
             <NavBar />
@@ -107,5 +110,5 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                 </div>
                 : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
         </div >
-    )
+    );
 });
