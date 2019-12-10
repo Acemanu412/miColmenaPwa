@@ -24,7 +24,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
-        console.log(store)
 
         const formData = new FormData();
         formData.append("audio",
@@ -36,7 +35,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         axios.post(`http://${IP}:${PORT}/api/colmena/audio`,
             formData,
             config);
-        console.log(inputsSalientes)
 
         store.updateNotasForm(inputsSalientes);
     };
