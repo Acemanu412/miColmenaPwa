@@ -108,7 +108,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             props.history.push("/consejos");
                         }} />
                         <FormSubmitButton onClick={(e) => {
-                            console.log(store)
                             e.preventDefault();
                             props.history.push("/vistaColmena");
                             handleSubmit(e);
