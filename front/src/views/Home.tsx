@@ -10,10 +10,11 @@ export const Home: React.FC = observer((props) => {
   return (
     <div>
       <NavBar />
-      {store.user || (!store.user && store.isFetchingUser) ?
+      {store.user || (!store.user && store.isFetchingUser) ? (
         <Colmenas />
-        : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
-    </div >
+      ) : (
+        <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>
+      )}
+    </div>
   );
-
 });
