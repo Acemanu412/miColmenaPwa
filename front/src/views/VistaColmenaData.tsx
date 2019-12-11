@@ -3,8 +3,7 @@ import { observer } from "mobx-react";
 import moment from "moment";
 import React, { useState } from "react";
 
-import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
-
+import { fetchDataDevice } from "../api";
 import { useStores } from "../hooks/useStore";
 import {
   AbejaBlanca,
@@ -29,6 +28,7 @@ import {
   Saludable2,
   SemanaContainer,
 } from "../styles/ColmenaStyles";
+import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 import VistaColmena1 from "./VistaColmena1";
 import VistaColmena2 from "./VistaColmena2";
@@ -47,7 +47,6 @@ const VistaColmenaData = observer((props) => {
         .add(i, "day"),
     ),
   );
-
   const [selected, setSelected] = useState(() => {
     const today = moment().date();
     return dates.findIndex((d) => d.date() === today);
@@ -134,8 +133,13 @@ const VistaColmenaData = observer((props) => {
               return (
                 <Button3
                   selected={index === selected}
-                  key={`id-${index}`}  
-                  onClick={() => setSelected(index)}
+                  key={`id-${index}`}
+                  onClick={
+                    () => {
+                      setSelected(index);
+                      fetchDataDevice(props.match.params.id, day);
+                    }
+                  }
                 >
                   <Dia>
                     <p>{dias[index]}</p> <p>{day.date()}</p>

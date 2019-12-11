@@ -95,10 +95,10 @@ export const postNewDailyRegister = (
 };
 
 export const fetchColmenas = () =>
-    axios
-      .get(`${PROTOCOL}://${IP}${PORT}/api/colmena`)
-      .then((res) => res.data)
-      .catch((err) => err);
+  axios
+    .get(`${PROTOCOL}://${IP}${PORT}/api/colmena`)
+    .then((res) => res.data)
+    .catch((err) => err);
 
 export const fetchUser = () =>
   axios
@@ -109,3 +109,12 @@ export const fetchUser = () =>
       return { message: err.response.data };
     });
 
+export const fetchDataDevice = (id, day) => {
+  axios
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena/deviceInput/${id}?day=${day}`)
+    .then((res) => res.data)
+    .then((inputDevice) => inputDevice)
+    .catch((err) => {
+      return { message: err.response.data };
+    });
+}

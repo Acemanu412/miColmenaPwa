@@ -5,38 +5,38 @@ class DeviceInput extends S.Model { }
 
 DeviceInput.init(
   {
-    idDevice: {
-      type: S.STRING,
-      allowNull: false
-    },
-
     date: {
       type: S.DATE,
       allowNull: false
     },
 
-    GPSposition: {
+    latitud: {
+      type: S.STRING,
+      allowNull: false
+    },
+
+    longitud: {
       type: S.STRING,
       allowNull: false
     },
 
     pesoUno: {
-      type: S.INTEGER,
+      type: S.FLOAT,
       allowNull: false
     },
 
     pesoDos: {
-      type: S.INTEGER,
+      type: S.FLOAT,
       allowNull: false
     },
 
     pesoTres: {
-      type: S.INTEGER,
+      type: S.FLOAT,
       allowNull: false
     },
 
     pesoCuatro: {
-      type: S.INTEGER,
+      type: S.FLOAT,
       allowNull: false
     },
 

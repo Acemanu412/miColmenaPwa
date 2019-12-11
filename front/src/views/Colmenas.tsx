@@ -33,22 +33,13 @@ export const Colmenas: React.FC = (props) => {
   return (
     <ColmenasContainer>
       {colmenas.map((colmena, index) => {
-        return (
-          <Link
-            to="/vistaColmena"
-            key={index}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <DataColmenaContainer>
-              <img
-                src={`${PROTOCOL}://${IP}:${PORT}/fotos/${colmena.foto}`}
-                alt=""
-                style={{ height: "70px" }}
-              />
-              {colmena.nombre}
-            </DataColmenaContainer>
-          </Link>
-        );
+        return (<Link to={`/vistaColmena/${colmena.id}`} key={index} style={{ textDecoration: "none", color: "black" }}>
+          <DataColmenaContainer>
+            <img src={`http://${IP}:${PORT}/fotos/${colmena.foto}`}
+              alt="" style={{ height: "70px" }} />
+            {colmena.nombre}
+          </DataColmenaContainer>
+        </Link>);
       })}
 
       <ButtonColmenasContainer>
