@@ -109,3 +109,13 @@ export const fetchUser = () =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
+export const fetchDataDevice = (id, day) => {
+  axios
+    .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena/deviceInput/${id}?day=${day}`)
+    .then((res) => res.data)
+    .then((inputDevice) => inputDevice)
+    .catch((err) => {
+      return { message: err.response.data };
+    });
+}

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express();
 const multer = require('multer');
 const moment = require('moment');
+const Sequelize = require("sequelize");
 const {
   Colmena,
   Device,
@@ -13,6 +14,8 @@ const {
   ManualConsejos,
   Notas,
 } = require("../models");
+
+const Op = Sequelize.Op
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -149,5 +152,8 @@ router.post("/agregarColmenaDevice", (req, res, next) => {
       res.send(err)
     )
 })
+
+
+
 
 module.exports = router;
