@@ -10,8 +10,8 @@ const db = require("./config/db");
 const routes = require("./routes");
 
 app.use(function (req, res, next) {
-  let allowedOrigins = [`http://${process.env.IP}:8080`, `http://localhost:8080`];
-  let origin = req.headers.origin;
+  let allowedOrigins = [req.headers.origin, req.headers.host];
+  let origin = req.headers.origin || req.headers.host;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
@@ -40,7 +40,7 @@ app.use(passport.session());
 app.use("/api", routes);
 
 app.get('*', function (req, res) {
-  console.log("enter *")
+
   res.sendFile(path.resolve("../front/build/index.html"));
 });
 
