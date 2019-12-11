@@ -2,12 +2,12 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
-const PORT = process.env.REACT_APP_PORT || "8080";
+const PORT = process.env.REACT_APP_PORT || "";
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
 export const fetchRegister = (username, email, password, telefono) =>
   axios
-    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/signup`, {
+    .post(`${PROTOCOL}://${IP}${PORT}/api/user/signup`, {
       email,
       password,
       telefono,
@@ -22,7 +22,7 @@ export const fetchRegister = (username, email, password, telefono) =>
 
 export const activate = (id) =>
   axios
-    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/activarCuenta/${id}`)
+    .get(`${PROTOCOL}://${IP}${PORT}/api/user/activarCuenta/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -32,7 +32,7 @@ export const activate = (id) =>
 
 export const fetchLogging = (inputsSalientes) => {
   return axios
-    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/session`, {
+    .post(`${PROTOCOL}://${IP}${PORT}/api/user/session`, {
       email: inputsSalientes.email,
       password: inputsSalientes.password,
     })
@@ -47,7 +47,7 @@ export const fetchLogging = (inputsSalientes) => {
 
 export const postNuevoClave = (email) =>
   axios
-    .post(`${PROTOCOL}://${IP}:${PORT}/api/user/olvidoClave`, {
+    .post(`${PROTOCOL}://${IP}${PORT}/api/user/olvidoClave`, {
       email,
     })
     .then((res) => {
@@ -58,7 +58,7 @@ export const postNuevoClave = (email) =>
     });
 export const logOut = () =>
   axios
-    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/logout`)
+    .get(`${PROTOCOL}://${IP}${PORT}/api/user/logout`)
     .then((res) => {
       return res;
     })
@@ -68,6 +68,6 @@ export const logOut = () =>
 
 export const fetchColmenas = () =>
     axios
-      .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena`)
+      .get(`${PROTOCOL}://${IP}${PORT}/api/colmena`)
       .then((res) => res.data)
       .catch((err) => err);
