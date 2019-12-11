@@ -12,9 +12,9 @@ import {
 } from "../styles/ColmenasStyles";
 
 let checkedColmenas = false;
-const IP = process.env.REACT_APP_IP || "5.189.179.214"
-const PORT = process.env.REACT_APP_PORT || "80"
-
+const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+const PORT = process.env.REACT_APP_PORT || "80";
+const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 export const Colmenas: React.FC = (props) => {
   const store = useStores();
   const [colmenas, setColmenas] = useState([]);
@@ -32,7 +32,6 @@ export const Colmenas: React.FC = (props) => {
 
   return (
     <ColmenasContainer>
-
       {colmenas.map((colmena, index) => {
         return (<Link to={`/vistaColmena/${colmena.id}`} key={index} style={{ textDecoration: "none", color: "black" }}>
           <DataColmenaContainer>

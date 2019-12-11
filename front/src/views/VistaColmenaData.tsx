@@ -47,7 +47,6 @@ const VistaColmenaData = observer((props) => {
         .add(i, "day"),
     ),
   );
-  console.log(props)
   const [selected, setSelected] = useState(() => {
     const today = moment().date();
     return dates.findIndex((d) => d.date() === today);

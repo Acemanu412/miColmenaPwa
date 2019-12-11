@@ -19,13 +19,12 @@ import { NavBar } from "./NavBar";
 
 export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
-    const IP = process.env.REACT_APP_IP || "5.189.179.214";
-    const PORT = process.env.REACT_APP_PORT || "8080";
+    const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+    const PORT = process.env.REACT_APP_PORT || "";
     const PROTOCOL = process.env.PROTOCOL || "https";
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
-        console.log(store)
 
         const formData = new FormData();
         formData.append("audio",
@@ -34,10 +33,9 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/audio`,
+        axios.post(`${PROTOCOL}://${IP}${PORT}/api/colmena/audio`,
             formData,
             config);
-        console.log(inputsSalientes)
 
         store.updateNotasForm(inputsSalientes);
     };
@@ -76,7 +74,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
-    console.log(store.consejosIntervenciones, store.consejosAlimento, store.consejosCosecha)
 
     return (
         <div>
@@ -112,7 +109,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             props.history.push("/consejos");
                         }} />
                         <FormSubmitButton onClick={(e) => {
-                            console.log(store)
                             e.preventDefault();
                             props.history.push("/vistaColmena");
                             handleSubmit(e);

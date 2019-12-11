@@ -30,9 +30,9 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = observer((
   props,
 ) => {
   const store = useStores();
-  const IP = process.env.REACT_APP_IP || "5.189.179.214";
-  const PORT = process.env.REACT_APP_PORT || "8080";
-  const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
+  const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+  const PORT = process.env.REACT_APP_PORT || "";
+  const PROTOCOL = process.env.PROTOCOL || "https";
 
   function handleChangeImagen(e) {
     e.preventDefault();
@@ -50,14 +50,14 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = observer((
     };
     axios
       .post(
-        `${PROTOCOL}://${IP}:${PORT}/api/colmena/photo`,
+        `${PROTOCOL}://${IP}${PORT}/api/colmena/photo`,
         formData,
         config,
       )
       .then((res) => res.data)
       .then((newColmena: any) => {
         axios.post(
-          `${PROTOCOL}://${IP}:${PORT}/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
+          `${PROTOCOL}://${IP}${PORT}/api/colmena/agregarColmenaEstandar/${newColmena.id}`,
           inputsSalientes,
         ).then(() => props.history.push("/home"));
       })
