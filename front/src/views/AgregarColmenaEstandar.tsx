@@ -29,7 +29,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = (
   props,
 ) => {
   const store = useStores();
-  const IP = process.env.REACT_APP_IP || "5.189.179.214";
+  const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
   const PORT = process.env.REACT_APP_PORT || "8080";
   const PROTOCOL = process.env.PROTOCOL || "https";
 
