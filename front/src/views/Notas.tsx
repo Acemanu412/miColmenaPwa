@@ -19,8 +19,8 @@ import { NavBar } from "./NavBar";
 
 export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
-    const IP = process.env.REACT_APP_IP || "5.189.179.214";
-    const PORT = process.env.REACT_APP_PORT || "8080";
+    const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+    const PORT = process.env.REACT_APP_PORT || "";
     const PROTOCOL = process.env.PROTOCOL || "https";
     const [audio, setAudio] = useState(null);
 
@@ -32,7 +32,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             headers: { "content-type": "multipart/form-data" },
         };
         inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/audio`,
+        axios.post(`${PROTOCOL}://${IP}${PORT}/api/colmena/audio`,
             formData,
             config);
         console.log(inputsSalientes)
