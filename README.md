@@ -1,6 +1,6 @@
 # MiColmena
 
-MiColmena es una PWA (Aplicación Web Progresiva) orientada a ayudar apicultores, dándoles medios sencillos y eficientes de registrar información. Esta aplicación también interactua con el arduino de MiColmena, recibiendo, organizando y mostrando información del mismo al usuario logueado.
+MiColmena es una PWA (Aplicación Web Progresiva) desarrollada por Cognitive y Plataforma 5, orientada a ayudar apicultores, dándoles medios sencillos y eficientes de registrar información. Esta aplicación también interactua con el arduino de MiColmena, recibiendo, organizando y mostrando información del mismo al usuario logueado.
 
 ### Como comenzar
 
@@ -121,10 +121,10 @@ npm build
 
 ## Contribuidores
 
-* **Erika Castillo** - *Estudiante de Plataforma 5*
-* **Karen Martinez** - *Estudiante de Plataforma 5*
-* **Federico Ariganello** - *Estudiante de Plataforma 5*
-* **Jared Samuel Milbank** - *Estudiante de Plataforma 5*
-* **Manuel Aceituno** - *Estudiante de Plataforma 5* [github](https://github.com/Acemanu412)
-* **Luis Palacios** - *Senior Developer* 
+* **Erika Castillo** - *Estudiante de Plataforma 5* [Github](https://github.com/erikaastef)
+* **Karen Martinez** - *Estudiante de Plataforma 5* [Github](https://github.com/kareenmartinez)
+* **Federico Ariganello** - *Estudiante de Plataforma 5* [Github](https://github.com/fariganello)
+* **Jared Samuel Milbank** - *Estudiante de Plataforma 5* [Github](https://github.com/jsmil112)
+* **Manuel Aceituno** - *Estudiante de Plataforma 5* [Github](https://github.com/Acemanu412)
+* **Luis Palacios** - *Senior Developer* [Github](https://github.com/PinkiPalacios)
 
