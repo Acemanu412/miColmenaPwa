@@ -95,7 +95,6 @@ export const postNewDailyRegister = (
 };
 
 export const fetchColmenas = () =>
-
     axios
       .get(`${PROTOCOL}://${IP}${PORT}/api/colmena`)
       .then((res) => res.data)
