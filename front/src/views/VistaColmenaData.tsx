@@ -134,7 +134,7 @@ const VistaColmenaData = observer((props) => {
               return (
                 <Button3
                   selected={index === selected}
-                  key={`id-${index}`}
+                  key={`id-${index}`}  
                   onClick={() => setSelected(index)}
                 >
                   <Dia>
