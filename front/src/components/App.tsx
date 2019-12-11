@@ -15,6 +15,7 @@ import Signup from "../views/Signup";
 import VistaColmenaData from "../views/VistaColmenaData";
 
 const App: React.FC = () => {
+      console.log("enter app");
       return (
             <div>
                   <Route exact path="/" component={Login} />
