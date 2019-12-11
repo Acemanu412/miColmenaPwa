@@ -1,8 +1,9 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const IP = process.env.REACT_APP_IP || "5.189.179.214";
+const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
 const PORT = process.env.REACT_APP_PORT || "8080";
+const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
 export const fetchRegister = (username, email, password, telefono) =>
   axios
@@ -94,10 +95,10 @@ export const postNewDailyRegister = (
 };
 
 export const fetchColmenas = () =>
-  axios
-    .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena`)
-    .then((res) => res.data)
-    .catch((err) => err);
+    axios
+      .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena`)
+      .then((res) => res.data)
+      .catch((err) => err);
 
 export const fetchUser = () =>
   axios
@@ -107,3 +108,4 @@ export const fetchUser = () =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
