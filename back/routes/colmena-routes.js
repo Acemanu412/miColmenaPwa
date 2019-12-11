@@ -32,15 +32,15 @@ const upload = multer({ storage: storage })
 
 // fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-   Colmena.create({foto: req.file.filename})
+  Colmena.create({ foto: req.file.filename })
     .then((newColmena) => {
       req.user.addColmena(newColmena)
       return newColmena
     })
-        .then((newColmena) => {
-          res.status(200).send(newColmena)
+    .then((newColmena) => {
+      res.status(200).send(newColmena)
     })
-  })
+})
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
@@ -138,5 +138,14 @@ router.get("/", (req, res) =>
     res.sendStatus(402)
   )
 )
+
+router.post("/agregarColmenaDevice", (req, res, next) => {
+  Test.create({
+    dataArduino: req.body,
+  })
+    .catch((err) =>
+      res.send(err)
+    )
+})
 
 module.exports = router;

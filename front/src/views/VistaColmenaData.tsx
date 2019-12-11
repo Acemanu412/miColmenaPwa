@@ -1,7 +1,7 @@
+import { times } from "lodash";
 import { observer } from "mobx-react";
 import moment from "moment";
 import React, { useState } from "react";
-import { times } from "lodash";
 
 import { FormAtrasButton, FormSiguienteButton } from "../styles/FormStyles";
 
@@ -44,8 +44,8 @@ const VistaColmenaData = observer((props) => {
     times(7, (i) =>
       moment()
         .startOf("isoWeek")
-        .add(i, "day")
-    )
+        .add(i, "day"),
+    ),
   );
 
   const [selected, setSelected] = useState(() => {
@@ -93,9 +93,9 @@ const VistaColmenaData = observer((props) => {
 
   return (
     <Container>
+      <NavBar />
       {store.user || (!store.user && store.isFetchingUser) ?
         <div>
-          <NavBar />
           <Header>
             <Abejas />
             <ProfileContainer>
@@ -197,13 +197,12 @@ const VistaColmenaData = observer((props) => {
               onClick={(e) => {
                 e.preventDefault();
                 props.history.push("/estadoGeneral");
-                // handleSubmit(e);
               }}
             />
           </div>
         </div>
         : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
     </Container >
-  )
+  );
 });
 export default VistaColmenaData;

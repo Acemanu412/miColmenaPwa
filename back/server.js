@@ -40,7 +40,6 @@ app.use(passport.session());
 app.use("/api", routes);
 
 app.get('*', function (req, res) {
-
   res.sendFile(path.resolve("../front/build/index.html"));
 });
 
