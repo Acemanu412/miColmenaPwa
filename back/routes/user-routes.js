@@ -7,7 +7,7 @@ const { User } = require("../models");
 
 const PORT = process.env.PORT || ""
 const IP = process.env.IP || "app.micolmena.xyz"
-const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https"
+const PROTOCOL = process.env.PROTOCOL || "https"
 
 router.post(
   "/session",
