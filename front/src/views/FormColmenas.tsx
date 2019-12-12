@@ -183,10 +183,10 @@ export const FormColmenas: React.FC<RouteComponentProps> = observer((props) => {
                   <CheckboxFormColmenas type="checkbox"
                     name={enfermedad}
                     onChange={(e) => { handleInputChange(e) }} />
-                </CheckboxContainer>
+                </CheckboxContainer>;
               }
-              ))};
-        </Enfermedades>
+              ))}
+            </Enfermedades>
 
             <TextCantidad></TextCantidad>
 
