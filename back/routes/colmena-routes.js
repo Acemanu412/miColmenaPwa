@@ -46,7 +46,6 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
 })
 
 router.post("/audio", upload.array('audio', 2), (req, res, next) => {
-  console.log("BACK", req.files)
   res.send(req.files);
 });
 
@@ -89,7 +88,7 @@ router.post("/newDailyRegister", (req, res, next) => {
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
   let colmenasForm = req.body.colmenasForm;
-
+  console.log(req.body)
   Object.keys(colmenasForm).map(key => { // recorre el objeto
     if (typeof colmenasForm[key] === "boolean" && colmenasForm[key] === true) {
       colmenasForm.problemasSalud.push(key);

@@ -45,6 +45,12 @@ const RootStore = types
     setMedia(media: any) {
       self.media = media;
     },
+    setUrlEstadoGeneralForm: (url: any) => {
+      self.estadoGeneral.urlAudio = url;
+    },
+    setUrlNotasForm: (url: any) => {
+      self.notasForms.urlNotaAudio = url;
+    },
     updateAgregarColmenaDevice: (inputs: any) => {
       const inputsArmados = {
         MACadress: inputs.MACadress,
@@ -100,9 +106,9 @@ const RootStore = types
 
     updateEstadoGeneral: (inputs: any) => {
       const inputsArmados = {
-        audio: inputs.audio,
         fecha: inputs.fecha,
         salud: inputs.salud,
+        urlAudio: "",
       };
       self.estadoGeneral = inputsArmados;
     },
