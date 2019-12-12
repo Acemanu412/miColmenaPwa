@@ -46,7 +46,6 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
 })
 
 router.post("/audio", upload.array('audio', 2), (req, res, next) => {
-  console.log("BACK", req.files)
   res.send(req.files);
 });
 
@@ -85,7 +84,8 @@ router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
 })
 
 router.post("/newDailyRegister", (req, res, next) => {
-  const date = new Date();
+  const date = req.body.estadoGeneral.fecha
+  console.log("date", date);
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
   let colmenasForm = req.body.colmenasForm;
@@ -95,11 +95,6 @@ router.post("/newDailyRegister", (req, res, next) => {
       colmenasForm.problemasSalud.push(key);
     }
   });
-
-  ManualColmena.create(req.body.colmenasForm)
-    .catch(err => {
-      throw err;
-    });
 
   const consejos = {};
   consejos.date = date;
@@ -120,41 +115,29 @@ router.post("/newDailyRegister", (req, res, next) => {
       consejos.intervenciones.push(key);
     }
   });
-
-  ManualConsejos.create(consejos)
-    .then(data => {
-      // console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.reinaForms.date = date
-  ManualReina.create(req.body.reinaForms)
-    .then(data => {
-      // console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.estadoGeneral.date = date
-  EstadoGeneral.create(req.body.estadoGeneral)
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.notasForms.date = date
-  Notas.create(req.body.notasForms)
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
+
+  Colmena.findOne({ where: { id: req.body.colmenaId } }).then(async (colmena) => {
+    await colmena.createManualcolmena(req.body.colmenasForm)
+      .catch(err => {
+        console.log(err);
+      });
+    await colmena.createManualconsejo(consejos).catch(err => {
       console.log(err);
     });
+    await colmena.createManualreina(req.body.reinaForms).catch(err => {
+      console.log(err);
+    });
+    await colmena.createNota(req.body.notasForms).catch(err => {
+      console.log(err)
+    });
+    await colmena.createEstadoGeneral(req.body.estadoGeneral).catch(err => {
+      console.log(err)
+    });
+  });
+
 });
 
 router.get("/", (req, res) =>
@@ -190,6 +173,49 @@ router.get("/deviceInput/:id", (req, res, next) => {
     })))
     .then(deviceInput => res.send(deviceInput[0]))
 })
+
+router.get("/registros/:id/:date", (req, res) => {
+  console.log(req.params);
+  Colmena.findOne({ 
+    where: { id: req.params.id },
+    include: [
+      {
+        model: EstadoGeneral,
+        where: {
+        date: req.params.date
+        }
+      },
+      {
+        model: ManualColmena,
+        where: {
+        date: req.params.date
+        }
+      },
+      {
+        model: ManualReina,
+        where: {
+        date: req.params.date
+        }
+      },
+      {
+        model: ManualConsejos,
+        where: {
+        date: req.params.date
+        }
+      },
+      {
+        model: Notas,
+        where: {
+        date: req.params.date
+        }
+      }
+    ]
+  }).then((colmena) => {
+    console.log(colmena);
+    res.status(200).send(colmena);
+  }).catch(e => res.send(e))
+})
+
 
 
 

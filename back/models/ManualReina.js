@@ -6,7 +6,7 @@ class ManualReina extends S.Model { }
 ManualReina.init(
   {
     date: {
-      type: S.DATE,
+      type: S.STRING,
       allowNull: false
     },
 

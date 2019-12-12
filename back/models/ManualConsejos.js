@@ -6,7 +6,7 @@ class ManualConsejos extends S.Model { }
 ManualConsejos.init(
   {
     date: {
-      type: S.DATE,
+      type: S.STRING,
       allowNull: false,
     },
 

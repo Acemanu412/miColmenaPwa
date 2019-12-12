@@ -76,9 +76,11 @@ export const postNewDailyRegister = (
   estadoGeneral,
   notasForms,
   reinaForms,
+  colmenaId
 ) => {
+  console.log("notas", notasForms);
   return axios
-    .post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/newDailyRegister`, {
+    .post(`${PROTOCOL}://${IP}${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,
       consejosAlimento,
       consejosCosecha,
@@ -86,6 +88,7 @@ export const postNewDailyRegister = (
       estadoGeneral,
       notasForms,
       reinaForms,
+      colmenaId,
     })
     .then((res) => {
       return res;
@@ -118,3 +121,9 @@ export const fetchDataDevice = (id, day) =>
     .catch((err) => {
       return { message: err.response.data };
     });
+
+export const fetchRegistros = (id, day) =>
+  axios
+    .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/registros/${id}/${day}`)
+    .then((res) => console.log(res.data))
+    .catch((err) => err);

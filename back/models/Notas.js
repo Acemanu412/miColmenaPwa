@@ -6,7 +6,7 @@ class Notas extends S.Model { }
 Notas.init(
   {
     date: {
-      type: S.DATE,
+      type: S.STRING,
       allowNull: false
     },
 

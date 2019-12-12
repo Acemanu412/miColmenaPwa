@@ -16,6 +16,8 @@ Colmena.hasMany(DeviceInput);
 Colmena.hasMany(ManualColmena);
 Colmena.hasMany(ManualConsejos);
 Colmena.hasMany(ManualReina);
+Colmena.hasMany(Notas);
+Colmena.hasMany(EstadoGeneral);
 Device.belongsTo(Colmena);
 Device.hasMany(DeviceInput);
 TorresMeteorologicas.hasMany(Colmena);
