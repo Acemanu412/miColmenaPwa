@@ -119,8 +119,8 @@ export const fetchDataDevice = (id, day) =>
       return { message: err.response.data };
     });
 
-export const fetchRegistros = () =>
+export const fetchRegistros = (id, day) =>
   axios
-    .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/registros`)
+    .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/registros/${id}/${day}`)
     .then((res) => console.log(res.data))
     .catch((err) => err);
