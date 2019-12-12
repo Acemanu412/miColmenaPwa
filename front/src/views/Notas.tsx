@@ -21,7 +21,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
     const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
     const PORT = process.env.REACT_APP_PORT || "";
-    const PROTOCOL = process.env.PROTOCOL || "https";
+    const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
@@ -110,7 +110,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                         }} />
                         <FormSubmitButton onClick={(e) => {
                             e.preventDefault();
-                            props.history.push("/vistaColmena");
+                            props.history.push(`/vistaColmena/${store.colmena.id}`);
                             handleSubmit(e);
                             postNewDailyRegister(
                                 store.colmenasForm,
@@ -120,6 +120,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                                 store.estadoGeneral,
                                 store.notasForms,
                                 store.reinaForms,
+                                store.colmena.id,
                             );
                         }} />
                     </div>

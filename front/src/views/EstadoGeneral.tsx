@@ -29,7 +29,7 @@ const EstadoGeneral = observer((props) => {
   const { inputsSalientes, handleInputChange, handleSubmit }: any = useForm(
     estadoG,
     {
-      fecha: `${moment().date()} /${moment().month()}  /${moment().year()}`,
+      fecha: `${moment().date()}-${moment().month()+1}-${moment().year()}`,
     },
   );
 

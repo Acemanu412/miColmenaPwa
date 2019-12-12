@@ -75,10 +75,11 @@ export const postNewDailyRegister = (
   consejosIntervenciones,
   estadoGeneral,
   notasForms,
-  reinaForms
+  reinaForms,
+  colmenaId
 ) => {
   return axios
-    .post(`${PROTOCOL}://${IP}:${PORT}/api/colmena/newDailyRegister`, {
+    .post(`${PROTOCOL}://${IP}${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,
       consejosAlimento,
       consejosCosecha,
@@ -86,6 +87,7 @@ export const postNewDailyRegister = (
       estadoGeneral,
       notasForms,
       reinaForms,
+      colmenaId,
     })
     .then((res) => {
       return res;
