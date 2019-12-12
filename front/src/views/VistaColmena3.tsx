@@ -11,8 +11,63 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { fetchRegistros } from "../api";
 
 const VistaColmena3 = observer(() => {
-  const [currentColmena, setCurrentColmena] = useState([]);
   const store = useStores();
+
+  const defaultColmena = {
+    estadoGenerals: [
+      {
+        audio: "",
+        date: "",
+        salud: "",
+      },
+    ],
+    manualcolmenas: [
+      {
+        calidadCrias: 0,
+        comportamiento: 0,
+        numeroComidas: 0,
+        numeroCuadrosTotalesCrias: 0,
+        numeroCuadrosTotalesMiel: 0,
+        poblacion: 0,
+        problemasSalud: [],
+      },
+    ],
+    manualconsejos: [
+      {
+        aliment: [],
+        cera: "",
+        intervenciones: [],
+        jaleaReal: "",
+        miel: "",
+        panal: "",
+        polen: "",
+        propoleo: "",
+      },
+    ],
+    manualreinas: [
+      {
+        alasRota: false,
+        celulasReina: 0,
+        huevosVistos: false,
+        reinaPresente: false,
+        removes: false,
+        swarm: false,
+      },
+    ],
+    notas: [
+      {
+        notaTexto: "",
+        urlNotaAudio: "",
+      },
+    ],
+  };
+  const [currentColmena, setCurrentColmena] = useState(defaultColmena);
+
+  const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+  const PORT = process.env.REACT_APP_PORT || "";
+  const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
+
+
   console.log(store.currentDay, "holaaa22222");
   if (store.checkCC === false) {
     fetchRegistros(store.colmena.id, store.currentDay).then((colmena) =>
@@ -21,6 +76,7 @@ const VistaColmena3 = observer(() => {
     store.setCheckCC(true)
   }
   console.log(currentColmena, "holaaaaa");
+  console.log("ruta audio", `${PROTOCOL}://${IP}${PORT}/${currentColmena.notas[0].urlNotaAudio.slice(8)}`)
   return (
     <DataContainer2>
       <ExpansionPanel>
@@ -33,8 +89,15 @@ const VistaColmena3 = observer(() => {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <div>
+              <h1>Notas</h1>
+              <p>Nota de Audio</p>
+              <audio controls>
+                <source src={`${PROTOCOL}://${IP}${PORT}/${currentColmena.notas[0].urlNotaAudio.slice(8)}`} />
+              </audio>
+              <p>Nota de Texto</p>
+              <span>{currentColmena.notas[0].notaTexto}</span>
+            </div>
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>{" "}
