@@ -35,14 +35,13 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             audioNotas);
         formData.append("audio",
             store.media.audio);
-        console.log("mandando audio 1")
         const filesReceived = await axios.post(`${PROTOCOL}://${IP}${PORT}/api/colmena/audio`,
             formData,
             config);
-
-        console.log(filesReceived)
-        
         store.updateNotasForm(inputsSalientes);
+        console.log(filesReceived.data[0]);
+        store.setUrlNotasForm(filesReceived.data[0].path);
+        store.setUrlEstadoGeneralForm(filesReceived.data[1].path);
 
         postNewDailyRegister(
             store.colmenasForm,

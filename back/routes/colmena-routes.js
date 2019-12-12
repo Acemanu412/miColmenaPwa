@@ -89,7 +89,7 @@ router.post("/newDailyRegister", (req, res, next) => {
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
   let colmenasForm = req.body.colmenasForm;
-
+  console.log(req.body)
   Object.keys(colmenasForm).map(key => { // recorre el objeto
     if (typeof colmenasForm[key] === "boolean" && colmenasForm[key] === true) {
       colmenasForm.problemasSalud.push(key);
