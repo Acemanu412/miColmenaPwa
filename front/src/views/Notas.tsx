@@ -50,9 +50,12 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             store.estadoGeneral,
             store.notasForms,
             store.reinaForms,
+            store.colmena.id,
         );
 
-        props.history.push("/vistaColmena");
+
+
+        props.history.push(`/vistaColmena/${store.colmena.id}`);
     };
 
     const { inputsSalientes,

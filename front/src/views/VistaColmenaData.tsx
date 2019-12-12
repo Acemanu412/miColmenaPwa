@@ -4,6 +4,8 @@ import moment from "moment";
 import React, { useState } from "react";
 
 import { fetchDataDevice } from "../api";
+import { fetchRegistros } from "../api";
+
 import { useStores } from "../hooks/useStore";
 import {
   AbejaBlanca,
@@ -44,8 +46,8 @@ const VistaColmenaData = observer((props) => {
     times(7, (i) =>
       moment()
         .startOf("isoWeek")
-        .add(i, "day"),
-    ),
+        .add(i, "day")
+    )
   );
   const [selected, setSelected] = useState(() => {
     const today = moment().date();
@@ -79,7 +81,7 @@ const VistaColmenaData = observer((props) => {
   return (
     <Container>
       <NavBar />
-      {store.user || (!store.user && store.isFetchingUser) ?
+      {store.user || (!store.user && store.isFetchingUser) ? (
         <div>
           <Header>
             <Abejas />
@@ -100,7 +102,7 @@ const VistaColmenaData = observer((props) => {
                     }}
                   >
                     Saludable
-              </p>
+                  </p>
                 </Saludable2>
               </ContainerSaludable>
             </ProfileContainer>
@@ -108,7 +110,7 @@ const VistaColmenaData = observer((props) => {
           <EnlaceContainer>
             {`${dates[selected].date()} de ${
               month[dates[selected].month()]
-              } de ${dates[selected].year()}`}
+            } de ${dates[selected].year()}`}
           </EnlaceContainer>
           <SemanaContainer>
             <Button2>
@@ -116,17 +118,23 @@ const VistaColmenaData = observer((props) => {
             </Button2>
 
             {dates.map((day, index) => {
+              const now = `${day.date()}-${day.month()}-${day.year()}`;
               return (
                 <Button3
                   selected={index === selected}
                   key={`id-${index}`}
-                  onClick={
-                    () => {
-                      setSelected(index);
-                      fetchDataDevice(props.match.params.id, day)
-                        .then((inputDevice) => store.updateInputDevice(inputDevice));
-                    }
-                  }
+                  onClick={() => {
+                    setSelected(index);
+                    fetchDataDevice(
+                      props.match.params.id,
+                      day
+                    ).then((inputDevice) =>
+                      store.updateInputDevice(inputDevice)
+                    );
+                    fetchRegistros(props.match.params.id, now).then((colmena) =>
+                      store.setColmena(colmena)
+                    );
+                  }}
                 >
                   <Dia>
                     <p>{dias[index]}</p> <p>{day.date()}</p>
@@ -192,8 +200,10 @@ const VistaColmenaData = observer((props) => {
             />
           </div>
         </div>
-        : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
-    </Container >
+      ) : (
+        <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>
+      )}
+    </Container>
   );
 });
 export default VistaColmenaData;

@@ -6,7 +6,7 @@ class EstadoGeneral extends S.Model { }
 EstadoGeneral.init(
   {
     date: {
-      type: S.DATE,
+      type: S.STRING,
       allowNull: false
     },
 
