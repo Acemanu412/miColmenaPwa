@@ -15,12 +15,14 @@ const PORT = process.env.REACT_APP_PORT || "";
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
 const VistaColmena3 = observer(() => {
-  let defaultColmena = {
+  const store = useStores();
+
+  const defaultColmena = {
     estadoGenerals: [
       {
         audio: "",
-        salud: "",
         date: "",
+        salud: "",
       },
     ],
     manualcolmenas: [
@@ -63,12 +65,12 @@ const VistaColmena3 = observer(() => {
       },
     ],
   };
-
   const [currentColmena, setCurrentColmena] = useState(defaultColmena);
 
-  console.log(currentColmena);
+  const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+  const PORT = process.env.REACT_APP_PORT || "";
+  const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
-  const store = useStores();
   console.log(store.currentDay, "holaaa22222");
   if (store.checkCC === false) {
     fetchRegistros(store.colmena.id, store.currentDay).then((colmena) =>

@@ -88,6 +88,7 @@ router.post("/newDailyRegister", (req, res, next) => {
   console.log("date", date);
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
+
   let colmenasForm = req.body.colmenasForm;
   console.log(req.body)
   Object.keys(colmenasForm).map(key => { // recorre el objeto
@@ -117,7 +118,11 @@ router.post("/newDailyRegister", (req, res, next) => {
   });
   req.body.reinaForms.date = date
   req.body.estadoGeneral.date = date
+  req.body.estadoGeneral.audio = req.body.estadoGeneral.urlAudio;
   req.body.notasForms.date = date
+
+  console.log("AAA", req.body.colmenasForm.urlAudio)
+  console.log(req.body.colmenasForm)
 
   Colmena.findOne({ where: { id: req.body.colmenaId } }).then(async (colmena) => {
     await colmena.createManualcolmena(req.body.colmenasForm)
@@ -176,37 +181,37 @@ router.get("/deviceInput/:id", (req, res, next) => {
 
 router.get("/registros/:id/:date", (req, res) => {
   console.log(req.params);
-  Colmena.findOne({ 
+  Colmena.findOne({
     where: { id: req.params.id },
     include: [
       {
         model: EstadoGeneral,
         where: {
-        date: req.params.date
+          date: req.params.date
         }
       },
       {
         model: ManualColmena,
         where: {
-        date: req.params.date
+          date: req.params.date
         }
       },
       {
         model: ManualReina,
         where: {
-        date: req.params.date
+          date: req.params.date
         }
       },
       {
         model: ManualConsejos,
         where: {
-        date: req.params.date
+          date: req.params.date
         }
       },
       {
         model: Notas,
         where: {
-        date: req.params.date
+          date: req.params.date
         }
       }
     ]

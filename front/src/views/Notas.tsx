@@ -99,6 +99,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             <NavBar />
             {store.user || (!store.user && store.isFetchingUser) ?
                 <div>
+
                     <NotasContainer>
                         <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
                         <div id="divGrabando" className="noGrabando" onClick={() => {
@@ -114,6 +115,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             <ImagenGrabacion src={require("../utils/microfonoAmarillo@2x.png")} />
                         </div>
                         <Separador />
+
                         <TextoNotas>Escribe tus notas</TextoNotas>
                         <InputNotas
                             name="notaTexto"
