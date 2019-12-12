@@ -148,8 +148,11 @@ router.post("/nuevoClave", (req, res, next) => {
 
 router.get("/session", (req, res, next) => {
   req.logIn(req.user, function (err) {
-    if (err) { res.status(401).send("No se pudo abrir la sesión") }
-    res.status(200).send(req.user);
+    if (err) {
+      res.status(401).send("No se pudo abrir la sesión")
+    } else {
+      res.status(200).send(req.user);
+    }
   })
 })
 

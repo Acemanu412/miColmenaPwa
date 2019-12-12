@@ -1,38 +1,44 @@
-import React from "react";
 import { observer } from "mobx-react";
+import React from "react";
+
+import { useStores } from "../hooks/useStore";
 import {
-  DataContainer,
-  DataRow2,
-  DataRow,
-  DataColumn,
-  BoldText,
-  Termometro,
-  Escala,
-  WiFi,
-  PresionAtm,
-  Viento,
-  DireccionViento,
   Bateria,
+  BoldText,
+  DataColumn,
+  DataContainer,
+  DataRow,
+  DataRow2,
+  DireccionViento,
+  Escala,
   Gotas,
-  Ubicacion,
+  PresionAtm,
   Sol,
+  Termometro,
+  Ubicacion,
+  Viento,
+  WiFi,
 } from "../styles/ColmenaStyles";
 
 const VistaColmena2 = observer(() => {
+  const store = useStores();
+
+  const inputDevice = store.inputDevice;
+
   return (
     <DataContainer>
       <DataRow>
         <DataColumn>
           <label style={{ fontSize: "0.8rem" }}>Temp. Colmena</label>
           <DataRow2>
-            <BoldText>28°C</BoldText>
+            <BoldText>{inputDevice.temperaturaInterior}°C</BoldText>
             <Termometro />
           </DataRow2>
         </DataColumn>
         <DataColumn>
           <label style={{ fontSize: "0.8rem" }}>Humedad de Colmena</label>
           <DataRow2>
-            <BoldText>64 %</BoldText>
+            <BoldText>{inputDevice.humedadInterior}%</BoldText>
             <Gotas />
           </DataRow2>
         </DataColumn>
@@ -41,7 +47,8 @@ const VistaColmena2 = observer(() => {
         <DataColumn>
           <label style={{ fontSize: "0.8rem" }}>Peso</label>
           <DataRow2>
-            <BoldText>1 Kg</BoldText>
+            <BoldText>{Math.round((inputDevice.pesoUno + inputDevice.pesoDos + inputDevice.pesoTres
+              + inputDevice.pesoCuatro) * 100) / 100}kg</BoldText>
             <Escala />
           </DataRow2>
         </DataColumn>
@@ -49,8 +56,8 @@ const VistaColmena2 = observer(() => {
           <label style={{ fontSize: "0.8rem" }}>Localización</label>
           <DataRow2>
             <BoldText>
-              Lat: 1.396389,
-              <br /> lon: -78.424722
+              Lat: {inputDevice.latitud},
+              <br /> Lon: {inputDevice.longitud}
             </BoldText>
             <Ubicacion />
           </DataRow2>
@@ -73,7 +80,7 @@ const VistaColmena2 = observer(() => {
         </DataColumn>
       </DataRow>
       <label style={{ paddingTop: "2%", paddingBottom: "2%" }}>
-        Registra tus inspecciones
+        Datos meteorológicos
       </label>
       <DataRow>
         <DataColumn>
