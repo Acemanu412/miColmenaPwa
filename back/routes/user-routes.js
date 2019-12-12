@@ -26,7 +26,7 @@ router.post(
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${process.env.IP}:80/api/user/activarCuenta/${user.id}`
+      const link = `${process.env.IP}/api/user/activarCuenta/${user.id}`
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {

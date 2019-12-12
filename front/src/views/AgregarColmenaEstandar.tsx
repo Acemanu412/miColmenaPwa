@@ -206,5 +206,5 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = observer((
         </div>)
         : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
     </div>
-  )
+  );
 });

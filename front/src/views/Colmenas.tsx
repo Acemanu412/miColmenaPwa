@@ -12,8 +12,8 @@ import {
 } from "../styles/ColmenasStyles";
 
 let checkedColmenas = false;
-const IP = process.env.REACT_APP_IP || "app.micolmena.xyz"
-const PORT = process.env.REACT_APP_PORT || "80"
+const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
+const PORT = process.env.REACT_APP_PORT || "";
 export const Colmenas: React.FC = (props) => {
   const store = useStores();
   const [colmenas, setColmenas] = useState([]);
