@@ -45,6 +45,33 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
     })
 })
 
+router.post("/audio", upload.array('audio', 2), (req, res, next) => {
+  res.send(req.files);
+});
+
+router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
+
+  Colmena.update({
+    nombre: req.body.nombreColmena,
+  },
+    {
+      where: {
+        id: req.params.idColmena
+      }
+    }).then(async (updatedColmena) => {
+
+      const newDevice = await Device.findOrCreate({ where: { MACadress: req.body.MACadress } })
+        .then(dataArray => {
+          if (dataArray[1]) {
+            dataArray[0].MACadress = req.body.MACadress;
+          }
+          return dataArray[0];
+        })
+      newDevice.setColmena(updatedColmena)
+      res.status(200).send(updatedColmena)
+    })
+})
+
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
     nombre: req.body.nombreColmena,
@@ -56,13 +83,7 @@ router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
     }).then(data => res.status(200).send(data))
 })
 
-router.post("/audio", upload.single('audio'), (req, res, next) => {
-  res.sendStatus(200);
-});
-
-
 router.post("/newDailyRegister", (req, res, next) => {
-  //console.log("REQBODY", req.body)
   const date = req.body.estadoGeneral.fecha
   console.log("date", date);
   req.body.colmenasForm.date = date;
@@ -127,7 +148,7 @@ router.get("/", (req, res) =>
   )
 )
 
-router.post("/agregarColmenaDevice", (req, res, next) => {
+router.post("/agregarDataDevice", (req, res, next) => {
   Test.create({
     dataArduino: req.body,
   })
