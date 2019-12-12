@@ -62,7 +62,7 @@ router.post("/audio", upload.single('audio'), (req, res, next) => {
 
 
 router.post("/newDailyRegister", (req, res, next) => {
-  const date = new Date();
+  const date = `${moment().date()}/${moment().month()}/${moment().year()}`
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
   let colmenasForm = req.body.colmenasForm;
@@ -72,11 +72,6 @@ router.post("/newDailyRegister", (req, res, next) => {
       colmenasForm.problemasSalud.push(key);
     }
   });
-
-  ManualColmena.create(req.body.colmenasForm)
-    .catch(err => {
-      throw err;
-    });
 
   const consejos = {};
   consejos.date = date;
@@ -97,41 +92,29 @@ router.post("/newDailyRegister", (req, res, next) => {
       consejos.intervenciones.push(key);
     }
   });
-
-  ManualConsejos.create(consejos)
-    .then(data => {
-      // console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.reinaForms.date = date
-  ManualReina.create(req.body.reinaForms)
-    .then(data => {
-      // console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.estadoGeneral.date = date
-  EstadoGeneral.create(req.body.estadoGeneral)
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
   req.body.notasForms.date = date
-  Notas.create(req.body.notasForms)
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
+
+  Colmena.findOne({ where: { id: req.body.id } }).then(async (colmena) => {
+    await colmena.createManualcolmena(req.body.colmenasForm)
+      .catch(err => {
+        console.log(err);
+      });
+    await colmena.createManualconsejo(consejos).catch(err => {
       console.log(err);
     });
+    await colmena.createManualreina(req.body.reinaForms).catch(err => {
+      console.log(err);
+    });
+    await colmena.createNota(req.body.notasForms).catch(err => {
+      console.log(err)
+    });
+    await colmena.createEstadoGeneral(req.body.estadoGeneral).catch(err => {
+      console.log(err)
+    });
+  });
+
 });
 
 router.get("/", (req, res) =>
@@ -167,6 +150,28 @@ router.get("/deviceInput/:id", (req, res, next) => {
     })))
     .then(deviceInput => res.send(deviceInput[0]))
 })
+
+router.get("/registros", (req, res) => {
+  req.user.getColmena().then(async (colmenas) => {
+    console.log("colmenas", colmenas);
+    let manualColmenas = await colmenas[0].getManualcolmenas()
+    let manualConsejos = await colmenas[0].getManualconsejos()
+    let manualReinas = await colmenas[0].getManualreinas()
+    let notas = await colmenas[0].getNotas()
+    let estadoGeneral = await colmenas[0].getEstadoGenerals()
+    let colmenillas = {
+      manualColmenas: manualColmenas,
+      manualConsejos: manualConsejos,
+      manualReinas: manualReinas,
+      estadoGeneral: estadoGeneral,
+      notas: notas
+    }
+    res.send(colmenillas)
+
+  }).catch(e => res.send(e))
+
+})
+
 
 
 
