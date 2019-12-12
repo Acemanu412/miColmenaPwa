@@ -41,6 +41,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             config);
 
         console.log(filesReceived)
+        
+        store.updateNotasForm(inputsSalientes);
 
         postNewDailyRegister(
             store.colmenasForm,
@@ -52,6 +54,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             store.reinaForms,
             store.colmena.id,
         );
+
+
 
         props.history.push(`/vistaColmena/${store.colmena.id}`);
     };
