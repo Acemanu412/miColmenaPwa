@@ -75,7 +75,7 @@ router.post("/newDailyRegister", (req, res, next) => {
 
   ManualColmena.create(req.body.colmenasForm)
     .catch(err => {
-      console.log(err);
+      throw err;
     });
 
   const consejos = {};
@@ -152,7 +152,6 @@ router.post("/agregarColmenaDevice", (req, res, next) => {
 })
 
 router.get("/deviceInput/:id", (req, res, next) => {
-  console.log(req.params, req.query, req.query)
   const months = {
     Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07",
     Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12"
@@ -162,14 +161,13 @@ router.get("/deviceInput/:id", (req, res, next) => {
   const month = months[dayVec[1]]
   const year = dayVec[3]
   const start = `${year}-${month}-${day}`
-  console.log(day, month, year)
-  DeviceInput.findOne({
-    where: sequelize.where(Sequelize.fn('YEAR', Sequelize.col("date")), year)
-
-
-
-  }).then(data => console.log(data))
+  DeviceInput.findAll()
+    .then(deviceInputs => deviceInputs.filter((deviceInput => {
+      return (String(deviceInput.date).slice(0, 15) === req.query.day.slice(0, 15));
+    })))
+    .then(deviceInput => res.send(deviceInput[0]))
 })
+
 
 
 
