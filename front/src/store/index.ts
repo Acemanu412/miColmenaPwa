@@ -1,4 +1,5 @@
 import { types } from "mobx-state-tree";
+import moment from "moment";
 
 import AgregarColmenaForms from "./AgregarColmena";
 import AgregarColmenaDevice from "./AgregarColmenaDevice";
@@ -16,11 +17,16 @@ const RootStore = types
   .model("Root", {
     agregarColmenaDevice: types.maybeNull(AgregarColmenaDevice),
     agregarColmenaForms: types.maybeNull(AgregarColmenaForms),
+    checkCC: types.optional(types.boolean, false),
     colmena: types.maybeNull(Colmena),
     colmenasForm: types.maybeNull(ColmenasForms),
     consejosAlimento: types.maybeNull(AlimentoForm),
     consejosCosecha: types.maybeNull(CosechaForm),
     consejosIntervenciones: types.maybeNull(IntervencionesForm),
+    currentDay: types.optional(
+      types.string,
+      `${moment().date()}-${moment().month() + 1}-${moment().year()}`
+    ),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
     inputDevice: types.maybeNull(InputDevice),
@@ -32,6 +38,12 @@ const RootStore = types
     warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
+    setCheckCC(bool) {
+      self.checkCC = bool;
+    },
+    setCurrentDay(day) {
+      self.currentDay = day;
+    },
     setColmena(colmena) {
       self.colmena = colmena;
     },

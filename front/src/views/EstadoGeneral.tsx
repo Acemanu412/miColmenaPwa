@@ -135,7 +135,7 @@ const EstadoGeneral = observer((props) => {
             <FormAtrasButton
               onClick={(e) => {
                 e.preventDefault();
-                props.history.push("/vistaColmena");
+                props.history.push(`/vistaColmena/${store.colmena.id}`);
               }}
             />
             <FormSiguienteButton

@@ -125,5 +125,5 @@ export const fetchDataDevice = (id, day) =>
 export const fetchRegistros = (id, day) =>
   axios
     .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/registros/${id}/${day}`)
-    .then((res) => console.log(res.data))
+    .then((res) => res.data)
     .catch((err) => err);
