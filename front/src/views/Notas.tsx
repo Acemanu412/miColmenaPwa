@@ -21,23 +21,38 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const store = useStores();
     const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
     const PORT = process.env.REACT_APP_PORT || "";
-    const PROTOCOL = process.env.PROTOCOL || "https";
-    const [audio, setAudio] = useState(null);
+    const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
+    const [audioNotas, setAudioNotas] = useState(null);
 
-    const notas = () => {
+    const notas = async () => {
 
-        const formData = new FormData();
-        formData.append("audio",
-            audio);
         const config = {
             headers: { "content-type": "multipart/form-data" },
         };
-        inputsSalientes.urlNotaAudio = "/uploads/audio.mp3";
-        axios.post(`${PROTOCOL}://${IP}${PORT}/api/colmena/audio`,
+
+        const formData = new FormData();
+        formData.append("audio",
+            audioNotas);
+        formData.append("audio",
+            store.media.audio);
+        console.log("mandando audio 1")
+        const filesReceived = await axios.post(`${PROTOCOL}://${IP}${PORT}/api/colmena/audio`,
             formData,
             config);
 
-        store.updateNotasForm(inputsSalientes);
+        console.log(filesReceived)
+
+        postNewDailyRegister(
+            store.colmenasForm,
+            store.consejosAlimento,
+            store.consejosCosecha,
+            store.consejosIntervenciones,
+            store.estadoGeneral,
+            store.notasForms,
+            store.reinaForms,
+        );
+
+        props.history.push("/vistaColmena");
     };
 
     const { inputsSalientes,
@@ -72,7 +87,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             lastModified: Date.now(),
             type: blob.type,
         });
-        setAudio(audioRec);
+        setAudioNotas(audioRec);
     }
 
     return (
@@ -100,7 +115,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             name="notaTexto"
                             value={inputsSalientes.notaTexto}
                             rows={8} cols={30}
-                            onChange={(e) => { handleInputChange(e) }}>
+                            onChange={(e) => { handleInputChange(e); }}>
                         </InputNotas>
                     </NotasContainer>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -109,18 +124,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             props.history.push("/consejos");
                         }} />
                         <FormSubmitButton onClick={(e) => {
-                            e.preventDefault();
-                            props.history.push("/vistaColmena");
                             handleSubmit(e);
-                            postNewDailyRegister(
-                                store.colmenasForm,
-                                store.consejosAlimento,
-                                store.consejosCosecha,
-                                store.consejosIntervenciones,
-                                store.estadoGeneral,
-                                store.notasForms,
-                                store.reinaForms,
-                            );
                         }} />
                     </div>
                 </div>
