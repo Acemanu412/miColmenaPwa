@@ -78,6 +78,7 @@ export const postNewDailyRegister = (
   reinaForms,
   colmenaId
 ) => {
+  console.log("Fetcha",estadoGeneral.fecha);
   return axios
     .post(`${PROTOCOL}://${IP}${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,

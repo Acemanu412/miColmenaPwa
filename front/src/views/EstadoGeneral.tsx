@@ -21,7 +21,6 @@ import { NavBar } from "./NavBar";
 
 const EstadoGeneral = observer((props) => {
   const store = useStores();
-
   const estadoG = () => {
     store.updateEstadoGeneral(inputsSalientes);
   };
@@ -29,7 +28,7 @@ const EstadoGeneral = observer((props) => {
   const { inputsSalientes, handleInputChange, handleSubmit }: any = useForm(
     estadoG,
     {
-      fecha: `${moment().date()}-${moment().month()+1}-${moment().year()}`,
+      fecha: `${moment().date()}-${moment().month() + 1}-${moment().year()}`,
     },
   );
 
@@ -81,7 +80,9 @@ const EstadoGeneral = observer((props) => {
               <input
                 style={{ border: "none", outline: "none" }}
                 type="text"
-                onChange={handleInputChange}
+                onChange={(e) => {
+                  inputsSalientes.fecha = e.target.value;
+                }}
                 defaultValue={inputsSalientes.fecha}
               />
             </DataRow>
