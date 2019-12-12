@@ -49,6 +49,7 @@ const RootStore = types
       self.estadoGeneral.urlAudio = url;
     },
     setUrlNotasForm: (url: any) => {
+      console.log(self.notasForms)
       self.notasForms.urlNotaAudio = url;
     },
     updateAgregarColmenaDevice: (inputs: any) => {
