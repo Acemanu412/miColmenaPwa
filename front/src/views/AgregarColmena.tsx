@@ -26,7 +26,11 @@ export const AgregarColmena: React.FC<RouteComponentProps> = observer((props) =>
           <SpanBanner>Agregar una colmena</SpanBanner>
         </YellowBanner>
         <ColmenaOption text="Añadir colmena con dispositivo"
-          imageSource={require("../utils/agregarCuaderno@2x.png")} />
+          imageSource={require("../utils/agregarCuaderno@2x.png")}
+          onClick={(e) => {
+            e.preventDefault();
+            props.history.push("/agregarColmenaDevice");
+          }} />
         <ColmenaOption text="Añadir colmena estándar"
           imageSource={require("../utils/agregarColmena@2x.png")}
           onClick={(e) => {

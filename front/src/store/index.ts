@@ -1,6 +1,7 @@
 import { types } from "mobx-state-tree";
 
 import AgregarColmenaForms from "./AgregarColmena";
+import AgregarColmenaDevice from "./AgregarColmenaDevice";
 import Colmena from "./Colmena";
 import ColmenasForms from "./ColmenasForms";
 import { AlimentoForm, CosechaForm, IntervencionesForm } from "./ConsejosForms";
@@ -13,6 +14,7 @@ import User from "./User";
 
 const RootStore = types
   .model("Root", {
+    agregarColmenaDevice: types.maybeNull(AgregarColmenaDevice),
     agregarColmenaForms: types.maybeNull(AgregarColmenaForms),
     colmena: types.maybeNull(Colmena),
     colmenasForm: types.maybeNull(ColmenasForms),
@@ -42,6 +44,13 @@ const RootStore = types
     },
     setMedia(media: any) {
       self.media = media;
+    },
+    updateAgregarColmenaDevice: (inputs: any) => {
+      const inputsArmados = {
+        MACadress: inputs.MACadress,
+        nombreColmena: inputs.nombreColmena,
+      };
+      self.agregarColmenaDevice = inputsArmados;
     },
     updateAgregarColmenaForm: (inputs: any) => {
       const inputsArmados = {
