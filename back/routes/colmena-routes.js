@@ -45,6 +45,30 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
     })
 })
 
+router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
+
+  Colmena.update({
+    nombre: req.body.nombreColmena,
+  },
+    {
+      where: {
+        id: req.params.idColmena
+      }
+    }).then(async (updatedColmena) => {
+
+      const newDevice = await Device.findOrCreate({ where: { MACadress: req.body.MACadress } })
+        .then(dataArray => {
+          console.log(dataArray)
+          if (dataArray[1]) {
+            dataArray[0].MACadress = req.body.MACadress;
+          }
+          return dataArray[0];
+        })
+      newDevice.setColmena(updatedColmena)
+      res.status(200).send(updatedColmena)
+    })
+})
+
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
     nombre: req.body.nombreColmena,
@@ -142,7 +166,7 @@ router.get("/", (req, res) =>
   )
 )
 
-router.post("/agregarColmenaDevice", (req, res, next) => {
+router.post("/agregarDataDevice", (req, res, next) => {
   Test.create({
     dataArduino: req.body,
   })
