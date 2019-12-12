@@ -82,7 +82,7 @@ const EstadoGeneral = observer((props) => {
                 style={{ border: "none", outline: "none" }}
                 type="text"
                 onChange={handleInputChange}
-                value={inputsSalientes.fecha}
+                defaultValue={inputsSalientes.fecha}
               />
             </DataRow>
             <label>Estado de salud</label>
