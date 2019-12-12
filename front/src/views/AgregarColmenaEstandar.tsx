@@ -32,7 +32,7 @@ export const AgregarColmenaEstandar: React.FC<RouteComponentProps> = observer((
   const store = useStores();
   const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
   const PORT = process.env.REACT_APP_PORT || "";
-  const PROTOCOL = process.env.PROTOCOL || "https";
+  const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
   function handleChangeImagen(e) {
     e.preventDefault();

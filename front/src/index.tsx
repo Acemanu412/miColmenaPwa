@@ -14,7 +14,7 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </ContextProvider>,
-  document.getElementById("root"),
+  document.getElementById("root")
 );
 
-// serviceWorker.register();
+//serviceWorker.register();

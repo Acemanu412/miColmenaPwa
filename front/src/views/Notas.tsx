@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
+import { postNewDailyRegister } from "../api/index";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";
@@ -24,6 +25,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const [audio, setAudio] = useState(null);
 
     const notas = () => {
+
         const formData = new FormData();
         formData.append("audio",
             audio);
@@ -72,6 +74,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         });
         setAudio(audioRec);
     }
+
     return (
         <div>
             <NavBar />
@@ -93,7 +96,12 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                         </div>
                         <Separador />
                         <TextoNotas>Escribe tus notas</TextoNotas>
-                        <InputNotas rows={8} cols={30} onChange={handleInputChange}></InputNotas>
+                        <InputNotas
+                            name="notaTexto"
+                            value={inputsSalientes.notaTexto}
+                            rows={8} cols={30}
+                            onChange={(e) => { handleInputChange(e) }}>
+                        </InputNotas>
                     </NotasContainer>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <FormAtrasButton onClick={(e) => {
@@ -104,6 +112,15 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                             e.preventDefault();
                             props.history.push("/vistaColmena");
                             handleSubmit(e);
+                            postNewDailyRegister(
+                                store.colmenasForm,
+                                store.consejosAlimento,
+                                store.consejosCosecha,
+                                store.consejosIntervenciones,
+                                store.estadoGeneral,
+                                store.notasForms,
+                                store.reinaForms,
+                            );
                         }} />
                     </div>
                 </div>

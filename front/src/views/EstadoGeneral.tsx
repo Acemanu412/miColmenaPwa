@@ -30,7 +30,7 @@ const EstadoGeneral = observer((props) => {
     estadoG,
     {
       fecha: `${moment().date()} /${moment().month()}  /${moment().year()}`,
-    }
+    },
   );
 
   const recorder = new MicRecorder({
@@ -148,7 +148,7 @@ const EstadoGeneral = observer((props) => {
         </div>
         : <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>}
     </Container>
-  )
+  );
 });
 
 export default EstadoGeneral;

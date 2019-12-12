@@ -2,6 +2,7 @@ const express = require("express");
 const router = express();
 const multer = require('multer');
 const moment = require('moment');
+const Sequelize = require("sequelize");
 const {
   Colmena,
   Device,
@@ -13,6 +14,8 @@ const {
   ManualConsejos,
   Notas,
 } = require("../models");
+
+const Op = Sequelize.Op
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,15 +35,15 @@ const upload = multer({ storage: storage })
 
 // fijarse que req.user no es undefined
 router.post("/photo", upload.single('photo'), (req, res, next) => {
-   Colmena.create({foto: req.file.filename})
+  Colmena.create({ foto: req.file.filename })
     .then((newColmena) => {
       req.user.addColmena(newColmena)
       return newColmena
     })
-        .then((newColmena) => {
-          res.status(200).send(newColmena)
+    .then((newColmena) => {
+      res.status(200).send(newColmena)
     })
-  })
+})
 
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
@@ -138,5 +141,41 @@ router.get("/", (req, res) =>
     res.sendStatus(402)
   )
 )
+
+router.post("/agregarColmenaDevice", (req, res, next) => {
+  Test.create({
+    dataArduino: req.body,
+  })
+    .catch((err) =>
+      res.send(err)
+    )
+})
+
+router.get("/deviceInput/:id", (req, res, next) => {
+  console.log(req.params, req.query, req.query)
+  const months = {
+    Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07",
+    Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12"
+  }
+  const dayVec = req.query.day.split(" ")
+  const day = dayVec[2]
+  const month = months[dayVec[1]]
+  const year = dayVec[3]
+  const start = `${year}-${month}-${day}`
+  console.log(day, month, year)
+  DeviceInput.findOne({
+    where: sequelize.where(Sequelize.fn('YEAR', Sequelize.col("date")), year)
+
+
+
+  }).then(data => console.log(data))
+})
+
+
+
+
+
+
+
 
 module.exports = router;

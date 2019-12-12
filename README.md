@@ -1,44 +1,130 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# MiColmena
 
-## Available Scripts
+MiColmena es una PWA (Aplicación Web Progresiva) desarrollada por Cognitive y Plataforma 5, orientada a ayudar apicultores, dándoles medios sencillos y eficientes de registrar información. Esta aplicación también interactua con el arduino de MiColmena, recibiendo, organizando y mostrando información del mismo al usuario logueado.
 
-In the project directory, you can run:
+### Como comenzar
 
-### `yarn start`
+Situandonos en la carpeta *back*, correr el comando *start*: 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**yarn**
+```
+yarn start
+```
+**npm**
+```
+npm start
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Prerrequisitos
 
-### `yarn test`
+Antes de poder instalar la aplicación y correrla localmente, es necesario realizar las siguientes instalaciones: 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * [Node.js](https://nodejs.org/es/download/): Ambiente de JavaScript que permite correrlo *server-side* (Del lado del server).
+  * [postgresQL](https://www.postgresql.org/): 	RDBMS (Sistema de gestión de bases de datos relacionales). Este sistema crea y administra las bases de datos SQL del *back-end*.
+  
 
-### `yarn build`
+### Instalación
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Durante esta etapa, podemos chequear el apartado siguiente "Estructura de carpetas" por cualquier confusión.
+*** Los ejemplos dados son para el bash de Linux Mint. Si se está utilizando otro sistema operativo o CLI, los comandos pueden variar***
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Desde la carpeta *root* (La carpeta raíz del proyecto), nos movemos a la carpeta *back*. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+cd back/
+```
 
-### `yarn eject`
+2. Instalar las dependencias del servicio *back*.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**yarn**
+```
+yarn
+```
+**npm**
+```
+npm i
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Ir a la carpeta *front*. Se encuentra al mismo nivel que *back* así que tendremos que salir de esta última.
+```
+cd ../front/
+```
+4. Instalar las dependencias del servicio *back* y crear un .env donde especificaremos el puerto en el que deseamos que la aplicación de corra (El defecto es 8080).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**yarn**
+```
+yarn 
+```
+**npm**
+```
+npm i
+``` 
+5. Crea archivos .env (También llamadas variables de entorno). En ellas, necesitamos especificar el puerto(8080 ) y la ip del servidor.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+echo "REACT_APP_PORT=:8080 " > .env
+echo "REACT_APP_PORT='NUESTRA_IP'" >> .env
+```
+6. Desde el front correr el comando *build*. Esto creara un paquete que nuestro servidor enviará al *front-end* (Los dispositivos que ejecutaran nuestra aplicación llamando a nuestro servidor).
 
-## Learn More
+**yarn**
+```
+yarn build
+```
+**npm**
+```
+npm build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Estructura de carpetas
+```
+.
+├── back
+│   ├── config
+│   ├── models
+│   ├── routes
+│   ├── seeds
+│   └── uploads
+│       ├── audios
+│       └── fotos
+└── front
+    ├── build
+    │   ├── imagenes
+    │   └── static
+    │       ├── js
+    │       └── media
+    ├── public
+    │   └── imagenes
+    └── src
+        ├── api
+        ├── components
+        ├── hooks
+        ├── store
+        ├── styles
+        ├── themes
+        ├── utils
+        └── views
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+## Construido con
+*front*: 
+* [React](https://es.reactjs.org/) - El framework de JavaScript utilizado.
+* [Mobx](https://mobx.js.org/README.html) - State management.
+* [Styled-components](https://www.styled-components.com/) - Para la declaración de estilos.
+* [Typescript](https://www.typescriptlang.org/) - Solo para linteo (Emprolija el código y permite static typing ). 
+
+*back*: 
+* [Express](https://expressjs.com/es/) - Utilizado para hacer correr el servidor.
+* [Sequelize](https://sequelize.org/) -ORM (Interactúa con la base de datos desde el servidor)
+* [Passport](http://www.passportjs.org/) - Login a través de sesiones.
+
+## Contribuidores
+
+* **Erika Castillo** - *Estudiante de Plataforma 5* [Github](https://github.com/erikaastef)
+* **Karen Martinez** - *Estudiante de Plataforma 5* [Github](https://github.com/kareenmartinez)
+* **Federico Ariganello** - *Estudiante de Plataforma 5* [Github](https://github.com/fariganello)
+* **Jared Samuel Milbank** - *Estudiante de Plataforma 5* [Github](https://github.com/jsmil112)
+* **Manuel Aceituno** - *Estudiante de Plataforma 5* [Github](https://github.com/Acemanu412)
+* **Luis Palacios** - *Senior Developer* [Github](https://github.com/PinkiPalacios)
+
