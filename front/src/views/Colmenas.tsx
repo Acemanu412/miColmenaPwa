@@ -39,7 +39,7 @@ const Colmenas: React.FC = (props: any) => {
                       key={index}
                       style={{ textDecoration: "none", color: "black" }}>
           <DataColmenaContainer>
-            <img src={`${PROTOCOL}://${IP}:${PORT}/fotos/${colmena.foto}`}
+            <img src={`${PROTOCOL}://${IP}${PORT}/fotos/${colmena.foto}`}
                  alt=""
                  style={{ height: "70px" }} />
             {colmena.nombre}
