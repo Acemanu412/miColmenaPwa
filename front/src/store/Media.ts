@@ -9,7 +9,7 @@ const Media = types.model({})
         setPhoto(photo) {
             self.photo = photo;
         },
-        setAudio(audio) {
+        setAudioEstadoGeneral(audio) {
             self.audio = audio;
         },
     }));

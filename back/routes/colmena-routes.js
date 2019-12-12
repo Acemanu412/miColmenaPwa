@@ -45,6 +45,11 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
     })
 })
 
+router.post("/audio", upload.array('audio', 2), (req, res, next) => {
+  console.log("BACK", req.files)
+  res.send(req.files);
+});
+
 router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
 
   Colmena.update({
@@ -58,7 +63,6 @@ router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
 
       const newDevice = await Device.findOrCreate({ where: { MACadress: req.body.MACadress } })
         .then(dataArray => {
-          console.log(dataArray)
           if (dataArray[1]) {
             dataArray[0].MACadress = req.body.MACadress;
           }
@@ -79,11 +83,6 @@ router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
       }
     }).then(data => res.status(200).send(data))
 })
-
-router.post("/audio", upload.single('audio'), (req, res, next) => {
-  res.sendStatus(200);
-});
-
 
 router.post("/newDailyRegister", (req, res, next) => {
   const date = new Date();

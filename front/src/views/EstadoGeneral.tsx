@@ -61,7 +61,7 @@ const EstadoGeneral = observer((props) => {
     // const player = new Audio(URL.createObjectURL(audioRec));
 
     store.setMedia({});
-    store.media.setAudio(audioRec);
+    store.media.setAudioEstadoGeneral(audioRec);
 
     // player.play();
   }
