@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { postNewDailyRegister } from "../api";
+import { postNewDailyRegister } from "../api/index";
 import { useForm } from "../hooks/formHook";
 import { useStores } from "../hooks/useStore";
 import { FormAtrasButton, FormSubmitButton } from "../styles/FormStyles";

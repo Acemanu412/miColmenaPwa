@@ -1,6 +1,7 @@
 import { types } from "mobx-state-tree";
 
 import AgregarColmenaForms from "./AgregarColmena";
+import Colmena from "./Colmena";
 import ColmenasForms from "./ColmenasForms";
 import { AlimentoForm, CosechaForm, IntervencionesForm } from "./ConsejosForms";
 import EstadoGeneral from "./EstadoGeneralForm";
@@ -13,6 +14,7 @@ import User from "./User";
 const RootStore = types
   .model("Root", {
     agregarColmenaForms: types.maybeNull(AgregarColmenaForms),
+    colmena: types.maybeNull(Colmena),
     colmenasForm: types.maybeNull(ColmenasForms),
     consejosAlimento: types.maybeNull(AlimentoForm),
     consejosCosecha: types.maybeNull(CosechaForm),
@@ -28,6 +30,9 @@ const RootStore = types
     warning: types.optional(types.string, ""),
   })
   .actions((self) => ({
+    setColmena(colmena) {
+      self.colmena = colmena;
+    },
     setUser(user) {
       self.user = user;
       self.isFetchingUser = false;

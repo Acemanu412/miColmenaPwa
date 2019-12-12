@@ -5,8 +5,8 @@ const nodemailer = require("nodemailer");
 const passport = require("../config/passport");
 const { User } = require("../models");
 
-const PORT = process.env.PORT || "8080"
-const IP = process.env.IP || "5.189.179.214"
+const PORT = process.env.PORT || ""
+const IP = process.env.IP || "app.micolmena.xyz"
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https"
 
 router.post(

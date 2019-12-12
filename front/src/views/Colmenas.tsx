@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
-import { useStores } from "../hooks/useStore";
-
 import { fetchColmenas } from "../api/index";
+import { useStores } from "../hooks/useStore";
 import {
   ButtonColmenasContainer,
   ColmenasContainer,
@@ -13,9 +13,9 @@ import {
 
 let checkedColmenas = false;
 const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
-const PORT = process.env.REACT_APP_PORT || "80";
+const PORT = process.env.REACT_APP_PORT || "";
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
-export const Colmenas: React.FC = (props) => {
+const Colmenas: React.FC = (props: any) => {
   const store = useStores();
   const [colmenas, setColmenas] = useState([]);
   fetchColmenas().then((res) => {
@@ -28,18 +28,23 @@ export const Colmenas: React.FC = (props) => {
     if (!checkedColmenas || colmenaArr.length !== colmenas.length) {
       setColmenas(colmenaArr);
     }
+
   });
 
   return (
     <ColmenasContainer>
       {colmenas.map((colmena, index) => {
-        return (<Link to={`/vistaColmena/${colmena.id}`} key={index} style={{ textDecoration: "none", color: "black" }}>
+        return (<div onClick={ () => { store.setColmena(colmena);
+                                       props.history.push(`/vistaColmena/${colmena.id}`); }}
+                      key={index}
+                      style={{ textDecoration: "none", color: "black" }}>
           <DataColmenaContainer>
-            <img src={`http://${IP}:${PORT}/fotos/${colmena.foto}`}
-              alt="" style={{ height: "70px" }} />
+            <img src={`${PROTOCOL}://${IP}${PORT}/fotos/${colmena.foto}`}
+                 alt=""
+                 style={{ height: "70px" }} />
             {colmena.nombre}
           </DataColmenaContainer>
-        </Link>);
+        </div>);
       })}
 
       <ButtonColmenasContainer>
@@ -50,3 +55,5 @@ export const Colmenas: React.FC = (props) => {
     </ColmenasContainer>
   );
 };
+
+export default withRouter(Colmenas);
