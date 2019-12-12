@@ -1,4 +1,5 @@
 import axios from "axios";
+
 axios.defaults.withCredentials = true;
 
 const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
@@ -102,19 +103,18 @@ export const fetchColmenas = () =>
 
 export const fetchUser = () =>
   axios
-    .get(`${PROTOCOL}://${IP}:${PORT}/api/user/session`)
+    .get(`${PROTOCOL}://${IP}${PORT}/api/user/session`)
     .then((res) => res.data)
     .then((user) => user)
     .catch((err) => {
       return { message: err.response.data };
     });
 
-export const fetchDataDevice = (id, day) => {
+export const fetchDataDevice = (id, day) =>
   axios
-    .get(`${PROTOCOL}://${IP}:${PORT}/api/colmena/deviceInput/${id}?day=${day}`)
+    .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/deviceInput/${id}?day=${day}`)
     .then((res) => res.data)
     .then((inputDevice) => inputDevice)
     .catch((err) => {
       return { message: err.response.data };
     });
-}

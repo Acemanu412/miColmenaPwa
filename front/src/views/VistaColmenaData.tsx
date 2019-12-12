@@ -59,10 +59,6 @@ const VistaColmenaData = observer((props) => {
     const newDates = times(7, (i) => dates[i].subtract(7, "day"));
     setDates(newDates);
   };
-  // const [week, setWeek] = useState([]);
-  // const [addWeek, setAddWeek] = useState(0);
-  // const [dia, setDia] = useState(moment());
-  // const newWeek = [];
 
   const dias = ["L", "M", "M", "J", "V", "S", "D"];
   const month = [
@@ -79,16 +75,6 @@ const VistaColmenaData = observer((props) => {
     "Noviembre",
     "Diciembre",
   ];
-
-  // for (let i = 0; i < 7; i++) {
-  //   newWeek.push(
-  //     moment()
-  //       .startOf("isoWeek")
-  //       .add(i + addWeek, "day")
-  //       .date()
-  //       .toString()
-  //   );
-  // }
 
   return (
     <Container>
@@ -137,7 +123,8 @@ const VistaColmenaData = observer((props) => {
                   onClick={
                     () => {
                       setSelected(index);
-                      fetchDataDevice(props.match.params.id, day);
+                      fetchDataDevice(props.match.params.id, day)
+                        .then((inputDevice) => store.updateInputDevice(inputDevice));
                     }
                   }
                 >
@@ -164,7 +151,7 @@ const VistaColmenaData = observer((props) => {
             <Button
               onClick={() => {
                 setVista1(false);
-                setVista2(true);
+                store.inputDevice ? setVista2(true) : setVista2(false);
                 setVista3(false);
               }}
             >

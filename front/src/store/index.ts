@@ -4,6 +4,7 @@ import AgregarColmenaForms from "./AgregarColmena";
 import ColmenasForms from "./ColmenasForms";
 import { AlimentoForm, CosechaForm, IntervencionesForm } from "./ConsejosForms";
 import EstadoGeneral from "./EstadoGeneralForm";
+import InputDevice from "./InputDevice";
 import Media from "./Media";
 import NotasForms from "./NotasForms";
 import ReinaForms from "./ReinaForms";
@@ -18,6 +19,7 @@ const RootStore = types
     consejosIntervenciones: types.maybeNull(IntervencionesForm),
     estadoGeneral: types.maybeNull(EstadoGeneral),
     homeMessage: types.optional(types.string, ""),
+    inputDevice: types.maybeNull(InputDevice),
     isFetchingUser: types.optional(types.boolean, false),
     media: types.maybeNull(Media),
     notasForms: types.maybeNull(NotasForms),
@@ -68,6 +70,9 @@ const RootStore = types
     },
     updateHomeMessage: (homeMessage) => {
       self.homeMessage = homeMessage.message;
+    },
+    updateInputDevice: (inputDevice: any) => {
+      self.inputDevice = inputDevice ? inputDevice : null;
     },
     updateNotasForm: (inputs: any) => {
       self.notasForms = inputs;
