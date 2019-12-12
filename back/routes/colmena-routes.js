@@ -62,7 +62,7 @@ router.post("/audio", upload.single('audio'), (req, res, next) => {
 
 
 router.post("/newDailyRegister", (req, res, next) => {
-  const date = `${moment().date()}/${moment().month()}/${moment().year()}`
+  const date = `${moment().date()}-${moment().month()}-${moment().year()}`
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
   let colmenasForm = req.body.colmenasForm;
@@ -152,7 +152,7 @@ router.get("/deviceInput/:id", (req, res, next) => {
 })
 
 router.get("/registros", (req, res) => {
-  req.user.getColmena().then(async (colmenas) => {
+  Colmena.findOne({ where: { id: req.body.id } }).then(async (colmenas) => {
     console.log("colmenas", colmenas);
     let manualColmenas = await colmenas[0].getManualcolmenas()
     let manualConsejos = await colmenas[0].getManualconsejos()
