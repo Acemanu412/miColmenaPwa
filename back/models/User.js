@@ -4,6 +4,9 @@ const crypto = require("crypto");
 
 class User extends S.Model { }
 
+// El salt es usado para generar el hash de la password (Un string alfanumérico aleatorio que se guarda en la base de datos).
+// Esto se hace de esta manera para proteger los datos del usuario.
+
 User.init(
   {
     email: {
