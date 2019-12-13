@@ -3,6 +3,8 @@ const db = require("../config/db");
 
 class InformeMeteorologico extends S.Model { }
 
+// Este modelo está creado pero no está siendo usado en la implementación actual.
+
 InformeMeteorologico.init(
     {
         humedad: {
