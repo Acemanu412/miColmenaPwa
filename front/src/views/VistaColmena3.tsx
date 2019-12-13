@@ -14,6 +14,8 @@ const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
 const PORT = process.env.REACT_APP_PORT || "";
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
 
+// Estas vistas son las 3 pestañas que se ven en el dashboard de una colmena específica. Esta es la pestaña derecha.
+
 const VistaColmena3 = observer(() => {
   const store = useStores();
 
