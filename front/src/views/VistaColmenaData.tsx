@@ -36,9 +36,10 @@ import VistaColmena1 from "./VistaColmena1";
 import VistaColmena2 from "./VistaColmena2";
 import VistaColmena3 from "./VistaColmena3";
 
+// Esta vista corresponde al dashboard de una colmena específica
+
 const VistaColmenaData = observer((props) => {
   const store = useStores();
-  console.log(store.currentDay, "holaaa777");
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
