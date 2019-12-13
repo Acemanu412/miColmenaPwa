@@ -11,6 +11,8 @@ const Notas = require("./Notas")
 const TorresMeteorologicas = require("./TorresMeteorologicas")
 const User = require("./User");
 
+// Para mas información, recomendamos chequear el DER (Diagrama de Entidad-Relacion)
+
 Notas.hasMany(Audio);
 Colmena.hasMany(DeviceInput);
 Colmena.hasMany(ManualColmena);
