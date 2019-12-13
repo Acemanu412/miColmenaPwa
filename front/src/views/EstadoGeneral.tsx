@@ -57,12 +57,8 @@ const EstadoGeneral = observer((props) => {
       type: blob.type,
     });
 
-    // const player = new Audio(URL.createObjectURL(audioRec));
-
     store.setMedia({});
     store.media.setAudioEstadoGeneral(audioRec);
-
-    // player.play();
   }
 
   return (
