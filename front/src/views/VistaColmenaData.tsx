@@ -38,9 +38,7 @@ import VistaColmena3 from "./VistaColmena3";
 
 const VistaColmenaData = observer((props) => {
   const store = useStores();
-
-
-  console.log(store.currentDay, "holaaa");
+  console.log(store.currentDay, "holaaa777");
   const [vista1, setVista1] = useState(true);
   const [vista2, setVista2] = useState(false);
   const [vista3, setVista3] = useState(false);
@@ -112,7 +110,7 @@ const VistaColmenaData = observer((props) => {
           <EnlaceContainer>
             {`${dates[selected].date()} de ${
               month[dates[selected].month()]
-              } de ${dates[selected].year()}`}
+            } de ${dates[selected].year()}`}
           </EnlaceContainer>
           <SemanaContainer>
             <Button2>
@@ -202,8 +200,8 @@ const VistaColmenaData = observer((props) => {
           </div>
         </div>
       ) : (
-          <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>
-        )}
+        <h3 style={{ marginTop: "10vh" }}>ACCESO DENEGADO</h3>
+      )}
     </Container>
   );
 });
