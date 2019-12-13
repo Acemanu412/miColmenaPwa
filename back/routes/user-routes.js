@@ -5,6 +5,9 @@ const nodemailer = require("nodemailer");
 const passport = require("../config/passport");
 const { User } = require("../models");
 
+// Globales declaradas para poder hacer development fuera del servidor. En caso de cambiar el dominio, deberán cambiarse los
+// datos por defecto.
+
 const PORT = process.env.PORT || ""
 const IP = process.env.IP || "app.micolmena.xyz"
 const PROTOCOL = process.env.PROTOCOL || "https"
@@ -26,6 +29,8 @@ router.post(
     })(req, res);
   }
 );
+
+// Al desarrollar de manera local es necesario ajustar los links a las necesidades del desarrollador
 
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
@@ -126,8 +131,8 @@ router.post("/olvidoClave", (req, res, next) => {
     }
     else {
 
-      // fix this one manu there is 1 too many here. sexy.
-      // make a ticket here MANU
+      // Se envía de las dos maneras para facilitar el testing desde el front
+
       res.statusMessage = "No existe usuario con ese correo electrónico";
       res.status(401).send("No existe usuario con ese correo electrónico");
     }
