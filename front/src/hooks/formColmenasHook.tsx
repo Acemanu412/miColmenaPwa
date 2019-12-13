@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+//React Hook para manejar el formulario Colmenas.
+
 export const useFormColmenas = (callback: any, initialObject) => {
   const [inputsSalientes, setInputs] = useState(initialObject);
   const handleSubmit = async (event: any) => {
