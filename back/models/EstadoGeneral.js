@@ -3,6 +3,7 @@ const db = require("../config/db");
 
 class EstadoGeneral extends S.Model { }
 
+// El campo 'audio' es una URL que dirije a la carpeta de recursos estáticos donde se guardan los archivos.
 EstadoGeneral.init(
   {
     date: {
