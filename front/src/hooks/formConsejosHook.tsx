@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-// ponerle un nombre unico
+//React Hook para manejar el formulario Consejos.
+
 export const useForm = (callback: any, initialObjectIntervenciones: any,
                         initialObjectAlimento: any, initialObjectCosecha: any) => {
     const [inputsSalientesIntervenciones, setInputsIntervenciones] = useState(initialObjectIntervenciones);
