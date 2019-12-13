@@ -17,6 +17,9 @@ const {
 
 const Op = Sequelize.Op
 
+// Todo lo relacionado al multer es utilizado para enviar files adentro de objetos formData. Recomendamos revisar la
+// documentación de multer ante cualquier duda que no este contemplada en los comentarios.
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     file.mimetype.split("/")[1];
@@ -25,7 +28,7 @@ const storage = multer.diskStorage({
 
   },
   filename: function (req, file, cb) {
-    // el D es DD? para un number como 23
+    //Utilizamos la fecha para diferenciar los archivos. A la hora de escalar el proyecto recomendamos reorganizar los archivos.
     cb(null, moment().format("YYYY_MM_D_hh_mm_ss_SSS") + "_" + file.originalname);
   }
 })
@@ -33,7 +36,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-// fijarse que req.user no es undefined
+/*  RUTAS */
+// El middleware upload pertenece a la libreria multer. Requiere un formData en la data del pedido AJAX e información adicional
+// de configuracion que también debe ser enviada con el AJAX.
+
 router.post("/photo", upload.single('photo'), (req, res, next) => {
   Colmena.create({ foto: req.file.filename })
     .then((newColmena) => {
@@ -48,6 +54,9 @@ router.post("/photo", upload.single('photo'), (req, res, next) => {
 router.post("/audio", upload.array('audio', 2), (req, res, next) => {
   res.send(req.files);
 });
+
+// Esta ruta genera una colmena con dispositivo. La posibilidad de convertir una colmena estandar (Sin Arduino) a una colmena 
+// con dispositivo no existe en esta implementación y puede requerir la creación de una ruta adicional.
 
 router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
 
@@ -72,6 +81,8 @@ router.post("/agregarColmenaDevice/:idColmena", (req, res, next) => {
     })
 })
 
+// Esta colmena NO tiene Arduino
+
 router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
   Colmena.update({
     nombre: req.body.nombreColmena,
@@ -83,14 +94,14 @@ router.post("/agregarColmenaEstandar/:idColmena", (req, res, next) => {
     }).then(data => res.status(200).send(data))
 })
 
+// Se reciben los 5 formularios que hacen a un registro diario y se añaden a la base de datos.
+
 router.post("/newDailyRegister", (req, res, next) => {
   const date = req.body.estadoGeneral.fecha
-  console.log("date", date);
   req.body.colmenasForm.date = date;
   req.body.colmenasForm.problemasSalud = []
 
   let colmenasForm = req.body.colmenasForm;
-  console.log(req.body)
   Object.keys(colmenasForm).map(key => { // recorre el objeto
     if (typeof colmenasForm[key] === "boolean" && colmenasForm[key] === true) {
       colmenasForm.problemasSalud.push(key);
@@ -121,9 +132,6 @@ router.post("/newDailyRegister", (req, res, next) => {
   req.body.estadoGeneral.audio = req.body.estadoGeneral.urlAudio;
   req.body.notasForms.date = date
 
-  console.log("AAA", req.body.colmenasForm.urlAudio)
-  console.log(req.body.colmenasForm)
-
   Colmena.findOne({ where: { id: req.body.colmenaId } }).then(async (colmena) => {
     await colmena.createManualcolmena(req.body.colmenasForm)
       .catch(err => {
@@ -153,6 +161,8 @@ router.get("/", (req, res) =>
   )
 )
 
+// Esta ruta se utilizaría para probar el input del Arduino en una primera instancia.
+
 router.post("/agregarDataDevice", (req, res, next) => {
   Test.create({
     dataArduino: req.body,
@@ -161,6 +171,9 @@ router.post("/agregarDataDevice", (req, res, next) => {
       res.send(err)
     )
 })
+
+// Obtiene información de un día puntual del Arduino. En esta implementación, no se contó con información del Arduino así que fue
+// probado con información falsa.
 
 router.get("/deviceInput/:id", (req, res, next) => {
   const months = {
@@ -180,7 +193,6 @@ router.get("/deviceInput/:id", (req, res, next) => {
 })
 
 router.get("/registros/:id/:date", (req, res) => {
-  console.log(req.params);
   Colmena.findOne({
     where: { id: req.params.id },
     include: [
@@ -216,7 +228,6 @@ router.get("/registros/:id/:date", (req, res) => {
       }
     ]
   }).then((colmena) => {
-    console.log(colmena);
     res.status(200).send(colmena);
   }).catch(e => res.send(e))
 })
