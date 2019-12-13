@@ -20,6 +20,8 @@ import {
   WiFi,
 } from "../styles/ColmenaStyles";
 
+// Estas vistas son las 3 pestañas que se ven en el dashboard de una colmena específica. Esta es la pestaña central.
+
 const VistaColmena2 = observer(() => {
   const store = useStores();
 
