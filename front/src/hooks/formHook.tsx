@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+//React Hook para manejar la mayoría de los formularios de la aplicación. Recibe por parámetro el estado inicial de cada campo y 
+// una función callback a ejecutar en el submit.
+
 export const useForm = (callback: any, initialObject) => {
   const [inputsSalientes, setInputs] = useState(initialObject);
 
