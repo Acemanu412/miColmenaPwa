@@ -13,6 +13,8 @@ import {
   AbejaDormida,
 } from "../styles/ColmenaStyles";
 
+// Estas vistas son las 3 pestañas que se ven en el dashboard de una colmena específica. Esta es la pestaña izquierda.
+
 const VistaColmena1 = observer(() => {
   return (
     <DataContainer>
