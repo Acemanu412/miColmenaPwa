@@ -25,7 +25,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
     const [audioNotas, setAudioNotas] = useState(null);
 
     const notas = async () => {
-
+        
+        // Con esta config simulamos un formulario con content-type multipart, necesaria para la transmisión de archivos.
         const config = {
             headers: { "content-type": "multipart/form-data" },
         };
@@ -39,7 +40,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             formData,
             config);
         store.updateNotasForm(inputsSalientes);
-        console.log(filesReceived.data[0]);
         store.setUrlNotasForm(filesReceived.data[0].path);
         store.setUrlEstadoGeneralForm(filesReceived.data[1].path);
 
@@ -54,8 +54,6 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             store.colmena.id,
         );
 
-
-
         props.history.push(`/vistaColmena/${store.colmena.id}`);
     };
 
@@ -66,6 +64,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
             urlNotaAudio: "",
         });
 
+/* GRABACION DE AUDIOS */
     const recorder = new MicRecorder({
         bitRate: 128,
     });
@@ -94,6 +93,8 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
         setAudioNotas(audioRec);
     }
 
+/* FIN DE GRABACIÓN DE AUDIOS */
+
     return (
         <div>
             <NavBar />
@@ -101,7 +102,7 @@ export const Notas: React.FC<RouteComponentProps> = observer((props) => {
                 <div>
 
                     <NotasContainer>
-                        <TextoNotas>Agregar nota de voz. Será transcripta en minutos</TextoNotas>
+                        <TextoNotas>Agregar nota de voz.</TextoNotas>
                         <div id="divGrabando" className="noGrabando" onClick={() => {
                             const claseGrabando = document.querySelector("#divGrabando");
                             grabando ? stopRecording() : startRecording();
