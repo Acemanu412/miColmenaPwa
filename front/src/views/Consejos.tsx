@@ -26,6 +26,7 @@ import {
 } from "../styles/FormStyles";
 import { NavBar } from "./NavBar";
 
+// Texto incluido en los checkboxes
 const IntervencionesArr = ["AbejasAgregadas", "Acarapisosis", "Antibioticos", "Antihongos", "Antivarroa",
     "CeldasCambiadas", "ColmenaAislante", "ColmenaDividida", "ColmenaLimpia", "ExclusorReina", "ExclusorReina2",
     "ExclusorReina3", "MedEscara", "MedNosema", "Nosema", "NuevaColmenaIntervenc", "OtrosAntivarroa",
@@ -37,6 +38,7 @@ const AlimentoArr = ["AgregarAbejas", "AgregarReina", "JarabeEspeso", "JarabeLiv
 const CosechaArr = ["cera", "jaleaReal", "miel", "panal", "polen", "propoleo", "unidad-cera", "unidad-jaleaReal",
     "unidad-miel", "unidad-panal", "unidad-polen", "unidad-propoleo"];
 
+// Genero objeto para pasar como valor inicial al hook
 function ObjectConverter(array, startValue) {
     const newObj = {};
     for (const element of array) {
