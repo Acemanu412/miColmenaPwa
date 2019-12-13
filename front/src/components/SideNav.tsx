@@ -12,6 +12,8 @@ import {
   SideNavMenu,
 } from "../styles/SideNavStyles";
 
+// Este es el manu desplegable. 
+
 const SideNav: React.FC = (props: any) => {
   let isOpen = false;
   function salirHandleClick() {
