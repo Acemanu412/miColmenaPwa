@@ -1,6 +1,10 @@
 import axios from "axios";
 
+// Para el envío de audios o imagenes
 axios.defaults.withCredentials = true;
+
+// Globales. Las opciones por defecto se corresponden con la configuración necesaria desde el dominio al momento de 
+// esta implementacion (12/2019)
 
 const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
 const PORT = process.env.REACT_APP_PORT || "";
@@ -68,6 +72,8 @@ export const logOut = () =>
       return err;
     });
 
+// Ese pedido AJAX envía los formularios manuales para realizar un registro diario.
+
 export const postNewDailyRegister = (
   colmenasForm,
   consejosAlimento,
@@ -78,7 +84,6 @@ export const postNewDailyRegister = (
   reinaForms,
   colmenaId
 ) => {
-  console.log("notas", notasForms);
   return axios
     .post(`${PROTOCOL}://${IP}${PORT}/api/colmena/newDailyRegister`, {
       colmenasForm,
@@ -122,6 +127,7 @@ export const fetchDataDevice = (id, day) =>
       return { message: err.response.data };
     });
 
+// Este pedido AJAX recibe los registros manuales de un día en particular.
 export const fetchRegistros = (id, day) =>
   axios
     .get(`${PROTOCOL}://${IP}${PORT}/api/colmena/registros/${id}/${day}`)
