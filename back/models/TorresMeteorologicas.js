@@ -3,6 +3,8 @@ const db = require("../config/db");
 
 class TorresMeteorologicas extends S.Model { }
 
+// Recomendamos guardar la información de las torres meteorológicas que se envía desde la api del Servicio Meteorológico Nacional.
+
 TorresMeteorologicas.init(
     {
         longitud: {
