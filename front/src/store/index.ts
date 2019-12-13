@@ -13,6 +13,9 @@ import NotasForms from "./NotasForms";
 import ReinaForms from "./ReinaForms";
 import User from "./User";
 
+// La configuración siguiente esta hecha utilizando Mobx-state-trees. Al ser una configuración básica, recomendamos leer
+// la documentación en caso de surgir alguna duda: https://mobx-state-tree.js.org/concepts/trees
+
 const RootStore = types
   .model("Root", {
     agregarColmenaDevice: types.maybeNull(AgregarColmenaDevice),
