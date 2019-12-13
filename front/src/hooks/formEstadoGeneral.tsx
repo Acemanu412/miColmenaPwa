@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+//React Hook para manejar el formulario Estado General.
+
 export const useForm = (callback: any, initialObject) => {
 
   const [inputsSalientes, setInputs] = useState(initialObject);
