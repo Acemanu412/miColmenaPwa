@@ -15,6 +15,7 @@ let checkedColmenas = false;
 const IP = process.env.REACT_APP_IP || "app.micolmena.xyz";
 const PORT = process.env.REACT_APP_PORT || "";
 const PROTOCOL = process.env.REACT_APP_PROTOCOL || "https";
+
 const Colmenas: React.FC = (props: any) => {
   const store = useStores();
   const [colmenas, setColmenas] = useState([]);
