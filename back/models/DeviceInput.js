@@ -3,6 +3,7 @@ const db = require("../config/db");
 
 class DeviceInput extends S.Model { }
 
+// En el momento de esta implementación, este modelo esta testeado con información falsa. Requiere probarse con el Arduino.
 DeviceInput.init(
   {
     date: {
