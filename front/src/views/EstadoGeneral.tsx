@@ -74,9 +74,7 @@ const EstadoGeneral = observer((props) => {
             <Panel /> <BoldText>Estado General</BoldText>
           </Header>
           <DataContainer>
-            <audio controls>
-              <source src="/audios/2019_12_12_06_27_37_918_music.mp3" />
-            </audio>
+          
             <label>Fecha</label>
             <DataRow>
               <Calendar />
