@@ -30,7 +30,7 @@ router.post(
 router.post("/signup", (req, res, next) => {
   return User.create(req.body)
     .then(user => {
-      const link = `${PROTOCOL}://${IP}:${PORT}/api/user/activarCuenta/${user.id}`
+      const link = `${PROTOCOL}://${IP}${PORT}/api/user/activarCuenta/${user.id}`
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -74,8 +74,8 @@ router.get("/activarCuenta/:id", (req, res, next) => {
     })
     .then((user) => {
       req.login(user, function (err) {
-        err ? res.status(400).redirect(`${PROTOCOL}://${IP}:${PORT}/`)
-          : res.status(200).redirect(`${PROTOCOL}://${IP}:${PORT}/home`)
+        err ? res.status(400).redirect(`${PROTOCOL}://${IP}${PORT}/`)
+          : res.status(200).redirect(`${PROTOCOL}://${IP}${PORT}/home`)
       })
     })
     .catch((err) => {
