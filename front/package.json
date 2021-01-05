@@ -10,7 +10,7 @@
     "@types/react-dom": "16.9.4",
     "@types/react-router-dom": "^5.1.2",
     "@types/styled-components": "^4.4.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "downloadjs": "^1.4.7",
     "mic-recorder-to-mp3": "^2.2.1",
     "mobx": "^5.15.0",
